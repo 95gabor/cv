@@ -1,4 +1,7 @@
 *
+
+!.github/workflows/*.yaml
+
 !*.html
 !*.css
 !assets/*.png
