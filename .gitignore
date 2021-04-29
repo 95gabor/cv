@@ -1,9 +1,16 @@
 *
 
+!.gitignore
+
 !.github/workflows/*.yaml
 
-!*.html
-!*.css
-!assets/*.png
+!src
+!src/*.html
+!src/*.css
+!src/assets
+!src/assets/*.png
+!src/assets/*.jpg
+
+!nginx.conf
 
 !Dockerfile
