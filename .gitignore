@@ -6,6 +6,8 @@
 
 !src
 !src/*.html
+!src/sitemap.xml
+!src/robots.txt
 !src/*.css
 !src/assets
 !src/assets/*.png
