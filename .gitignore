@@ -2,6 +2,8 @@
 
 !.gitignore
 
+!.github
+!.github/workflows
 !.github/workflows/*.yaml
 
 !src
