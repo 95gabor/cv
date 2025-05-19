@@ -11,16 +11,15 @@
               <div class="job-header">
                 <h3 class="heading-3">{{ job.title }}</h3>
                 <div class="job-meta">
-                  <UBadge color="gray" variant="soft" class="period-badge">
-                    {{ job.period }}
-                  </UBadge>
-                  <span class="meta-separator">|</span>
-                  <span class="location">{{ job.location }}</span>
+                  <span class="meta-text">
+                    {{ formatPeriod(job.from, job.end) }}
+                    <span class="meta-separator">|</span>
+                    <a v-if="job.companyUrl" :href="job.companyUrl" target="_blank" rel="noopener" class="company-link">{{ job.company }}</a>
+                    <template v-else>{{ job.company }}</template>
+                    <span class="meta-separator">|</span>
+                    {{ job.location }}
+                  </span>
                 </div>
-              </div>
-              <div class="job-subheader">
-                <p v-if="job.company" class="company">{{ job.company }}</p>
-                <UBadge v-if="job.company" color="gray" variant="soft" class="separator">•</UBadge>
               </div>
               <p v-if="job.description" class="description">
                 {{ job.description }}
@@ -49,4 +48,34 @@ import type { WorkExperience } from '~/types/cv';
 defineProps<{
   experiences: WorkExperience[];
 }>();
+
+const formatPeriod = (from: string, end?: string) => {
+  return end ? `${from} - ${end}` : `${from} - Present`;
+};
 </script>
+
+<style lang="scss" scoped>
+.job-meta {
+  margin-top: 0.5rem;
+}
+
+.meta-text {
+  color: var(--color-gray-500);
+  font-size: 0.875rem;
+}
+
+.meta-separator {
+  margin: 0 0.5rem;
+  color: var(--color-gray-400);
+}
+
+.company-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+</style>

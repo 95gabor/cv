@@ -29,8 +29,10 @@ export default defineContentConfig({
           z.object({
             title: z.string(),
             company: z.string().optional(),
+            companyUrl: z.string().optional(),
             location: z.string(),
-            period: z.string(),
+            from: z.string(),
+            end: z.string().optional(),
             description: z.string().optional(),
             technologies: z.array(z.string())
           })
@@ -40,7 +42,8 @@ export default defineContentConfig({
             degree: z.string(),
             institution: z.string(),
             location: z.string(),
-            period: z.string(),
+            from: z.string(),
+            end: z.string().optional(),
             note: z.string().optional()
           })
         ),

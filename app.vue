@@ -62,14 +62,25 @@
             <Header :personal="cv.personal" />
           </header>
           <main class="main-content">
-            <Experience :experiences="cv.workExperience" />
-            <Education :educations="cv.educations" />
-            <Skills :skills="cv.skills" />
-            <Hobbies :hobbies="cv.hobbies" />
+            <article itemscope itemtype="https://schema.org/Person">
+              <section>
+                <Experience :experiences="cv.workExperience" />
+              </section>
+              <section>
+                <Education :educations="cv.educations" />
+              </section>
+              <section>
+                <Skills :skills="cv.skills" />
+              </section>
+              <section>
+                <Hobbies :hobbies="cv.hobbies" />
+              </section>
+            </article>
           </main>
         </template>
       </div>
     </UContainer>
+    <CookieConsent />
   </div>
 </template>
 
@@ -81,8 +92,42 @@ import Experience from './components/Experience/Experience.vue';
 import Education from './components/Education/Education.vue';
 import Skills from './components/Skills/Skills.vue';
 import Hobbies from './components/Hobbies/Hobbies.vue';
+import CookieConsent from './components/CookieConsent.vue';
 
 const { data: cv, pending, refresh } = await useAsyncData('cv', () => 
   queryCollection('cv').first()
 );
+
+// SEO meta tags
+useHead({
+  title: 'Gábor Pichner | TypeScript Full-Stack Developer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.'
+    },
+    {
+      name: 'keywords',
+      content: 'TypeScript, JavaScript, NodeJS, NestJS, Angular, React, HTML, CSS, SCSS, SQL, NoSQL, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Terraform, AWS, Azure, GCP, CI/CD, DevOps, Git, JWT, OAuth, REST API, Microservices, Clean Code, Unit Testing, Jest, Mocha'
+    },
+    {
+      property: 'og:title',
+      content: 'Gábor Pichner\'s CV | TypeScript Full-Stack Developer'
+    },
+    {
+      property: 'og:description',
+      content: 'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.'
+    },
+    {
+      property: 'og:type',
+      content: 'profile'
+    }
+  ],
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://95gabor.me'
+    }
+  ]
+});
 </script>

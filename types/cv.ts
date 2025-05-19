@@ -21,8 +21,10 @@ export interface Contact {
 export interface WorkExperience {
   title: string;
   company?: string;
+  companyUrl?: string;
   location: string;
-  period: string;
+  from: string;
+  end?: string;
   description?: string;
   technologies: string[];
 }
@@ -31,7 +33,8 @@ export interface Education {
   degree: string;
   institution: string;
   location: string;
-  period: string;
+  from: string;
+  end?: string;
   note?: string;
 }
 
