@@ -1,0 +1,62 @@
+// Colors
+$primary-color: #f97316; // orange-500
+$bg-dark: #111827; // gray-900
+$bg-card: rgba(31, 41, 55, 0.5); // gray-800/50
+$border-color: rgba(55, 65, 81, 0.5); // gray-700/50
+$text-primary: #ffffff;
+$text-secondary: #e5e7eb; // gray-200
+$text-muted: #9ca3af; // gray-400
+
+// Spacing
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Mixins
+@mixin glass-effect {
+    background-color: $bg-card;
+    backdrop-filter: blur(8px);
+    border: 1px solid $border-color;
+}
+
+@mixin hover-transition {
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: rgba(55, 65, 81, 0.5);
+    }
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint ==sm {
+        @media (min-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==md {
+        @media (min-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==lg {
+        @media (min-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==xl {
+        @media (min-width: $breakpoint-xl) {
+            @content;
+        }
+    }
+}

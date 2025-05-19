@@ -1,0 +1,117 @@
+.cv-header {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.header-social-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.header-social-link {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0;
+    min-width: 48px;
+    max-width: 160px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.2s;
+
+    &:hover {
+        background: rgba(249, 115, 22, 0.08);
+    }
+}
+
+.header-social-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.header-name {
+    color: $primary-color;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.header-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.header-title-line {
+    flex: 1;
+    border: none;
+    border-top: 2px solid $border-color;
+    margin: 0;
+}
+
+.header-title {
+    color: $text-primary;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.header-contact-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.header-contact-col {
+    flex: 1 1 160px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.header-contact-right {
+    text-align: left;
+}
+
+.header-avatar-col {
+    flex: 0 0 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid $primary-color;
+    background: $bg-card;
+    margin-bottom: -96px;
+    z-index: 1;
+    position: relative;
+}
+
+.header-contact-col,
+.header-contact-link {
+    color: $text-primary;
+    text-decoration: none;
+}
+
+.header-contact-link:hover {
+    color: $primary-color;
+    text-decoration: underline;
+}

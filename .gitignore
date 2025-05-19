@@ -1,20 +1,24 @@
-*
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
 
-!.gitignore
+# Node dependencies
+node_modules
 
-!.github
-!.github/workflows
-!.github/workflows/*.yaml
+# Logs
+logs
+*.log
 
-!src
-!src/*.html
-!src/sitemap.xml
-!src/robots.txt
-!src/*.css
-!src/assets
-!src/assets/*.png
-!src/assets/*.jpg
+# Misc
+.DS_Store
+.fleet
+.idea
 
-!nginx.conf
-
-!Dockerfile
+# Local env files
+.env
+.env.*
+!.env.example

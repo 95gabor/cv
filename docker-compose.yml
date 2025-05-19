@@ -1,0 +1,6 @@
+services:
+  nuxt-cv:
+    build: .
+    image: ghcr.io/95gabor/cv:latest
+    ports:
+      - "8000:80"
