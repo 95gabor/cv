@@ -24,18 +24,135 @@ personal:
       value: 95gabor.me
 
 workExperience:
-  - title: Freelancer
+  - title: Full Stack Developer
     company: Freelancer
-    location: Veszprém, HU
-    from: "2022"
-    description: Coming soon...
+    location: Budapest, HU
+    from: "2024"
+    description: "I provide architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare)."
     technologies:
       - NestJS
+      - Azure
+      - Docker
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    description: I am contributing to the development of an animation creation platform by leveraging my previously gained experience. The product will be publicly available soon and is already operational in a closed environment.
+    technologies:
+      - Angular
+      - NgRx
+      - NestJS
+      - AWS (Cognito, Lambda, S3, Neptune, ClodFront, Route53)
+      - Terraform
+      - Docker
+      - Jest
+      - OpenAI API
+      - Azure ML Studio
+      - GitHub Actions
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2025"
+    description: I developed a PWA for a restaurant system to replace the previous slower backend-rendered frontend. The new solution integrates into the existing frontend and, thanks to its internal state management, provides a faster and more responsive user experience.
+    technologies:
+      - Vue
+      - Quasar framework
+      - pinia
+      - SCSS
+      - OpenAPI / Swagger
+      - Yii
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2024"
+    description: I developed a billing integration for a restaurant system.
+    technologies:
+      - NestJS
+      - TypeORM
+      - RabbitMQ
+      - Billingo API
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2024"
+    description: I developed a complete memorial website portal with login, profile and role management, content upload features, and map integration. Unfortunately, the project was discontinued due to legal issues.
+    technologies:
       - React
       - Tailwind
-      - Redis
+      - NestJS
+      - TypeORM
+      - AWS (API Gateway, Lambda)
+      - GitHub Actions
+      - GitHub Pages
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2024"
+    description: I developed a QR code-based payment integration for a restaurant system. Later, I extended the integration with menu synchronization and order processing. The integration currently handles hundreds of payments and orders on a weekly basis.
+    technologies:
+      - NestJS
+      - Websocket
+      - NX
+      - OpenAPI / Swagger
+      - OpenTelemetry
+      - Prometheus
+      - Grafana
+      - Jest
+      - Yii
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2024"
+    description: I created a website for a mechanical engineering company. Later, I extended it with quotation request features.
+    technologies:
+      - React
+      - Tailwind
+      - NestJS
+      - AWS (API Gateway, Lambda)
+      - GitHub Actions
+      - GitHub Pages
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2023"
+    description: I developed a serial port and Bluetooth-based cash register integration for a restaurant system, which makes the payment process faster and more efficient.
+    technologies:
+      - JavaScript
+      - ToDesktop
+      - Convertify
+      - Android
+      - iOS
+      - Electron
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2022"
+    end: "2023"
+    description: I worked on the fiscal printing integration of a restaurant system. The integration is active in more than 100 restaurants and has already handled over 4 million print operations. The system is specifically designed to be fault-tolerant against disconnections, yet still ensures near-instant operation.
+    technologies:
+      - NestJS
+      - RabbitMQ
+      - Socket.io
+      - JWKS / JWT
+      - OpenAPI / Swagger
       - .NET Framework
-      - Bootstrap
+      - OpenTelemetry
+      - Prometheus
+      - Grafana
 
   - title: Lead Full Stack Developer
     company: CAE Healthcare
@@ -56,9 +173,11 @@ workExperience:
       - Prometheus
       - Grafana
       - Loki
+      - OpenTelemetry
       - NestJS
       - TypeORM
       - Linkerd
+      - Nx
 
   - title: Senior Full Stack Developer
     company: CAE Healthcare
@@ -74,14 +193,21 @@ workExperience:
       - Docker
       - Terraform
       - Angular
+      - NgRx
       - NodeJS
-      - .NET Core
+      - Socket.io
+      - OpenAPI / Swagger
+      - RabbitMQ
       - Loopback
       - Sequelize
+      - Ionic / Capacitor
+      - JWT / JWKS
       - MySQL
-      - RabbitMQ
+      - Nginx
+      - .NET Core
       - CentOS
       - Perl
+      - Jenkins
 
   - title: Senior / Lead Full Stack Developer
     company: CloudStorm
@@ -92,15 +218,25 @@ workExperience:
     description: |
       We used to develop custom RPA solutions, but then we started to work on a new process discovery tool called Nika. My job was to design software architectures, to do the software development, cloud-based operations, and to help the team members. I used Docker, AWS and Micro Service Architecture.
     technologies:
-      - AWS
+      - AWS (Lambda, S3, RDS, SQS, Route53, CloudFront, CodeBuild)
       - Docker
-      - Kubernetes
-      - Terraform
+      - Kubernetes (AWS EKS, Minikube)
+      - Terraform (AWS, Azure)
       - Angular
+      - Angular Material
+      - NgRx
       - NodeJS
       - NestJS
       - TypeORM
       - Sequelize
+      - JWT / OAuth / OIDC
+      - JSON API specification
+      - Jest
+      - Auth0
+      - Puppeteer
+      - MS Teams API
+      - yarn
+      - Lerna
 
   - title: Full Stack Developer
     company: University of Pannonia
@@ -119,7 +255,7 @@ workExperience:
       - Google Maps API
       - File upload
       - PostgreSQL
-      - JWT
+      - JWT / passport.js
       - Angular Material
 
   - title: Full Stack Developer
@@ -173,28 +309,38 @@ educations:
 
 skills:
   - TypeScript / JavaScript
-  - NodeJS REST API (NestJS with express + TypeORM + Swagger)
+  - NodeJS (NestJS with express)
+  - OpenAPI (Swagger) / REST API
   - Angular (Material + RxJS + NgRx)
-  - HTML, CSS, SCSS, (Bootstrap, JQuery)
-  - SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo)
+  - HTML, CSS, SCSS, (Tailwind, Bootstrap, JQuery)
+  - SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
   - Docker
-  - GIT
+  - Kubernetes, Helm Charts, ArgoCD, Talos
+  - GIT, GitHub, GitLab, Azure DevOps
   - Infrastructure As Code (Terraform)
   - Experienced in enterprise production environment
-  - Agile Software Development (JIRA)
+  - "Monitoring: Prometheus, Grafana, Loki, OpenTelemetry"
+  - Agile Software Development (JIRA, Trello, Scrum)
   - Clean Code
   - DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
+  - Cloud native technologies (CNCF)
   - Unit Testing (Jest, Mocha, Puppeteer)
+  - Linters (eslint and prettier)
   - Cloud Providers (AWS, Azure, Google Cloud Platform)
-  - Auth (OAuth, JWT, SSO, Auth0)
+  - Auth (OAuth, JWT, JWKS, SSO, Auth0)
   - Webhooks
+  - Websocket
   - MacOS, Linux, Windows
   - Design Patterns, Data structures
+  - "AI: OpenAI, Azure ML studio"
+  - Microservice architecture
 
 hobbies:
   - name: Sailing
+  - name: Cycling
   - name: Snowboarding
   - name: Smart Home
     link: https://homeassistant.io
+  - name: Home Cluster (RaspberryPi, K8S - Talos, Rook - Ceph)
   - name: IT Gadgets
   - name: Cars
