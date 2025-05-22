@@ -21,7 +21,7 @@ personal:
       value: 95gabor.me
 
 workExperience:
-  - title: Full Stack Developer
+  - title: DevOps Engineer
     company: Freelancer
     location: Veszprém, HU
     from: "2025"
@@ -36,7 +36,7 @@ workExperience:
       - RabbitMQ
       - Operators
 
-  - title: DevOps Engineer
+  - title: Software Development Consultant
     company: Freelancer
     location: Veszprém, HU
     from: "2024"
