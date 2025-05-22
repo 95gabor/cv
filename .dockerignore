@@ -13,6 +13,7 @@
 !nginx.conf
 !public
 !content
+!i18n
 !components
 !assets
 !types
