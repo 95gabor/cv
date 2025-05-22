@@ -1,3 +1,4 @@
+lang: en
 personal:
   name: Gábor Pichner
   title: Full Stack Developer
@@ -10,23 +11,34 @@ personal:
       url: https://linkedin.com/in/95gabor
       icon: /linkedin.png
   contact:
-    - title: Area
-      type: location
+    - type: location
       value: Hungary
-    - title: Phone
-      type: phone
-      value: sensitive
-    - title: Email
-      type: email
+    - type: phone
+      value: "sensitive"
+    - type: email
       value: 95gabor@gmail.com
-    - title: Website
-      type: link
+    - type: link
       value: 95gabor.me
 
 workExperience:
   - title: Full Stack Developer
     company: Freelancer
-    location: Budapest, HU
+    location: Veszprém, HU
+    from: "2025"
+    description: "My current project involves maintaining a previously established Kubernetes cluster, updating and migrating Helm charts, setting up high availability services, and implementing security solutions."
+    technologies:
+      - Kubernetes
+      - Azure AKS
+      - Helm
+      - DevOps
+      - ArgoCD
+      - Prometheus, Grafana, Loki, OpenTelemetry
+      - RabbitMQ
+      - Operators
+
+  - title: Full Stack Developer
+    company: Freelancer
+    location: Veszprém, HU
     from: "2024"
     description: "I provide architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare)."
     technologies:
@@ -162,8 +174,6 @@ workExperience:
     end: "2024"
     description: |
       I was promoted from my previous role as a senior developer to a lead developer. Currently, I am working on architecture planning, mentoring my colleagues, introducing modern cloud technologies, and providing guidance. Working closely with my team, our goal is to maintain the market-leading position of the LearningSpace product while leveraging standard and modern technologies to support medical learners and educators.
-
-      I have been working here part-time, 20 hours a week, since April.
     technologies:
       - Azure
       - Azure DevOps

@@ -111,3 +111,13 @@ body {
         transform: scale(1.05);
     }
 }
+
+// Print and page break styles
+@media print {
+
+    .job-item,
+    .education-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

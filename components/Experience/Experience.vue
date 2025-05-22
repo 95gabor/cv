@@ -2,9 +2,9 @@
   <section class="section">
     <UContainer>
       <h2 class="section-title" id="work-experience">
-        <a href="#work-experience"># Work Experience</a>
+        <a href="#work-experience"># {{ t('cv.workExperience') }}</a>
       </h2>
-      <UCard class="cv-card">
+      <UCard>
         <div class="experience-list">
           <div v-for="(job, idx) in experiences" :key="job.title" class="job-item">
             <div class="job-content">
@@ -25,7 +25,7 @@
                 {{ job.description }}
               </p>
               <div class="technologies">
-                <span class="tech-label">Technologies</span>
+                <span class="tech-label">{{ t('experience.technologies') }}</span>
                 <ul class="tech-list">
                   <li v-for="tech in job.technologies" :key="tech" class="tech-item">
                     {{ tech }}
@@ -45,12 +45,14 @@
 import './Experience.scss';
 import type { WorkExperience } from '~/types/cv';
 
+const { t } = useI18n();
+
 defineProps<{
   experiences: WorkExperience[];
 }>();
 
 const formatPeriod = (from: string, end?: string) => {
-  return end ? `${from} - ${end}` : `${from} - Present`;
+  return `${from} - ${end || t('experience.present')}`;
 };
 </script>
 

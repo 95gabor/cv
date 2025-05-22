@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "cv": {
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "hobbies": "Hobbies",
+    "download": "Download CV",
+    "contact": "Contact Me"
+  },
+  "experience": {
+    "present": "Present",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies"
+  },
+  "education": {
+    "degree": "Degree",
+    "field": "Field of Study",
+    "gpa": "GPA"
+  },
+  "skills": {
+    "languages": "Languages",
+    "frameworks": "Frameworks",
+    "databases": "Databases",
+    "tools": "Tools",
+    "cloud": "Cloud Platforms",
+    "softSkills": "Soft Skills"
+  },
+  "contact": {
+    "location": "Area",
+    "phone": "Phone",
+    "email": "Email",
+    "link": "Website"
+  }
+} 

@@ -63,6 +63,7 @@
           </header>
           <main class="main-content">
             <article itemscope itemtype="https://schema.org/Person">
+              <LanguageSelector />
               <section>
                 <Experience :experiences="cv.workExperience" />
               </section>
@@ -93,10 +94,21 @@ import Education from './components/Education/Education.vue';
 import Skills from './components/Skills/Skills.vue';
 import Hobbies from './components/Hobbies/Hobbies.vue';
 import CookieConsent from './components/CookieConsent.vue';
+import LanguageSelector from './components/LanguageSelector.vue';
 
-const { data: cv, pending, refresh } = await useAsyncData('cv', () => 
-  queryCollection('cv').first()
-);
+const i18n = useI18n();
+
+// Initial load
+const { data: cv, pending, refresh } = await useAsyncData<CV>('cv', () => 
+    queryCollection('cv')
+      .where('stem', '=', i18n.locale.value)
+      .first() as any as Promise<CV>
+  );
+
+// Watch for locale changes
+watch(() => i18n.locale.value, async () => {
+  await refresh();
+});
 
 // SEO meta tags
 useHead({
@@ -131,3 +143,4 @@ useHead({
   ]
 });
 </script>
+

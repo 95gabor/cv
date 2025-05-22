@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/ui', '@nuxt/icon', '@nuxt/scripts', '@nuxtjs/sitemap'],
+  modules: ['@nuxt/content', '@nuxt/eslint', '@nuxt/fonts', '@nuxt/image', '@nuxt/ui', '@nuxt/icon', '@nuxt/scripts', '@nuxtjs/sitemap', '@nuxtjs/i18n'],
 
   $production: {
     scripts: {
@@ -51,7 +51,9 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['~/assets/styles/main.scss'],
+  css: [
+    '~/assets/styles/main.scss',
+  ],
 
   vite: {
     css: {
@@ -65,5 +67,29 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'static'
+  },
+
+  i18n: {
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en.json'
+      },
+      {
+        code: 'hu',
+        name: 'Magyar',
+        file: 'hu.json'
+      }
+    ],
+    lazy: true,
+    langDir: 'locales',
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    }
   }
 })

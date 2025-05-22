@@ -4,7 +4,7 @@ export default defineContentConfig({
   collections: {
     cv: defineCollection({
       type: 'data',
-      source: 'cv.yaml',
+      source: '*.yaml',
       schema: z.object({
         personal: z.object({
           name: z.string(),
@@ -19,7 +19,6 @@ export default defineContentConfig({
           ),
           contact: z.array(
             z.object({
-              title: z.string(),
               type: z.enum(['location', 'phone', 'email', 'link']),
               value: z.string()
             })

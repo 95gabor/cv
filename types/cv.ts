@@ -44,6 +44,7 @@ export interface Hobby {
 }
 
 export interface CV {
+  lang: string;
   personal: Personal;
   workExperience: WorkExperience[];
   education: Education[];

@@ -1,7 +1,7 @@
 <template>
   <section class="text-center py-10 bg-gray-700">
     <h2 class="section-title" id="hobbies">
-      <a href="#hobbies"># Hobbies</a>
+      <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
     </h2>
     <ul class="hobby-list">
       <li v-for="hobby in hobbies" :key="hobby.name" class="hobby-item">
@@ -17,6 +17,8 @@
 <script setup lang="ts">
 import './Hobbies.scss';
 import type { Hobby } from '~/types/cv';
+
+const { t } = useI18n();
 
 defineProps<{
   hobbies: Hobby[];

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import './Header.scss'
 import type { Personal } from '~/types/cv';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 defineProps<{
   personal: Personal;
@@ -30,7 +33,7 @@ defineProps<{
     <div class="header-contact-row">
       <div class="header-contact-col header-contact-left">
         <div v-for="contact in personal.contact.slice(0, 2)" :key="contact.title">
-          <b>{{ contact.title }}</b><br />
+          <b>{{ t(`contact.${contact.type}`) }}</b><br />
           <a :href="getContactHref(contact)" class="header-contact-link" target="_blank">{{ contact.value }}</a>
         </div>
       </div>
@@ -39,7 +42,7 @@ defineProps<{
       </div>
       <div class="header-contact-col header-contact-right">
         <div v-for="contact in personal.contact.slice(2)" :key="contact.title">
-          <b>{{ contact.title }}</b><br />
+          <b>{{ t(`contact.${contact.type}`) }}</b><br />
           <a :href="getContactHref(contact)" class="header-contact-link" target="_blank">{{ contact.value }}</a>
         </div>
       </div>
