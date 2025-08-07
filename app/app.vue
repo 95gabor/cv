@@ -86,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import './app.scss';
+import '../app.scss';
 import type { CV } from '~/types/cv';
 import Header from './components/Header/Header.vue';
 import Experience from './components/Experience/Experience.vue';
