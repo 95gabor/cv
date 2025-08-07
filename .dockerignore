@@ -6,8 +6,7 @@
 !package-lock.json
 !nuxt.config.ts
 !content.config.ts
-!app.vue
-!app.scss
+!app
 !Dockerfile
 !docker-compose.yml
 !nginx.conf
@@ -15,7 +14,5 @@
 !content
 !i18n
 !components
-!assets
-!types
 !tsconfig.json
 !README.md
