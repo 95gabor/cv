@@ -44,7 +44,7 @@
     "commitizen": "^4.2.5",
     "eslint": "^9.35.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "sass": "^1.89.0",
     "semantic-release": "^24.2.7",
