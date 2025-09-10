@@ -25,7 +25,8 @@ workExperience:
     company: Freelancer
     location: Veszprém, HU
     from: '2025'
-    description: 'My current project involves maintaining a previously established Kubernetes cluster, updating and migrating Helm charts, setting up high availability services, and implementing security solutions.'
+    end: '2025'
+    description: 'My last project involved maintaining a previously established Kubernetes cluster, updating and migrating Helm charts, setting up high availability services, and implementing security solutions.'
     technologies:
       - Kubernetes
       - Azure AKS
@@ -40,7 +41,8 @@ workExperience:
     company: Freelancer
     location: Veszprém, HU
     from: '2024'
-    description: 'I provide architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare).'
+    end: '2025'
+    description: 'I provided architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare).'
     technologies:
       - NestJS
       - Azure
@@ -50,7 +52,8 @@ workExperience:
     company: Freelancer
     location: Budapest, HU
     from: '2024'
-    description: I am contributing to the development of an animation creation platform by leveraging my previously gained experience. The product will be publicly available soon and is already operational in a closed environment.
+    end: '2025'
+    description: I was contributing to the development of an animation creation platform by leveraging my previously gained experience. The product will be publicly available soon and is already operational in a closed environment.
     technologies:
       - Angular
       - NgRx
