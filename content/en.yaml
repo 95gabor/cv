@@ -21,6 +21,18 @@ personal:
       value: 95gabor.me
 
 workExperience:
+  - title: SRE Engineer
+    company: Freelancer
+    location: Veszprém, HU
+    from: '2025'
+    description: 'Currently, I work on a video-based authentication software as Site Reliability Engineering. '
+    technologies:
+      - Express.js
+      - Socket.io
+      - RabbitMQ
+      - Docker
+      - Sequelize
+
   - title: DevOps Engineer
     company: Freelancer
     location: Veszprém, HU
