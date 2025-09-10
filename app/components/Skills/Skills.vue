@@ -1,6 +1,6 @@
 <template>
   <section class="text-center py-10">
-    <h2 class="section-title" id="skills">
+    <h2 id="skills" class="section-title">
       <a href="#skills"># {{ t('cv.skills') }}</a>
     </h2>
     <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">

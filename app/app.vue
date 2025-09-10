@@ -1,20 +1,20 @@
 <template>
   <div class="app">
-    <div class="grid-background"></div>
-    
+    <div class="grid-background" />
+
     <UContainer class="cv-container">
       <div class="cv-content">
         <template v-if="pending">
           <!-- Header Skeleton -->
           <UCard class="cv-card animate-pulse">
             <div class="skeleton-header">
-              <div class="skeleton-avatar"></div>
+              <div class="skeleton-avatar" />
               <div class="skeleton-info">
-                <div class="skeleton-title"></div>
-                <div class="skeleton-subtitle"></div>
+                <div class="skeleton-title" />
+                <div class="skeleton-subtitle" />
                 <div class="skeleton-buttons">
-                  <div class="skeleton-button"></div>
-                  <div class="skeleton-button"></div>
+                  <div class="skeleton-button" />
+                  <div class="skeleton-button" />
                 </div>
               </div>
             </div>
@@ -22,41 +22,41 @@
 
           <!-- Section Skeletons -->
           <UCard class="cv-card animate-pulse">
-            <div class="skeleton-section-title"></div>
+            <div class="skeleton-section-title" />
             <div class="skeleton-content">
-              <div class="skeleton-line"></div>
-              <div class="skeleton-line"></div>
-              <div class="skeleton-line"></div>
+              <div class="skeleton-line" />
+              <div class="skeleton-line" />
+              <div class="skeleton-line" />
               <div class="skeleton-tags">
-                <div class="skeleton-tag"></div>
-                <div class="skeleton-tag"></div>
-                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag" />
+                <div class="skeleton-tag" />
+                <div class="skeleton-tag" />
               </div>
             </div>
           </UCard>
           <UCard class="cv-card animate-pulse">
-            <div class="skeleton-section-title"></div>
+            <div class="skeleton-section-title" />
             <div class="skeleton-content">
-              <div class="skeleton-line"></div>
-              <div class="skeleton-line"></div>
-              <div class="skeleton-line"></div>
+              <div class="skeleton-line" />
+              <div class="skeleton-line" />
+              <div class="skeleton-line" />
             </div>
           </UCard>
           <UCard class="cv-card animate-pulse">
-            <div class="skeleton-section-title"></div>
+            <div class="skeleton-section-title" />
             <div class="skeleton-content">
-              <div class="skeleton-line"></div>
-              <div class="skeleton-line"></div>
+              <div class="skeleton-line" />
+              <div class="skeleton-line" />
             </div>
           </UCard>
           <UCard class="cv-card animate-pulse">
-            <div class="skeleton-section-title"></div>
+            <div class="skeleton-section-title" />
             <div class="skeleton-content">
-              <div class="skeleton-line"></div>
+              <div class="skeleton-line" />
             </div>
           </UCard>
         </template>
-        
+
         <template v-else-if="cv">
           <header>
             <Header :personal="cv.personal" />
@@ -87,7 +87,6 @@
 
 <script setup lang="ts">
 import './app.scss';
-import type { CV } from '~/types/cv';
 import Header from './components/Header/Header.vue';
 import Experience from './components/Experience/Experience.vue';
 import Education from './components/Education/Education.vue';
@@ -95,20 +94,27 @@ import Skills from './components/Skills/Skills.vue';
 import Hobbies from './components/Hobbies/Hobbies.vue';
 import CookieConsent from './components/CookieConsent.vue';
 import LanguageSelector from './components/LanguageSelector.vue';
+import type { CvCollectionItem } from '@nuxt/content';
 
 const i18n = useI18n();
 
 // Initial load
-const { data: cv, pending, refresh } = await useAsyncData<CV>('cv', () => 
-    queryCollection('cv')
-      .where('stem', '=', i18n.locale.value)
-      .first() as any as Promise<CV>
-  );
+const {
+  data: cv,
+  pending,
+  refresh,
+} = await useAsyncData<CvCollectionItem | null>(
+  'cv',
+  () => queryCollection('cv').where('stem', '=', i18n.locale.value).first() as Promise<CvCollectionItem>,
+);
 
 // Watch for locale changes
-watch(() => i18n.locale.value, async () => {
-  await refresh();
-});
+watch(
+  () => i18n.locale.value,
+  async () => {
+    await refresh();
+  },
+);
 
 // SEO meta tags
 useHead({
@@ -116,31 +122,33 @@ useHead({
   meta: [
     {
       name: 'description',
-      content: 'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.'
+      content:
+        'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
     },
     {
       name: 'keywords',
-      content: 'TypeScript, JavaScript, NodeJS, NestJS, Angular, React, HTML, CSS, SCSS, SQL, NoSQL, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Terraform, AWS, Azure, GCP, CI/CD, DevOps, Git, JWT, OAuth, REST API, Microservices, Clean Code, Unit Testing, Jest, Mocha'
+      content:
+        'TypeScript, JavaScript, NodeJS, NestJS, Angular, React, HTML, CSS, SCSS, SQL, NoSQL, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Terraform, AWS, Azure, GCP, CI/CD, DevOps, Git, JWT, OAuth, REST API, Microservices, Clean Code, Unit Testing, Jest, Mocha',
     },
     {
       property: 'og:title',
-      content: 'Gábor Pichner\'s CV | TypeScript Full-Stack Developer'
+      content: "Gábor Pichner's CV | TypeScript Full-Stack Developer",
     },
     {
       property: 'og:description',
-      content: 'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.'
+      content:
+        'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
     },
     {
       property: 'og:type',
-      content: 'profile'
-    }
+      content: 'profile',
+    },
   ],
   link: [
     {
       rel: 'canonical',
-      href: 'https://95gabor.me'
-    }
-  ]
+      href: 'https://95gabor.me',
+    },
+  ],
 });
 </script>
-

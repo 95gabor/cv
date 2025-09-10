@@ -1,6 +1,6 @@
 <template>
   <section class="text-center py-10 bg-gray-700">
-    <h2 class="section-title" id="education">
+    <h2 id="education" class="section-title">
       <a href="#education"># {{ t('cv.education') }}</a>
     </h2>
     <div class="space-y-6">
@@ -19,7 +19,7 @@ import type { Education as EducationType } from '~/types/cv';
 
 const { t } = useI18n();
 
-const props = defineProps<{
+defineProps<{
   educations: EducationType[];
 }>();
 </script>

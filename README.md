@@ -73,6 +73,7 @@ This project follows modern Nuxt 3 and Vue 3 best practices for scalability and 
 ```
 
 ### Conventions
+
 - **Component Colocation:** Each component has its own folder with `.vue` and `.scss` files.
 - **TypeScript:** All props are typed using `defineProps` and types from `/types/cv.ts`.
 - **Styling:**
@@ -89,6 +90,7 @@ This project follows modern Nuxt 3 and Vue 3 best practices for scalability and 
 - **No unused or legacy files.**
 
 ### Extensibility
+
 - Use `/layouts/default.vue` for shared layouts if you add more pages.
 - Use `/composables/` for shared logic if needed in the future.
 

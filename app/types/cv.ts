@@ -13,7 +13,6 @@ export interface Link {
 }
 
 export interface Contact {
-  title: string;
   type: 'location' | 'phone' | 'email' | 'link';
   value: string;
 }
@@ -50,4 +49,4 @@ export interface CV {
   education: Education[];
   skills: string[];
   hobbies: Hobby[];
-} 
+}

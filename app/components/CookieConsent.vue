@@ -1,43 +1,46 @@
 <template>
   <div v-if="!hasConsent" class="cookie-banner">
     <div class="cookie-content">
-      <p>This website uses cookies to analyze site traffic and improve your experience. By continuing to use this site, you agree to our use of cookies.</p>
+      <p>
+        This website uses cookies to analyze site traffic and improve your experience. By continuing to use this site,
+        you agree to our use of cookies.
+      </p>
       <div class="cookie-buttons">
-        <UButton @click="acceptCookies" color="primary">Accept</UButton>
-        <UButton @click="declineCookies" color="gray" variant="ghost">Decline</UButton>
+        <UButton color="primary" @click="acceptCookies">Accept</UButton>
+        <UButton color="gray" variant="ghost" @click="declineCookies">Decline</UButton>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const hasConsent = ref(true)
+const hasConsent = ref(true);
 
 // Check if user has already made a choice
 onMounted(() => {
-  const consent = localStorage.getItem('cookie-consent')
+  const consent = localStorage.getItem('cookie-consent');
   if (!consent) {
-    hasConsent.value = false
+    hasConsent.value = false;
   }
-})
+});
 
 const acceptCookies = () => {
-  localStorage.setItem('cookie-consent', 'accepted')
-  hasConsent.value = true
+  localStorage.setItem('cookie-consent', 'accepted');
+  hasConsent.value = true;
   // Enable Google Analytics
   window.gtag('consent', 'update', {
-    'analytics_storage': 'granted'
-  })
-}
+    analytics_storage: 'granted',
+  });
+};
 
 const declineCookies = () => {
-  localStorage.setItem('cookie-consent', 'declined')
-  hasConsent.value = true
+  localStorage.setItem('cookie-consent', 'declined');
+  hasConsent.value = true;
   // Disable Google Analytics
   window.gtag('consent', 'update', {
-    'analytics_storage': 'denied'
-  })
-}
+    analytics_storage: 'denied',
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -74,4 +77,4 @@ const declineCookies = () => {
   gap: 0.5rem;
   flex-wrap: wrap;
 }
-</style> 
+</style>

@@ -14,7 +14,7 @@ personal:
     - type: location
       value: Hungary
     - type: phone
-      value: "sensitive"
+      value: 'sensitive'
     - type: email
       value: 95gabor@gmail.com
     - type: link
@@ -24,8 +24,8 @@ workExperience:
   - title: DevOps Engineer
     company: Freelancer
     location: Veszprém, HU
-    from: "2025"
-    description: "My current project involves maintaining a previously established Kubernetes cluster, updating and migrating Helm charts, setting up high availability services, and implementing security solutions."
+    from: '2025'
+    description: 'My current project involves maintaining a previously established Kubernetes cluster, updating and migrating Helm charts, setting up high availability services, and implementing security solutions.'
     technologies:
       - Kubernetes
       - Azure AKS
@@ -39,8 +39,8 @@ workExperience:
   - title: Software Development Consultant
     company: Freelancer
     location: Veszprém, HU
-    from: "2024"
-    description: "I provide architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare)."
+    from: '2024'
+    description: 'I provide architecture and development consulting for my former workplace: Elevate Healthcare (CAE Healthcare).'
     technologies:
       - NestJS
       - Azure
@@ -49,7 +49,7 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
+    from: '2024'
     description: I am contributing to the development of an animation creation platform by leveraging my previously gained experience. The product will be publicly available soon and is already operational in a closed environment.
     technologies:
       - Angular
@@ -66,8 +66,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2025"
+    from: '2024'
+    end: '2025'
     description: I developed a PWA for a restaurant system to replace the previous slower backend-rendered frontend. The new solution integrates into the existing frontend and, thanks to its internal state management, provides a faster and more responsive user experience.
     technologies:
       - Vue
@@ -80,8 +80,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
+    from: '2024'
+    end: '2024'
     description: I developed a billing integration for a restaurant system.
     technologies:
       - NestJS
@@ -92,8 +92,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
+    from: '2024'
+    end: '2024'
     description: I developed a complete memorial website portal with login, profile and role management, content upload features, and map integration. Unfortunately, the project was discontinued due to legal issues.
     technologies:
       - React
@@ -107,8 +107,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
+    from: '2023'
+    end: '2024'
     description: I developed a QR code-based payment integration for a restaurant system. Later, I extended the integration with menu synchronization and order processing. The integration currently handles hundreds of payments and orders on a weekly basis.
     technologies:
       - NestJS
@@ -124,8 +124,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
+    from: '2023'
+    end: '2024'
     description: I created a website for a mechanical engineering company. Later, I extended it with quotation request features.
     technologies:
       - React
@@ -138,8 +138,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2023"
+    from: '2023'
+    end: '2023'
     description: I developed a serial port and Bluetooth-based cash register integration for a restaurant system, which makes the payment process faster and more efficient.
     technologies:
       - JavaScript
@@ -152,8 +152,8 @@ workExperience:
   - title: Full Stack Developer
     company: Freelancer
     location: Budapest, HU
-    from: "2022"
-    end: "2023"
+    from: '2022'
+    end: '2023'
     description: I worked on the fiscal printing integration of a restaurant system. The integration is active in more than 100 restaurants and has already handled over 4 million print operations. The system is specifically designed to be fault-tolerant against disconnections, yet still ensures near-instant operation.
     technologies:
       - NestJS
@@ -170,8 +170,8 @@ workExperience:
     company: CAE Healthcare
     companyUrl: https://www.caehealthcare.com
     location: Veszprém, HU
-    from: "2022"
-    end: "2024"
+    from: '2022'
+    end: '2024'
     description: |
       I was promoted from my previous role as a senior developer to a lead developer. Currently, I am working on architecture planning, mentoring my colleagues, introducing modern cloud technologies, and providing guidance. Working closely with my team, our goal is to maintain the market-leading position of the LearningSpace product while leveraging standard and modern technologies to support medical learners and educators.
     technologies:
@@ -193,8 +193,8 @@ workExperience:
     company: CAE Healthcare
     companyUrl: https://www.caehealthcare.com
     location: Veszprém, HU
-    from: "2021"
-    end: "2022"
+    from: '2021'
+    end: '2022'
     description: |
       During this time at CAE Healthcare Hungary, I worked on the LearningSpace product. Initially, my work involved fixing bugs in the existing codebase, but later I was tasked with standardizing the codebase and setting up CI pipelines. After that, I started working on developing a new module. During this time, I gained knowledge of the full stack and became a part of the architecture team. Some of my main responsibilities included setting technology goals, introducing modern technologies, replacing custom solutions with industry standards, and optimizing processes.
     technologies:
@@ -223,8 +223,8 @@ workExperience:
     company: CloudStorm
     companyUrl: https://www.cloudstorm.io
     location: Budapest, HU
-    from: "2018"
-    end: "2021"
+    from: '2018'
+    end: '2021'
     description: |
       We used to develop custom RPA solutions, but then we started to work on a new process discovery tool called Nika. My job was to design software architectures, to do the software development, cloud-based operations, and to help the team members. I used Docker, AWS and Micro Service Architecture.
     technologies:
@@ -252,8 +252,8 @@ workExperience:
     company: University of Pannonia
     companyUrl: https://uni-pannon.hu
     location: Veszprém, HU
-    from: "2018"
-    end: "2018"
+    from: '2018'
+    end: '2018'
     description: |
       I developed a map-based research result sharing portal for the Image processing laboratory in 2 months.
     technologies:
@@ -272,8 +272,8 @@ workExperience:
     company: University of Pannonia
     companyUrl: https://uni-pannon.hu
     location: Veszprém, HU
-    from: "2017"
-    end: "2018"
+    from: '2017'
+    end: '2018'
     description: |
       Design, implementation and operation of a production support solution (ordered by Foxconn). Me and two students worked on the project, the software was completed in 9 months. After that, only minor fixes were needed. It has been used ever since. We have created a full-stack solution for production line workers that assigns tasks and makes them easy to understand. As well as a user-friendly interface, which also improved production efficiency.
     technologies:
@@ -290,8 +290,8 @@ workExperience:
     company: it.hu
     companyUrl: https://it.hu
     location: Veszprém, HU
-    from: "2016"
-    end: "2016"
+    from: '2016'
+    end: '2016'
     description: |
       They deal with IT networking and operation. We developed a full stack solution for the existing invoicing program, which created analyzes of the issued invoices.
     technologies:
@@ -308,14 +308,14 @@ educations:
   - degree: BSc in Computer Science
     institution: University of Pannonia
     location: Veszprém, HU
-    from: "2014"
-    end: "2018"
+    from: '2014'
+    end: '2018'
     note: Excellent
   - degree: Information Technology
     institution: Ipari Secondary School
     location: Veszprém, HU
-    from: "2010"
-    end: "2014"
+    from: '2010'
+    end: '2014'
 
 skills:
   - TypeScript / JavaScript
@@ -329,7 +329,7 @@ skills:
   - GIT, GitHub, GitLab, Azure DevOps
   - Infrastructure As Code (Terraform)
   - Experienced in enterprise production environment
-  - "Monitoring: Prometheus, Grafana, Loki, OpenTelemetry"
+  - 'Monitoring: Prometheus, Grafana, Loki, OpenTelemetry'
   - Agile Software Development (JIRA, Trello, Scrum)
   - Clean Code
   - DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
@@ -342,7 +342,7 @@ skills:
   - Websocket
   - MacOS, Linux, Windows
   - Design Patterns, Data structures
-  - "AI: OpenAI, Azure ML studio"
+  - 'AI: OpenAI, Azure ML studio'
   - Microservice architecture
 
 hobbies:

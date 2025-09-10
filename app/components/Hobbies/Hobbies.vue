@@ -1,6 +1,6 @@
 <template>
   <section class="text-center py-10 bg-gray-700">
-    <h2 class="section-title" id="hobbies">
+    <h2 id="hobbies" class="section-title">
       <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
     </h2>
     <ul class="hobby-list">

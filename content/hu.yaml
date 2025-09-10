@@ -14,7 +14,7 @@ personal:
     - type: location
       value: Magyarország
     - type: phone
-      value: "sensitive"
+      value: 'sensitive'
     - type: email
       value: 95gabor@gmail.com
     - type: link
@@ -24,8 +24,8 @@ workExperience:
   - title: DevOps Engineer
     company: Freelancer
     location: Veszprém, HU
-    from: "2025"
-    description: "Jelenlegi projektem egy korábban létrehozott Kubernetes cluster karbantartását, Helm chartok frissítését és migrációját, magas rendelkezésre állású szolgáltatások kialakítása és biztonsági megoldások implementálását foglalja magában."
+    from: '2025'
+    description: 'Jelenlegi projektem egy korábban létrehozott Kubernetes cluster karbantartását, Helm chartok frissítését és migrációját, magas rendelkezésre állású szolgáltatások kialakítása és biztonsági megoldások implementálását foglalja magában.'
     technologies:
       - Kubernetes
       - Azure AKS
@@ -39,8 +39,8 @@ workExperience:
   - title: Szoftverfejlesztési tanácsadó
     company: Freelancer
     location: Veszprém, HU
-    from: "2024"
-    description: "Architektúra és fejlesztési tanácsadást nyújtok korábbi munkahelyemnek: Elevate Healthcare (CAE Healthcare)."
+    from: '2024'
+    description: 'Architektúra és fejlesztési tanácsadást nyújtok korábbi munkahelyemnek: Elevate Healthcare (CAE Healthcare).'
     technologies:
       - NestJS
       - Azure
@@ -49,8 +49,8 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    description: "Egy animáció készítő platformon fejlesztésében segédkezem korábbi tapasztalataimat felhasználva. A termék hamarosan nyilvánosan elérhető lesz, jelenleg zárt környezetben működik."
+    from: '2024'
+    description: 'Egy animáció készítő platformon fejlesztésében segédkezem korábbi tapasztalataimat felhasználva. A termék hamarosan nyilvánosan elérhető lesz, jelenleg zárt környezetben működik.'
     technologies:
       - Angular
       - NgRx
@@ -66,9 +66,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2025"
-    description: "Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi lassabb backend-rendelt frontendet. Az új megoldás integrálódik a meglévő frontendbe, és a belső state-managementnek köszönhetően gyorsabb és reszponzívabb felhasználói élményt nyújt."
+    from: '2024'
+    end: '2025'
+    description: 'Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi lassabb backend-rendelt frontendet. Az új megoldás integrálódik a meglévő frontendbe, és a belső state-managementnek köszönhetően gyorsabb és reszponzívabb felhasználói élményt nyújt.'
     technologies:
       - Vue
       - Quasar framework
@@ -80,9 +80,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
-    description: "Egy étterem rendszerhez fejlesztettem egy számlázási integrációt microservice achitektúrával és Billingo API-val."
+    from: '2024'
+    end: '2024'
+    description: 'Egy étterem rendszerhez fejlesztettem egy számlázási integrációt microservice achitektúrával és Billingo API-val.'
     technologies:
       - NestJS
       - TypeORM
@@ -92,9 +92,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
-    description: "Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és szerepkör kezeléssel, tartalom feltöltési funkciókkal és térkép integrációval. Sajnos a projekt jogi problémák miatt megszakadt."
+    from: '2024'
+    end: '2024'
+    description: 'Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és szerepkör kezeléssel, tartalom feltöltési funkciókkal és térkép integrációval. Sajnos a projekt jogi problémák miatt megszakadt.'
     technologies:
       - React
       - Tailwind
@@ -107,9 +107,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
-    description: "Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez. Később kiegészítettem a menü szinkronizálással és rendelés feldolgozással. Az integráció jelenleg hetente több száz fizetést és rendelést kezel."
+    from: '2023'
+    end: '2024'
+    description: 'Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez. Később kiegészítettem a menü szinkronizálással és rendelés feldolgozással. Az integráció jelenleg hetente több száz fizetést és rendelést kezel.'
     technologies:
       - NestJS
       - Websocket
@@ -124,9 +124,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
-    description: "Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem árajánlat kérő funkciókkal."
+    from: '2023'
+    end: '2024'
+    description: 'Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem árajánlat kérő funkciókkal.'
     technologies:
       - React
       - Tailwind
@@ -138,9 +138,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2023"
-    end: "2023"
-    description: "Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy étterem rendszerhez, amely gyorsabbá és hatékonyabbá teszi a fizetési folyamatot."
+    from: '2023'
+    end: '2023'
+    description: 'Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy étterem rendszerhez, amely gyorsabbá és hatékonyabbá teszi a fizetési folyamatot.'
     technologies:
       - JavaScript
       - ToDesktop
@@ -152,9 +152,9 @@ workExperience:
   - title: Full Stack Fejlesztő
     company: Freelancer
     location: Budapest, HU
-    from: "2022"
-    end: "2023"
-    description: "Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az integráció több mint 100 étteremben aktív, és már több mint 4 millió nyomtatási műveletet kezelt. A rendszer kifejezetten hibatűrő a kapcsolat megszakadásokkal szemben, miközben közel azonnali működést biztosít."
+    from: '2022'
+    end: '2023'
+    description: 'Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az integráció több mint 100 étteremben aktív, és már több mint 4 millió nyomtatási műveletet kezelt. A rendszer kifejezetten hibatűrő a kapcsolat megszakadásokkal szemben, miközben közel azonnali működést biztosít.'
     technologies:
       - NestJS
       - RabbitMQ
@@ -170,8 +170,8 @@ workExperience:
     company: CAE Healthcare
     companyUrl: https://www.caehealthcare.com
     location: Veszprém, HU
-    from: "2022"
-    end: "2024"
+    from: '2022'
+    end: '2024'
     description: |
       Előző senior fejlesztői pozíciómból lead fejlesztővé léptettek elő. Jelenleg architektúra tervezéssel, kollégáim mentorálásával, modern felhő technológiák bevezetésével és útmutatással foglalkozom. Csapatommal szorosan együttműködve célunk a LearningSpace termék piacvezető pozíciójának fenntartása, miközben standard és modern technológiákat használunk az orvosi tanulók és oktatók támogatására.
     technologies:
@@ -193,8 +193,8 @@ workExperience:
     company: CAE Healthcare
     companyUrl: https://www.caehealthcare.com
     location: Veszprém, HU
-    from: "2021"
-    end: "2022"
+    from: '2021'
+    end: '2022'
     description: |
       Ebben az időszakban a CAE Healthcare Hungary-nál a LearningSpace terméken dolgoztam. Kezdetben a meglévő kódbázis hibáinak javításával foglalkoztam, később a kódbázis standardizálásával és CI pipeline-ok beállításával bíztak meg. Ezután egy új modul fejlesztésén kezdtem el dolgozni. Ebben az időszakban a full stack ismereteket elsajátítottam, és az architektúra csapat részévé váltam. Főbb felelősségeim közé tartozott a technológiai célok meghatározása, modern technológiák bevezetése, egyedi megoldások iparági szabványokkal való helyettesítése és folyamatok optimalizálása.
     technologies:
@@ -223,8 +223,8 @@ workExperience:
     company: CloudStorm
     companyUrl: https://www.cloudstorm.io
     location: Budapest, HU
-    from: "2018"
-    end: "2021"
+    from: '2018'
+    end: '2021'
     description: |
       Korábban egyedi RPA megoldásokat fejlesztettünk, majd egy új folyamat felderítő eszköz, a Nika fejlesztésén kezdtünk el dolgozni. Feladatom volt a szoftver architektúrák tervezése, a szoftverfejlesztés, felhő alapú működtetés és a csapattagok segítése. Docker-t, AWS-t és Micro Service Architektúrát használtam.
     technologies:
@@ -248,14 +248,14 @@ educations:
   - degree: Programtervező informatikus BSc
     institution: Pannon Egyetem
     location: Veszprém, HU
-    from: "2014"
-    end: "2018"
+    from: '2014'
+    end: '2018'
     note: Kiváló
   - degree: Informatika
     institution: Ipari Szakközépiskola
     location: Veszprém, HU
-    from: "2010"
-    end: "2014"
+    from: '2010'
+    end: '2014'
 
 skills:
   - TypeScript / JavaScript
@@ -269,7 +269,7 @@ skills:
   - GIT, GitHub, GitLab, Azure DevOps
   - Infrastructure As Code (Terraform)
   - Vállalati környezetben szerzett tapasztalat
-  - "Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry"
+  - 'Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry'
   - Agilis szoftverfejlesztés (JIRA, Trello, Scrum)
   - Clean Code
   - DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
@@ -282,7 +282,7 @@ skills:
   - Websocket
   - MacOS, Linux, Windows
   - Tervezési minták, Adatstruktúrák
-  - "Mesterséges intelligencia: OpenAI, Azure ML studio"
+  - 'Mesterséges intelligencia: OpenAI, Azure ML studio'
   - Mikroszolgáltatás architektúra
 
 hobbies:

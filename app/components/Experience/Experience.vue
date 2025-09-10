@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <UContainer>
-      <h2 class="section-title" id="work-experience">
+      <h2 id="work-experience" class="section-title">
         <a href="#work-experience"># {{ t('cv.workExperience') }}</a>
       </h2>
       <UCard>
@@ -14,7 +14,14 @@
                   <span class="meta-text">
                     {{ formatPeriod(job.from, job.end) }}
                     <span class="meta-separator">|</span>
-                    <a v-if="job.companyUrl" :href="job.companyUrl" target="_blank" rel="noopener" class="company-link">{{ job.company }}</a>
+                    <a
+                      v-if="job.companyUrl"
+                      :href="job.companyUrl"
+                      target="_blank"
+                      rel="noopener"
+                      class="company-link"
+                      >{{ job.company }}</a
+                    >
                     <template v-else>{{ job.company }}</template>
                     <span class="meta-separator">|</span>
                     {{ job.location }}
@@ -33,7 +40,7 @@
                 </ul>
               </div>
             </div>
-            <hr v-if="idx < experiences.length - 1" class="job-divider" />
+            <hr v-if="idx < experiences.length - 1" class="job-divider" >
           </div>
         </div>
       </UCard>
