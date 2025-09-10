@@ -31,7 +31,7 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
+    "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@commitlint/parse": "^17.7.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
