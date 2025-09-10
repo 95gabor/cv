@@ -2,12 +2,17 @@
   "name": "@95gabor/cv",
   "private": true,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/95gabor/cv"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "commit": "git-cz",
+    "release": "semantic-release",
     "postinstall": "nuxt prepare",
     "prepare": "husky install"
   },
