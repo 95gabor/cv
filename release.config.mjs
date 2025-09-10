@@ -19,5 +19,6 @@ export default {
         assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
       },
     ],
+    '@semantic-release/github',
   ],
 };
