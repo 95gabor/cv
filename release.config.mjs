@@ -2,6 +2,7 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 export default {
+  ci: false,
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
@@ -15,6 +16,7 @@ export default {
     [
       '@semantic-release/git',
       {
+        message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}',
         assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
       },
     ],
