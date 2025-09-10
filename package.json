@@ -7,11 +7,12 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "commit": "git-cz",
+    "postinstall": "nuxt prepare",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@nuxt/content": "^3.5.1",
-    "@nuxt/eslint": "^1.4.0",
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^1.10.0",
@@ -20,13 +21,28 @@
     "@nuxtjs/i18n": "^10.0.0-beta.5",
     "@nuxtjs/sitemap": "^7.2.10",
     "@unhead/vue": "^2.0.9",
-    "eslint": "^9.27.0",
     "nuxt": "^4.0.3",
-    "typescript": "^5.8.3",
     "vue": "^3.5.14",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "sass": "^1.89.0"
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/parse": "^17.7.0",
+    "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
+    "@nuxt/eslint": "^1.9.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.0",
+    "commitizen": "^4.2.5",
+    "eslint": "^9.35.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.0.3",
+    "prettier": "^3.6.2",
+    "sass": "^1.89.0",
+    "semantic-release": "^24.2.7",
+    "typescript": "^5.9.2"
   }
 }
