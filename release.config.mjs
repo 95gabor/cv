@@ -2,7 +2,6 @@
  * @type {import('semantic-release').GlobalConfig}
  */
 export default {
-  ci: false,
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
