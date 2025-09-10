@@ -14,7 +14,7 @@
     "commit": "git-cz",
     "release": "semantic-release",
     "postinstall": "nuxt prepare",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@nuxt/content": "^3.5.1",
@@ -31,9 +31,9 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@commitlint/parse": "^17.7.0",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/parse": "^19.8.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@nuxt/eslint": "^1.9.0",
     "@semantic-release/changelog": "^6.0.3",
@@ -43,8 +43,8 @@
     "@semantic-release/release-notes-generator": "^14.1.0",
     "commitizen": "^4.2.5",
     "eslint": "^9.35.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.0.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.6",
     "prettier": "^3.6.2",
     "sass": "^1.89.0",
     "semantic-release": "^24.2.7",
