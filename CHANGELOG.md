@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/95gabor/cv/compare/v2.5.0...v2.6.0) (2025-09-12)
+
+### Features
+
+- **cv:** replaced picture ([ba73553](https://github.com/95gabor/cv/commit/ba73553b2124b0fcf0cd9d37620ee48aa43846ae))
+- **favicon:** updated ([a3c7151](https://github.com/95gabor/cv/commit/a3c71511a695e0191fc3b4d11c8d30ad6c87c149))
+
 # [2.5.0](https://github.com/95gabor/cv/compare/v2.4.1...v2.5.0) (2025-09-12)
 
 ### Features
