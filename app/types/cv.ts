@@ -1,52 +1,69 @@
-export interface Personal {
-  name: string;
-  title: string;
-  picture: string;
-  links: Link[];
-  contact: Contact[];
-}
+import { z } from 'zod';
 
-export interface Link {
-  platform: string;
-  url: string;
-  icon: string;
-}
+export type CVSupportedLangs = 'en' | 'hu';
 
-export interface Contact {
-  type: 'location' | 'phone' | 'email' | 'link';
-  value: string;
-}
+export const LocalizedStringSchema = z.object({ en: z.string(), hu: z.string() });
+export type TranslatedProperty<Value = string> = Record<CVSupportedLangs, Value>;
 
-export interface WorkExperience {
-  title: string;
-  company?: string;
-  companyUrl?: string;
-  location: string;
-  from: string;
-  end?: string;
-  description?: string;
-  technologies: string[];
-}
+export const LinkSchema = z.object({
+  platform: z.string(),
+  url: z.string(),
+  icon: z.string(),
+});
 
-export interface Education {
-  degree: string;
-  institution: string;
-  location: string;
-  from: string;
-  end?: string;
-  note?: string;
-}
+export const ContactSchema = z.object({
+  type: z.enum(['location', 'phone', 'email', 'link']),
+  value: z.string(),
+});
 
-export interface Hobby {
-  name: string;
-  link?: string;
-}
+export const PersonalSchema = z.object({
+  name: LocalizedStringSchema,
+  title: LocalizedStringSchema,
+  picture: z.string(),
+  links: z.array(LinkSchema),
+  contact: z.array(ContactSchema),
+});
 
-export interface CV {
-  lang: string;
-  personal: Personal;
-  workExperience: WorkExperience[];
-  education: Education[];
-  skills: string[];
-  hobbies: Hobby[];
-}
+export const WorkExperienceSchema = z.object({
+  title: LocalizedStringSchema,
+  company: z.string(),
+  companyUrl: z.string().optional(),
+  location: z.string(),
+  from: z.string(),
+  end: z.string().optional(),
+  description: LocalizedStringSchema,
+  technologies: z.array(z.string()),
+});
+
+export const EducationSchema = z.object({
+  degree: LocalizedStringSchema,
+  institution: LocalizedStringSchema,
+  location: z.string(),
+  from: z.string(),
+  end: z.string().optional(),
+  note: LocalizedStringSchema.optional(),
+});
+
+export const HobbySchema = z.object({
+  name: LocalizedStringSchema,
+  link: z.string().optional(),
+});
+
+export const SkillSchema = LocalizedStringSchema;
+
+export const CVSchema = z.object({
+  personal: PersonalSchema,
+  workExperience: z.array(WorkExperienceSchema),
+  educations: z.array(EducationSchema),
+  skills: z.array(SkillSchema),
+  hobbies: z.array(HobbySchema),
+});
+
+export type Link = z.infer<typeof LinkSchema>;
+export type Contact = z.infer<typeof ContactSchema>;
+export type Personal = z.infer<typeof PersonalSchema>;
+export type WorkExperience = z.infer<typeof WorkExperienceSchema>;
+export type Education = z.infer<typeof EducationSchema>;
+export type Skill = z.infer<typeof SkillSchema>;
+export type Hobby = z.infer<typeof HobbySchema>;
+export type CV = z.infer<typeof CVSchema>;

@@ -6,10 +6,10 @@
       </h2>
       <UCard>
         <div class="experience-list">
-          <div v-for="(job, idx) in experiences" :key="job.title" class="job-item">
+          <div v-for="(job, idx) in experiences" :key="job.description.en" class="job-item">
             <div class="job-content">
               <div class="job-header">
-                <h3 class="heading-3">{{ job.title }}</h3>
+                <h3 class="heading-3">{{ job.title[lang] }}</h3>
                 <div class="job-meta">
                   <span class="meta-text">
                     {{ formatPeriod(job.from, job.end) }}
@@ -29,7 +29,7 @@
                 </div>
               </div>
               <p v-if="job.description" class="description">
-                {{ job.description }}
+                {{ job.description[lang] }}
               </p>
               <div class="technologies">
                 <span class="tech-label">{{ t('experience.technologies') }}</span>
@@ -40,7 +40,7 @@
                 </ul>
               </div>
             </div>
-            <hr v-if="idx < experiences.length - 1" class="job-divider" >
+            <hr v-if="idx < experiences.length - 1" class="job-divider" />
           </div>
         </div>
       </UCard>
@@ -50,12 +50,13 @@
 
 <script setup lang="ts">
 import './Experience.scss';
-import type { WorkExperience } from '~/types/cv';
+import type { CVSupportedLangs, WorkExperience } from '~/types/cv';
 
 const { t } = useI18n();
 
 defineProps<{
   experiences: WorkExperience[];
+  lang: CVSupportedLangs;
 }>();
 
 const formatPeriod = (from: string, end?: string) => {

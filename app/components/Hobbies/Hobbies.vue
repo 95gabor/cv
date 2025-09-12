@@ -4,11 +4,11 @@
       <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
     </h2>
     <ul class="hobby-list">
-      <li v-for="hobby in hobbies" :key="hobby.name" class="hobby-item">
+      <li v-for="hobby in hobbies" :key="hobby.name[lang]" class="hobby-item">
         <span v-if="hobby.link">
-          <a :href="hobby.link" target="_blank" class="text-blue-400 underline">{{ hobby.name }}</a>
+          <a :href="hobby.link" target="_blank" class="text-blue-400 underline">{{ hobby.name[lang] }}</a>
         </span>
-        <span v-else>{{ hobby.name }}</span>
+        <span v-else>{{ hobby.name[lang] }}</span>
       </li>
     </ul>
   </section>
@@ -16,11 +16,12 @@
 
 <script setup lang="ts">
 import './Hobbies.scss';
-import type { Hobby } from '~/types/cv';
+import type { CVSupportedLangs, Hobby } from '~/types/cv';
 
 const { t } = useI18n();
 
 defineProps<{
   hobbies: Hobby[];
+  lang: CVSupportedLangs;
 }>();
 </script>

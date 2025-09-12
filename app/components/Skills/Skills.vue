@@ -5,7 +5,7 @@
     </h2>
     <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
       <ul class="space-y-2">
-        <li v-for="skill in skills" :key="skill">{{ skill }}</li>
+        <li v-for="skill in skills" :key="skill[lang]">{{ skill[lang] }}</li>
       </ul>
     </div>
   </section>
@@ -13,11 +13,12 @@
 
 <script setup lang="ts">
 import './Skills.scss';
-import type { Skill } from '~/types/cv';
+import type { CVSupportedLangs, Skill } from '~/types/cv';
 
 const { t } = useI18n();
 
 defineProps<{
   skills: Skill[];
+  lang: CVSupportedLangs;
 }>();
 </script>

@@ -1,0 +1,591 @@
+personal:
+  name:
+    en: Gábor Pichner
+    hu: Pichner Gábor
+  title:
+    en: Full Stack Developer
+    hu: Full Stack Fejlesztő
+  picture: /me.jpg
+  links:
+    - platform: GitHub
+      url: https://github.com/95gabor
+      icon: /github.png
+    - platform: LinkedIn
+      url: https://linkedin.com/in/95gabor
+      icon: /linkedin.png
+  contact:
+    - type: location
+      value: Hungary
+    - type: phone
+      value: sensitive
+    - type: email
+      value: 95gabor@gmail.com
+    - type: link
+      value: 95gabor.me
+workExperience:
+  - title:
+      en: SRE Engineer
+      hu: SRE Engineer
+    company: Freelancer
+    location: Budapest, HU
+    from: "2025"
+    description:
+      en: "Currently, I work on a video-based authentication software as Site
+        Reliability Engineering. "
+      hu: "Jelenleg egy videó alapú azonosítási szoftveren dolgozok mint Site
+        Reliability Engineering. "
+    technologies:
+      - Express.js
+      - Socket.io
+      - RabbitMQ
+      - Docker
+      - Sequelize
+  - title:
+      en: DevOps Engineer
+      hu: DevOps Engineer
+    company: Freelancer
+    location: Veszprém, HU
+    from: "2025"
+    end: "2025"
+    description:
+      en:
+        My last project involved maintaining a previously established Kubernetes
+        cluster, updating and migrating Helm charts, setting up high
+        availability services, and implementing security solutions.
+      hu: Legutóbbi projektem egy korábban létrehozott Kubernetes cluster
+        karbantartását, Helm chartok frissítését és migrációját, magas
+        rendelkezésre állású szolgáltatások kialakítása és biztonsági megoldások
+        implementálását foglalja magában.
+    technologies:
+      - Kubernetes
+      - Azure AKS
+      - Helm
+      - DevOps
+      - ArgoCD
+      - Prometheus, Grafana, Loki, OpenTelemetry
+      - RabbitMQ
+      - Operators
+  - title:
+      en: Software Development Consultant
+      hu: Szoftverfejlesztési tanácsadó
+    company: Freelancer
+    location: Veszprém, HU
+    from: "2024"
+    end: "2025"
+    description:
+      en:
+        "I provided architecture and development consulting for my former workplace:
+        Elevate Healthcare (CAE Healthcare)."
+      hu:
+        "Architektúra és fejlesztési tanácsadást nyújtok korábbi munkahelyemnek:
+        Elevate Healthcare (CAE Healthcare)."
+    technologies:
+      - NestJS
+      - Azure
+      - Docker
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2025"
+    description:
+      en:
+        I was contributing to the development of an animation creation platform by
+        leveraging my previously gained experience. The product will be publicly
+        available soon and is already operational in a closed environment.
+      hu: Egy animáció készítő platformon fejlesztésében segédkezem korábbi
+        tapasztalataimat felhasználva. A termék hamarosan nyilvánosan elérhető
+        lesz, jelenleg zárt környezetben működik.
+    technologies:
+      - Angular
+      - NgRx
+      - NestJS
+      - AWS (Cognito, Lambda, S3, Neptune, ClodFront, Route53)
+      - Terraform
+      - Docker
+      - Jest
+      - OpenAI API
+      - Azure ML Studio
+      - GitHub Actions
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2025"
+    description:
+      en:
+        I developed a PWA for a restaurant system to replace the previous slower
+        backend-rendered frontend. The new solution integrates into the existing
+        frontend and, thanks to its internal state management, provides a faster
+        and more responsive user experience.
+      hu:
+        Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi
+        lassabb backend-rendelt frontendet. Az új megoldás integrálódik a
+        meglévő frontendbe, és a belső state-managementnek köszönhetően gyorsabb
+        és reszponzívabb felhasználói élményt nyújt.
+    technologies:
+      - Vue
+      - Quasar framework
+      - pinia
+      - SCSS
+      - OpenAPI / Swagger
+      - Yii
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2024"
+    description:
+      en: I developed a billing integration for a restaurant system.
+      hu: Egy étterem rendszerhez fejlesztettem egy számlázási integrációt
+        microservice achitektúrával és Billingo API-val.
+    technologies:
+      - NestJS
+      - TypeORM
+      - RabbitMQ
+      - Billingo API
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2024"
+    end: "2024"
+    description:
+      en:
+        I developed a complete memorial website portal with login, profile and role
+        management, content upload features, and map integration. Unfortunately,
+        the project was discontinued due to legal issues.
+      hu:
+        Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és
+        szerepkör kezeléssel, tartalom feltöltési funkciókkal és térkép
+        integrációval. Sajnos a projekt jogi problémák miatt megszakadt.
+    technologies:
+      - React
+      - Tailwind
+      - NestJS
+      - TypeORM
+      - AWS (API Gateway, Lambda)
+      - GitHub Actions
+      - GitHub Pages
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2024"
+    description:
+      en:
+        I developed a QR code-based payment integration for a restaurant system.
+        Later, I extended the integration with menu synchronization and order
+        processing. The integration currently handles hundreds of payments and
+        orders on a weekly basis.
+      hu:
+        Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez.
+        Később kiegészítettem a menü szinkronizálással és rendelés
+        feldolgozással. Az integráció jelenleg hetente több száz fizetést és
+        rendelést kezel.
+    technologies:
+      - NestJS
+      - Websocket
+      - NX
+      - OpenAPI / Swagger
+      - OpenTelemetry
+      - Prometheus
+      - Grafana
+      - Jest
+      - Yii
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2024"
+    description:
+      en:
+        I created a website for a mechanical engineering company. Later, I extended
+        it with quotation request features.
+      hu:
+        Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem
+        árajánlat kérő funkciókkal.
+    technologies:
+      - React
+      - Tailwind
+      - NestJS
+      - AWS (API Gateway, Lambda)
+      - GitHub Actions
+      - GitHub Pages
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2023"
+    end: "2023"
+    description:
+      en:
+        I developed a serial port and Bluetooth-based cash register integration for
+        a restaurant system, which makes the payment process faster and more
+        efficient.
+      hu:
+        Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy
+        étterem rendszerhez, amely gyorsabbá és hatékonyabbá teszi a fizetési
+        folyamatot.
+    technologies:
+      - JavaScript
+      - ToDesktop
+      - Convertify
+      - Android
+      - iOS
+      - Electron
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: Freelancer
+    location: Budapest, HU
+    from: "2022"
+    end: "2023"
+    description:
+      en:
+        I worked on the fiscal printing integration of a restaurant system. The
+        integration is active in more than 100 restaurants and has already
+        handled over 4 million print operations. The system is specifically
+        designed to be fault-tolerant against disconnections, yet still ensures
+        near-instant operation.
+      hu:
+        Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az
+        integráció több mint 100 étteremben aktív, és már több mint 4 millió
+        nyomtatási műveletet kezelt. A rendszer kifejezetten hibatűrő a
+        kapcsolat megszakadásokkal szemben, miközben közel azonnali működést
+        biztosít.
+    technologies:
+      - NestJS
+      - RabbitMQ
+      - Socket.io
+      - JWKS / JWT
+      - OpenAPI / Swagger
+      - .NET Framework
+      - OpenTelemetry
+      - Prometheus
+      - Grafana
+  - title:
+      en: Lead Full Stack Developer
+      hu: Lead Full Stack Fejlesztő
+    company: CAE Healthcare
+    companyUrl: https://www.caehealthcare.com
+    location: Veszprém, HU
+    from: "2022"
+    end: "2024"
+    description:
+      en: >
+        I was promoted from my previous role as a senior developer to a lead
+        developer. Currently, I am working on architecture planning, mentoring
+        my colleagues, introducing modern cloud technologies, and providing
+        guidance. Working closely with my team, our goal is to maintain the
+        market-leading position of the LearningSpace product while leveraging
+        standard and modern technologies to support medical learners and
+        educators.
+      hu: >
+        Előző senior fejlesztői pozíciómból lead fejlesztővé léptettek elő.
+        Jelenleg architektúra tervezéssel, kollégáim mentorálásával, modern
+        felhő technológiák bevezetésével és útmutatással foglalkozom.
+        Csapatommal szorosan együttműködve célunk a LearningSpace termék
+        piacvezető pozíciójának fenntartása, miközben standard és modern
+        technológiákat használunk az orvosi tanulók és oktatók támogatására.
+    technologies:
+      - Azure
+      - Azure DevOps
+      - Kubernetes
+      - Terraform
+      - ArgoCD
+      - Prometheus
+      - Grafana
+      - Loki
+      - OpenTelemetry
+      - NestJS
+      - TypeORM
+      - Linkerd
+      - Nx
+  - title:
+      en: Senior Full Stack Developer
+      hu: Senior Full Stack Fejlesztő
+    company: CAE Healthcare
+    companyUrl: https://www.caehealthcare.com
+    location: Veszprém, HU
+    from: "2021"
+    end: "2022"
+    description:
+      en: >
+        During this time at CAE Healthcare Hungary, I worked on the
+        LearningSpace product. Initially, my work involved fixing bugs in the
+        existing codebase, but later I was tasked with standardizing the
+        codebase and setting up CI pipelines. After that, I started working on
+        developing a new module. During this time, I gained knowledge of the
+        full stack and became a part of the architecture team. Some of my main
+        responsibilities included setting technology goals, introducing modern
+        technologies, replacing custom solutions with industry standards, and
+        optimizing processes.
+      hu: >
+        Ebben az időszakban a CAE Healthcare Hungary-nál a LearningSpace
+        terméken dolgoztam. Kezdetben a meglévő kódbázis hibáinak javításával
+        foglalkoztam, később a kódbázis standardizálásával és CI pipeline-ok
+        beállításával bíztak meg. Ezután egy új modul fejlesztésén kezdtem el
+        dolgozni. Ebben az időszakban a full stack ismereteket elsajátítottam,
+        és az architektúra csapat részévé váltam. Főbb felelősségeim közé
+        tartozott a technológiai célok meghatározása, modern technológiák
+        bevezetése, egyedi megoldások iparági szabványokkal való helyettesítése
+        és folyamatok optimalizálása.
+    technologies:
+      - Azure
+      - Azure DevOps
+      - Docker
+      - Terraform
+      - Angular
+      - NgRx
+      - NodeJS
+      - Socket.io
+      - OpenAPI / Swagger
+      - RabbitMQ
+      - Loopback
+      - Sequelize
+      - Ionic / Capacitor
+      - JWT / JWKS
+      - MySQL
+      - Nginx
+      - .NET Core
+      - CentOS
+      - Perl
+      - Jenkins
+  - title:
+      en: Senior / Lead Full Stack Developer
+      hu: Senior / Lead Full Stack Fejlesztő
+    company: CloudStorm
+    companyUrl: https://www.cloudstorm.io
+    location: Budapest, HU
+    from: "2018"
+    end: "2021"
+    description:
+      en: >
+        We used to develop custom RPA solutions, but then we started to work on
+        a new process discovery tool called Nika. My job was to design software
+        architectures, to do the software development, cloud-based operations,
+        and to help the team members. I used Docker, AWS and Micro Service
+        Architecture.
+      hu: >
+        Korábban egyedi RPA megoldásokat fejlesztettünk, majd egy új folyamat
+        felderítő eszköz, a Nika fejlesztésén kezdtünk el dolgozni. Feladatom
+        volt a szoftver architektúrák tervezése, a szoftverfejlesztés, felhő
+        alapú működtetés és a csapattagok segítése. Docker-t, AWS-t és Micro
+        Service Architektúrát használtam.
+    technologies:
+      - AWS (Lambda, S3, RDS, SQS, Route53, CloudFront, CodeBuild)
+      - Docker
+      - Kubernetes (AWS EKS, Minikube)
+      - Terraform (AWS, Azure)
+      - Angular
+      - Angular Material
+      - NgRx
+      - NodeJS
+      - NestJS
+      - TypeORM
+      - Sequelize
+      - JWT / OAuth / OIDC
+      - JSON API specification
+      - Jest
+      - Auth0
+      - Puppeteer
+      - MS Teams API
+      - yarn
+      - Lerna
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: University of Pannonia
+    companyUrl: https://uni-pannon.hu
+    location: Veszprém, HU
+    from: "2018"
+    end: "2018"
+    description:
+      en: >
+        I developed a map-based research result sharing portal for the Image
+        processing laboratory in 2 months.
+      hu: >
+        2 hónap alatt térképalapú kutatási eredménymegosztó portált
+        fejlesztettem a Képfeldolgozó Labor számára.
+    technologies:
+      - Node.JS
+      - Nest.JS
+      - TypeORM
+      - Angular
+      - SCSS
+      - Google Maps API
+      - File upload
+      - PostgreSQL
+      - JWT / passport.js
+      - Angular Material
+  - title:
+      en: Full Stack Developer
+      hu: Full Stack Fejlesztő
+    company: University of Pannonia
+    companyUrl: https://uni-pannon.hu
+    location: Veszprém, HU
+    from: "2017"
+    end: "2018"
+    description:
+      en: >
+        Design, implementation and operation of a production support solution
+        (ordered by Foxconn). Me and two students worked on the project, the
+        software was completed in 9 months. After that, only minor fixes were
+        needed. It has been used ever since. We have created a full-stack
+        solution for production line workers that assigns tasks and makes them
+        easy to understand. As well as a user-friendly interface, which also
+        improved production efficiency.
+      hu: >
+        Termelést támogató megoldás tervezése, megvalósítása és üzemeltetése
+        (a megrendelő Foxconn volt). Két diákkal dolgoztunk a projekten, a
+        szoftver 9 hónap alatt készült el. Ezt követően csak kisebb javításokra
+        volt szükség. Azóta is használatban van. Teljes körű megoldást hoztunk
+        létre a gyártósori dolgozók számára, amely feladatokat rendel és
+        érthetően megjeleníti azokat. Emellett felhasználóbarát felületet
+        készítettünk, ami javította a termelési hatékonyságot.
+    technologies:
+      - Node.JS
+      - Express JS
+      - TypeORM
+      - JQuery
+      - SCSS
+      - Bootstrap
+      - MySQL / SQLite
+      - MochaJS
+  - title:
+      en: Junior Full Stack Developer
+      hu: Junior Full Stack Fejlesztő
+    company: it.hu
+    companyUrl: https://it.hu
+    location: Veszprém, HU
+    from: "2016"
+    end: "2016"
+    description:
+      en: >
+        They deal with IT networking and operation. We developed a full stack
+        solution for the existing invoicing program, which created analyzes of
+        the issued invoices.
+      hu: >
+        IT hálózatokkal és üzemeltetéssel foglalkoznak. A meglévő
+        számlázóprogramhoz teljes körű megoldást fejlesztettünk, amely a
+        kiállított számlákról készített elemzéseket.
+    technologies:
+      - Node.JS
+      - Express js
+      - HTML5
+      - SCSS
+      - JQuery
+      - Bootstrap
+      - Chart.JS
+      - MS SQL Server
+educations:
+  - degree:
+      en: BSc in Computer Science
+      hu: Programtervező informatikus BSc
+    institution:
+      en: University of Pannonia
+      hu: Pannon Egyetem
+    location: Veszprém, HU
+    from: "2014"
+    end: "2018"
+    note:
+      en: Excellent
+      hu: Kiváló
+  - degree:
+      en: Information Technology
+      hu: Informatika
+    institution:
+      en: Ipari Secondary School
+      hu: Ipari Szakközépiskola
+    location: Veszprém, HU
+    from: "2010"
+    end: "2014"
+skills:
+  - en: TypeScript / JavaScript
+    hu: TypeScript / JavaScript
+  - en: NodeJS (NestJS with express)
+    hu: NodeJS (NestJS with express)
+  - en: OpenAPI (Swagger) / REST API
+    hu: OpenAPI (Swagger) / REST API
+  - en: Angular (Material + RxJS + NgRx)
+    hu: Angular (Material + RxJS + NgRx)
+  - en: HTML, CSS, SCSS, (Tailwind, Bootstrap, JQuery)
+    hu: HTML, CSS, SCSS, (Tailwind, Bootstrap, JQuery)
+  - en: SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
+    hu: SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
+  - en: Docker
+    hu: Docker
+  - en: Kubernetes, Helm Charts, ArgoCD, Talos
+    hu: Kubernetes, Helm Charts, ArgoCD, Talos
+  - en: GIT, GitHub, GitLab, Azure DevOps
+    hu: GIT, GitHub, GitLab, Azure DevOps
+  - en: Infrastructure As Code (Terraform)
+    hu: Infrastructure As Code (Terraform)
+  - en: Experienced in enterprise production environment
+    hu: Vállalati környezetben szerzett tapasztalat
+  - en: "Monitoring: Prometheus, Grafana, Loki, OpenTelemetry"
+    hu: "Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry"
+  - en: Agile Software Development (JIRA, Trello, Scrum)
+    hu: Agilis szoftverfejlesztés (JIRA, Trello, Scrum)
+  - en: Clean Code
+    hu: Clean Code
+  - en: DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
+    hu: DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
+  - en: Cloud native technologies (CNCF)
+    hu: Cloud native technológiák (CNCF)
+  - en: Unit Testing (Jest, Mocha, Puppeteer)
+    hu: Unit Testing (Jest, Mocha, Puppeteer)
+  - en: Linters (eslint and prettier)
+    hu: Linters (eslint és prettier)
+  - en: Cloud Providers (AWS, Azure, Google Cloud Platform)
+    hu: Felhőszolgáltatók (AWS, Azure, Google Cloud Platform)
+  - en: Auth (OAuth, JWT, JWKS, SSO, Auth0)
+    hu: Autentikáció (OAuth, JWT, JWKS, SSO, Auth0)
+  - en: Webhooks
+    hu: Webhooks
+  - en: Websocket
+    hu: Websocket
+  - en: MacOS, Linux, Windows
+    hu: MacOS, Linux, Windows
+  - en: Design Patterns, Data structures
+    hu: Tervezési minták, Adatstruktúrák
+  - en: "AI: OpenAI, Azure ML studio"
+    hu: "Mesterséges intelligencia: OpenAI, Azure ML studio"
+  - en: Microservice architecture
+    hu: Mikroszolgáltatás architektúra
+hobbies:
+  - name:
+      en: Sailing
+      hu: Vitorlázás
+  - name:
+      en: Cycling
+      hu: Kerékpározás
+  - name:
+      en: Snowboarding
+      hu: Snowboardozás
+  - name:
+      en: Smart Home
+      hu: Okosotthon
+    link: https://homeassistant.io
+  - name:
+      en: Home Cluster (RaspberryPi, K8S - Talos, Rook - Ceph)
+      hu: Otthoni klaszter (RaspberryPi, K8S - Talos, Rook - Ceph)
+  - name:
+      en: IT Gadgets
+      hu: IT eszközök
+  - name:
+      en: Cars
+      hu: Autók

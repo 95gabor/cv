@@ -59,22 +59,22 @@
 
         <template v-else-if="cv">
           <header>
-            <Header :personal="cv.personal" />
+            <Header :personal="cv.personal" :lang="i18n.locale.value" />
           </header>
           <main class="main-content">
             <article itemscope itemtype="https://schema.org/Person">
               <LanguageSelector />
               <section>
-                <Experience :experiences="cv.workExperience" />
+                <Experience :experiences="cv.workExperience" :lang="i18n.locale.value" />
               </section>
               <section>
-                <Education :educations="cv.educations" />
+                <Education :educations="cv.educations" :lang="i18n.locale.value" />
               </section>
               <section>
-                <Skills :skills="cv.skills" />
+                <Skills :skills="cv.skills" :lang="i18n.locale.value" />
               </section>
               <section>
-                <Hobbies :hobbies="cv.hobbies" />
+                <Hobbies :hobbies="cv.hobbies" :lang="i18n.locale.value" />
               </section>
             </article>
           </main>
@@ -99,21 +99,9 @@ import type { CvCollectionItem } from '@nuxt/content';
 const i18n = useI18n();
 
 // Initial load
-const {
-  data: cv,
-  pending,
-  refresh,
-} = await useAsyncData<CvCollectionItem | null>(
+const { data: cv, pending } = await useAsyncData<CvCollectionItem | null>(
   'cv',
-  () => queryCollection('cv').where('stem', '=', i18n.locale.value).first() as Promise<CvCollectionItem>,
-);
-
-// Watch for locale changes
-watch(
-  () => i18n.locale.value,
-  async () => {
-    await refresh();
-  },
+  () => queryCollection('cv').where('stem', '=', 'cv').first() as Promise<CvCollectionItem>,
 );
 
 // SEO meta tags
