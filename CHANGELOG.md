@@ -1,3 +1,9 @@
+# [2.5.0](https://github.com/95gabor/cv/compare/v2.4.1...v2.5.0) (2025-09-12)
+
+### Features
+
+- **cv:** merged multi-lang yaml ([e9ba3e4](https://github.com/95gabor/cv/commit/e9ba3e441ebc4447046f73de860ac111abdaa1e1))
+
 ## [2.4.1](https://github.com/95gabor/cv/compare/v2.4.0...v2.4.1) (2025-09-10)
 
 ### Bug Fixes
