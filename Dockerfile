@@ -13,9 +13,6 @@ FROM nginx:1.29.1-alpine3.22-slim AS production
 RUN rm -f /usr/share/nginx/html/index.html
 
 COPY --from=builder /app/.output/public /usr/share/nginx/html
-COPY --from=builder /app/public/robots.txt /usr/share/nginx/html/robots.txt
-COPY --from=builder /app/public/favicon.ico /usr/share/nginx/html/favicon.ico
-
 
 # Copy custom nginx config (optional, for SPA fallback)
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf

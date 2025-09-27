@@ -4,8 +4,6 @@
 # Only include these files/folders in the build context:
 !package.json
 !package-lock.json
-!nuxt.config.ts
-!content.config.ts
 !app
 !Dockerfile
 !docker-compose.yml
@@ -16,3 +14,5 @@
 !components
 !tsconfig.json
 !README.md
+!scripts
+!*.ts
