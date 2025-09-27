@@ -21,8 +21,8 @@
     "@nuxt/fonts": "^0.11.4",
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^1.10.0",
-    "@nuxt/scripts": "^0.11.7",
-    "@nuxt/ui": "^3.1.2",
+    "@nuxt/scripts": "^0.12.1",
+    "@nuxt/ui": "^4.0.0",
     "@nuxtjs/i18n": "^10.0.0-beta.5",
     "@nuxtjs/robots": "^5.5.5",
     "@nuxtjs/sitemap": "^7.2.10",
@@ -33,9 +33,9 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
-    "@commitlint/config-conventional": "^19.8.1",
-    "@commitlint/parse": "^19.8.1",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/parse": "^20.0.0",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@nuxt/eslint": "^1.9.0",
     "@semantic-release/changelog": "^6.0.3",
