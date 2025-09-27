@@ -24,10 +24,15 @@ export const PersonalSchema = z.object({
   contact: z.array(ContactSchema),
 });
 
+export const CompanySchema = z.object({
+  name: z.string(),
+  link: z.string().optional(),
+});
+
 export const WorkExperienceSchema = z.object({
   title: LocalizedStringSchema,
-  company: z.string(),
-  companyUrl: z.string().optional(),
+  company: CompanySchema,
+  employmentType: z.string().optional(),
   location: z.string(),
   from: z.string(),
   end: z.string().optional(),
@@ -35,9 +40,14 @@ export const WorkExperienceSchema = z.object({
   technologies: z.array(z.string()),
 });
 
+export const InstitutionSchema = z.object({
+  name: LocalizedStringSchema,
+  link: z.string().optional(),
+});
+
 export const EducationSchema = z.object({
   degree: LocalizedStringSchema,
-  institution: LocalizedStringSchema,
+  institution: InstitutionSchema,
   location: z.string(),
   from: z.string(),
   end: z.string().optional(),

@@ -15,7 +15,12 @@
   "experience": {
     "present": "Present",
     "responsibilities": "Responsibilities",
-    "technologies": "Technologies"
+    "technologies": "Technologies",
+    "employmentType": {
+      "intern": "Intern",
+      "full-time": "Full-Time",
+      "contract": "Contract"
+    }
   },
   "education": {
     "degree": "Degree",

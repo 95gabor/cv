@@ -26,9 +26,9 @@
   color: initial;
   text-decoration: none;
   transition: color 0.2s;
-}
 
-.hobby-item a:hover {
-  color: $primary-color;
-  text-decoration: underline;
+  &:hover {
+    color: $primary-color;
+    text-decoration: underline;
+  }
 }

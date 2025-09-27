@@ -15,7 +15,12 @@
   "experience": {
     "present": "Jelenleg",
     "responsibilities": "Feladatok",
-    "technologies": "Használt technológiák"
+    "technologies": "Használt technológiák",
+    "employmentType": {
+      "intern": "Gyakornok",
+      "full-time": "Teljes munkaidő",
+      "contract": "Szerződéses"
+    }
   },
   "education": {
     "degree": "Végzettség",

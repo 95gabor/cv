@@ -5,43 +5,66 @@
         <a href="#work-experience"># {{ t('cv.workExperience') }}</a>
       </h2>
       <UCard>
-        <div class="experience-list">
-          <div v-for="(job, idx) in experiences" :key="job.description.en" class="job-item">
+        <div class="experience-list" role="list">
+          <article
+            v-for="(job, idx) in experiences"
+            :key="job.description.en"
+            class="job-item"
+            role="listitem"
+            itemscope
+            itemtype="https://schema.org/JobPosting"
+          >
             <div class="job-content">
-              <div class="job-header">
-                <h3 class="heading-3">{{ job.title[lang] }}</h3>
+              <header class="job-header">
+                <h3 class="heading-3" itemprop="title">{{ job.title[lang] }}</h3>
                 <div class="job-meta">
                   <span class="meta-text">
-                    {{ formatPeriod(job.from, job.end) }}
+                    <time :datetime="job.from" itemprop="datePosted">{{ formatPeriod(job.from, job.end) }}</time>
                     <span class="meta-separator">|</span>
-                    <a
-                      v-if="job.companyUrl"
-                      :href="job.companyUrl"
-                      target="_blank"
-                      rel="noopener"
-                      class="company-link"
-                      >{{ job.company }}</a
-                    >
-                    <template v-else>{{ job.company }}</template>
+                    <span itemprop="hiringOrganization" itemscope itemtype="https://schema.org/Organization">
+                      <a
+                        v-if="job.company.link"
+                        :href="job.company.link"
+                        target="_blank"
+                        rel="noopener"
+                        class="company-link"
+                        itemprop="url"
+                      >
+                        <span itemprop="name">{{ job.company.name }}</span>
+                      </a>
+                      <span v-else itemprop="name">{{ job.company.name }}</span>
+                    </span>
+                    <template v-if="job.employmentType">
+                      <span class="meta-separator">|</span>
+                      <span itemprop="jobLocation" itemscope itemtype="https://schema.org/Place">
+                        <span itemprop="addressLocality">{{
+                          t(`experience.employmentType.${job.employmentType}`)
+                        }}</span>
+                      </span>
+                    </template>
                     <span class="meta-separator">|</span>
-                    {{ job.location }}
+                    <span itemprop="jobLocation" itemscope itemtype="https://schema.org/Place">
+                      <span itemprop="addressLocality">{{ job.location }}</span>
+                    </span>
                   </span>
                 </div>
+              </header>
+              <div v-if="job.description" class="description" itemprop="description">
+                <p>
+                  {{ job.description[lang] }}
+                </p>
               </div>
-              <p v-if="job.description" class="description">
-                {{ job.description[lang] }}
-              </p>
               <div class="technologies">
                 <span class="tech-label">{{ t('experience.technologies') }}</span>
-                <ul class="tech-list">
-                  <li v-for="tech in job.technologies" :key="tech" class="tech-item">
-                    {{ tech }}
+                <ul class="tech-list" role="list">
+                  <li v-for="tech in job.technologies" :key="tech" class="tech-item" role="listitem">
+                    <span itemprop="skills">{{ tech }}</span>
                   </li>
                 </ul>
               </div>
             </div>
             <hr v-if="idx < experiences.length - 1" class="job-divider" />
-          </div>
+          </article>
         </div>
       </UCard>
     </UContainer>
@@ -85,7 +108,8 @@ const formatPeriod = (from: string, end?: string) => {
   transition: color 0.2s ease;
 
   &:hover {
-    color: var(--color-primary);
+    color: $primary-color;
+    text-decoration: underline;
   }
 }
 </style>

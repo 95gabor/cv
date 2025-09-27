@@ -14,10 +14,7 @@
               "type": "string"
             }
           },
-          "required": [
-            "en",
-            "hu"
-          ],
+          "required": ["en", "hu"],
           "additionalProperties": false
         },
         "title": {
@@ -41,11 +38,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "platform",
-              "url",
-              "icon"
-            ],
+            "required": ["platform", "url", "icon"],
             "additionalProperties": false
           }
         },
@@ -56,32 +49,18 @@
             "properties": {
               "type": {
                 "type": "string",
-                "enum": [
-                  "location",
-                  "phone",
-                  "email",
-                  "link"
-                ]
+                "enum": ["location", "phone", "email", "link"]
               },
               "value": {
                 "type": "string"
               }
             },
-            "required": [
-              "type",
-              "value"
-            ],
+            "required": ["type", "value"],
             "additionalProperties": false
           }
         }
       },
-      "required": [
-        "name",
-        "title",
-        "picture",
-        "links",
-        "contact"
-      ],
+      "required": ["name", "title", "picture", "links", "contact"],
       "additionalProperties": false
     },
     "workExperience": {
@@ -93,9 +72,19 @@
             "$ref": "#/properties/personal/properties/name"
           },
           "company": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              }
+            },
+            "required": ["name"],
+            "additionalProperties": false
           },
-          "companyUrl": {
+          "employmentType": {
             "type": "string"
           },
           "location": {
@@ -117,14 +106,7 @@
             }
           }
         },
-        "required": [
-          "title",
-          "company",
-          "location",
-          "from",
-          "description",
-          "technologies"
-        ],
+        "required": ["title", "company", "location", "from", "description", "technologies"],
         "additionalProperties": false
       }
     },
@@ -137,7 +119,17 @@
             "$ref": "#/properties/personal/properties/name"
           },
           "institution": {
-            "$ref": "#/properties/personal/properties/name"
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "#/properties/personal/properties/name"
+              },
+              "link": {
+                "type": "string"
+              }
+            },
+            "required": ["name"],
+            "additionalProperties": false
           },
           "location": {
             "type": "string"
@@ -152,12 +144,7 @@
             "$ref": "#/properties/personal/properties/name"
           }
         },
-        "required": [
-          "degree",
-          "institution",
-          "location",
-          "from"
-        ],
+        "required": ["degree", "institution", "location", "from"],
         "additionalProperties": false
       }
     },
@@ -179,20 +166,12 @@
             "type": "string"
           }
         },
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "additionalProperties": false
       }
     }
   },
-  "required": [
-    "personal",
-    "workExperience",
-    "educations",
-    "skills",
-    "hobbies"
-  ],
+  "required": ["personal", "workExperience", "educations", "skills", "hobbies"],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

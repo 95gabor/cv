@@ -1,3 +1,5 @@
+import { siteConfig } from './config';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
@@ -11,8 +13,10 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/icon',
     '@nuxt/scripts',
-    '@nuxtjs/sitemap',
     '@nuxtjs/i18n',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-llms',
   ],
 
   $production: {
@@ -26,13 +30,13 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: 'https://95gabor.me',
-    name: "Gábor Pichner's CV | TypeScript Full-Stack Developer",
+    url: siteConfig.url,
+    name: siteConfig.title,
   },
 
   runtimeConfig: {
     public: {
-      siteUrl: 'https://95gabor.me',
+      siteUrl: siteConfig.url,
     },
   },
 
@@ -47,14 +51,16 @@ export default defineNuxtConfig({
         { name: 'format-detection', content: 'telephone=no' },
         {
           name: 'description',
-          content:
-            'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
+          content: siteConfig.description,
         },
         { name: 'robots', content: 'index, follow' },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
+
+  // Import dynamically generated LLM configuration
+  llms: await import('./scripts/generate-llm-config').then(({ getConfig }) => getConfig(siteConfig)),
 
   content: {
     // Enable content source maps

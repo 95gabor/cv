@@ -1,4 +1,5 @@
 <template>
+  <MetaData />
   <div class="app">
     <div class="grid-background" />
 
@@ -58,6 +59,9 @@
         </template>
 
         <template v-else-if="cv">
+          <!-- Structured Data for LLMs -->
+          <StructuredData :cv="cv" :lang="i18n.locale.value" />
+
           <header>
             <Header :personal="cv.personal" :lang="i18n.locale.value" />
           </header>
@@ -94,49 +98,16 @@ import Skills from './components/Skills/Skills.vue';
 import Hobbies from './components/Hobbies/Hobbies.vue';
 import CookieConsent from './components/CookieConsent.vue';
 import LanguageSelector from './components/LanguageSelector.vue';
+import MetaData from './components/MetaData.vue';
+import StructuredData from './components/StructuredData.vue';
 import type { CvCollectionItem } from '@nuxt/content';
+import { siteConfig } from '../config';
 
 const i18n = useI18n();
 
 // Initial load
 const { data: cv, pending } = await useAsyncData<CvCollectionItem | null>(
   'cv',
-  () => queryCollection('cv').where('stem', '=', 'cv').first() as Promise<CvCollectionItem>,
+  () => queryCollection('cv').where('stem', '=', siteConfig.cv.filename).first() as Promise<CvCollectionItem>,
 );
-
-// SEO meta tags
-useHead({
-  title: 'Gábor Pichner | TypeScript Full-Stack Developer',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
-    },
-    {
-      name: 'keywords',
-      content:
-        'TypeScript, JavaScript, NodeJS, NestJS, Angular, React, HTML, CSS, SCSS, SQL, NoSQL, PostgreSQL, MySQL, MongoDB, Docker, Kubernetes, Terraform, AWS, Azure, GCP, CI/CD, DevOps, Git, JWT, OAuth, REST API, Microservices, Clean Code, Unit Testing, Jest, Mocha',
-    },
-    {
-      property: 'og:title',
-      content: "Gábor Pichner's CV | TypeScript Full-Stack Developer",
-    },
-    {
-      property: 'og:description',
-      content:
-        'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
-    },
-    {
-      property: 'og:type',
-      content: 'profile',
-    },
-  ],
-  link: [
-    {
-      rel: 'canonical',
-      href: 'https://95gabor.me',
-    },
-  ],
-});
 </script>

@@ -5,17 +5,17 @@ personal:
   title:
     en: Full Stack Developer
     hu: Full Stack Fejlesztő
-  picture: /me.png
+  picture: /pictures/profiles/gabor-pichner.png
   links:
     - platform: GitHub
       url: https://github.com/95gabor
-      icon: /github.png
+      icon: /icons/logos/github.png
     - platform: LinkedIn
       url: https://linkedin.com/in/95gabor
-      icon: /linkedin.png
+      icon: /icons/logos/linkedin.png
   contact:
     - type: location
-      value: Hungary
+      value: Veszprém, Hungary
     - type: phone
       value: sensitive
     - type: email
@@ -26,14 +26,15 @@ workExperience:
   - title:
       en: SRE Engineer
       hu: SRE Engineer
-    company: Freelancer
+    company:
+      name: FaceKom
+      link: https://www.facekom.net
+    employmentType: contract
     location: Budapest, HU
-    from: "2025"
+    from: '2025'
     description:
-      en: "Currently, I work on a video-based authentication software as Site
-        Reliability Engineering. "
-      hu: "Jelenleg egy videó alapú azonosítási szoftveren dolgozok mint Site
-        Reliability Engineering. "
+      en: 'I am currently working on a video-based identification software as a Site Reliability Engineer. My responsibilities include fixing critical issues, communicating with partners, collaborating with operations, improving system stability and debuggability, and developing various improvements.'
+      hu: 'Jelenleg egy videó alapú azonosító szoftveren dolgozom Site Reliability Engineer pozícióban. A feladataim közé tartozik a kritikus hibák javítása, partnerekkel való kapcsolattartás, az üzemeltetéssel való együttműködés, a rendszer stabilitásának és hibakereshetőségének javítása, valamint különböző fejlesztések kidolgozása.'
     technologies:
       - Express.js
       - Socket.io
@@ -43,13 +44,15 @@ workExperience:
   - title:
       en: DevOps Engineer
       hu: DevOps Engineer
-    company: Freelancer
+    company:
+      name: Elevate Healthcare
+      link: https://elevatehealth.net
+    employmentType: contract
     location: Veszprém, HU
-    from: "2025"
-    end: "2025"
+    from: '2025'
+    end: '2025'
     description:
-      en:
-        My last project involved maintaining a previously established Kubernetes
+      en: My last project involved maintaining a previously established Kubernetes
         cluster, updating and migrating Helm charts, setting up high
         availability services, and implementing security solutions.
       hu: Legutóbbi projektem egy korábban létrehozott Kubernetes cluster
@@ -68,17 +71,17 @@ workExperience:
   - title:
       en: Software Development Consultant
       hu: Szoftverfejlesztési tanácsadó
-    company: Freelancer
+    company:
+      name: Elevate Healthcare
+      link: https://elevatehealth.net
+    employmentType: contract
     location: Veszprém, HU
-    from: "2024"
-    end: "2025"
+    from: '2024'
+    end: '2025'
     description:
-      en:
-        "I provided architecture and development consulting for my former workplace:
-        Elevate Healthcare (CAE Healthcare)."
-      hu:
-        "Architektúra és fejlesztési tanácsadást nyújtok korábbi munkahelyemnek:
-        Elevate Healthcare (CAE Healthcare)."
+      en: 'I provided architecture and development consulting for my former workplace:
+        Elevate Healthcare (CAE Healthcare).'
+      hu: 'Architektúra és fejlesztési tanácsokat adtam korábbi munkahelyemnek.'
     technologies:
       - NestJS
       - Azure
@@ -86,13 +89,15 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: Inwedio
+      link: https://inwedio.com
+    employmentType: contract
     location: Budapest, HU
-    from: "2024"
-    end: "2025"
+    from: '2024'
+    end: '2025'
     description:
-      en:
-        I was contributing to the development of an animation creation platform by
+      en: I was contributing to the development of an animation creation platform by
         leveraging my previously gained experience. The product will be publicly
         available soon and is already operational in a closed environment.
       hu: Egy animáció készítő platformon fejlesztésében segédkezem korábbi
@@ -112,18 +117,19 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: PlaccOn
+      link: https://placcon.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2024"
-    end: "2025"
+    from: '2024'
+    end: '2025'
     description:
-      en:
-        I developed a PWA for a restaurant system to replace the previous slower
+      en: I developed a PWA for a restaurant system to replace the previous slower
         backend-rendered frontend. The new solution integrates into the existing
         frontend and, thanks to its internal state management, provides a faster
         and more responsive user experience.
-      hu:
-        Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi
+      hu: Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi
         lassabb backend-rendelt frontendet. Az új megoldás integrálódik a
         meglévő frontendbe, és a belső state-managementnek köszönhetően gyorsabb
         és reszponzívabb felhasználói élményt nyújt.
@@ -137,10 +143,13 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: PlaccOn
+      link: https://placcon.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
+    from: '2024'
+    end: '2024'
     description:
       en: I developed a billing integration for a restaurant system.
       hu: Egy étterem rendszerhez fejlesztettem egy számlázási integrációt
@@ -153,17 +162,17 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: Emlékkód
+    employmentType: contract
     location: Budapest, HU
-    from: "2024"
-    end: "2024"
+    from: '2024'
+    end: '2024'
     description:
-      en:
-        I developed a complete memorial website portal with login, profile and role
+      en: I developed a complete memorial website portal with login, profile and role
         management, content upload features, and map integration. Unfortunately,
         the project was discontinued due to legal issues.
-      hu:
-        Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és
+      hu: Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és
         szerepkör kezeléssel, tartalom feltöltési funkciókkal és térkép
         integrációval. Sajnos a projekt jogi problémák miatt megszakadt.
     technologies:
@@ -177,18 +186,19 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: PlaccOn
+      link: https://placcon.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
+    from: '2023'
+    end: '2024'
     description:
-      en:
-        I developed a QR code-based payment integration for a restaurant system.
+      en: I developed a QR code-based payment integration for a restaurant system.
         Later, I extended the integration with menu synchronization and order
         processing. The integration currently handles hundreds of payments and
         orders on a weekly basis.
-      hu:
-        Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez.
+      hu: Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez.
         Később kiegészítettem a menü szinkronizálással és rendelés
         feldolgozással. Az integráció jelenleg hetente több száz fizetést és
         rendelést kezel.
@@ -205,16 +215,17 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: RigorTech
+      link: https://rigortech.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2023"
-    end: "2024"
+    from: '2023'
+    end: '2024'
     description:
-      en:
-        I created a website for a mechanical engineering company. Later, I extended
+      en: I created a website for a mechanical engineering company. Later, I extended
         it with quotation request features.
-      hu:
-        Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem
+      hu: Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem
         árajánlat kérő funkciókkal.
     technologies:
       - React
@@ -226,17 +237,18 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: PlaccOn
+      link: https://placcon.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2023"
-    end: "2023"
+    from: '2023'
+    end: '2023'
     description:
-      en:
-        I developed a serial port and Bluetooth-based cash register integration for
+      en: I developed a serial port and Bluetooth-based cash register integration for
         a restaurant system, which makes the payment process faster and more
         efficient.
-      hu:
-        Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy
+      hu: Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy
         étterem rendszerhez, amely gyorsabbá és hatékonyabbá teszi a fizetési
         folyamatot.
     technologies:
@@ -249,19 +261,20 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: Freelancer
+    company:
+      name: PlaccOn
+      link: https://placcon.hu
+    employmentType: contract
     location: Budapest, HU
-    from: "2022"
-    end: "2023"
+    from: '2022'
+    end: '2023'
     description:
-      en:
-        I worked on the fiscal printing integration of a restaurant system. The
+      en: I worked on the fiscal printing integration of a restaurant system. The
         integration is active in more than 100 restaurants and has already
         handled over 4 million print operations. The system is specifically
         designed to be fault-tolerant against disconnections, yet still ensures
         near-instant operation.
-      hu:
-        Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az
+      hu: Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az
         integráció több mint 100 étteremben aktív, és már több mint 4 millió
         nyomtatási műveletet kezelt. A rendszer kifejezetten hibatűrő a
         kapcsolat megszakadásokkal szemben, miközben közel azonnali működést
@@ -279,11 +292,13 @@ workExperience:
   - title:
       en: Lead Full Stack Developer
       hu: Lead Full Stack Fejlesztő
-    company: CAE Healthcare
-    companyUrl: https://www.caehealthcare.com
+    company:
+      name: Elevate Healthcare (CAE Healthcare)
+      link: https://elevatehealth.net
+    employmentType: full-time
     location: Veszprém, HU
-    from: "2022"
-    end: "2024"
+    from: '2022'
+    end: '2024'
     description:
       en: >
         I was promoted from my previous role as a senior developer to a lead
@@ -317,11 +332,13 @@ workExperience:
   - title:
       en: Senior Full Stack Developer
       hu: Senior Full Stack Fejlesztő
-    company: CAE Healthcare
-    companyUrl: https://www.caehealthcare.com
+    company:
+      name: Elevate Healthcare (CAE Healthcare)
+      link: https://elevatehealth.net
+    employmentType: full-time
     location: Veszprém, HU
-    from: "2021"
-    end: "2022"
+    from: '2021'
+    end: '2022'
     description:
       en: >
         During this time at CAE Healthcare Hungary, I worked on the
@@ -367,11 +384,13 @@ workExperience:
   - title:
       en: Senior / Lead Full Stack Developer
       hu: Senior / Lead Full Stack Fejlesztő
-    company: CloudStorm
-    companyUrl: https://www.cloudstorm.io
+    company:
+      name: CloudStorm
+      link: https://www.cloudstorm.io
+    employmentType: full-time
     location: Budapest, HU
-    from: "2018"
-    end: "2021"
+    from: '2018'
+    end: '2021'
     description:
       en: >
         We used to develop custom RPA solutions, but then we started to work on
@@ -408,11 +427,13 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: University of Pannonia
-    companyUrl: https://uni-pannon.hu
+    company:
+      name: University of Pannonia
+      link: https://uni-pannon.hu
+    employmentType: full-time
     location: Veszprém, HU
-    from: "2018"
-    end: "2018"
+    from: '2018'
+    end: '2018'
     description:
       en: >
         I developed a map-based research result sharing portal for the Image
@@ -434,11 +455,13 @@ workExperience:
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
-    company: University of Pannonia
-    companyUrl: https://uni-pannon.hu
+    company:
+      name: University of Pannonia
+      link: https://uni-pannon.hu
+    employmentType: full-time
     location: Veszprém, HU
-    from: "2017"
-    end: "2018"
+    from: '2017'
+    end: '2018'
     description:
       en: >
         Design, implementation and operation of a production support solution
@@ -466,13 +489,15 @@ workExperience:
       - MySQL / SQLite
       - MochaJS
   - title:
-      en: Junior Full Stack Developer
-      hu: Junior Full Stack Fejlesztő
-    company: it.hu
-    companyUrl: https://it.hu
+      en: Intern Full Stack Developer
+      hu: Gyakornok Full Stack Fejlesztő
+    company:
+      name: it.hu
+      link: https://it.hu
+    employmentType: intern
     location: Veszprém, HU
-    from: "2016"
-    end: "2016"
+    from: '2016'
+    end: '2016'
     description:
       en: >
         They deal with IT networking and operation. We developed a full stack
@@ -496,11 +521,13 @@ educations:
       en: BSc in Computer Science
       hu: Programtervező informatikus BSc
     institution:
-      en: University of Pannonia
-      hu: Pannon Egyetem
+      name:
+        en: University of Pannonia
+        hu: Pannon Egyetem
+      link: https://uni-pannon.hu
     location: Veszprém, HU
-    from: "2014"
-    end: "2018"
+    from: '2014'
+    end: '2018'
     note:
       en: Excellent
       hu: Kiváló
@@ -508,11 +535,13 @@ educations:
       en: Information Technology
       hu: Informatika
     institution:
-      en: Ipari Secondary School
-      hu: Ipari Szakközépiskola
+      name:
+        en: Ipari Secondary School
+        hu: Ipari Szakközépiskola
+      link: https://www.ipariszakkozep.hu
     location: Veszprém, HU
-    from: "2010"
-    end: "2014"
+    from: '2010'
+    end: '2014'
 skills:
   - en: TypeScript / JavaScript
     hu: TypeScript / JavaScript
@@ -536,8 +565,8 @@ skills:
     hu: Infrastructure As Code (Terraform)
   - en: Experienced in enterprise production environment
     hu: Vállalati környezetben szerzett tapasztalat
-  - en: "Monitoring: Prometheus, Grafana, Loki, OpenTelemetry"
-    hu: "Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry"
+  - en: 'Monitoring: Prometheus, Grafana, Loki, OpenTelemetry'
+    hu: 'Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry'
   - en: Agile Software Development (JIRA, Trello, Scrum)
     hu: Agilis szoftverfejlesztés (JIRA, Trello, Scrum)
   - en: Clean Code
@@ -562,8 +591,8 @@ skills:
     hu: MacOS, Linux, Windows
   - en: Design Patterns, Data structures
     hu: Tervezési minták, Adatstruktúrák
-  - en: "AI: OpenAI, Azure ML studio"
-    hu: "Mesterséges intelligencia: OpenAI, Azure ML studio"
+  - en: 'AI: OpenAI, Azure ML studio'
+    hu: 'Mesterséges intelligencia: OpenAI, Azure ML studio'
   - en: Microservice architecture
     hu: Mikroszolgáltatás architektúra
 hobbies:

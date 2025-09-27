@@ -1,0 +1,203 @@
+personal:
+  name:
+    en: John Doe
+    hu: John Doe
+  title:
+    en: Senior Mechanical Engineer
+    hu: Senior Gépészmérnök
+  picture: /pictures/avatars/example.png
+  links:
+    - platform: LinkedIn
+      url: https://linkedin.com/in/johndoe-mechanical
+      icon: /icons/logos/linkedin.png
+    - platform: GitHub
+      url: https://github.com/johndoe
+      icon: /icons/logos/github.png
+  contact:
+    - type: location
+      value: Detroit, MI, USA
+    - type: phone
+      value: +1 (313) 555-0123
+    - type: email
+      value: john.doe@example.com
+    - type: link
+      value: johndoe.me
+
+workExperience:
+  - title:
+      en: Senior Mechanical Engineer
+      hu: Senior Gépészmérnök
+    company: Ford Motor Company
+    companyUrl: https://ford.com
+    location: Dearborn, MI
+    from: '2021'
+    description:
+      en: 'Lead mechanical design engineer for next-generation electric vehicle platforms. Managed a team of 8 engineers and oversaw the development of battery pack mounting systems, thermal management solutions, and structural components. Reduced vehicle weight by 15% while improving crash safety ratings.'
+      hu: 'Vezető mechanikai tervező mérnök a következő generációs elektromos jármű platformokhoz. 8 mérnökből álló csapat vezetése és a akkumulátor csomag rögzítési rendszerek, hőmérséklet-kezelési megoldások és szerkezeti komponensek fejlesztésének felügyelete. 15%-os csökkentés a jármű tömegében a karambolbiztonsági értékelések javítása mellett.'
+    technologies:
+      - SolidWorks
+      - ANSYS
+      - CATIA
+      - FEA Analysis
+      - CFD Simulation
+      - GD&T
+      - PLM Systems
+      - Six Sigma
+      - Lean Manufacturing
+      - Project Management
+      - Team Leadership
+      - Technical Documentation
+
+  - title:
+      en: Mechanical Design Engineer
+      hu: Mechanikai Tervező Mérnök
+    company: General Motors
+    location: Warren, MI
+    from: '2018'
+    end: '2021'
+    description:
+      en: 'Designed and developed powertrain components for internal combustion engines. Specialized in engine block design, cylinder head optimization, and cooling system development. Led cross-functional teams and implemented design-for-manufacturing principles, resulting in 20% cost reduction.'
+      hu: 'Hajtómű komponensek tervezése és fejlesztése belső égésű motorokhoz. Specializáció a motorblokk tervezésben, hengerfej optimalizálásban és hűtési rendszer fejlesztésben. Funkcionális csapatok vezetése és gyártásra tervezési elvek implementálása, 20%-os költségcsökkentéssel.'
+    technologies:
+      - SolidWorks
+      - Pro/Engineer
+      - ANSYS
+      - FEA Analysis
+      - CFD Simulation
+      - MATLAB
+      - LabVIEW
+      - Design for Manufacturing
+      - Quality Control
+      - Supplier Management
+      - Cost Analysis
+      - Technical Writing
+
+  - title:
+      en: Manufacturing Engineer
+      hu: Gyártási Mérnök
+    company: Chrysler (Stellantis)
+    location: Auburn Hills, MI
+    from: '2015'
+    end: '2018'
+    description:
+      en: 'Optimized manufacturing processes for automotive assembly lines. Implemented lean manufacturing principles and automated quality control systems. Reduced production cycle time by 25% and improved first-pass yield from 85% to 95%. Led continuous improvement initiatives and trained production staff.'
+      hu: 'Gyártási folyamatok optimalizálása autóipari összeszerelő vonalakhoz. Lean gyártási elvek és automatizált minőségbiztosítási rendszerek implementálása. 25%-os csökkentés a gyártási ciklusidőben és javulás az első átmenet hozamában 85%-ról 95%-ra. Folyamatos fejlesztési kezdeményezések vezetése és termelési személyzet képzése.'
+    technologies:
+      - Lean Manufacturing
+      - Six Sigma
+      - Kaizen
+      - Statistical Process Control
+      - Quality Management Systems
+      - Process Optimization
+      - Automation
+      - PLC Programming
+      - HMI Development
+      - Root Cause Analysis
+      - Training Development
+      - Performance Metrics
+
+  - title:
+      en: Junior Mechanical Engineer
+      hu: Junior Gépészmérnök
+    company: BorgWarner
+    location: Auburn Hills, MI
+    from: '2012'
+    end: '2015'
+    description:
+      en: 'Supported design and testing of turbocharger systems for passenger vehicles. Conducted performance testing, failure analysis, and design validation. Collaborated with suppliers and manufacturing teams to ensure product quality and cost targets. Contributed to 3 new product launches.'
+      hu: 'Turbófeltöltő rendszerek tervezésének és tesztelésének támogatása személygépkocsikhoz. Teljesítménytesztelés, hibaelemzés és tervezési validáció végzése. Beszállítók és gyártási csapatokkal való együttműködés a termékminőség és költségcélok biztosítása érdekében. 3 új termék indításban való részvétel.'
+    technologies:
+      - SolidWorks
+      - AutoCAD
+      - ANSYS
+      - Testing Equipment
+      - Data Analysis
+      - Technical Drawing
+      - Material Selection
+      - Supplier Relations
+      - Quality Assurance
+      - Product Development
+      - CAD Modeling
+      - Prototype Testing
+
+educations:
+  - degree:
+      en: Master of Science in Mechanical Engineering
+      hu: Gépészmérnökség Mesterdiploma
+    institution:
+      en: University of Michigan
+      hu: Michigan Egyetem
+    location: Ann Arbor, MI
+    from: '2010'
+    end: '2012'
+    note:
+      en: 'Thesis: "Optimization of Automotive Cooling Systems" - GPA: 3.8/4.0'
+      hu: 'Szakdolgozat: "Autóipari Hűtési Rendszerek Optimalizálása" - GPA: 3.8/4.0'
+
+  - degree:
+      en: Bachelor of Science in Mechanical Engineering
+      hu: Gépészmérnökség BSc
+    institution:
+      en: Michigan State University
+      hu: Michigan Egyetem
+    location: East Lansing, MI
+    from: '2006'
+    end: '2010'
+    note:
+      en: 'Magna Cum Laude - Tau Beta Pi Engineering Honor Society'
+      hu: 'Magna Cum Laude - Tau Beta Pi Mérnöki Tiszteleti Társaság'
+
+skills:
+  - en: CAD Design (SolidWorks, CATIA, AutoCAD)
+    hu: CAD Tervezés (SolidWorks, CATIA, AutoCAD)
+  - en: Finite Element Analysis (FEA)
+    hu: Végeselemes Elemzés (FEA)
+  - en: Computational Fluid Dynamics (CFD)
+    hu: Számítógépes Fluidumdinamika (CFD)
+  - en: ANSYS Simulation
+    hu: ANSYS Szimuláció
+  - en: Product Design & Development
+    hu: Terméktervezés és Fejlesztés
+  - en: Manufacturing Engineering
+    hu: Gyártási Mérnökség
+  - en: Lean Manufacturing
+    hu: Lean Gyártás
+  - en: Six Sigma
+    hu: Six Sigma
+  - en: Project Management
+    hu: Projektmenedzsment
+  - en: Team Leadership
+    hu: Csapatvezetés
+  - en: Quality Control & Assurance
+    hu: Minőségbiztosítás és Ellenőrzés
+  - en: Technical Documentation
+    hu: Műszaki Dokumentáció
+  - en: MATLAB Programming
+    hu: MATLAB Programozás
+  - en: LabVIEW Development
+    hu: LabVIEW Fejlesztés
+  - en: GD&T (Geometric Dimensioning & Tolerancing)
+    hu: GD&T (Geometriai Méretezés és Tűrés)
+
+hobbies:
+  - name:
+      en: Automotive Restoration
+      hu: Autófelújítás
+    link: https://johndoe.me/restoration-projects
+  - name:
+      en: 3D Printing
+      hu: 3D Nyomtatás
+  - name:
+      en: Woodworking
+      hu: Fafaragás
+  - name:
+      en: Engineering Education
+      hu: Mérnöki Oktatás
+    link: https://johndoe.me/teaching
+  - name:
+      en: Motorsports
+      hu: Motorsport
+  - name:
+      en: Technical Writing
+      hu: Műszaki Írás
+    link: https://johndoe.me/blog
