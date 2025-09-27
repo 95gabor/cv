@@ -1,3 +1,9 @@
+## [2.7.1](https://github.com/95gabor/cv/compare/v2.7.0...v2.7.1) (2025-09-27)
+
+### Bug Fixes
+
+- favicon ([a15288a](https://github.com/95gabor/cv/commit/a15288a36a0ed59ff850151bd581928241fdbe36))
+
 # [2.7.0](https://github.com/95gabor/cv/compare/v2.6.0...v2.7.0) (2025-09-27)
 
 ### Bug Fixes
