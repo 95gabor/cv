@@ -1,3 +1,13 @@
+# [2.7.0](https://github.com/95gabor/cv/compare/v2.6.0...v2.7.0) (2025-09-27)
+
+### Bug Fixes
+
+- package.json, package.lock ([7a15946](https://github.com/95gabor/cv/commit/7a15946106422d1deafa3eab09b2a8d6d8ad3048))
+
+### Features
+
+- remove hardcoded values ([ce6720c](https://github.com/95gabor/cv/commit/ce6720c36d0c0333222fb0d67f39c131cdb0f97b))
+
 # [2.6.0](https://github.com/95gabor/cv/compare/v2.5.0...v2.6.0) (2025-09-12)
 
 ### Features
