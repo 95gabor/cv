@@ -55,7 +55,7 @@ export default defineNuxtConfig({
         },
         { name: 'robots', content: 'index, follow' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [{ rel: 'icon', type: 'image/x-icon', href: `/${siteConfig.favicon}` }],
     },
   },
 
