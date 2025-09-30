@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use 'variables' as *;
+@use 'mixins' as *;
 
 // Variables
 $primary-color: #f97316; // orange-500

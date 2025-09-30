@@ -1,4 +1,3 @@
-// Add your Hobbies component styles here
 .section-title {
   text-transform: uppercase;
   font-size: 2rem;
@@ -23,12 +22,5 @@
 }
 
 .hobby-item a {
-  color: initial;
-  text-decoration: none;
-  transition: color 0.2s;
-
-  &:hover {
-    color: $primary-color;
-    text-decoration: underline;
-  }
+  @include link;
 }

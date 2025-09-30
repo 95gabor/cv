@@ -102,11 +102,28 @@
           "technologies": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "link": {
+                  "type": "string"
+                }
+              },
+              "required": ["name", "link"],
+              "additionalProperties": false
             }
           }
         },
-        "required": ["title", "company", "location", "from", "description", "technologies"],
+        "required": [
+          "title",
+          "company",
+          "location",
+          "from",
+          "description",
+          "technologies"
+        ],
         "additionalProperties": false
       }
     },
@@ -151,7 +168,17 @@
     "skills": {
       "type": "array",
       "items": {
-        "$ref": "#/properties/personal/properties/name"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        },
+        "required": ["name"],
+        "additionalProperties": false
       }
     },
     "hobbies": {

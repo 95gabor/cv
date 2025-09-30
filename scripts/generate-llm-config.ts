@@ -6,7 +6,10 @@ import type { SiteConfig } from '../config.types';
 import { CVSchema, type CV, type CVSupportedLangs } from '../app/types/cv';
 
 const readCV = async (filename: string): Promise<CV> => {
-  const fileContent = await readFile(resolve(__dirname, '../content/', `${filename}.yaml`), 'utf8');
+  const fileContent = await readFile(
+    resolve(__dirname, '../content/', `${filename}.yaml`),
+    'utf8',
+  );
   const parsedContent = Yaml.parse(fileContent);
   const validate = await CVSchema.safeParseAsync(parsedContent);
   if (!validate.success) {
@@ -15,7 +18,10 @@ const readCV = async (filename: string): Promise<CV> => {
   return validate.data;
 };
 
-const translate = (obj: Record<CVSupportedLangs, string>, lang: CVSupportedLangs = 'en') => obj[lang];
+const translate = (
+  obj: Record<CVSupportedLangs, string>,
+  lang: CVSupportedLangs = 'en',
+) => obj[lang];
 
 const getSections = (cv: CV): LLMsSection[] => [
   {
@@ -33,7 +39,7 @@ const getSections = (cv: CV): LLMsSection[] => [
       title: `${translate(exp.title)} at ${exp.company.name} (${exp.location})${exp.employmentType ? ` - ${exp.employmentType}` : ''}`,
       description: `${translate(exp.description)}
 From: ${exp.from}${exp.end ? ` To: ${exp.end}` : ''}
-Technologies: ${exp.technologies.join(', ')}`,
+Technologies: ${exp.technologies.map(tech => tech.name).join(', ')}`,
       href: exp.company.link || '#',
     })),
   },
@@ -50,8 +56,8 @@ Technologies: ${exp.technologies.join(', ')}`,
     title: 'Skills',
     description: 'Professional competencies.',
     links: cv.skills.map(skill => ({
-      title: translate(skill),
-      href: '#',
+      title: skill.name,
+      href: skill.link || '#',
     })),
   },
   {
@@ -64,7 +70,9 @@ Technologies: ${exp.technologies.join(', ')}`,
   },
 ];
 
-export const getConfig = async (siteConfig: SiteConfig): Promise<ModuleOptions> => {
+export const getConfig = async (
+  siteConfig: SiteConfig,
+): Promise<ModuleOptions> => {
   const cv = await readCV(siteConfig.cv.filename);
 
   return {

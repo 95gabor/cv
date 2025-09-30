@@ -16,12 +16,20 @@
           >
             <div class="job-content">
               <header class="job-header">
-                <h3 class="heading-3" itemprop="title">{{ job.title[lang] }}</h3>
+                <h3 class="heading-3" itemprop="title">
+                  {{ job.title[lang] }}
+                </h3>
                 <div class="job-meta">
                   <span class="meta-text">
-                    <time :datetime="job.from" itemprop="datePosted">{{ formatPeriod(job.from, job.end) }}</time>
+                    <time :datetime="job.from" itemprop="datePosted">{{
+                      formatPeriod(job.from, job.end)
+                    }}</time>
                     <span class="meta-separator">|</span>
-                    <span itemprop="hiringOrganization" itemscope itemtype="https://schema.org/Organization">
+                    <span
+                      itemprop="hiringOrganization"
+                      itemscope
+                      itemtype="https://schema.org/Organization"
+                    >
                       <a
                         v-if="job.company.link"
                         :href="job.company.link"
@@ -36,29 +44,59 @@
                     </span>
                     <template v-if="job.employmentType">
                       <span class="meta-separator">|</span>
-                      <span itemprop="jobLocation" itemscope itemtype="https://schema.org/Place">
+                      <span
+                        itemprop="jobLocation"
+                        itemscope
+                        itemtype="https://schema.org/Place"
+                      >
                         <span itemprop="addressLocality">{{
                           t(`experience.employmentType.${job.employmentType}`)
                         }}</span>
                       </span>
                     </template>
                     <span class="meta-separator">|</span>
-                    <span itemprop="jobLocation" itemscope itemtype="https://schema.org/Place">
+                    <span
+                      itemprop="jobLocation"
+                      itemscope
+                      itemtype="https://schema.org/Place"
+                    >
                       <span itemprop="addressLocality">{{ job.location }}</span>
                     </span>
                   </span>
                 </div>
               </header>
-              <div v-if="job.description" class="description" itemprop="description">
+              <div
+                v-if="job.description"
+                class="description"
+                itemprop="description"
+              >
                 <p>
                   {{ job.description[lang] }}
                 </p>
               </div>
               <div class="technologies">
-                <span class="tech-label">{{ t('experience.technologies') }}</span>
+                <span class="tech-label">{{
+                  t('experience.technologies')
+                }}</span>
                 <ul class="tech-list" role="list">
-                  <li v-for="tech in job.technologies" :key="tech" class="tech-item" role="listitem">
-                    <span itemprop="skills">{{ tech }}</span>
+                  <li
+                    v-for="tech in job.technologies"
+                    :key="tech.name"
+                    class="tech-item"
+                    role="listitem"
+                  >
+                    <span class="skill" itemprop="skill">
+                      <a
+                        v-if="tech.link"
+                        :href="tech.link"
+                        target="_blank"
+                        rel="noopener"
+                        >{{ tech.name }}</a
+                      >
+                      <template v-else>
+                        {{ tech.name }}
+                      </template>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -86,30 +124,3 @@ const formatPeriod = (from: string, end?: string) => {
   return `${from} - ${end || t('experience.present')}`;
 };
 </script>
-
-<style lang="scss" scoped>
-.job-meta {
-  margin-top: 0.5rem;
-}
-
-.meta-text {
-  color: var(--color-gray-500);
-  font-size: 0.875rem;
-}
-
-.meta-separator {
-  margin: 0 0.5rem;
-  color: var(--color-gray-400);
-}
-
-.company-link {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: $primary-color;
-    text-decoration: underline;
-  }
-}
-</style>

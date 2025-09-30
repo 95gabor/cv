@@ -22,6 +22,7 @@ personal:
       value: 95gabor@gmail.com
     - type: link
       value: 95gabor.me
+
 workExperience:
   - title:
       en: SRE Engineer
@@ -33,14 +34,31 @@ workExperience:
     location: Budapest, HU
     from: '2025'
     description:
-      en: 'I am currently working on a video-based identification software as a Site Reliability Engineer. My responsibilities include fixing critical issues, communicating with partners, collaborating with operations, improving system stability and debuggability, and developing various improvements.'
-      hu: 'Jelenleg egy videó alapú azonosító szoftveren dolgozom Site Reliability Engineer pozícióban. A feladataim közé tartozik a kritikus hibák javítása, partnerekkel való kapcsolattartás, az üzemeltetéssel való együttműködés, a rendszer stabilitásának és hibakereshetőségének javítása, valamint különböző fejlesztések kidolgozása.'
+      en: >
+        As a Site Reliability Engineer, I lead reliability and scalability
+        efforts for a video-based  identification platform.  My key
+        responsibilities include resolving critical production issues,
+        collaborating with partners  and operations,  and spearheading system
+        stability, monitoring, and debugging initiatives to ensure secure and
+        efficient service availability.
+      hu: >
+        Site Reliability Engineer-ként egy videó alapú azonosító rendszer
+        megbízhatóságának fejlesztését végzem.  Feladataim közé tartozik a
+        kritikus hibák javítása, partnerekkel, üzemeltetéssel történő szoros
+        együttműködés,  valamint a rendszer stabilitásának, monitorozhatóságának
+        és hibakereshetőségének fejlesztése.
     technologies:
-      - Express.js
-      - Socket.io
-      - RabbitMQ
-      - Docker
-      - Sequelize
+      - name: Express.js
+        link: https://expressjs.com/
+      - name: Socket.io
+        link: https://socket.io/
+      - name: RabbitMQ
+        link: https://www.rabbitmq.com/
+      - name: Docker
+        link: https://www.docker.com/
+      - name: Sequelize
+        link: https://sequelize.org/
+
   - title:
       en: DevOps Engineer
       hu: DevOps Engineer
@@ -52,22 +70,39 @@ workExperience:
     from: '2025'
     end: '2025'
     description:
-      en: My last project involved maintaining a previously established Kubernetes
-        cluster, updating and migrating Helm charts, setting up high
-        availability services, and implementing security solutions.
-      hu: Legutóbbi projektem egy korábban létrehozott Kubernetes cluster
-        karbantartását, Helm chartok frissítését és migrációját, magas
-        rendelkezésre állású szolgáltatások kialakítása és biztonsági megoldások
-        implementálását foglalja magában.
+      en: >
+        Managed and maintained a production Kubernetes cluster, upgraded and
+        migrated Helm charts,  implemented high-availability services, and
+        elevated platform security and observability,  reinforcing efficient and
+        automated DevOps operations.
+      hu: >
+        Kubernetes cluster Helm chartok frissítését és migrációját, magas
+        rendelkezésre állású szolgáltatások  és fejlett biztonsági, monitorozási
+        megoldások bevezetését végeztem a fejlett DevOps működés érdekében.
     technologies:
-      - Kubernetes
-      - Azure AKS
-      - Helm
-      - DevOps
-      - ArgoCD
-      - Prometheus, Grafana, Loki, OpenTelemetry
-      - RabbitMQ
-      - Operators
+      - name: Kubernetes
+        link: https://kubernetes.io/
+      - name: Azure AKS
+        link: https://azure.microsoft.com/en-us/products/kubernetes-service
+      - name: Helm
+        link: https://helm.sh/
+      - name: DevOps
+        link: https://en.wikipedia.org/wiki/DevOps
+      - name: ArgoCD
+        link: https://argo-cd.readthedocs.io/
+      - name: Prometheus
+        link: https://prometheus.io/
+      - name: Grafana
+        link: https://grafana.com/
+      - name: Loki
+        link: https://grafana.com/oss/loki/
+      - name: OpenTelemetry
+        link: https://opentelemetry.io/
+      - name: RabbitMQ
+        link: https://www.rabbitmq.com/
+      - name: Kubernetes Operators
+        link: https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+
   - title:
       en: Software Development Consultant
       hu: Szoftverfejlesztési tanácsadó
@@ -79,13 +114,23 @@ workExperience:
     from: '2024'
     end: '2025'
     description:
-      en: 'I provided architecture and development consulting for my former workplace:
-        Elevate Healthcare (CAE Healthcare).'
-      hu: 'Architektúra és fejlesztési tanácsokat adtam korábbi munkahelyemnek.'
+      en: >
+        Provided strategic architecture and software development consulting,
+        leading adoption of modern backend  architecture and cloud platforms,
+        and guiding teams towards scalable and maintainable solutions.
+      hu: >
+        Stratégiai architektúra és szoftverfejlesztési tanácsadás, modern
+        backend architektúra és felhőplatformok  bevezetésének támogatása, a
+        skálázható és könnyen karbantartható rendszerek kialakításának
+        elősegítése.
     technologies:
-      - NestJS
-      - Azure
-      - Docker
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: Azure
+        link: https://azure.microsoft.com/
+      - name: Docker
+        link: https://www.docker.com/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -97,23 +142,49 @@ workExperience:
     from: '2024'
     end: '2025'
     description:
-      en: I was contributing to the development of an animation creation platform by
-        leveraging my previously gained experience. The product will be publicly
-        available soon and is already operational in a closed environment.
-      hu: Egy animáció készítő platformon fejlesztésében segédkezem korábbi
-        tapasztalataimat felhasználva. A termék hamarosan nyilvánosan elérhető
-        lesz, jelenleg zárt környezetben működik.
+      en: >
+        Contributed to the architecture and feature development of a
+        cloud-native animation platform,  implementing robust frontend and
+        backend modules, serverless integrations, and scalable CI/CD pipelines.
+      hu: >
+        Felhőalapú animációs platform architektúrájának és funkcióinak
+        kidolgozásában vettem részt,  robusztus frontend és backend modulokat,
+        szerver nélküli integrációkat és jól skálázható  CI/CD folyamatokat
+        bevezetve.
     technologies:
-      - Angular
-      - NgRx
-      - NestJS
-      - AWS (Cognito, Lambda, S3, Neptune, ClodFront, Route53)
-      - Terraform
-      - Docker
-      - Jest
-      - OpenAI API
-      - Azure ML Studio
-      - GitHub Actions
+      - name: Angular
+        link: https://angular.io/
+      - name: NgRx
+        link: https://ngrx.io/
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: AWS Cognito
+        link: https://aws.amazon.com/cognito/
+      - name: AWS Lambda
+        link: https://aws.amazon.com/lambda/
+      - name: AWS S3
+        link: https://aws.amazon.com/s3/
+      - name: AWS Neptune
+        link: https://aws.amazon.com/neptune/
+      - name: AWS CloudFront
+        link: https://aws.amazon.com/cloudfront/
+      - name: AWS Route53
+        link: https://aws.amazon.com/route53/
+      - name: Terraform
+        link: https://www.terraform.io/
+      - name: Docker
+        link: https://www.docker.com/
+      - name: Jest
+        link: https://jestjs.io/
+      - name: OpenAI API
+        link: https://platform.openai.com/docs/
+      - name: Azure ML Studio
+        link: https://azure.microsoft.com/en-us/products/machine-learning/
+      - name: FFMPEG
+        link: https://ffmpeg.org/
+      - name: GitHub Actions
+        link: https://github.com/features/actions
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -125,21 +196,30 @@ workExperience:
     from: '2024'
     end: '2025'
     description:
-      en: I developed a PWA for a restaurant system to replace the previous slower
-        backend-rendered frontend. The new solution integrates into the existing
-        frontend and, thanks to its internal state management, provides a faster
-        and more responsive user experience.
-      hu: Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a korábbi
-        lassabb backend-rendelt frontendet. Az új megoldás integrálódik a
-        meglévő frontendbe, és a belső state-managementnek köszönhetően gyorsabb
-        és reszponzívabb felhasználói élményt nyújt.
+      en: >
+        Developed a PWA for a restaurant system to replace the previous slower
+        backend-rendered frontend.  The new solution integrates into the
+        existing frontend and, thanks to its internal state management,
+        provides a faster and more responsive user experience.
+      hu: >
+        Fejlesztettem egy PWA-t egy étterem rendszerhez, hogy lecseréljük a
+        korábbi lassabb backend-rendelt frontendet.  Az új megoldás integrálódik
+        a meglévő frontendbe, és a belső state-managementnek köszönhetően
+        gyorsabb és reszponzívabb felhasználói élményt nyújt.
     technologies:
-      - Vue
-      - Quasar framework
-      - pinia
-      - SCSS
-      - OpenAPI / Swagger
-      - Yii
+      - name: Vue
+        link: https://vuejs.org/
+      - name: Quasar Framework
+        link: https://quasar.dev/
+      - name: Pinia
+        link: https://pinia.vuejs.org/
+      - name: SCSS
+        link: https://sass-lang.com/
+      - name: OpenAPI / Swagger
+        link: https://swagger.io/
+      - name: Yii
+        link: https://www.yiiframework.com/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -151,14 +231,22 @@ workExperience:
     from: '2024'
     end: '2024'
     description:
-      en: I developed a billing integration for a restaurant system.
-      hu: Egy étterem rendszerhez fejlesztettem egy számlázási integrációt
-        microservice achitektúrával és Billingo API-val.
+      en: >
+        Developed a billing integration for a restaurant system with
+        microservice architecture  and Billingo API integration.
+      hu: >
+        Egy étterem rendszerhez fejlesztettem egy számlázási integrációt
+        microservice architektúrával  és Billingo API-val.
     technologies:
-      - NestJS
-      - TypeORM
-      - RabbitMQ
-      - Billingo API
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: RabbitMQ
+        link: https://www.rabbitmq.com/
+      - name: Billingo API
+        link: https://www.billingo.hu/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -169,20 +257,32 @@ workExperience:
     from: '2024'
     end: '2024'
     description:
-      en: I developed a complete memorial website portal with login, profile and role
-        management, content upload features, and map integration. Unfortunately,
-        the project was discontinued due to legal issues.
-      hu: Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és
-        szerepkör kezeléssel, tartalom feltöltési funkciókkal és térkép
+      en: >
+        Developed a complete memorial website portal with login, profile and
+        role management,  content upload features, and map integration.
+        Unfortunately, the project was discontinued due to legal issues.
+      hu: >
+        Fejlesztettem egy teljes emlékoldal portált bejelentkezéssel, profil és
+        szerepkör kezeléssel,  tartalom feltöltési funkciókkal és térkép
         integrációval. Sajnos a projekt jogi problémák miatt megszakadt.
     technologies:
-      - React
-      - Tailwind
-      - NestJS
-      - TypeORM
-      - AWS (API Gateway, Lambda)
-      - GitHub Actions
-      - GitHub Pages
+      - name: React
+        link: https://reactjs.org/
+      - name: Tailwind CSS
+        link: https://tailwindcss.com/
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: AWS API Gateway
+        link: https://aws.amazon.com/api-gateway/
+      - name: AWS Lambda
+        link: https://aws.amazon.com/lambda/
+      - name: GitHub Actions
+        link: https://github.com/features/actions
+      - name: GitHub Pages
+        link: https://pages.github.com/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -194,24 +294,36 @@ workExperience:
     from: '2023'
     end: '2024'
     description:
-      en: I developed a QR code-based payment integration for a restaurant system.
-        Later, I extended the integration with menu synchronization and order
-        processing. The integration currently handles hundreds of payments and
+      en: >
+        Developed a QR code-based payment integration for a restaurant system.
+        Later, extended the integration  with menu synchronization and order
+        processing. The integration currently handles hundreds of payments  and
         orders on a weekly basis.
-      hu: Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem rendszerhez.
-        Később kiegészítettem a menü szinkronizálással és rendelés
-        feldolgozással. Az integráció jelenleg hetente több száz fizetést és
+      hu: >
+        Fejlesztettem egy QR kód alapú fizetési integrációt egy étterem
+        rendszerhez. Később kiegészítettem  a menü szinkronizálással és rendelés
+        feldolgozással. Az integráció jelenleg hetente több száz fizetést  és
         rendelést kezel.
     technologies:
-      - NestJS
-      - Websocket
-      - NX
-      - OpenAPI / Swagger
-      - OpenTelemetry
-      - Prometheus
-      - Grafana
-      - Jest
-      - Yii
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: WebSocket
+        link: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+      - name: NX
+        link: https://nx.dev/
+      - name: OpenAPI / Swagger
+        link: https://swagger.io/
+      - name: OpenTelemetry
+        link: https://opentelemetry.io/
+      - name: Prometheus
+        link: https://prometheus.io/
+      - name: Grafana
+        link: https://grafana.com/
+      - name: Jest
+        link: https://jestjs.io/
+      - name: Yii
+        link: https://www.yiiframework.com/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -223,17 +335,28 @@ workExperience:
     from: '2023'
     end: '2024'
     description:
-      en: I created a website for a mechanical engineering company. Later, I extended
+      en: >
+        Created a website for a mechanical engineering company. Later, extended
         it with quotation request features.
-      hu: Létrehoztam egy weboldalt egy gépészeti cég számára. Később kiegészítettem
-        árajánlat kérő funkciókkal.
+      hu: >
+        Létrehoztam egy weboldalt egy gépészeti cég számára. Később
+        kiegészítettem árajánlat kérő funkciókkal.
     technologies:
-      - React
-      - Tailwind
-      - NestJS
-      - AWS (API Gateway, Lambda)
-      - GitHub Actions
-      - GitHub Pages
+      - name: React
+        link: https://reactjs.org/
+      - name: Tailwind CSS
+        link: https://tailwindcss.com/
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: AWS API Gateway
+        link: https://aws.amazon.com/api-gateway/
+      - name: AWS Lambda
+        link: https://aws.amazon.com/lambda/
+      - name: GitHub Actions
+        link: https://github.com/features/actions
+      - name: GitHub Pages
+        link: https://pages.github.com/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -245,19 +368,28 @@ workExperience:
     from: '2023'
     end: '2023'
     description:
-      en: I developed a serial port and Bluetooth-based cash register integration for
-        a restaurant system, which makes the payment process faster and more
-        efficient.
-      hu: Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt egy
-        étterem rendszerhez, amely gyorsabbá és hatékonyabbá teszi a fizetési
-        folyamatot.
+      en: >
+        Developed a serial port and Bluetooth-based cash register integration
+        for a restaurant system,  which makes the payment process faster and
+        more efficient.
+      hu: >
+        Fejlesztettem egy soros port és Bluetooth alapú pénztárgépi integrációt
+        egy étterem rendszerhez,  amely gyorsabbá és hatékonyabbá teszi a
+        fizetési folyamatot.
     technologies:
-      - JavaScript
-      - ToDesktop
-      - Convertify
-      - Android
-      - iOS
-      - Electron
+      - name: JavaScript
+        link: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+      - name: ToDesktop
+        link: https://todesktop.com/
+      - name: Convertify
+        link: https://convertify.io/
+      - name: Android
+        link: https://www.android.com/
+      - name: iOS
+        link: https://www.apple.com/ios/
+      - name: Electron
+        link: https://www.electronjs.org/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -269,26 +401,38 @@ workExperience:
     from: '2022'
     end: '2023'
     description:
-      en: I worked on the fiscal printing integration of a restaurant system. The
-        integration is active in more than 100 restaurants and has already
+      en: >
+        Worked on the fiscal printing integration of a restaurant system. The
+        integration is active in more than 100  restaurants and has already
         handled over 4 million print operations. The system is specifically
-        designed to be fault-tolerant against disconnections, yet still ensures
+        designed  to be fault-tolerant against disconnections, yet still ensures
         near-instant operation.
-      hu: Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az
-        integráció több mint 100 étteremben aktív, és már több mint 4 millió
+      hu: >
+        Egy étterem rendszer pénztárgépi nyomtatási integrációján dolgoztam. Az
+        integráció több mint 100  étteremben aktív,  és már több mint 4 millió
         nyomtatási műveletet kezelt. A rendszer kifejezetten hibatűrő a
-        kapcsolat megszakadásokkal szemben, miközben közel azonnali működést
+        kapcsolat  megszakadásokkal szemben, miközben közel azonnali működést
         biztosít.
     technologies:
-      - NestJS
-      - RabbitMQ
-      - Socket.io
-      - JWKS / JWT
-      - OpenAPI / Swagger
-      - .NET Framework
-      - OpenTelemetry
-      - Prometheus
-      - Grafana
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: RabbitMQ
+        link: https://www.rabbitmq.com/
+      - name: Socket.io
+        link: https://socket.io/
+      - name: JWKS / JWT
+        link: https://jwt.io/
+      - name: OpenAPI / Swagger
+        link: https://swagger.io/
+      - name: .NET Framework
+        link: https://dotnet.microsoft.com/
+      - name: OpenTelemetry
+        link: https://opentelemetry.io/
+      - name: Prometheus
+        link: https://prometheus.io/
+      - name: Grafana
+        link: https://grafana.com/
+
   - title:
       en: Lead Full Stack Developer
       hu: Lead Full Stack Fejlesztő
@@ -301,34 +445,47 @@ workExperience:
     end: '2024'
     description:
       en: >
-        I was promoted from my previous role as a senior developer to a lead
-        developer. Currently, I am working on architecture planning, mentoring
-        my colleagues, introducing modern cloud technologies, and providing
-        guidance. Working closely with my team, our goal is to maintain the
-        market-leading position of the LearningSpace product while leveraging
-        standard and modern technologies to support medical learners and
-        educators.
+        Promoted from previous role as a senior developer to a lead developer.
+        Currently working on architecture  planning, mentoring colleagues,
+        introducing modern cloud technologies, and providing guidance. Working
+        closely  with the team, our goal is to maintain the market-leading
+        position of the LearningSpace product while  leveraging standard and
+        modern technologies to support medical learners and educators.
       hu: >
         Előző senior fejlesztői pozíciómból lead fejlesztővé léptettek elő.
-        Jelenleg architektúra tervezéssel, kollégáim mentorálásával, modern
+        Jelenleg architektúra tervezéssel,  kollégáim mentorálásával, modern
         felhő technológiák bevezetésével és útmutatással foglalkozom.
         Csapatommal szorosan együttműködve célunk a LearningSpace termék
-        piacvezető pozíciójának fenntartása, miközben standard és modern
+        piacvezető pozíciójának fenntartása,  miközben standard és modern
         technológiákat használunk az orvosi tanulók és oktatók támogatására.
     technologies:
-      - Azure
-      - Azure DevOps
-      - Kubernetes
-      - Terraform
-      - ArgoCD
-      - Prometheus
-      - Grafana
-      - Loki
-      - OpenTelemetry
-      - NestJS
-      - TypeORM
-      - Linkerd
-      - Nx
+      - name: Azure
+        link: https://azure.microsoft.com/
+      - name: Azure DevOps
+        link: https://azure.microsoft.com/en-us/products/devops
+      - name: Kubernetes
+        link: https://kubernetes.io/
+      - name: Terraform
+        link: https://www.terraform.io/
+      - name: ArgoCD
+        link: https://argo-cd.readthedocs.io/
+      - name: Prometheus
+        link: https://prometheus.io/
+      - name: Grafana
+        link: https://grafana.com/
+      - name: Loki
+        link: https://grafana.com/oss/loki/
+      - name: OpenTelemetry
+        link: https://opentelemetry.io/
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: Linkerd
+        link: https://linkerd.io/
+      - name: NX
+        link: https://nx.dev/
+
   - title:
       en: Senior Full Stack Developer
       hu: Senior Full Stack Fejlesztő
@@ -341,46 +498,66 @@ workExperience:
     end: '2022'
     description:
       en: >
-        During this time at CAE Healthcare Hungary, I worked on the
-        LearningSpace product. Initially, my work involved fixing bugs in the
-        existing codebase, but later I was tasked with standardizing the
-        codebase and setting up CI pipelines. After that, I started working on
-        developing a new module. During this time, I gained knowledge of the
-        full stack and became a part of the architecture team. Some of my main
-        responsibilities included setting technology goals, introducing modern
-        technologies, replacing custom solutions with industry standards, and
-        optimizing processes.
+        During this time at CAE Healthcare Hungary, worked on the LearningSpace
+        product. Initially, work involved  fixing bugs in the existing codebase,
+        but later was tasked with standardizing the codebase and  setting up CI
+        pipelines.  After that, started working on developing a new module.
+        During this time, gained knowledge of the  full stack and  became a part
+        of the architecture team. Main responsibilities included setting
+        technology goals, introducing  modern technologies, replacing custom
+        solutions with industry standards, and optimizing processes.
       hu: >
         Ebben az időszakban a CAE Healthcare Hungary-nál a LearningSpace
-        terméken dolgoztam. Kezdetben a meglévő kódbázis hibáinak javításával
+        terméken dolgoztam. Kezdetben a meglévő  kódbázis hibáinak javításával
         foglalkoztam, később a kódbázis standardizálásával és CI pipeline-ok
-        beállításával bíztak meg. Ezután egy új modul fejlesztésén kezdtem el
-        dolgozni. Ebben az időszakban a full stack ismereteket elsajátítottam,
+        beállításával  bíztak meg. Ezután egy új modul fejlesztésén kezdtem el
+        dolgozni. Ebben az időszakban a full stack ismereteket  elsajátítottam,
         és az architektúra csapat részévé váltam. Főbb felelősségeim közé
-        tartozott a technológiai célok meghatározása, modern technológiák
+        tartozott a  technológiai célok  meghatározása, modern technológiák
         bevezetése, egyedi megoldások iparági szabványokkal való helyettesítése
-        és folyamatok optimalizálása.
+        és  folyamatok optimalizálása.
     technologies:
-      - Azure
-      - Azure DevOps
-      - Docker
-      - Terraform
-      - Angular
-      - NgRx
-      - NodeJS
-      - Socket.io
-      - OpenAPI / Swagger
-      - RabbitMQ
-      - Loopback
-      - Sequelize
-      - Ionic / Capacitor
-      - JWT / JWKS
-      - MySQL
-      - Nginx
-      - .NET Core
-      - CentOS
-      - Perl
-      - Jenkins
+      - name: Azure
+        link: https://azure.microsoft.com/
+      - name: Azure DevOps
+        link: https://azure.microsoft.com/en-us/products/devops
+      - name: Docker
+        link: https://www.docker.com/
+      - name: Terraform
+        link: https://www.terraform.io/
+      - name: Angular
+        link: https://angular.io/
+      - name: NgRx
+        link: https://ngrx.io/
+      - name: NodeJS
+        link: https://nodejs.org/
+      - name: Socket.io
+        link: https://socket.io/
+      - name: OpenAPI / Swagger
+        link: https://swagger.io/
+      - name: RabbitMQ
+        link: https://www.rabbitmq.com/
+      - name: Loopback
+        link: https://loopback.io/
+      - name: Sequelize
+        link: https://sequelize.org/
+      - name: Ionic / Capacitor
+        link: https://ionicframework.com/
+      - name: JWT / JWKS
+        link: https://jwt.io/
+      - name: MySQL
+        link: https://www.mysql.com/
+      - name: Nginx
+        link: https://nginx.org/
+      - name: .NET Core
+        link: https://dotnet.microsoft.com/
+      - name: CentOS
+        link: https://www.centos.org/
+      - name: Perl
+        link: https://www.perl.org/
+      - name: Jenkins
+        link: https://www.jenkins.io/
+
   - title:
       en: Senior / Lead Full Stack Developer
       hu: Senior / Lead Full Stack Fejlesztő
@@ -393,37 +570,69 @@ workExperience:
     end: '2021'
     description:
       en: >
-        We used to develop custom RPA solutions, but then we started to work on
-        a new process discovery tool called Nika. My job was to design software
+        Used to develop custom RPA solutions, but then started to work on a new
+        process discovery tool called Nika.  Job was to design software
         architectures, to do the software development, cloud-based operations,
-        and to help the team members. I used Docker, AWS and Micro Service
+        and to help  the team members. Used Docker, AWS and Micro Service
         Architecture.
       hu: >
         Korábban egyedi RPA megoldásokat fejlesztettünk, majd egy új folyamat
-        felderítő eszköz, a Nika fejlesztésén kezdtünk el dolgozni. Feladatom
+        felderítő eszköz, a Nika fejlesztésén  kezdtünk el dolgozni. Feladatom
         volt a szoftver architektúrák tervezése, a szoftverfejlesztés, felhő
-        alapú működtetés és a csapattagok segítése. Docker-t, AWS-t és Micro
+        alapú  működtetés és a csapattagok segítése. Docker-t, AWS-t és Micro
         Service Architektúrát használtam.
     technologies:
-      - AWS (Lambda, S3, RDS, SQS, Route53, CloudFront, CodeBuild)
-      - Docker
-      - Kubernetes (AWS EKS, Minikube)
-      - Terraform (AWS, Azure)
-      - Angular
-      - Angular Material
-      - NgRx
-      - NodeJS
-      - NestJS
-      - TypeORM
-      - Sequelize
-      - JWT / OAuth / OIDC
-      - JSON API specification
-      - Jest
-      - Auth0
-      - Puppeteer
-      - MS Teams API
-      - yarn
-      - Lerna
+      - name: AWS Lambda
+        link: https://aws.amazon.com/lambda/
+      - name: AWS S3
+        link: https://aws.amazon.com/s3/
+      - name: AWS RDS
+        link: https://aws.amazon.com/rds/
+      - name: AWS SQS
+        link: https://aws.amazon.com/sqs/
+      - name: AWS Route53
+        link: https://aws.amazon.com/route53/
+      - name: AWS CloudFront
+        link: https://aws.amazon.com/cloudfront/
+      - name: AWS CodeBuild
+        link: https://aws.amazon.com/codebuild/
+      - name: Docker
+        link: https://www.docker.com/
+      - name: Kubernetes (AWS EKS, Minikube)
+        link: https://kubernetes.io/
+      - name: Terraform (AWS, Azure)
+        link: https://www.terraform.io/
+      - name: Angular
+        link: https://angular.io/
+      - name: Angular Material
+        link: https://material.angular.io/
+      - name: NgRx
+        link: https://ngrx.io/
+      - name: NodeJS
+        link: https://nodejs.org/
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: Sequelize
+        link: https://sequelize.org/
+      - name: JWT / OAuth / OIDC
+        link: https://jwt.io/
+      - name: JSON API specification
+        link: https://jsonapi.org/
+      - name: Jest
+        link: https://jestjs.io/
+      - name: Auth0
+        link: https://auth0.com/
+      - name: Puppeteer
+        link: https://pptr.dev/
+      - name: MS Teams API
+        link: https://docs.microsoft.com/en-us/microsoftteams/platform/
+      - name: Yarn
+        link: https://yarnpkg.com/
+      - name: Lerna
+        link: https://lerna.js.org/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -436,22 +645,33 @@ workExperience:
     end: '2018'
     description:
       en: >
-        I developed a map-based research result sharing portal for the Image
+        Developed a map-based research result sharing portal for the Image
         processing laboratory in 2 months.
       hu: >
         2 hónap alatt térképalapú kutatási eredménymegosztó portált
         fejlesztettem a Képfeldolgozó Labor számára.
     technologies:
-      - Node.JS
-      - Nest.JS
-      - TypeORM
-      - Angular
-      - SCSS
-      - Google Maps API
-      - File upload
-      - PostgreSQL
-      - JWT / passport.js
-      - Angular Material
+      - name: Node.JS
+        link: https://nodejs.org/
+      - name: Nest.JS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: Angular
+        link: https://angular.io/
+      - name: SCSS
+        link: https://sass-lang.com/
+      - name: Google Maps API
+        link: https://developers.google.com/maps
+      - name: File upload
+        link: https://developer.mozilla.org/en-US/docs/Web/API/File_API
+      - name: PostgreSQL
+        link: https://www.postgresql.org/
+      - name: JWT / passport.js
+        link: https://jwt.io/
+      - name: Angular Material
+        link: https://material.angular.io/
+
   - title:
       en: Full Stack Developer
       hu: Full Stack Fejlesztő
@@ -465,29 +685,38 @@ workExperience:
     description:
       en: >
         Design, implementation and operation of a production support solution
-        (ordered by Foxconn). Me and two students worked on the project, the
+        (ordered by Foxconn). Worked with two  students on the project, the
         software was completed in 9 months. After that, only minor fixes were
-        needed. It has been used ever since. We have created a full-stack
-        solution for production line workers that assigns tasks and makes them
-        easy to understand. As well as a user-friendly interface, which also
-        improved production efficiency.
+        needed.  It has been used ever since. Created a full-stack solution for
+        production line workers that assigns tasks  and makes them easy to
+        understand. As well as a user-friendly interface, which also improved
+        production efficiency.
       hu: >
-        Termelést támogató megoldás tervezése, megvalósítása és üzemeltetése
-        (a megrendelő Foxconn volt). Két diákkal dolgoztunk a projekten, a
+        Termelést támogató megoldás tervezése, megvalósítása és üzemeltetése (a
+        megrendelő Foxconn volt). Két diákkal  dolgoztunk a projekten, a
         szoftver 9 hónap alatt készült el. Ezt követően csak kisebb javításokra
-        volt szükség. Azóta is használatban van. Teljes körű megoldást hoztunk
-        létre a gyártósori dolgozók számára, amely feladatokat rendel és
+        volt szükség.  Azóta is használatban van. Teljes körű megoldást hoztunk
+        létre a gyártósori dolgozók számára, amely feladatokat  rendel és
         érthetően megjeleníti azokat. Emellett felhasználóbarát felületet
-        készítettünk, ami javította a termelési hatékonyságot.
+        készítettünk, ami javította  a termelési hatékonyságot.
     technologies:
-      - Node.JS
-      - Express JS
-      - TypeORM
-      - JQuery
-      - SCSS
-      - Bootstrap
-      - MySQL / SQLite
-      - MochaJS
+      - name: Node.JS
+        link: https://nodejs.org/
+      - name: Express JS
+        link: https://expressjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: JQuery
+        link: https://jquery.com/
+      - name: SCSS
+        link: https://sass-lang.com/
+      - name: Bootstrap
+        link: https://getbootstrap.com/
+      - name: MySQL / SQLite
+        link: https://www.mysql.com/
+      - name: MochaJS
+        link: https://mochajs.org/
+
   - title:
       en: Intern Full Stack Developer
       hu: Gyakornok Full Stack Fejlesztő
@@ -500,22 +729,31 @@ workExperience:
     end: '2016'
     description:
       en: >
-        They deal with IT networking and operation. We developed a full stack
-        solution for the existing invoicing program, which created analyzes of
+        They deal with IT networking and operation. Developed a full stack
+        solution for the existing invoicing program,  which created analyzes of
         the issued invoices.
       hu: >
         IT hálózatokkal és üzemeltetéssel foglalkoznak. A meglévő
-        számlázóprogramhoz teljes körű megoldást fejlesztettünk, amely a
+        számlázóprogramhoz teljes körű megoldást  fejlesztettünk,  amely a
         kiállított számlákról készített elemzéseket.
     technologies:
-      - Node.JS
-      - Express js
-      - HTML5
-      - SCSS
-      - JQuery
-      - Bootstrap
-      - Chart.JS
-      - MS SQL Server
+      - name: Node.JS
+        link: https://nodejs.org/
+      - name: Express js
+        link: https://expressjs.com/
+      - name: HTML5
+        link: https://developer.mozilla.org/en-US/docs/Web/HTML
+      - name: SCSS
+        link: https://sass-lang.com/
+      - name: JQuery
+        link: https://jquery.com/
+      - name: Bootstrap
+        link: https://getbootstrap.com/
+      - name: Chart.JS
+        link: https://www.chartjs.org/
+      - name: MS SQL Server
+        link: https://www.microsoft.com/en-us/sql-server
+
 educations:
   - degree:
       en: BSc in Computer Science
@@ -542,59 +780,63 @@ educations:
     location: Veszprém, HU
     from: '2010'
     end: '2014'
+
 skills:
-  - en: TypeScript / JavaScript
-    hu: TypeScript / JavaScript
-  - en: NodeJS (NestJS with express)
-    hu: NodeJS (NestJS with express)
-  - en: OpenAPI (Swagger) / REST API
-    hu: OpenAPI (Swagger) / REST API
-  - en: Angular (Material + RxJS + NgRx)
-    hu: Angular (Material + RxJS + NgRx)
-  - en: HTML, CSS, SCSS, (Tailwind, Bootstrap, JQuery)
-    hu: HTML, CSS, SCSS, (Tailwind, Bootstrap, JQuery)
-  - en: SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
-    hu: SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
-  - en: Docker
-    hu: Docker
-  - en: Kubernetes, Helm Charts, ArgoCD, Talos
-    hu: Kubernetes, Helm Charts, ArgoCD, Talos
-  - en: GIT, GitHub, GitLab, Azure DevOps
-    hu: GIT, GitHub, GitLab, Azure DevOps
-  - en: Infrastructure As Code (Terraform)
-    hu: Infrastructure As Code (Terraform)
-  - en: Experienced in enterprise production environment
-    hu: Vállalati környezetben szerzett tapasztalat
-  - en: 'Monitoring: Prometheus, Grafana, Loki, OpenTelemetry'
-    hu: 'Monitorozás: Prometheus, Grafana, Loki, OpenTelemetry'
-  - en: Agile Software Development (JIRA, Trello, Scrum)
-    hu: Agilis szoftverfejlesztés (JIRA, Trello, Scrum)
-  - en: Clean Code
-    hu: Clean Code
-  - en: DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
-    hu: DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
-  - en: Cloud native technologies (CNCF)
-    hu: Cloud native technológiák (CNCF)
-  - en: Unit Testing (Jest, Mocha, Puppeteer)
-    hu: Unit Testing (Jest, Mocha, Puppeteer)
-  - en: Linters (eslint and prettier)
-    hu: Linters (eslint és prettier)
-  - en: Cloud Providers (AWS, Azure, Google Cloud Platform)
-    hu: Felhőszolgáltatók (AWS, Azure, Google Cloud Platform)
-  - en: Auth (OAuth, JWT, JWKS, SSO, Auth0)
-    hu: Autentikáció (OAuth, JWT, JWKS, SSO, Auth0)
-  - en: Webhooks
-    hu: Webhooks
-  - en: Websocket
-    hu: Websocket
-  - en: MacOS, Linux, Windows
-    hu: MacOS, Linux, Windows
-  - en: Design Patterns, Data structures
-    hu: Tervezési minták, Adatstruktúrák
-  - en: 'AI: OpenAI, Azure ML studio'
-    hu: 'Mesterséges intelligencia: OpenAI, Azure ML studio'
-  - en: Microservice architecture
-    hu: Mikroszolgáltatás architektúra
+  - name: TypeScript / JavaScript
+    link: https://www.typescriptlang.org/
+  - name: NodeJS (NestJS with Express)
+    link: https://nodejs.org/
+  - name: OpenAPI (Swagger) / REST API
+    link: https://swagger.io/
+  - name: Angular (Material + RxJS + NgRx)
+    link: https://angular.io/
+  - name: HTML, CSS, SCSS (Tailwind, Bootstrap, JQuery)
+    link: https://sass-lang.com/
+  - name: SQL + NoSQL (Postgres, MySQL, SQLite, MSSQL, Mongo), TypeORM
+    link: https://typeorm.io/
+  - name: Docker
+    link: https://www.docker.com/
+  - name: Kubernetes, Helm Charts, ArgoCD, Talos
+    link: https://kubernetes.io/
+  - name: GIT, GitHub, GitLab, Azure DevOps
+    link: https://github.com/
+  - name: Infrastructure As Code (Terraform)
+    link: https://www.terraform.io/
+  - name: Experienced in enterprise production environment
+    link: https://en.wikipedia.org/wiki/Enterprise_software
+  - name: 'Monitoring: Prometheus, Grafana, Loki, OpenTelemetry'
+    link: https://prometheus.io/
+  - name: Agile Software Development (JIRA, Trello, Scrum)
+    link: https://www.atlassian.com/agile
+  - name: Clean Code
+    link: https://www.oreilly.com/library/view/clean-code-a/9780136083238/
+  - name: DevOps / CloudOps CI/CD (AWS CodeBuild, GitHub Actions, Jenkins)
+    link: https://aws.amazon.com/codebuild/
+  - name: Cloud native technologies (CNCF)
+    link: https://www.cncf.io/
+  - name: Unit Testing (Jest, Mocha, Puppeteer)
+    link: https://jestjs.io/
+  - name: Linters (eslint and prettier)
+    link: https://eslint.org/
+  - name: Cloud Providers (AWS, Azure, Google Cloud Platform)
+    link: https://aws.amazon.com/
+  - name: Auth (OAuth, JWT, JWKS, SSO, Auth0)
+    link: https://auth0.com/
+  - name: Webhooks
+    link: https://webhooks.io/
+  - name: Websocket
+    link: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API
+  - name: MacOS, Linux, Windows
+    link: https://www.apple.com/macos/
+  - name: Design Patterns, Data structures
+    link: https://refactoring.guru/design-patterns
+  - name: OpenAI
+    link: https://platform.openai.com/
+  - name: Azure ML studio
+    link: '#'
+  - name: Microservice architecture
+    link: https://martinfowler.com/articles/microservices.html
+
 hobbies:
   - name:
       en: Sailing
@@ -611,7 +853,7 @@ hobbies:
     link: https://homeassistant.io
   - name:
       en: Home Cluster (RaspberryPi, K8S - Talos, Rook - Ceph)
-      hu: Otthoni klaszter (RaspberryPi, K8S - Talos, Rook - Ceph)
+      hu: Otthoni cluster (RaspberryPi, K8S - Talos, Rook - Ceph)
   - name:
       en: IT Gadgets
       hu: IT eszközök

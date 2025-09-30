@@ -2,12 +2,15 @@
   <div v-if="!hasConsent" class="cookie-banner">
     <div class="cookie-content">
       <p>
-        This website uses cookies to analyze site traffic and improve your experience. By continuing to use this site,
-        you agree to our use of cookies.
+        This website uses cookies to analyze site traffic and improve your
+        experience. By continuing to use this site, you agree to our use of
+        cookies.
       </p>
       <div class="cookie-buttons">
         <UButton color="primary" @click="acceptCookies">Accept</UButton>
-        <UButton color="gray" variant="ghost" @click="declineCookies">Decline</UButton>
+        <UButton color="gray" variant="ghost" @click="declineCookies"
+          >Decline</UButton
+        >
       </div>
     </div>
   </div>
