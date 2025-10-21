@@ -1,3 +1,9 @@
+# [2.8.0](https://github.com/95gabor/cv/compare/v2.7.1...v2.8.0) (2025-10-21)
+
+### Features
+
+- **header:** webp profile picture ([18053a4](https://github.com/95gabor/cv/commit/18053a448ed3949683b8e509d12689dbb6c86370))
+
 ## [2.7.1](https://github.com/95gabor/cv/compare/v2.7.0...v2.7.1) (2025-09-27)
 
 ### Bug Fixes
