@@ -63,7 +63,7 @@ function getContactHref(contact: { type: string; value: string }) {
         </div>
       </div>
       <div class="header-avatar-col">
-        <img :src="personal.picture" :alt="personal.name[lang]" class="header-avatar" />
+        <img :src="personal.picture" :alt="personal.name[lang]" class="header-avatar" fetchpriority="high" />
       </div>
       <div class="header-contact-col header-contact-right">
         <div v-for="contact in personal.contact.slice(2)" :key="contact.title">
