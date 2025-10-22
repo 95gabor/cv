@@ -39,7 +39,12 @@ function getContactHref(contact: { type: string; value: string }) {
         class="header-social-link"
         :aria-label="link.platform"
       >
-        <img :src="link.icon" :alt="link.platform" class="header-social-icon" />
+        <img
+          :src="link.icon"
+          :alt="link.platform"
+          :title="link.platform"
+          class="header-social-icon"
+        />
       </a>
     </div>
 
@@ -75,6 +80,7 @@ function getContactHref(contact: { type: string; value: string }) {
         <img
           :src="personal.picture"
           :alt="personal.name[lang]"
+          :title="personal.name[lang]"
           class="header-avatar"
           fetchpriority="high"
         />

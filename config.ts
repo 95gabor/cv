@@ -2,9 +2,9 @@ import type { SiteConfig } from './config.types';
 
 export const siteConfig: SiteConfig = {
   url: 'https://95gabor.me',
-  title: 'Gábor Pichner | TypeScript Full-Stack Developer',
+  title: 'Gábor Pichner | Senior TypeScript Full-Stack Developer',
   description:
-    'Gábor Pichner - TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, React, and cloud platforms.',
+    'Gábor Pichner - TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps.',
   keywords: [
     'Full-Stack',
     'Developer',
