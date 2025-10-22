@@ -1,4 +1,5 @@
 import { siteConfig } from './config';
+import { EOL } from 'node:os';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -55,12 +56,20 @@ export default defineNuxtConfig({
         },
         { name: 'robots', content: 'index, follow' },
       ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: `/${siteConfig.favicon}` }],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: `/${siteConfig.favicon}` },
+      ],
     },
   },
 
   // Import dynamically generated LLM configuration
-  llms: await import('./scripts/generate-llm-config').then(({ getConfig }) => getConfig(siteConfig)),
+  llms: await import('./scripts/generate-llm-config')
+    .then(({ getConfig }) => getConfig(siteConfig))
+    .catch(() => ({
+      domain: siteConfig.url,
+      title: siteConfig.title,
+      description: siteConfig.description,
+    })),
 
   content: {
     // Enable content source maps
@@ -75,7 +84,10 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/styles/_variables.scss" as *;',
+          additionalData: [
+            '@use "~/assets/styles/_variables.scss" as *;',
+            '@use "~/assets/styles/_mixins.scss" as *;',
+          ].join(EOL),
         },
       },
     },

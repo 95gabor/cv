@@ -62,22 +62,28 @@
           <!-- Structured Data for LLMs -->
           <StructuredData :cv="cv" :lang="i18n.locale.value" />
 
-          <header>
+          <header role="banner">
             <Header :personal="cv.personal" :lang="i18n.locale.value" />
           </header>
-          <main class="main-content">
+          <main class="main-content" role="main">
             <article itemscope itemtype="https://schema.org/Person">
               <LanguageSelector />
-              <section>
-                <Experience :experiences="cv.workExperience" :lang="i18n.locale.value" />
+              <section aria-labelledby="work-experience">
+                <Experience
+                  :experiences="cv.workExperience"
+                  :lang="i18n.locale.value"
+                />
               </section>
-              <section>
-                <Education :educations="cv.educations" :lang="i18n.locale.value" />
+              <section aria-labelledby="education">
+                <Education
+                  :educations="cv.educations"
+                  :lang="i18n.locale.value"
+                />
               </section>
-              <section>
+              <section aria-labelledby="skills">
                 <Skills :skills="cv.skills" :lang="i18n.locale.value" />
               </section>
-              <section>
+              <section aria-labelledby="hobbies">
                 <Hobbies :hobbies="cv.hobbies" :lang="i18n.locale.value" />
               </section>
             </article>
@@ -108,6 +114,9 @@ const i18n = useI18n();
 // Initial load
 const { data: cv, pending } = await useAsyncData<CvCollectionItem | null>(
   'cv',
-  () => queryCollection('cv').where('stem', '=', siteConfig.cv.filename).first() as Promise<CvCollectionItem>,
+  () =>
+    queryCollection('cv')
+      .where('stem', '=', 'gabor-pichner')
+      .first() as Promise<CvCollectionItem>,
 );
 </script>

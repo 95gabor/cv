@@ -4,16 +4,33 @@
       <a href="#skills"># {{ t('cv.skills') }}</a>
     </h2>
     <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
-      <ul class="space-y-2" role="list" itemscope itemtype="https://schema.org/ItemList">
+      <ul
+        class="space-y-2"
+        role="list"
+        itemscope
+        itemtype="https://schema.org/ItemList"
+      >
         <li
           v-for="(skill, index) in skills"
-          :key="skill[lang]"
+          :key="skill.name"
           role="listitem"
           itemprop="itemListElement"
           itemscope
           itemtype="https://schema.org/ListItem"
         >
-          <span itemprop="name">{{ skill[lang] }}</span>
+          <span class="skill" itemprop="name">
+            <a
+              v-if="skill.link"
+              :href="skill.link"
+              target="_blank"
+              rel="noopener"
+            >
+              {{ skill.name }}
+            </a>
+            <template v-else>
+              {{ skill.name }}
+            </template>
+          </span>
           <meta itemprop="position" :content="index + 1" />
         </li>
       </ul>

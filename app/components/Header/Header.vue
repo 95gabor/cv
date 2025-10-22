@@ -56,20 +56,40 @@ function getContactHref(contact: { type: string; value: string }) {
     <!-- Row 4: Contact Info and Avatar -->
     <div class="header-contact-row">
       <div class="header-contact-col header-contact-left">
-        <div v-for="contact in personal.contact.slice(0, 2)" :key="contact.title">
+        <div
+          v-for="contact in personal.contact.slice(0, 2)"
+          :key="contact.title"
+        >
           <b>{{ t(`contact.${contact.type}`) }}</b
           ><br />
-          <a :href="getContactHref(contact)" class="header-contact-link" target="_blank">{{ contact.value }}</a>
+          <a
+            :href="getContactHref(contact)"
+            class="header-contact-link"
+            target="_blank"
+            rel="noopener"
+            >{{ contact.value }}</a
+          >
         </div>
       </div>
       <div class="header-avatar-col">
-        <img :src="personal.picture" :alt="personal.name[lang]" class="header-avatar" fetchpriority="high" />
+        <img
+          :src="personal.picture"
+          :alt="personal.name[lang]"
+          class="header-avatar"
+          fetchpriority="high"
+        />
       </div>
       <div class="header-contact-col header-contact-right">
         <div v-for="contact in personal.contact.slice(2)" :key="contact.title">
           <b>{{ t(`contact.${contact.type}`) }}</b
           ><br />
-          <a :href="getContactHref(contact)" class="header-contact-link" target="_blank">{{ contact.value }}</a>
+          <a
+            :href="getContactHref(contact)"
+            class="header-contact-link"
+            target="_blank"
+            rel="noopener"
+            >{{ contact.value }}</a
+          >
         </div>
       </div>
     </div>

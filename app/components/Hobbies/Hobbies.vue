@@ -3,7 +3,12 @@
     <h2 id="hobbies" class="section-title">
       <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
     </h2>
-    <ul class="hobby-list" role="list" itemscope itemtype="https://schema.org/ItemList">
+    <ul
+      class="hobby-list"
+      role="list"
+      itemscope
+      itemtype="https://schema.org/ItemList"
+    >
       <li
         v-for="(hobby, index) in hobbies"
         :key="hobby.name[lang]"
@@ -14,7 +19,13 @@
         itemtype="https://schema.org/ListItem"
       >
         <span v-if="hobby.link">
-          <a :href="hobby.link" target="_blank" class="text-blue-400 underline" itemprop="url" rel="noopener">
+          <a
+            :href="hobby.link"
+            target="_blank"
+            class="text-blue-400 underline"
+            itemprop="url"
+            rel="noopener"
+          >
             <span itemprop="name">{{ hobby.name[lang] }}</span>
           </a>
         </span>

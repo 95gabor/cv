@@ -15,3 +15,7 @@ ul {
   margin: 0 auto;
   text-align: center;
 }
+
+.skill > a {
+  @include link;
+}

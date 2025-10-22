@@ -2,8 +2,14 @@ import { z } from 'zod';
 
 export type CVSupportedLangs = 'en' | 'hu';
 
-export const LocalizedStringSchema = z.object({ en: z.string(), hu: z.string() });
-export type TranslatedProperty<Value = string> = Record<CVSupportedLangs, Value>;
+export const LocalizedStringSchema = z.object({
+  en: z.string(),
+  hu: z.string(),
+});
+export type TranslatedProperty<Value = string> = Record<
+  CVSupportedLangs,
+  Value
+>;
 
 export const LinkSchema = z.object({
   platform: z.string(),
@@ -29,6 +35,11 @@ export const CompanySchema = z.object({
   link: z.string().optional(),
 });
 
+export const Technologies = z.object({
+  name: z.string(),
+  link: z.string(),
+});
+
 export const WorkExperienceSchema = z.object({
   title: LocalizedStringSchema,
   company: CompanySchema,
@@ -37,7 +48,7 @@ export const WorkExperienceSchema = z.object({
   from: z.string(),
   end: z.string().optional(),
   description: LocalizedStringSchema,
-  technologies: z.array(z.string()),
+  technologies: z.array(Technologies),
 });
 
 export const InstitutionSchema = z.object({
@@ -59,7 +70,10 @@ export const HobbySchema = z.object({
   link: z.string().optional(),
 });
 
-export const SkillSchema = LocalizedStringSchema;
+export const SkillSchema = z.object({
+  name: z.string(),
+  link: z.string().optional(),
+});
 
 export const CVSchema = z.object({
   personal: PersonalSchema,

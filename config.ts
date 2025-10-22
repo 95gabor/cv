@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
   url: 'https://95gabor.me',
   title: 'Gábor Pichner | TypeScript Full-Stack Developer',
   description:
-    'Experienced TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, and cloud platforms (AWS, Azure, GCP). Passionate about clean code, infrastructure as code, and building scalable applications.',
+    'Gábor Pichner - TypeScript Full-Stack Developer specializing in modern web technologies, cloud architecture, and DevOps. Expert in NestJS, Angular, React, and cloud platforms.',
   keywords: [
     'Full-Stack',
     'Developer',

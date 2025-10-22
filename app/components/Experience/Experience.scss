@@ -115,3 +115,22 @@
   font-weight: 400;
   font-size: 1.1em;
 }
+
+.job-meta {
+  margin-top: 0.5rem;
+}
+
+.meta-text {
+  color: var(--color-gray-500);
+  font-size: 0.875rem;
+}
+
+.meta-separator {
+  margin: 0 0.5rem;
+  color: var(--color-gray-400);
+}
+
+.company-link,
+.skill > a {
+  @include link;
+}

@@ -15,7 +15,8 @@ const { $config } = useNuxtApp();
 
 const structuredData = computed(() => {
   // Get site URL from CV data or fallback to config
-  const siteUrl = props.cv?.site?.url || $config.public.siteUrl || 'https://example.com';
+  const siteUrl =
+    props.cv?.site?.url || $config.public.siteUrl || 'https://example.com';
 
   const person = {
     '@context': 'https://schema.org',

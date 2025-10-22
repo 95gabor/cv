@@ -12,11 +12,22 @@
         itemscope
         itemtype="https://schema.org/EducationalOccupationalCredential"
       >
-        <h3 class="education-degree heading-3" itemprop="name">{{ edu.degree[lang] }}</h3>
+        <h3 class="education-degree heading-3" itemprop="name">
+          {{ edu.degree[lang] }}
+        </h3>
         <div class="education-details">
-          <span itemprop="recognizedBy" itemscope itemtype="https://schema.org/EducationalOrganization">
+          <span
+            itemprop="recognizedBy"
+            itemscope
+            itemtype="https://schema.org/EducationalOrganization"
+          >
             <span itemprop="name">
-              <a class="education-link" :href="edu.institution.link || '#'" target="_blank">
+              <a
+                class="education-link"
+                :href="edu.institution.link || '#'"
+                target="_blank"
+                rel="noopener"
+              >
                 {{ edu.institution.name[lang] }}
               </a>
             </span>

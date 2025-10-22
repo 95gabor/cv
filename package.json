@@ -11,6 +11,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "format": "prettier --write .",
     "commit": "git-cz",
     "release": "semantic-release",
     "postinstall": "nuxt prepare",
