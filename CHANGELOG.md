@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/95gabor/cv/compare/v2.9.0...v2.9.1) (2025-10-22)
+
+### Bug Fixes
+
+- **SEO:** img title, site link, title, description length
+  ([2e28d8a](https://github.com/95gabor/cv/commit/2e28d8a63fe4a61875144813fe1f56d0b25232d1))
+
 # [2.9.0](https://github.com/95gabor/cv/compare/v2.8.0...v2.9.0) (2025-10-22)
 
 ### Features
