@@ -1,26 +1,92 @@
-.section-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-}
-
-.space-y-6 > article {
-  text-align: center;
-}
-
-.education-degree {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.education-details {
-  font-size: 1.05rem;
-  margin-bottom: 0.5rem;
-}
-
-.education-link {
-  @include link;
+.section {
+  @apply modern-section;
+  
+  .section-title {
+    @apply section-header;
+    
+    a {
+      @apply section-title;
+      text-decoration: none;
+      
+      &:hover {
+        @apply text-gradient;
+      }
+    }
+  }
+  
+  .education-list {
+    @apply modern-grid grid-2;
+    
+    .education-item {
+      @apply glass-card p-8 animate-fade-in;
+      
+      .education-content {
+        .education-header {
+          @apply mb-6;
+          
+          .heading-3 {
+            @apply text-2xl font-bold text-white mb-4;
+            background: linear-gradient(135deg, #ffffff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          
+          .education-meta {
+            @apply space-y-2;
+            
+            .meta-text {
+              @apply flex items-center gap-2 text-gray-400;
+              
+              .meta-separator {
+                @apply text-gray-600;
+              }
+              
+              .institution-link {
+                @apply text-blue-400 hover:text-blue-300 transition-colors font-semibold;
+              }
+            }
+          }
+        }
+        
+        .education-period {
+          @apply mb-6;
+          
+          .period-badge {
+            @apply inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-500 bg-opacity-20 border border-blue-500 border-opacity-30 text-blue-300 font-medium;
+          }
+        }
+        
+        .education-note {
+          @apply p-4 rounded-xl bg-gradient-to-r from-yellow-500 bg-opacity-10 to-yellow-400 bg-opacity-5 border border-yellow-500 border-opacity-30;
+          
+          .note-label {
+            @apply text-sm font-medium text-gray-400 uppercase tracking-wide mb-2;
+          }
+          
+          .note-text {
+            @apply text-xl font-bold text-yellow-300;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .education-list {
+      @apply grid-1;
+      
+      .education-item {
+        @apply p-6;
+        
+        .education-content {
+          .education-header {
+            .heading-3 {
+              @apply text-xl;
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -55,13 +55,26 @@ function getContactHref(contact: { type: string; value: string }) {
 
     <!-- Row 4: Contact Info and Avatar -->
     <div class="header-contact-row">
+      <!-- Mobile: Avatar first, then contact info -->
+      <div class="header-avatar-col mobile-first">
+        <img
+          :src="personal.picture"
+          :alt="personal.name[lang]"
+          class="header-avatar"
+          fetchpriority="high"
+        />
+      </div>
+
+      <!-- Desktop: Left contact info -->
       <div class="header-contact-col header-contact-left">
         <div
-          v-for="contact in personal.contact.slice(0, 2)"
+          v-for="contact in personal.contact.slice(
+            0,
+            Math.ceil(personal.contact.length / 2),
+          )"
           :key="contact.title"
         >
-          <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+          <b>{{ t(`contact.${contact.type}`) }}</b>
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"
@@ -71,7 +84,9 @@ function getContactHref(contact: { type: string; value: string }) {
           >
         </div>
       </div>
-      <div class="header-avatar-col">
+
+      <!-- Desktop: Avatar in center -->
+      <div class="header-avatar-col desktop-center">
         <img
           :src="personal.picture"
           :alt="personal.name[lang]"
@@ -79,10 +94,16 @@ function getContactHref(contact: { type: string; value: string }) {
           fetchpriority="high"
         />
       </div>
+
+      <!-- Desktop: Right contact info -->
       <div class="header-contact-col header-contact-right">
-        <div v-for="contact in personal.contact.slice(2)" :key="contact.title">
-          <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+        <div
+          v-for="contact in personal.contact.slice(
+            Math.ceil(personal.contact.length / 2),
+          )"
+          :key="contact.title"
+        >
+          <b>{{ t(`contact.${contact.type}`) }}</b>
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"

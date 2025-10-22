@@ -1,40 +1,45 @@
 <template>
-  <section class="text-center py-10">
-    <h2 id="skills" class="section-title">
-      <a href="#skills"># {{ t('cv.skills') }}</a>
-    </h2>
-    <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
-      <ul
-        class="space-y-2"
-        role="list"
-        itemscope
-        itemtype="https://schema.org/ItemList"
-      >
-        <li
-          v-for="(skill, index) in skills"
-          :key="skill.name"
-          role="listitem"
-          itemprop="itemListElement"
-          itemscope
-          itemtype="https://schema.org/ListItem"
-        >
-          <span class="skill" itemprop="name">
-            <a
-              v-if="skill.link"
-              :href="skill.link"
-              target="_blank"
-              rel="noopener"
+  <section class="section">
+    <UContainer>
+      <h2 id="skills" class="section-title">
+        <a href="#skills"># {{ t('cv.skills') }}</a>
+      </h2>
+      <UCard>
+        <div class="skills-list" role="list">
+          <ul
+            class="skills-grid"
+            role="list"
+            itemscope
+            itemtype="https://schema.org/ItemList"
+          >
+            <li
+              v-for="(skill, index) in skills"
+              :key="skill.name"
+              class="skill-item"
+              role="listitem"
+              itemprop="itemListElement"
+              itemscope
+              itemtype="https://schema.org/ListItem"
             >
-              {{ skill.name }}
-            </a>
-            <template v-else>
-              {{ skill.name }}
-            </template>
-          </span>
-          <meta itemprop="position" :content="index + 1" />
-        </li>
-      </ul>
-    </div>
+              <span class="skill" itemprop="name">
+                <a
+                  v-if="skill.link"
+                  :href="skill.link"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {{ skill.name }}
+                </a>
+                <template v-else>
+                  {{ skill.name }}
+                </template>
+              </span>
+              <meta itemprop="position" :content="index + 1" />
+            </li>
+          </ul>
+        </div>
+      </UCard>
+    </UContainer>
   </section>
 </template>
 

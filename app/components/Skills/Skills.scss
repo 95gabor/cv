@@ -1,21 +1,73 @@
-// Add your Skills component styles here
-.section-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-  color: $primary-color;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-  text-align: center;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.skill > a {
-  @include link;
+.section {
+  @apply modern-section;
+  
+  .section-title {
+    @apply section-header;
+    
+    a {
+      @apply section-title;
+      text-decoration: none;
+      
+      &:hover {
+        @apply text-gradient;
+      }
+    }
+  }
+  
+  .skills-list {
+    @apply glass-card p-8;
+    
+    .skills-grid {
+      @apply modern-grid grid-3;
+      
+      .skill-item {
+        @apply group;
+        
+        .skill-link {
+          @apply flex items-center gap-4 p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-sm border border-white border-opacity-10 hover:bg-green-500 hover:bg-opacity-20 hover:border-green-500 hover:border-opacity-50 hover:text-green-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500 hover:shadow-opacity-20 text-gray-300 font-medium group-hover:translate-y-[-2px];
+          
+          .skill-icon {
+            @apply w-6 h-6 text-green-400;
+          }
+            
+          .skill-name {
+            @apply flex-1 font-medium;
+          }
+          
+          .skill-arrow {
+            @apply w-4 h-4 text-green-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+          }
+        }
+        
+        .skill-static {
+          @apply flex items-center gap-4 p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-sm border border-white border-opacity-10 text-gray-300 font-medium;
+          
+          .skill-icon {
+            @apply w-6 h-6 text-green-400;
+          }
+          
+          .skill-name {
+            @apply flex-1 font-medium;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .skills-list {
+      @apply p-6;
+      
+      .skills-grid {
+        @apply grid-1;
+        
+        .skill-item {
+          .skill-link,
+          .skill-static {
+            @apply p-4;
+          }
+        }
+      }
+    }
+  }
 }

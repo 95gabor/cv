@@ -1,6 +1,11 @@
 <template>
   <div class="language-selector">
-    <button @click="toggleLanguage">
+    <button 
+      @click="toggleLanguage"
+      :aria-label="`Switch to ${currentLanguage === 'EN' ? 'Hungarian' : 'English'}`"
+      class="interactive-button micro-bounce"
+    >
+      <span class="language-flag">{{ currentLanguage === 'EN' ? '🇺🇸' : '🇭🇺' }}</span>
       {{ currentLanguage }}
     </button>
   </div>

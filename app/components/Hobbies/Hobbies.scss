@@ -1,26 +1,73 @@
-.section-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-  color: $primary-color;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-}
-
-.hobby-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
-  list-style: none;
-  margin: 1.5rem 0 0 0;
-  padding: 0;
-}
-
-.hobby-item {
-  font-size: 1.1rem;
-}
-
-.hobby-item a {
-  @include link;
+.section {
+  @apply modern-section;
+  
+  .section-title {
+    @apply section-header;
+    
+    a {
+      @apply section-title;
+      text-decoration: none;
+      
+      &:hover {
+        @apply text-gradient;
+      }
+    }
+  }
+  
+  .hobbies-list {
+    @apply glass-card p-8;
+    
+    .hobbies-grid {
+      @apply modern-grid grid-3;
+      
+      .hobby-item {
+        @apply group;
+        
+        .hobby-link {
+          @apply flex items-center gap-4 p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-sm border border-white border-opacity-10 hover:bg-purple-500 hover:bg-opacity-20 hover:border-purple-500 hover:border-opacity-50 hover:text-purple-300 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500 hover:shadow-opacity-20 text-gray-300 font-medium group-hover:translate-y-[-2px];
+          
+          .hobby-icon {
+            @apply w-6 h-6 text-purple-400;
+          }
+            
+          .hobby-name {
+            @apply flex-1 font-medium;
+          }
+          
+          .hobby-arrow {
+            @apply w-4 h-4 text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
+          }
+        }
+        
+        .hobby-static {
+          @apply flex items-center gap-4 p-6 rounded-2xl bg-white bg-opacity-5 backdrop-blur-sm border border-white border-opacity-10 text-gray-300 font-medium;
+          
+          .hobby-icon {
+            @apply w-6 h-6 text-purple-400;
+          }
+          
+          .hobby-name {
+            @apply flex-1 font-medium;
+          }
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hobbies-list {
+      @apply p-6;
+      
+      .hobbies-grid {
+        @apply grid-1;
+        
+        .hobby-item {
+          .hobby-link,
+          .hobby-static {
+            @apply p-4;
+          }
+        }
+      }
+    }
+  }
 }
