@@ -7,7 +7,7 @@ COPY . .
 RUN npm run generate
 
 # --- Production Stage ---
-FROM nginx:1.29.1-alpine3.22-slim AS production
+FROM nginx:1.29.3-alpine3.22-slim AS production
 
 # Remove default nginx index page
 RUN rm -f /usr/share/nginx/html/index.html
