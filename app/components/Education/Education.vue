@@ -16,24 +16,30 @@
           {{ edu.degree[lang] }}
         </h3>
         <div class="education-details">
-          <span
-            itemprop="recognizedBy"
-            itemscope
-            itemtype="https://schema.org/EducationalOrganization"
-          >
-            <span itemprop="name">
-              <a
-                class="education-link"
-                :href="edu.institution.link || '#'"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ edu.institution.name[lang] }}
-              </a>
+          <span class="meta-text">
+            <time :datetime="edu.from" itemprop="dateCreated">{{
+              formatPeriod(edu.from, edu.end)
+            }}</time>
+            <span class="meta-separator">|</span>
+            <span
+              itemprop="recognizedBy"
+              itemscope
+              itemtype="https://schema.org/EducationalOrganization"
+            >
+              <span itemprop="name">
+                <a
+                  class="education-link"
+                  :href="edu.institution.link || '#'"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {{ edu.institution.name[lang] }}
+                </a>
+              </span>
             </span>
+            <span class="meta-separator">|</span>
+            <span itemprop="credentialCategory">{{ edu.location }}</span>
           </span>
-          <span class="meta-separator"> / </span>
-          <span itemprop="credentialCategory">{{ edu.location }}</span>
         </div>
         <p v-if="edu.note" itemprop="description">{{ edu.note[lang] }}</p>
         <meta itemprop="dateCreated" :content="edu.from" />
@@ -53,4 +59,8 @@ defineProps<{
   educations: EducationType[];
   lang: CVSupportedLangs;
 }>();
+
+const formatPeriod = (from: string, end?: string) => {
+  return end ? `${from} - ${end}` : from;
+};
 </script>
