@@ -23,7 +23,7 @@
     "@nuxt/icon": "^2.0.0",
     "@nuxt/image": "^2.0.0",
     "@nuxt/scripts": "^0.13.0",
-    "@nuxt/ui": "^4.0.0",
+    "@nuxt/ui": "^4.3.0",
     "@nuxtjs/i18n": "^10.0.0-beta.5",
     "@nuxtjs/robots": "^5.5.5",
     "@nuxtjs/sitemap": "^7.2.10",
