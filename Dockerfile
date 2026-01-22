@@ -1,5 +1,5 @@
 # --- Build Stage ---
-FROM node:24.9.0-alpine3.22 AS builder
+FROM node:24.13.0-alpine3.23 AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
@@ -7,7 +7,7 @@ COPY . .
 RUN npm run generate
 
 # --- Production Stage ---
-FROM nginx:1.29.3-alpine3.22-slim AS production
+FROM nginx:1.29.4-alpine3.23-slim AS production
 
 # Remove default nginx index page
 RUN rm -f /usr/share/nginx/html/index.html
