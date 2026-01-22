@@ -25,6 +25,40 @@ personal:
 
 workExperience:
   - title:
+      en: Full Stack developer
+      hu: Full Stack Fejlesztő
+    company:
+      name: OTP Fizz
+      link: https://fizz.hu
+    employmentType: contract
+    location: Budapest, HU
+    from: "2026"
+    description:
+      en: >
+        TBD
+      hu: >
+        TBD
+    technologies:
+      - name: NestJS
+        link: https://nestjs.com/
+      - name: TypeORM
+        link: https://typeorm.io/
+      - name: Next.js
+        link: https://nextjs.org/
+      - name: fastify
+        link: https://fastify.dev/
+      - name: Prisma
+        link: https://www.prisma.io/
+      - name: Kafka
+        link: https://kafka.apache.org/
+      - name: Azure
+        link: https://azure.microsoft.com/
+      - name: Docker
+        link: https://www.docker.com/
+      - name: OpenTelemetry
+        link: https://opentelemetry.io/
+
+  - title:
       en: SRE Engineer
       hu: SRE Engineer
     company:
@@ -32,7 +66,8 @@ workExperience:
       link: https://www.facekom.net
     employmentType: contract
     location: Budapest, HU
-    from: '2025'
+    from: "2025"
+    to: "2025"
     description:
       en: >
         As a Site Reliability Engineer, I lead reliability and scalability
@@ -67,8 +102,8 @@ workExperience:
       link: https://elevatehealth.net
     employmentType: contract
     location: Veszprém, HU
-    from: '2025'
-    end: '2025'
+    from: "2025"
+    end: "2025"
     description:
       en: >
         Managed and maintained a production Kubernetes cluster, upgraded and
@@ -111,8 +146,8 @@ workExperience:
       link: https://elevatehealth.net
     employmentType: contract
     location: Veszprém, HU
-    from: '2024'
-    end: '2025'
+    from: "2024"
+    end: "2025"
     description:
       en: >
         Provided strategic architecture and software development consulting,
@@ -139,8 +174,8 @@ workExperience:
       link: https://inwedio.com
     employmentType: contract
     location: Budapest, HU
-    from: '2024'
-    end: '2025'
+    from: "2024"
+    end: "2025"
     description:
       en: >
         Contributed to the architecture and feature development of a
@@ -193,8 +228,8 @@ workExperience:
       link: https://placcon.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2024'
-    end: '2025'
+    from: "2024"
+    end: "2025"
     description:
       en: >
         Developed a PWA for a restaurant system to replace the previous slower
@@ -228,8 +263,8 @@ workExperience:
       link: https://placcon.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2024'
-    end: '2024'
+    from: "2024"
+    end: "2024"
     description:
       en: >
         Developed a billing integration for a restaurant system with
@@ -254,8 +289,8 @@ workExperience:
       name: Emlékkód
     employmentType: contract
     location: Budapest, HU
-    from: '2024'
-    end: '2024'
+    from: "2024"
+    end: "2024"
     description:
       en: >
         Developed a complete memorial website portal with login, profile and
@@ -291,8 +326,8 @@ workExperience:
       link: https://placcon.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2023'
-    end: '2024'
+    from: "2023"
+    end: "2024"
     description:
       en: >
         Developed a QR code-based payment integration for a restaurant system.
@@ -332,8 +367,8 @@ workExperience:
       link: https://rigortech.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2023'
-    end: '2024'
+    from: "2023"
+    end: "2024"
     description:
       en: >
         Created a website for a mechanical engineering company. Later, extended
@@ -365,8 +400,8 @@ workExperience:
       link: https://placcon.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2023'
-    end: '2023'
+    from: "2023"
+    end: "2023"
     description:
       en: >
         Developed a serial port and Bluetooth-based cash register integration
@@ -398,8 +433,8 @@ workExperience:
       link: https://placcon.hu
     employmentType: contract
     location: Budapest, HU
-    from: '2022'
-    end: '2023'
+    from: "2022"
+    end: "2023"
     description:
       en: >
         Worked on the fiscal printing integration of a restaurant system. The
@@ -441,8 +476,8 @@ workExperience:
       link: https://elevatehealth.net
     employmentType: full-time
     location: Veszprém, HU
-    from: '2022'
-    end: '2024'
+    from: "2022"
+    end: "2024"
     description:
       en: >
         Promoted from previous role as a senior developer to a lead developer.
@@ -494,8 +529,8 @@ workExperience:
       link: https://elevatehealth.net
     employmentType: full-time
     location: Veszprém, HU
-    from: '2021'
-    end: '2022'
+    from: "2021"
+    end: "2022"
     description:
       en: >
         During this time at CAE Healthcare Hungary, worked on the LearningSpace
@@ -566,8 +601,8 @@ workExperience:
       link: https://www.cloudstorm.io
     employmentType: full-time
     location: Budapest, HU
-    from: '2018'
-    end: '2021'
+    from: "2018"
+    end: "2021"
     description:
       en: >
         Used to develop custom RPA solutions, but then started to work on a new
@@ -641,8 +676,8 @@ workExperience:
       link: https://uni-pannon.hu
     employmentType: full-time
     location: Veszprém, HU
-    from: '2018'
-    end: '2018'
+    from: "2018"
+    end: "2018"
     description:
       en: >
         Developed a map-based research result sharing portal for the Image
@@ -680,8 +715,8 @@ workExperience:
       link: https://uni-pannon.hu
     employmentType: full-time
     location: Veszprém, HU
-    from: '2017'
-    end: '2018'
+    from: "2017"
+    end: "2018"
     description:
       en: >
         Design, implementation and operation of a production support solution
@@ -725,8 +760,8 @@ workExperience:
       link: https://it.hu
     employmentType: intern
     location: Veszprém, HU
-    from: '2016'
-    end: '2016'
+    from: "2016"
+    end: "2016"
     description:
       en: >
         They deal with IT networking and operation. Developed a full stack
@@ -764,8 +799,8 @@ educations:
         hu: Pannon Egyetem
       link: https://uni-pannon.hu
     location: Veszprém, HU
-    from: '2014'
-    end: '2018'
+    from: "2014"
+    end: "2018"
     note:
       en: Excellent
       hu: Kiváló
@@ -778,8 +813,8 @@ educations:
         hu: Ipari Szakközépiskola
       link: https://www.ipariszakkozep.hu
     location: Veszprém, HU
-    from: '2010'
-    end: '2014'
+    from: "2010"
+    end: "2014"
 
 skills:
   - name: TypeScript / JavaScript
@@ -804,7 +839,7 @@ skills:
     link: https://www.terraform.io/
   - name: Experienced in enterprise production environment
     link: https://en.wikipedia.org/wiki/Enterprise_software
-  - name: 'Monitoring: Prometheus, Grafana, Loki, OpenTelemetry'
+  - name: "Monitoring: Prometheus, Grafana, Loki, OpenTelemetry"
     link: https://prometheus.io/
   - name: Agile Software Development (JIRA, Trello, Scrum)
     link: https://www.atlassian.com/agile
@@ -833,7 +868,7 @@ skills:
   - name: OpenAI
     link: https://platform.openai.com/
   - name: Azure ML studio
-    link: '#'
+    link: "#"
   - name: Microservice architecture
     link: https://martinfowler.com/articles/microservices.html
 
