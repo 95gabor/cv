@@ -35,9 +35,13 @@ workExperience:
     from: "2026"
     description:
       en: >
-        TBD
+        Full-stack Developer in the Advisory team at fizz.hu, 
+        developing and maintaining product search and recommendation 
+        features for the e-commerce platform.
       hu: >
-        TBD
+        Full-stack fejlesztő a fizz.hu Advisory csapatában, 
+        az e-kereskedelmi platform termékkeresési és 
+        ajánlórendszerének fejlesztésén és karbantartásán dolgoztam.
     technologies:
       - name: NestJS
         link: https://nestjs.com/
@@ -67,7 +71,7 @@ workExperience:
     employmentType: contract
     location: Budapest, HU
     from: "2025"
-    to: "2025"
+    end: "2025"
     description:
       en: >
         As a Site Reliability Engineer, I lead reliability and scalability
