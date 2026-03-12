@@ -1,3 +1,10 @@
+## [2.10.1](https://github.com/95gabor/cv/compare/v2.10.0...v2.10.1) (2026-03-12)
+
+### Bug Fixes
+
+- **npm:** update dependencies
+  ([4a15abc](https://github.com/95gabor/cv/commit/4a15abc4f9bd2ceff1d0b2303fd0dcbe299beeed))
+
 ## [2.9.1](https://github.com/95gabor/cv/compare/v2.9.0...v2.9.1) (2025-10-22)
 
 ### Bug Fixes
