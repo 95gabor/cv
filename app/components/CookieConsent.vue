@@ -8,7 +8,7 @@
       </p>
       <div class="cookie-buttons">
         <UButton color="primary" @click="acceptCookies">Accept</UButton>
-        <UButton color="gray" variant="ghost" @click="declineCookies"
+        <UButton color="neutral" variant="ghost" @click="declineCookies"
           >Decline</UButton
         >
       </div>
@@ -18,6 +18,12 @@
 
 <script setup lang="ts">
 const hasConsent = ref(true);
+
+type GtagFn = (...args: unknown[]) => void;
+
+const getGtag = (): GtagFn | undefined => {
+  return (window as Window & { gtag?: GtagFn }).gtag;
+};
 
 // Check if user has already made a choice
 onMounted(() => {
@@ -31,7 +37,7 @@ const acceptCookies = () => {
   localStorage.setItem('cookie-consent', 'accepted');
   hasConsent.value = true;
   // Enable Google Analytics
-  window.gtag('consent', 'update', {
+  getGtag()?.('consent', 'update', {
     analytics_storage: 'granted',
   });
 };
@@ -40,7 +46,7 @@ const declineCookies = () => {
   localStorage.setItem('cookie-consent', 'declined');
   hasConsent.value = true;
   // Disable Google Analytics
-  window.gtag('consent', 'update', {
+  getGtag()?.('consent', 'update', {
     analytics_storage: 'denied',
   });
 };

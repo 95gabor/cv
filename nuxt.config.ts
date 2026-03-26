@@ -110,7 +110,6 @@ export default defineNuxtConfig({
         file: 'hu.json',
       },
     ],
-    lazy: true,
     langDir: 'locales',
     defaultLocale: 'en',
     strategy: 'prefix_except_default',
