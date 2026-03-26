@@ -107,7 +107,6 @@ import LanguageSelector from './components/LanguageSelector.vue';
 import MetaData from './components/MetaData.vue';
 import StructuredData from './components/StructuredData.vue';
 import type { CvCollectionItem } from '@nuxt/content';
-import { siteConfig } from '../config';
 
 const i18n = useI18n();
 
