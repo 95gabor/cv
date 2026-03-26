@@ -31,7 +31,7 @@
               {{ skill.name }}
             </template>
           </span>
-          <meta itemprop="position" :content="index + 1" />
+          <meta itemprop="position" :content="String(index + 1)" >
         </li>
       </ul>
     </div>

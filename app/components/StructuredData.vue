@@ -14,9 +14,8 @@ const props = defineProps<{
 const { $config } = useNuxtApp();
 
 const structuredData = computed(() => {
-  // Get site URL from CV data or fallback to config
-  const siteUrl =
-    props.cv?.site?.url || $config.public.siteUrl || 'https://example.com';
+  // Get site URL from runtime config fallback
+  const siteUrl = $config.public.siteUrl || 'https://example.com';
 
   const person = {
     '@context': 'https://schema.org',
@@ -35,18 +34,18 @@ const structuredData = computed(() => {
     telephone: props.cv.personal.contact.find(c => c.type === 'phone')?.value,
     worksFor: props.cv.workExperience.map(job => ({
       '@type': 'Organization',
-      name: job.company,
-      url: job.companyUrl || undefined,
+      name: job.company.name,
+      url: job.company.link || undefined,
     })),
     alumniOf: props.cv.educations.map(edu => ({
       '@type': 'EducationalOrganization',
-      name: edu.institution[props.lang],
+      name: edu.institution.name[props.lang],
       address: {
         '@type': 'PostalAddress',
         addressLocality: edu.location,
       },
     })),
-    knowsAbout: props.cv.skills.map(skill => skill[props.lang]),
+    knowsAbout: props.cv.skills.map(skill => skill.name),
     hasOccupation: props.cv.workExperience.map(job => ({
       '@type': 'Occupation',
       name: job.title[props.lang],

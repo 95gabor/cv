@@ -44,7 +44,7 @@ function getContactHref(contact: { type: string; value: string }) {
           :alt="link.platform"
           :title="link.platform"
           class="header-social-icon"
-        />
+        >
       </a>
     </div>
 
@@ -53,9 +53,9 @@ function getContactHref(contact: { type: string; value: string }) {
 
     <!-- Row 3: Title with lines -->
     <div class="header-title-row">
-      <hr class="header-title-line" />
+      <hr class="header-title-line" >
       <span class="header-title">{{ personal.title[lang] }}</span>
-      <hr class="header-title-line" />
+      <hr class="header-title-line" >
     </div>
 
     <!-- Row 4: Contact Info and Avatar -->
@@ -63,10 +63,10 @@ function getContactHref(contact: { type: string; value: string }) {
       <div class="header-contact-col header-contact-left">
         <div
           v-for="contact in personal.contact.slice(0, 2)"
-          :key="contact.title"
+          :key="`${contact.type}-${contact.value}`"
         >
           <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+          ><br >
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"
@@ -83,12 +83,15 @@ function getContactHref(contact: { type: string; value: string }) {
           :title="personal.name[lang]"
           class="header-avatar"
           fetchpriority="high"
-        />
+        >
       </div>
       <div class="header-contact-col header-contact-right">
-        <div v-for="contact in personal.contact.slice(2)" :key="contact.title">
+        <div
+          v-for="contact in personal.contact.slice(2)"
+          :key="`${contact.type}-${contact.value}`"
+        >
           <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+          ><br >
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"
