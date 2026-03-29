@@ -57,5 +57,5 @@
     "semantic-release": "^25.0.1",
     "typescript": "^5.9.3"
   },
-  "version": "2.10.1"
+  "version": "2.10.2"
 }

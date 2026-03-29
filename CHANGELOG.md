@@ -1,3 +1,10 @@
+## [2.10.2](https://github.com/95gabor/cv/compare/v2.10.1...v2.10.2) (2026-03-29)
+
+### Bug Fixes
+
+- **ci:** align typescript with nuxt ui peer dependency
+  ([aacaab4](https://github.com/95gabor/cv/commit/aacaab44ae737624e8d72e28b079de451c098add))
+
 ## [2.10.1](https://github.com/95gabor/cv/compare/v2.10.0...v2.10.1) (2026-03-12)
 
 ### Bug Fixes
