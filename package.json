@@ -55,7 +55,7 @@
     "prettier": "^3.6.2",
     "sass": "^1.89.0",
     "semantic-release": "^25.0.1",
-    "typescript": "^6.0.2"
+    "typescript": "^5.9.3"
   },
   "version": "2.10.1"
 }
