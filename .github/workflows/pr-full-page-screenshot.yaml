@@ -1,4 +1,4 @@
-name: PR full-page screenshot
+name: PR visual regression (Percy)
 
 on:
   pull_request:
@@ -9,12 +9,13 @@ on:
       - ready_for_review
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
-  screenshot:
+  percy:
     runs-on: ubuntu-24.04
+    env:
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,20 +31,5 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
-      - name: Capture full-page screenshot
-        run: npm run test:e2e:screenshot
-
-      - name: Upload full-page screenshot artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: pr-full-page-screenshot
-          path: artifacts/screenshots/*.png
-          if-no-files-found: error
-          retention-days: 7
-
-      - name: Comment screenshot on pull request
-        if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: opengisch/comment-pr-with-images@0.0.5
-        with:
-          images: artifacts/screenshots/*.png
+      - name: Run Percy visual snapshot tests
+        run: npm run test:e2e:visual:ci
