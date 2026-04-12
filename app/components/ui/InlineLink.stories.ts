@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3-vite';
+import type { Meta, StoryObj } from '@storybook/vue3';
 import InlineLink from './InlineLink.vue';
 
 const meta = {
@@ -26,8 +26,10 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+type InlineLinkStoryArgs = InstanceType<typeof InlineLink>['$props'];
+
 export const ExternalLink: Story = {
-  render: args => ({
+  render: (args: InlineLinkStoryArgs) => ({
     components: { InlineLink },
     setup() {
       return { args };
@@ -40,7 +42,7 @@ export const PlainTextFallback: Story = {
   args: {
     href: undefined,
   },
-  render: args => ({
+  render: (args: InlineLinkStoryArgs) => ({
     components: { InlineLink },
     setup() {
       return { args };
