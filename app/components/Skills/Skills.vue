@@ -1,8 +1,6 @@
 <template>
   <section class="text-center py-10" data-testid="skills-section">
-    <h2 id="skills" class="section-title">
-      <a href="#skills"># {{ t('cv.skills') }}</a>
-    </h2>
+    <SectionTitle id="skills" :label="t('cv.skills')" />
     <div
       class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto"
       data-testid="skills-grid"
@@ -24,14 +22,9 @@
           :data-testid="`skill-item-${index}`"
         >
           <span class="skill" itemprop="name">
-            <a
-              v-if="skill.link"
-              :href="skill.link"
-              target="_blank"
-              rel="noopener"
-            >
+            <InlineLink v-if="skill.link" :href="skill.link">
               {{ skill.name }}
-            </a>
+            </InlineLink>
             <template v-else>
               {{ skill.name }}
             </template>
@@ -46,6 +39,8 @@
 <script setup lang="ts">
 import './Skills.scss';
 import type { CVSupportedLangs, Skill } from '~/types/cv';
+import InlineLink from '../ui/InlineLink.vue';
+import SectionTitle from '../ui/SectionTitle.vue';
 
 const { t } = useI18n();
 

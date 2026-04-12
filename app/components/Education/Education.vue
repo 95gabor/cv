@@ -3,9 +3,7 @@
     class="text-center py-10 bg-gray-700"
     data-testid="education-section"
   >
-    <h2 id="education" class="section-title">
-      <a href="#education"># {{ t('cv.education') }}</a>
-    </h2>
+    <SectionTitle id="education" :label="t('cv.education')" />
     <div class="space-y-6" role="list" data-testid="education-list">
       <article
         v-for="(edu, idx) in educations"
@@ -31,14 +29,12 @@
               itemtype="https://schema.org/EducationalOrganization"
             >
               <span itemprop="name">
-                <a
+                <InlineLink
                   class="education-link"
-                  :href="edu.institution.link || '#'"
-                  target="_blank"
-                  rel="noopener"
+                  :href="edu.institution.link"
                 >
                   {{ edu.institution.name[lang] }}
-                </a>
+                </InlineLink>
               </span>
             </span>
             <span class="meta-separator">|</span>
@@ -56,6 +52,8 @@
 <script setup lang="ts">
 import './Education.scss';
 import type { CVSupportedLangs, Education as EducationType } from '~/types/cv';
+import InlineLink from '../ui/InlineLink.vue';
+import SectionTitle from '../ui/SectionTitle.vue';
 
 const { t } = useI18n();
 

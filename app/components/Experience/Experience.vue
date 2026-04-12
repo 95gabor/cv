@@ -1,9 +1,7 @@
 <template>
   <section class="section" data-testid="experience-section">
     <UContainer>
-      <h2 id="work-experience" class="section-title">
-        <a href="#work-experience"># {{ t('cv.workExperience') }}</a>
-      </h2>
+      <SectionTitle id="work-experience" :label="t('cv.workExperience')" />
       <UCard data-testid="experience-card">
         <div class="experience-list" role="list" data-testid="experience-list">
           <article
@@ -35,16 +33,14 @@
                       itemscope
                       itemtype="https://schema.org/Organization"
                     >
-                      <a
+                      <InlineLink
                         v-if="job.company.link"
                         :href="job.company.link"
-                        target="_blank"
-                        rel="noopener"
                         class="company-link"
                         itemprop="url"
                       >
                         <span itemprop="name">{{ job.company.name }}</span>
-                      </a>
+                      </InlineLink>
                       <span v-else itemprop="name">{{ job.company.name }}</span>
                     </span>
                     <template v-if="job.employmentType">
@@ -95,13 +91,9 @@
                     role="listitem"
                   >
                     <span class="skill" itemprop="skill">
-                      <a
-                        v-if="tech.link"
-                        :href="tech.link"
-                        target="_blank"
-                        rel="noopener"
-                        >{{ tech.name }}</a
-                      >
+                      <InlineLink v-if="tech.link" :href="tech.link">{{
+                        tech.name
+                      }}</InlineLink>
                       <template v-else>
                         {{ tech.name }}
                       </template>
@@ -121,6 +113,8 @@
 <script setup lang="ts">
 import './Experience.scss';
 import type { CVSupportedLangs, WorkExperience } from '~/types/cv';
+import InlineLink from '../ui/InlineLink.vue';
+import SectionTitle from '../ui/SectionTitle.vue';
 
 const { t } = useI18n();
 
