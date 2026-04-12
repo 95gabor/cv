@@ -23,8 +23,10 @@ const nextLanguage = computed(() => {
   return i18n.locale.value === 'en' ? 'HU' : 'EN';
 });
 
-const toggleLanguage = () => {
-  i18n.setLocale(i18n.locale.value === 'en' ? 'hu' : 'en');
+const toggleLanguage = async () => {
+  const nextLocale = i18n.locale.value === 'en' ? 'hu' : 'en';
+  await i18n.setLocale(nextLocale);
+  i18n.locale.value = nextLocale;
 };
 </script>
 
