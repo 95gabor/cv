@@ -32,7 +32,7 @@
           </a>
         </span>
         <span v-else itemprop="name">{{ hobby.name[lang] }}</span>
-        <meta itemprop="position" :content="String(index + 1)" />
+        <meta itemprop="position" :content="String(index + 1)" >
       </li>
     </ul>
   </section>

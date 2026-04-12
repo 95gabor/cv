@@ -46,8 +46,8 @@
           </span>
         </div>
         <p v-if="edu.note" itemprop="description">{{ edu.note[lang] }}</p>
-        <meta itemprop="dateCreated" :content="edu.from" />
-        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" />
+        <meta itemprop="dateCreated" :content="edu.from" >
+        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" >
       </article>
     </div>
   </section>

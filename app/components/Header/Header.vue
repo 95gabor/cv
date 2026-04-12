@@ -56,7 +56,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
           :alt="link.platform"
           :title="link.platform"
           class="header-social-icon"
-        />
+        >
       </a>
     </div>
 
@@ -67,11 +67,11 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
 
     <!-- Row 3: Title with lines -->
     <div class="header-title-row">
-      <hr class="header-title-line" />
+      <hr class="header-title-line" >
       <span class="header-title" data-testid="header-title">{{
         props.personal.title[props.lang]
       }}</span>
-      <hr class="header-title-line" />
+      <hr class="header-title-line" >
     </div>
 
     <!-- Row 4: Contact Info and Avatar -->
@@ -86,7 +86,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
           :data-testid="getContactTestId('left', idx)"
         >
           <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+          ><br >
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"
@@ -104,7 +104,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
           class="header-avatar"
           fetchpriority="high"
           data-testid="header-avatar"
-        />
+        >
       </div>
       <div
         class="header-contact-col header-contact-right"
@@ -116,7 +116,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
           :data-testid="getContactTestId('right', idx)"
         >
           <b>{{ t(`contact.${contact.type}`) }}</b
-          ><br />
+          ><br >
           <a
             :href="getContactHref(contact)"
             class="header-contact-link"

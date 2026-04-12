@@ -22,7 +22,7 @@ test.describe('CV page', () => {
     await page.goto('/');
 
     const cookieBanner = page.getByTestId('cookie-banner');
-    await expect(cookieBanner).toBeVisible();
+    await expect(cookieBanner).toBeVisible({ timeout: 15_000 });
     await page.getByTestId('cookie-accept').click();
     await expect(cookieBanner).toBeHidden();
 
@@ -35,10 +35,15 @@ test.describe('CV page', () => {
   test('switches languages using selector', async ({ page }) => {
     await page.goto('/');
 
+    // Waiting for a client-only element ensures hydration has completed.
+    await expect(page.getByTestId('cookie-banner')).toBeVisible({
+      timeout: 15_000,
+    });
+
     const languageToggle = page.getByTestId('language-toggle');
     await expect(languageToggle).toHaveText('EN');
     await languageToggle.click();
-    await expect(languageToggle).toHaveText('HU');
+    await expect(languageToggle).toHaveText('HU', { timeout: 15_000 });
 
     await expect(
       page
