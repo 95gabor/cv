@@ -1,8 +1,6 @@
 <template>
   <section class="text-center py-10 bg-gray-700" data-testid="hobbies-section">
-    <h2 id="hobbies" class="section-title">
-      <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
-    </h2>
+    <SectionTitle id="hobbies" :label="t('cv.hobbies')" />
     <ul
       class="hobby-list"
       role="list"
@@ -20,17 +18,14 @@
         itemtype="https://schema.org/ListItem"
         :data-testid="`hobby-item-${index}`"
       >
-        <span v-if="hobby.link">
-          <a
-            :href="hobby.link"
-            target="_blank"
-            class="text-blue-400 underline"
-            itemprop="url"
-            rel="noopener"
-          >
-            <span itemprop="name">{{ hobby.name[lang] }}</span>
-          </a>
-        </span>
+        <InlineLink
+          v-if="hobby.link"
+          :href="hobby.link"
+          class="text-blue-400 underline"
+          itemprop="url"
+        >
+          <span itemprop="name">{{ hobby.name[lang] }}</span>
+        </InlineLink>
         <span v-else itemprop="name">{{ hobby.name[lang] }}</span>
         <meta itemprop="position" :content="String(index + 1)" >
       </li>
@@ -41,6 +36,8 @@
 <script setup lang="ts">
 import './Hobbies.scss';
 import type { CVSupportedLangs, Hobby } from '~/types/cv';
+import InlineLink from '../ui/InlineLink.vue';
+import SectionTitle from '../ui/SectionTitle.vue';
 
 const { t } = useI18n();
 

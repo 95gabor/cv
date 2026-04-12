@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import './Header.scss';
 import type { CVSupportedLangs, Contact, Personal } from '~/types/cv';
+import InlineLink from '../ui/InlineLink.vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -41,12 +42,10 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
   <div class="cv-header" data-testid="cv-header">
     <!-- Row 1: Social Links -->
     <div class="header-social-row" data-testid="header-social-links">
-      <a
+      <InlineLink
         v-for="link in personal.links"
         :key="link.platform"
         :href="link.url"
-        target="_blank"
-        rel="noopener"
         class="header-social-link"
         :aria-label="link.platform"
         :data-testid="getSocialLinkTestId(link.platform)"
@@ -57,7 +56,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
           :title="link.platform"
           class="header-social-icon"
         >
-      </a>
+      </InlineLink>
     </div>
 
     <!-- Row 2: Name -->
@@ -87,12 +86,10 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
         >
           <b>{{ t(`contact.${contact.type}`) }}</b
           ><br >
-          <a
+          <InlineLink
             :href="getContactHref(contact)"
             class="header-contact-link"
-            target="_blank"
-            rel="noopener"
-            >{{ contact.value }}</a
+            >{{ contact.value }}</InlineLink
           >
         </div>
       </div>
@@ -117,12 +114,10 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
         >
           <b>{{ t(`contact.${contact.type}`) }}</b
           ><br >
-          <a
+          <InlineLink
             :href="getContactHref(contact)"
             class="header-contact-link"
-            target="_blank"
-            rel="noopener"
-            >{{ contact.value }}</a
+            >{{ contact.value }}</InlineLink
           >
         </div>
       </div>
