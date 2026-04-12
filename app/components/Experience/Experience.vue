@@ -1,11 +1,11 @@
 <template>
-  <section class="section">
+  <section class="section" data-testid="experience-section">
     <UContainer>
       <h2 id="work-experience" class="section-title">
         <a href="#work-experience"># {{ t('cv.workExperience') }}</a>
       </h2>
-      <UCard>
-        <div class="experience-list" role="list">
+      <UCard data-testid="experience-card">
+        <div class="experience-list" role="list" data-testid="experience-list">
           <article
             v-for="(job, idx) in experiences"
             :key="job.description.en"
@@ -13,10 +13,15 @@
             role="listitem"
             itemscope
             itemtype="https://schema.org/JobPosting"
+            :data-testid="`experience-item-${idx}`"
           >
             <div class="job-content">
               <header class="job-header">
-                <h3 class="heading-3" itemprop="title">
+                <h3
+                  class="heading-3"
+                  itemprop="title"
+                  :data-testid="`experience-item-title-${idx}`"
+                >
                   {{ job.title[lang] }}
                 </h3>
                 <div class="job-meta">
@@ -78,7 +83,11 @@
                 <span class="tech-label">{{
                   t('experience.technologies')
                 }}</span>
-                <ul class="tech-list" role="list">
+                <ul
+                  class="tech-list"
+                  role="list"
+                  :data-testid="`experience-item-tech-list-${idx}`"
+                >
                   <li
                     v-for="tech in job.technologies"
                     :key="tech.name"
@@ -101,7 +110,7 @@
                 </ul>
               </div>
             </div>
-            <hr v-if="idx < experiences.length - 1" class="job-divider" >
+            <hr v-if="idx < experiences.length - 1" class="job-divider" />
           </article>
         </div>
       </UCard>

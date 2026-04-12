@@ -1,14 +1,18 @@
 <template>
-  <section class="text-center py-10">
+  <section class="text-center py-10" data-testid="skills-section">
     <h2 id="skills" class="section-title">
       <a href="#skills"># {{ t('cv.skills') }}</a>
     </h2>
-    <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
+    <div
+      class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto"
+      data-testid="skills-grid"
+    >
       <ul
         class="space-y-2"
         role="list"
         itemscope
         itemtype="https://schema.org/ItemList"
+        data-testid="skills-list"
       >
         <li
           v-for="(skill, index) in skills"
@@ -17,6 +21,7 @@
           itemprop="itemListElement"
           itemscope
           itemtype="https://schema.org/ListItem"
+          :data-testid="`skill-item-${index}`"
         >
           <span class="skill" itemprop="name">
             <a
@@ -31,7 +36,7 @@
               {{ skill.name }}
             </template>
           </span>
-          <meta itemprop="position" :content="String(index + 1)" >
+          <meta itemprop="position" :content="String(index + 1)" />
         </li>
       </ul>
     </div>

@@ -1,6 +1,12 @@
 <template>
-  <div class="language-selector">
-    <button @click="toggleLanguage">
+  <div class="language-selector" data-testid="language-selector">
+    <button
+      type="button"
+      class="language-toggle-button"
+      data-testid="language-toggle"
+      :aria-label="`Switch language to ${nextLanguage}`"
+      @click="toggleLanguage"
+    >
       {{ currentLanguage }}
     </button>
   </div>
@@ -11,6 +17,10 @@ const i18n = useI18n();
 
 const currentLanguage = computed(() => {
   return i18n.locale.value === 'en' ? 'EN' : 'HU';
+});
+
+const nextLanguage = computed(() => {
+  return i18n.locale.value === 'en' ? 'HU' : 'EN';
 });
 
 const toggleLanguage = () => {

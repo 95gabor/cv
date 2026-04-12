@@ -1,16 +1,20 @@
 <template>
-  <section class="text-center py-10 bg-gray-700">
+  <section
+    class="text-center py-10 bg-gray-700"
+    data-testid="education-section"
+  >
     <h2 id="education" class="section-title">
       <a href="#education"># {{ t('cv.education') }}</a>
     </h2>
-    <div class="space-y-6" role="list">
+    <div class="space-y-6" role="list" data-testid="education-list">
       <article
-        v-for="edu in educations"
+        v-for="(edu, idx) in educations"
         :key="edu.degree[lang]"
         class="education-item"
         role="listitem"
         itemscope
         itemtype="https://schema.org/EducationalOccupationalCredential"
+        :data-testid="`education-item-${idx}`"
       >
         <h3 class="education-degree heading-3" itemprop="name">
           {{ edu.degree[lang] }}
@@ -42,8 +46,8 @@
           </span>
         </div>
         <p v-if="edu.note" itemprop="description">{{ edu.note[lang] }}</p>
-        <meta itemprop="dateCreated" :content="edu.from" >
-        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" >
+        <meta itemprop="dateCreated" :content="edu.from" />
+        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" />
       </article>
     </div>
   </section>

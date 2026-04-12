@@ -1,5 +1,5 @@
 <template>
-  <section class="text-center py-10 bg-gray-700">
+  <section class="text-center py-10 bg-gray-700" data-testid="hobbies-section">
     <h2 id="hobbies" class="section-title">
       <a href="#hobbies"># {{ t('cv.hobbies') }}</a>
     </h2>
@@ -8,6 +8,7 @@
       role="list"
       itemscope
       itemtype="https://schema.org/ItemList"
+      data-testid="hobbies-list"
     >
       <li
         v-for="(hobby, index) in hobbies"
@@ -17,6 +18,7 @@
         itemprop="itemListElement"
         itemscope
         itemtype="https://schema.org/ListItem"
+        :data-testid="`hobby-item-${index}`"
       >
         <span v-if="hobby.link">
           <a
@@ -30,7 +32,7 @@
           </a>
         </span>
         <span v-else itemprop="name">{{ hobby.name[lang] }}</span>
-        <meta itemprop="position" :content="String(index + 1)">
+        <meta itemprop="position" :content="String(index + 1)" />
       </li>
     </ul>
   </section>

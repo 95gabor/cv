@@ -1,6 +1,6 @@
 <template>
   <MetaData />
-  <div class="app">
+  <div class="app" data-testid="cv-app">
     <div class="grid-background" />
 
     <UContainer class="cv-container">
@@ -62,28 +62,38 @@
           <!-- Structured Data for LLMs -->
           <StructuredData :cv="cv" :lang="i18n.locale.value" />
 
-          <header role="banner">
+          <header role="banner" data-testid="cv-header-wrapper">
             <Header :personal="cv.personal" :lang="i18n.locale.value" />
           </header>
-          <main class="main-content" role="main">
-            <article itemscope itemtype="https://schema.org/Person">
+          <main class="main-content" role="main" data-testid="cv-main">
+            <article
+              itemscope
+              itemtype="https://schema.org/Person"
+              data-testid="cv-article"
+            >
               <LanguageSelector />
-              <section aria-labelledby="work-experience">
+              <section
+                aria-labelledby="work-experience"
+                data-testid="section-work-experience"
+              >
                 <Experience
                   :experiences="cv.workExperience"
                   :lang="i18n.locale.value"
                 />
               </section>
-              <section aria-labelledby="education">
+              <section
+                aria-labelledby="education"
+                data-testid="section-education"
+              >
                 <Education
                   :educations="cv.educations"
                   :lang="i18n.locale.value"
                 />
               </section>
-              <section aria-labelledby="skills">
+              <section aria-labelledby="skills" data-testid="section-skills">
                 <Skills :skills="cv.skills" :lang="i18n.locale.value" />
               </section>
-              <section aria-labelledby="hobbies">
+              <section aria-labelledby="hobbies" data-testid="section-hobbies">
                 <Hobbies :hobbies="cv.hobbies" :lang="i18n.locale.value" />
               </section>
             </article>
