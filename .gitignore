@@ -16,6 +16,7 @@ logs
 # Playwright outputs
 playwright-report
 test-results
+artifacts/screenshots
 
 # Misc
 .DS_Store
