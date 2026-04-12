@@ -5,13 +5,13 @@ import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 
-const props = defineProps<{
+const { personal, lang } = defineProps<{
   personal: Personal;
   lang: CVSupportedLangs;
 }>();
 
-const leftContacts = computed(() => props.personal.contact.slice(0, 2));
-const rightContacts = computed(() => props.personal.contact.slice(2));
+const leftContacts = computed(() => personal.contact.slice(0, 2));
+const rightContacts = computed(() => personal.contact.slice(2));
 
 function getContactHref(contact: Contact) {
   switch (contact.type) {
@@ -42,7 +42,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
     <!-- Row 1: Social Links -->
     <div class="header-social-row" data-testid="header-social-links">
       <a
-        v-for="link in props.personal.links"
+        v-for="link in personal.links"
         :key="link.platform"
         :href="link.url"
         target="_blank"
@@ -62,14 +62,14 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
 
     <!-- Row 2: Name -->
     <h1 class="header-name" data-testid="header-name">
-      {{ props.personal.name[props.lang] }}
+      {{ personal.name[lang] }}
     </h1>
 
     <!-- Row 3: Title with lines -->
     <div class="header-title-row">
       <hr class="header-title-line" >
       <span class="header-title" data-testid="header-title">{{
-        props.personal.title[props.lang]
+        personal.title[lang]
       }}</span>
       <hr class="header-title-line" >
     </div>
@@ -98,9 +98,9 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
       </div>
       <div class="header-avatar-col">
         <img
-          :src="props.personal.picture"
-          :alt="props.personal.name[props.lang]"
-          :title="props.personal.name[props.lang]"
+          :src="personal.picture"
+          :alt="personal.name[lang]"
+          :title="personal.name[lang]"
           class="header-avatar"
           fetchpriority="high"
           data-testid="header-avatar"
