@@ -8,7 +8,6 @@ permissions:
 
 env:
   RUNNER_IMAGE: &runner-image ubuntu-24.04
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 concurrency:
   group: release-${{ github.ref }}
