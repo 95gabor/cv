@@ -20,6 +20,7 @@ permissions:
 env:
   RUNNER_IMAGE: &runner-image ubuntu-24.04
   DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}

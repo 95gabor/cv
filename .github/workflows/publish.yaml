@@ -17,6 +17,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   RUNNER_IMAGE: &runner-image ubuntu-24.04
   DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   setup:
