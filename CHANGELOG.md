@@ -1,3 +1,11 @@
+## [2.11.1](https://github.com/95gabor/cv/compare/v2.11.0...v2.11.1) (2026-04-13)
+
+### Bug Fixes
+
+- improve print mode color contrast
+  ([#110](https://github.com/95gabor/cv/issues/110))
+  ([21c1023](https://github.com/95gabor/cv/commit/21c1023bd2f74f4a11a6eb3c351c9e453262761c))
+
 # [2.11.0](https://github.com/95gabor/cv/compare/v2.10.2...v2.11.0) (2026-04-13)
 
 ### Bug Fixes
