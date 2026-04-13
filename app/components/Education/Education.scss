@@ -1,4 +1,4 @@
-@use '~/assets/styles/_placeholders.scss' as *;
+@use '~/assets/styles/placeholders' as *;
 
 .education-details {
   @extend %cv-meta-row;
@@ -29,6 +29,5 @@
 @media print {
   .education-item {
     break-inside: avoid;
-    page-break-inside: avoid;
   }
 }

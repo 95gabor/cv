@@ -1,7 +1,4 @@
 // Reusable Sass placeholders for CV layouts (`@extend` from component SCSS).
-// Example:
-//   @use '~/assets/styles/_placeholders.scss' as *;
-//   .education-details { @extend %cv-meta-row; }
 
 %cv-meta-row {
   display: flex;

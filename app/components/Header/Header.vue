@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import './Header.scss';
-import type { CVSupportedLangs, Contact, Personal } from '~/types/cv';
+import type { CVSupportedLangs, Contact, Link, Personal } from '~/types/cv';
 import InlineLink from '../ui/InlineLink.vue';
 import { useI18n } from 'vue-i18n';
 
@@ -36,6 +36,32 @@ function getSocialLinkTestId(platform: string) {
 function getContactTestId(position: 'left' | 'right', idx: number) {
   return `contact-${position}-${idx}`;
 }
+
+const isPrintLayout = ref(false);
+
+function resolveIconSrc(link: Link) {
+  return isPrintLayout.value ? link.icon.dark : link.icon.light;
+}
+
+function onBeforePrint() {
+  isPrintLayout.value = true;
+}
+
+function onAfterPrint() {
+  isPrintLayout.value = false;
+}
+
+onMounted(() => {
+  if (!import.meta.client) return;
+  globalThis.addEventListener('beforeprint', onBeforePrint);
+  globalThis.addEventListener('afterprint', onAfterPrint);
+});
+
+onBeforeUnmount(() => {
+  if (!import.meta.client) return;
+  globalThis.removeEventListener('beforeprint', onBeforePrint);
+  globalThis.removeEventListener('afterprint', onAfterPrint);
+});
 </script>
 
 <template>
@@ -51,7 +77,7 @@ function getContactTestId(position: 'left' | 'right', idx: number) {
         :data-testid="getSocialLinkTestId(link.platform)"
       >
         <img
-          :src="link.icon.light"
+          :src="resolveIconSrc(link)"
           :alt="link.platform"
           :title="link.platform"
           class="header-social-icon"

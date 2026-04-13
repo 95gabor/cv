@@ -106,7 +106,7 @@
                 </ul>
               </div>
             </div>
-            <hr v-if="idx < experiences.length - 1" class="job-divider" />
+            <hr v-if="idx < experiences.length - 1" class="job-divider" >
           </article>
         </div>
       </UCard>
