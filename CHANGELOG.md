@@ -1,3 +1,31 @@
+# [2.11.0](https://github.com/95gabor/cv/compare/v2.10.2...v2.11.0) (2026-04-13)
+
+### Bug Fixes
+
+- align lockfile with npm 11.11 ci
+  ([5acc843](https://github.com/95gabor/cv/commit/5acc84383e79550890333fbeee7769edb28316aa))
+- **ci:** comment PR with generated screenshot
+  ([b66472b](https://github.com/95gabor/cv/commit/b66472b8ad34cc0c07a1b13b18774d0e57af142f))
+- **ci:** publish PR screenshots without docker action
+  ([68a6f71](https://github.com/95gabor/cv/commit/68a6f719d042ea28282b8aa621b06ce6fa5bf0e6))
+- regenerate lockfile for npm 11 ci
+  ([0136416](https://github.com/95gabor/cv/commit/0136416fa7d777923f0e8d7c3f39e57db52f8d3c))
+- stabilize locale toggle and e2e execution
+  ([e430d38](https://github.com/95gabor/cv/commit/e430d3808c72a4309ef3f1593c9f20b54f03938d))
+- stabilize storybook build and lint setup
+  ([88c1cd1](https://github.com/95gabor/cv/commit/88c1cd1c3ecc97ef157436a69afa50104905dbe6))
+
+### Features
+
+- add playwright e2e tests and test ids
+  ([6df87c9](https://github.com/95gabor/cv/commit/6df87c9d67e13af2854502b9dc5a0b9b0b1ba28c))
+- add storybook with reusable ui components
+  ([df79f18](https://github.com/95gabor/cv/commit/df79f1867ea784ab732e791bf537467954befb0d))
+- **ci:** add PR full-page screenshot comments
+  ([449e789](https://github.com/95gabor/cv/commit/449e789a765599a87c76a69c1394824a1e15943d))
+- **ci:** migrate PR visuals to Percy diffs
+  ([becbdbc](https://github.com/95gabor/cv/commit/becbdbc3ae559baa2c3c904bed143eb38e49a5b1))
+
 ## [2.10.2](https://github.com/95gabor/cv/compare/v2.10.1...v2.10.2) (2026-03-29)
 
 ### Bug Fixes
