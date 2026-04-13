@@ -1,0 +1,296 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
+      - ready_for_review
+  push:
+    branches:
+      - main
+  merge_group:
+
+permissions:
+  contents: read
+
+env:
+  RUNNER_IMAGE: &runner-image ubuntu-24.04
+  DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Setup context
+    runs-on: *runner-image
+    outputs:
+      base_sha: ${{ steps.range.outputs.base_sha }}
+      head_sha: ${{ steps.range.outputs.head_sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve commit range
+        id: range
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "base_sha=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
+            echo "head_sha=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "base_sha=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
+            echo "head_sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          fi
+
+  lint:
+    name: Lint
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Run lint
+        run: npm run lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Run typecheck
+        run: npm run typecheck
+
+  generate:
+    name: Generate static site
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Generate static site
+        run: npm run generate
+
+  e2e:
+    name: Playwright E2E
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  commitlint-title:
+    name: Validate PR title
+    if: github.event_name == 'pull_request'
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Lint PR title (Conventional Commits)
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: echo "$PR_TITLE" | npx commitlint
+
+  commitlint-commits:
+    name: Validate PR commits
+    if: github.event_name == 'pull_request'
+    needs: setup
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Lint commit messages in PR range
+        run: >-
+          npx commitlint
+          --from "${{ needs.setup.outputs.base_sha }}"
+          --to "${{ needs.setup.outputs.head_sha }}"
+          --verbose
+
+  visual-regression:
+    name: PR visual regression (Percy)
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.pull_request.draft
+    runs-on: *runner-image
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    env:
+      PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Percy visual snapshot tests
+        run: npm run test:e2e:visual:ci
+
+      - name: Upload full-page screenshot artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-full-page-screenshot
+          path: artifacts/screenshots/*.png
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Publish screenshot for PR comment
+        id: publish_screenshot
+        env:
+          TARGET_BRANCH: pr-visual-snapshots
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          SCREENSHOT_FILE: artifacts/screenshots/cv-full-page.png
+        run: |
+          set -euo pipefail
+
+          if [ ! -f "$SCREENSHOT_FILE" ]; then
+            echo "Missing screenshot file: $SCREENSHOT_FILE"
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          worktree_dir="$(mktemp -d)"
+          if git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null 2>&1; then
+            git fetch origin "$TARGET_BRANCH:$TARGET_BRANCH"
+            git worktree add "$worktree_dir" "$TARGET_BRANCH"
+          else
+            git worktree add -b "$TARGET_BRANCH" "$worktree_dir"
+          fi
+
+          target_path="pr-$PR_NUMBER/cv-full-page.png"
+          mkdir -p "$worktree_dir/pr-$PR_NUMBER"
+          cp "$SCREENSHOT_FILE" "$worktree_dir/$target_path"
+
+          cd "$worktree_dir"
+          git add "$target_path"
+          if git diff --cached --quiet; then
+            echo "Screenshot unchanged; skipping commit."
+          else
+            git commit -m "chore: update screenshot for PR #$PR_NUMBER"
+            max_attempts=3
+            attempt=1
+            while [ "$attempt" -le "$max_attempts" ]; do
+              if git push origin "HEAD:$TARGET_BRANCH"; then
+                break
+              fi
+
+              if [ "$attempt" -eq "$max_attempts" ]; then
+                echo "Failed to push screenshot branch after retries."
+                exit 1
+              fi
+
+              echo "Push failed; rebasing and retrying..."
+              git fetch origin "$TARGET_BRANCH"
+              git pull --rebase origin "$TARGET_BRANCH"
+              attempt=$((attempt + 1))
+            done
+          fi
+
+          git worktree remove "$worktree_dir" --force
+          echo "screenshot_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${TARGET_BRANCH}/pr-${PR_NUMBER}/cv-full-page.png?run=${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+
+      - name: Comment screenshot on pull request
+        if: steps.publish_screenshot.outputs.screenshot_url != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.pull_request.number }}
+          SCREENSHOT_URL: ${{ steps.publish_screenshot.outputs.screenshot_url }}
+        run: |
+          set -euo pipefail
+
+          marker='<!-- pr-full-page-screenshot -->'
+          body="${marker}
+          ### Latest full-page screenshot
+          ![Full-page PR screenshot](${SCREENSHOT_URL})"
+
+          existing_comment_id="$(
+            gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments?per_page=100" \
+              --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- pr-full-page-screenshot -->")))] | .[0].id // ""'
+          )"
+
+          if [ -n "${existing_comment_id}" ]; then
+            gh api \
+              --method PATCH \
+              "repos/${GITHUB_REPOSITORY}/issues/comments/${existing_comment_id}" \
+              -f body="${body}" \
+              >/dev/null
+            exit 0
+          fi
+
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
+            -f body="${body}" \
+            >/dev/null
+
+  docker-build:
+    name: Validate Docker build
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (no push)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: false
+          tags: cv:ci
+          cache-from: type=gha,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
+          cache-to: type=gha,mode=max,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
