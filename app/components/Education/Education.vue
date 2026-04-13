@@ -3,7 +3,7 @@
     class="text-center py-10 bg-gray-700"
     data-testid="education-section"
   >
-    <SectionTitle id="education" :label="t('cv.education')" />
+    <SectionTitle id="education" accent :label="t('cv.education')" />
     <div class="space-y-6" role="list" data-testid="education-list">
       <article
         v-for="(edu, idx) in educations"
@@ -29,10 +29,7 @@
               itemtype="https://schema.org/EducationalOrganization"
             >
               <span itemprop="name">
-                <InlineLink
-                  class="education-link"
-                  :href="edu.institution.link"
-                >
+                <InlineLink class="education-link" :href="edu.institution.link">
                   {{ edu.institution.name[lang] }}
                 </InlineLink>
               </span>
@@ -42,8 +39,8 @@
           </span>
         </div>
         <p v-if="edu.note" itemprop="description">{{ edu.note[lang] }}</p>
-        <meta itemprop="dateCreated" :content="edu.from" >
-        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" >
+        <meta itemprop="dateCreated" :content="edu.from" />
+        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" />
       </article>
     </div>
   </section>

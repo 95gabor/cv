@@ -1,0 +1,40 @@
+@use '~/assets/styles/_variables.scss' as *;
+
+.section-title,
+.section-title--accent {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  color: $text-primary;
+}
+
+.section-title--accent {
+  color: $primary-color;
+}
+
+.section-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.section-title a:hover {
+  color: $primary-color;
+  text-decoration: underline;
+}
+
+@media print {
+  /* Override screen accent (`--accent` adds orange); links and nested spans must stay black */
+  h2.section-title,
+  h2.section-title.section-title--accent,
+  .section-title a,
+  .section-title a:visited,
+  .section-title a:hover {
+    color: #000;
+  }
+}

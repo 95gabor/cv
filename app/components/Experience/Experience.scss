@@ -1,3 +1,17 @@
+@use '~/assets/styles/_placeholders.scss' as *;
+
+.job-meta {
+  @extend %cv-meta-row;
+}
+
+.meta-text {
+  @extend %cv-meta-text;
+}
+
+.meta-separator {
+  @extend %cv-meta-separator;
+}
+
 .section {
   @apply py-10;
 }
@@ -17,7 +31,7 @@
 .job-item {
   @apply border-b border-gray-700/50 pb-8 last:border-0 last:pb-0;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -66,6 +80,10 @@
   list-style: none;
   margin: 0.5rem 0 0 0;
   padding: 0;
+
+  @media print {
+    gap: 0.5rem 0.5rem;
+  }
 }
 
 .tech-item {
@@ -76,7 +94,7 @@
 .tech-label {
   display: block;
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -84,53 +102,22 @@
   @include hover-transition;
 }
 
-.section-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
-}
-
 .job-divider {
   border: none;
   border-top: 2px solid $border-color;
-  margin: 2.5rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   width: 60%;
   opacity: 0.5;
-}
-
-.job-meta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.meta-separator {
-  color: $border-color;
-  font-weight: 400;
-  font-size: 1.1em;
-}
-
-.job-meta {
-  margin-top: 0.5rem;
-}
-
-.meta-text {
-  color: var(--color-gray-500);
-  font-size: 0.875rem;
-}
-
-.meta-separator {
-  margin: 0 0.5rem;
-  color: var(--color-gray-400);
 }
 
 .company-link,
 .skill > a {
   @include link;
+}
+
+@media print {
+  .job-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }

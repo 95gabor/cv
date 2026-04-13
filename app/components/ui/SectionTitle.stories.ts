@@ -12,6 +12,9 @@ const meta = {
     prefix: {
       control: 'text',
     },
+    accent: {
+      control: 'boolean',
+    },
   },
 } satisfies Meta<typeof SectionTitle>;
 
@@ -29,5 +32,11 @@ export const CustomPrefix: Story = {
 export const CustomAnchor: Story = {
   args: {
     href: '#custom-anchor',
+  },
+};
+
+export const Accent: Story = {
+  args: {
+    accent: true,
   },
 };

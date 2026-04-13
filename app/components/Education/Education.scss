@@ -1,9 +1,15 @@
-.section-title {
-  text-transform: uppercase;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.05em;
+@use '~/assets/styles/_placeholders.scss' as *;
+
+.education-details {
+  @extend %cv-meta-row;
+}
+
+.meta-text {
+  @extend %cv-meta-text;
+}
+
+.meta-separator {
+  @extend %cv-meta-separator;
 }
 
 .space-y-6 > article {
@@ -13,29 +19,16 @@
 .education-degree {
   font-size: 1.3rem;
   font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.education-details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.meta-text {
-  color: var(--color-gray-500);
-  font-size: 0.875rem;
-}
-
-.meta-separator {
-  margin: 0 0.5rem;
-  color: var(--color-gray-400);
+  margin-bottom: 1rem;
 }
 
 .education-link {
   @include link;
+}
+
+@media print {
+  .education-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
