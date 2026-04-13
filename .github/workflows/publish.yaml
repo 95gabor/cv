@@ -16,6 +16,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   RUNNER_IMAGE: &runner-image ubuntu-24.04
+  DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
 
 jobs:
   setup:
@@ -65,8 +66,8 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=gha,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
+          cache-to: type=gha,mode=max,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
           platforms: |
             linux/amd64
             linux/arm64
