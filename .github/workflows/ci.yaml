@@ -17,6 +17,9 @@ on:
 permissions:
   contents: read
 
+env:
+  RUNNER_IMAGE: &runner-image ubuntu-24.04
+
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
@@ -24,7 +27,7 @@ concurrency:
 jobs:
   setup:
     name: Setup context
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     outputs:
       base_sha: ${{ steps.range.outputs.base_sha }}
       head_sha: ${{ steps.range.outputs.head_sha }}
@@ -48,7 +51,7 @@ jobs:
   lint:
     name: Lint
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -62,7 +65,7 @@ jobs:
   typecheck:
     name: Typecheck
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -76,7 +79,7 @@ jobs:
   generate:
     name: Generate static site
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -90,7 +93,7 @@ jobs:
   e2e:
     name: Playwright E2E
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -116,7 +119,7 @@ jobs:
     name: Validate PR title
     if: github.event_name == 'pull_request'
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -133,7 +136,7 @@ jobs:
     name: Validate PR commits
     if: github.event_name == 'pull_request'
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -158,7 +161,7 @@ jobs:
       !github.event.pull_request.draft &&
       secrets.PERCY_TOKEN != ''
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     permissions:
       contents: write
       pull-requests: write

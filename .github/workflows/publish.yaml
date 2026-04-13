@@ -15,11 +15,12 @@ concurrency:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  RUNNER_IMAGE: &runner-image ubuntu-24.04
 
 jobs:
   setup:
     name: Setup context
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     outputs:
       version_tag: ${{ steps.tag.outputs.version_tag }}
     steps:
@@ -33,7 +34,7 @@ jobs:
   docker-image:
     name: Publish Docker image
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     permissions:
       contents: read
       packages: write
@@ -73,7 +74,7 @@ jobs:
   pages:
     name: Publish GitHub Pages
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     permissions:
       contents: read
       pages: write

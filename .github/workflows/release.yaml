@@ -6,6 +6,9 @@ on:
 permissions:
   contents: read
 
+env:
+  RUNNER_IMAGE: &runner-image ubuntu-24.04
+
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
@@ -13,7 +16,7 @@ concurrency:
 jobs:
   setup:
     name: Setup context
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +27,7 @@ jobs:
   release:
     name: Run semantic release
     needs: setup
-    runs-on: ubuntu-24.04
+    runs-on: *runner-image
     permissions:
       contents: write
       issues: write
