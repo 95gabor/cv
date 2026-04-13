@@ -14,19 +14,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  setup:
-    name: Setup context
-    runs-on: *runner-image
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Bootstrap Node
-        uses: ./.github/actions/node-bootstrap
-
   release:
     name: Run semantic release
-    needs: setup
     runs-on: *runner-image
     permissions:
       contents: write
