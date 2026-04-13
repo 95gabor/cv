@@ -2,6 +2,19 @@
   @apply min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900;
 }
 
+// App shell layout (root template)
+.cv-container {
+  position: relative;
+}
+
+.cv-content {
+  max-width: 56rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .grid-background {
   @apply absolute inset-0 bg-[url('/grid.svg')] bg-center;
   mask-image: linear-gradient(180deg, white, rgba(255, 255, 255, 0));
@@ -104,21 +117,14 @@
 .main-content {
   background: #dadada;
   padding: 2rem;
+
+  @media print {
+    background: #fff;
+  }
 }
 
 html {
   scroll-behavior: smooth;
-}
-
-.section-title a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.section-title a:hover {
-  color: $primary-color;
-  text-decoration: underline;
 }
 
 h2 {

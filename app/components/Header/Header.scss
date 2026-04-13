@@ -1,6 +1,10 @@
 .cv-header {
   text-align: center;
   margin-top: 1rem;
+
+  @media print {
+    margin-top: 0;
+  }
 }
 
 .header-social-row {
@@ -45,6 +49,10 @@
   @media (max-width: 640px) {
     font-size: 2rem;
   }
+
+  @media print {
+    color: #000;
+  }
 }
 
 .header-title-row {
@@ -71,6 +79,10 @@
 
   @media (max-width: 640px) {
     font-size: 1.1rem;
+  }
+
+  @media print {
+    color: #000;
   }
 }
 
@@ -140,12 +152,20 @@
     width: 200px;
     height: 200px;
   }
+
+  @media print {
+    border: 0px;
+  }
 }
 
 .header-contact-col,
 .header-contact-link {
   color: $text-primary;
   text-decoration: none;
+
+  @media print {
+    color: #000;
+  }
 }
 
 .header-contact-link:hover {

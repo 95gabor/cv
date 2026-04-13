@@ -1,6 +1,6 @@
 <template>
   <section class="text-center py-10" data-testid="skills-section">
-    <SectionTitle id="skills" :label="t('cv.skills')" />
+    <SectionTitle id="skills" accent :label="t('cv.skills')" />
     <div
       class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto"
       data-testid="skills-grid"

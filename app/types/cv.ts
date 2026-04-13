@@ -14,7 +14,10 @@ export type TranslatedProperty<Value = string> = Record<
 export const LinkSchema = z.object({
   platform: z.string(),
   url: z.string(),
-  icon: z.string(),
+  icon: z.object({
+    dark: z.string(),
+    light: z.string(),
+  }),
 });
 
 export const ContactSchema = z.object({

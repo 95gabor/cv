@@ -1,7 +1,11 @@
 <template>
   <section class="section" data-testid="experience-section">
     <UContainer>
-      <SectionTitle id="work-experience" :label="t('cv.workExperience')" />
+      <SectionTitle
+        id="work-experience"
+        accent
+        :label="t('cv.workExperience')"
+      />
       <UCard data-testid="experience-card">
         <div class="experience-list" role="list" data-testid="experience-list">
           <article

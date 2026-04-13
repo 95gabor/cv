@@ -1,0 +1,23 @@
+// Reusable Sass placeholders for CV layouts (`@extend` from component SCSS).
+
+%cv-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+%cv-meta-text {
+  color: var(--color-gray-500);
+  font-size: 0.875rem;
+}
+
+%cv-meta-separator {
+  margin: 0 0.5rem;
+  color: var(--color-gray-400);
+  font-weight: 400;
+  font-size: 1.1em;
+}

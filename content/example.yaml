@@ -9,10 +9,14 @@ personal:
   links:
     - platform: LinkedIn
       url: https://linkedin.com/in/johndoe-mechanical
-      icon: /icons/logos/linkedin.png
+      icon:
+        dark: /icons/logos/dark/linkedin.png
+        light: /icons/logos/light/linkedin.png
     - platform: GitHub
       url: https://github.com/johndoe
-      icon: /icons/logos/github.png
+      icon:
+        dark: /icons/logos/dark/github.png
+        light: /icons/logos/light/github.png
   contact:
     - type: location
       value: Detroit, MI, USA

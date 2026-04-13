@@ -1,6 +1,6 @@
 <template>
   <section class="text-center py-10 bg-gray-700" data-testid="hobbies-section">
-    <SectionTitle id="hobbies" :label="t('cv.hobbies')" />
+    <SectionTitle id="hobbies" accent :label="t('cv.hobbies')" />
     <ul
       class="hobby-list"
       role="list"
