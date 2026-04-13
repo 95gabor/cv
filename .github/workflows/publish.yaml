@@ -19,16 +19,8 @@ env:
   DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
 
 jobs:
-  setup:
-    name: Setup context
-    runs-on: *runner-image
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
   docker-image:
     name: Publish Docker image
-    needs: setup
     runs-on: *runner-image
     permissions:
       contents: read
@@ -73,7 +65,6 @@ jobs:
 
   pages:
     name: Publish GitHub Pages
-    needs: setup
     runs-on: *runner-image
     permissions:
       contents: read
