@@ -125,3 +125,21 @@ h2 {
   margin-top: 3rem;
   text-align: center;
 }
+
+@media print {
+  .main-content {
+    background: #fff;
+  }
+
+  h1 {
+    color: #fff;
+  }
+
+  h2 {
+    color: #000;
+  }
+
+  .header-avatar-col {
+    border: 1px solid #fff;
+  }
+}
