@@ -35,7 +35,7 @@
     "@nuxt/scripts": "^0.13.0",
     "@nuxt/ui": "^4.0.0",
     "@nuxtjs/i18n": "^10.0.0-beta.5",
-    "@nuxtjs/robots": "^6.0.6",
+    "@nuxtjs/robots": "^6.0.8",
     "@nuxtjs/sitemap": "^8.0.9",
     "@unhead/vue": "^2.1.13",
     "nuxt": "^4.0.3",
