@@ -14,37 +14,43 @@
 }
 
 .section-title--accent {
+  // Darker accent for light surfaces to satisfy contrast.
+  color: $primary-color-strong;
+}
+
+.section-title--on-dark.section-title--accent {
+  // Use brand accent on dark surfaces where contrast is sufficient.
   color: $primary-color;
 }
 
 .section-title a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid $section-title-border;
-  border-radius: 9999px;
-  background-color: $section-title-surface;
   color: inherit;
   text-decoration: none;
-  transition:
-    color 0.2s,
-    border-color 0.2s,
-    background-color 0.2s;
+  transition: color 0.2s;
 }
 
 .section-title a:hover {
-  color: $primary-color;
-  border-color: $primary-color;
-  background-color: $section-title-surface-hover;
-  text-decoration: underline;
+  color: $primary-color-strong-hover;
 }
 
-.section-title a:focus-visible {
+.section-title--on-dark a:hover {
+  color: $primary-color;
+  filter: brightness(1.08);
+}
+
+.section-title--on-dark a:focus-visible {
   outline: 2px solid $primary-color;
+}
+
+.section-title:not(.section-title--on-dark) a:focus-visible {
+  outline: 2px solid $primary-color-strong-hover;
   outline-offset: 4px;
-  border-color: $primary-color;
-  background-color: $section-title-surface-hover;
+}
+
+.section-title--on-dark a:focus-visible,
+.section-title:not(.section-title--on-dark) a:focus-visible {
+  text-decoration: underline;
+  outline-offset: 4px;
 }
 
 @media print {
@@ -55,7 +61,5 @@
   .section-title a:visited,
   .section-title a:hover {
     color: $text-print;
-    border-color: transparent;
-    background-color: transparent;
   }
 }
