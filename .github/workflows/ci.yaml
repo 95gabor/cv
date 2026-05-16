@@ -41,14 +41,13 @@ jobs:
 
       - name: Resolve commit range
         id: range
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            echo "base_sha=${{ github.event.pull_request.base.sha }}" >> "$GITHUB_OUTPUT"
-            echo "head_sha=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "base_sha=${{ github.event.before }}" >> "$GITHUB_OUTPUT"
-            echo "head_sha=${{ github.sha }}" >> "$GITHUB_OUTPUT"
-          fi
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: bash ./.github/scripts/ci/resolve-commit-range.sh
 
   lint:
     name: Lint
@@ -88,6 +87,65 @@ jobs:
 
       - name: Generate static site
         run: npm run generate
+
+  lighthouse:
+    name: Lighthouse (SEO + accessibility)
+    runs-on: *runner-image
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Generate static site
+        run: npm run generate
+
+      - name: Run Lighthouse CI
+        id: lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Upload Lighthouse filesystem reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: .lighthouseci/
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Build Lighthouse PR comment body
+        id: lighthouse_comment
+        if: >-
+          always() &&
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          LIGHTHOUSE_MANIFEST: ${{ steps.lighthouse.outputs.manifest }}
+          LIGHTHOUSE_LINKS: ${{ steps.lighthouse.outputs.links }}
+          COMMENT_MARKER: '<!-- pr-lighthouse-results -->'
+          COMMENT_BODY_FILE: lighthouse-pr-comment.md
+        run: node ./.github/scripts/ci/lighthouse/build-comment-body.js
+
+      - name: Comment Lighthouse results on pull request
+        if: >-
+          always() &&
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.pull_request.number }}
+          COMMENT_MARKER: '<!-- pr-lighthouse-results -->'
+          COMMENT_BODY_FILE: lighthouse-pr-comment.md
+        run: bash ./.github/scripts/ci/upsert-pr-comment.sh
 
   e2e:
     name: Playwright E2E
@@ -191,90 +249,23 @@ jobs:
           TARGET_BRANCH: pr-visual-snapshots
           PR_NUMBER: ${{ github.event.pull_request.number }}
           SCREENSHOT_FILE: artifacts/screenshots/cv-full-page.png
-        run: |
-          set -euo pipefail
+        run: bash ./.github/scripts/ci/pr-screenshot/publish-screenshot.sh
 
-          if [ ! -f "$SCREENSHOT_FILE" ]; then
-            echo "Missing screenshot file: $SCREENSHOT_FILE"
-            exit 1
-          fi
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          worktree_dir="$(mktemp -d)"
-          if git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null 2>&1; then
-            git fetch origin "$TARGET_BRANCH:$TARGET_BRANCH"
-            git worktree add "$worktree_dir" "$TARGET_BRANCH"
-          else
-            git worktree add -b "$TARGET_BRANCH" "$worktree_dir"
-          fi
-
-          target_path="pr-$PR_NUMBER/cv-full-page.png"
-          mkdir -p "$worktree_dir/pr-$PR_NUMBER"
-          cp "$SCREENSHOT_FILE" "$worktree_dir/$target_path"
-
-          cd "$worktree_dir"
-          git add "$target_path"
-          if git diff --cached --quiet; then
-            echo "Screenshot unchanged; skipping commit."
-          else
-            git commit -m "chore: update screenshot for PR #$PR_NUMBER"
-            max_attempts=3
-            attempt=1
-            while [ "$attempt" -le "$max_attempts" ]; do
-              if git push origin "HEAD:$TARGET_BRANCH"; then
-                break
-              fi
-
-              if [ "$attempt" -eq "$max_attempts" ]; then
-                echo "Failed to push screenshot branch after retries."
-                exit 1
-              fi
-
-              echo "Push failed; rebasing and retrying..."
-              git fetch origin "$TARGET_BRANCH"
-              git pull --rebase origin "$TARGET_BRANCH"
-              attempt=$((attempt + 1))
-            done
-          fi
-
-          git worktree remove "$worktree_dir" --force
-          echo "screenshot_url=https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${TARGET_BRANCH}/pr-${PR_NUMBER}/cv-full-page.png?run=${GITHUB_RUN_ID}" >> "$GITHUB_OUTPUT"
+      - name: Build screenshot PR comment body
+        if: steps.publish_screenshot.outputs.screenshot_url != ''
+        env:
+          SCREENSHOT_URL: ${{ steps.publish_screenshot.outputs.screenshot_url }}
+          COMMENT_BODY_FILE: pr-screenshot-comment.md
+        run: bash ./.github/scripts/ci/pr-screenshot/build-comment-body.sh
 
       - name: Comment screenshot on pull request
         if: steps.publish_screenshot.outputs.screenshot_url != ''
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.pull_request.number }}
-          SCREENSHOT_URL: ${{ steps.publish_screenshot.outputs.screenshot_url }}
-        run: |
-          set -euo pipefail
-
-          marker='<!-- pr-full-page-screenshot -->'
-          body="${marker}
-          ### Latest full-page screenshot
-          ![Full-page PR screenshot](${SCREENSHOT_URL})"
-
-          existing_comment_id="$(
-            gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments?per_page=100" \
-              --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | contains("<!-- pr-full-page-screenshot -->")))] | .[0].id // ""'
-          )"
-
-          if [ -n "${existing_comment_id}" ]; then
-            gh api \
-              --method PATCH \
-              "repos/${GITHUB_REPOSITORY}/issues/comments/${existing_comment_id}" \
-              -f body="${body}" \
-              >/dev/null
-            exit 0
-          fi
-
-          gh api \
-            --method POST \
-            "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
-            -f body="${body}" \
-            >/dev/null
+          COMMENT_MARKER: '<!-- pr-full-page-screenshot -->'
+          COMMENT_BODY_FILE: pr-screenshot-comment.md
+        run: bash ./.github/scripts/ci/upsert-pr-comment.sh
 
   docker-build:
     name: Validate Docker build

@@ -28,7 +28,7 @@
   transition: background 0.2s;
 
   &:hover {
-    background: rgba(249, 115, 22, 0.08);
+    background: rgba($primary-color, 0.08);
   }
 }
 
@@ -51,7 +51,7 @@
   }
 
   @media print {
-    color: #000;
+    color: $text-print;
   }
 }
 
@@ -82,7 +82,7 @@
   }
 
   @media print {
-    color: #000;
+    color: $text-print;
   }
 }
 
@@ -164,7 +164,7 @@
   text-decoration: none;
 
   @media print {
-    color: #000;
+    color: $text-print;
   }
 }
 

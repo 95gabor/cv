@@ -15,6 +15,7 @@
         <li
           v-for="(skill, index) in skills"
           :key="skill.name"
+          class="skills-list-item"
           role="listitem"
           itemprop="itemListElement"
           itemscope
