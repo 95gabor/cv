@@ -3,7 +3,6 @@
     <SectionTitle
       id="hobbies"
       accent
-      contrast-context="dark"
       :label="t('cv.hobbies')"
     />
     <ul

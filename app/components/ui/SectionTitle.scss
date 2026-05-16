@@ -18,11 +18,6 @@
   color: $primary-color-strong;
 }
 
-.section-title--on-dark.section-title--accent {
-  // Use brand accent on dark surfaces where contrast is sufficient.
-  color: $primary-color;
-}
-
 .section-title a {
   color: inherit;
   text-decoration: none;
@@ -32,25 +27,10 @@
 .section-title a:hover {
   color: $primary-color-strong-hover;
 }
-
-.section-title--on-dark a:hover {
-  color: $primary-color;
-  filter: brightness(1.08);
-}
-
-.section-title--on-dark a:focus-visible {
-  outline: 2px solid $primary-color;
-}
-
-.section-title:not(.section-title--on-dark) a:focus-visible {
+.section-title a:focus-visible {
   outline: 2px solid $primary-color-strong-hover;
   outline-offset: 4px;
-}
-
-.section-title--on-dark a:focus-visible,
-.section-title:not(.section-title--on-dark) a:focus-visible {
   text-decoration: underline;
-  outline-offset: 4px;
 }
 
 @media print {

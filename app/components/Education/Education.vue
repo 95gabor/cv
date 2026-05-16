@@ -6,7 +6,6 @@
     <SectionTitle
       id="education"
       accent
-      contrast-context="dark"
       :label="t('cv.education')"
     />
     <div class="space-y-6" role="list" data-testid="education-list">
