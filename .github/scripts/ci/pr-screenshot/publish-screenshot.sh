@@ -6,8 +6,10 @@ if [ ! -f "${SCREENSHOT_FILE}" ]; then
   exit 1
 fi
 
-git config user.name "github-actions[bot]"
-git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+git_user_name="${GIT_USER_NAME:-github-actions[bot]}"
+git_user_email="${GIT_USER_EMAIL:-41898282+github-actions[bot]@users.noreply.github.com}"
+git config user.name "${git_user_name}"
+git config user.email "${git_user_email}"
 
 worktree_dir="$(mktemp -d)"
 cleanup() {
