@@ -73,7 +73,7 @@ const declineCookies = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba($bg-dark, 0.9);
   padding: 1rem;
   z-index: 1000;
   backdrop-filter: blur(10px);
@@ -90,7 +90,7 @@ const declineCookies = () => {
 
   p {
     margin: 0;
-    color: white;
+    color: $text-primary;
     flex: 1;
     min-width: 300px;
   }
