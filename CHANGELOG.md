@@ -1,3 +1,17 @@
+# [2.12.0](https://github.com/95gabor/cv/compare/v2.11.1...v2.12.0) (2026-05-16)
+
+### Bug Fixes
+
+- **styles:** align section title accent with primary palette
+  ([#127](https://github.com/95gabor/cv/issues/127))
+  ([9dbccd7](https://github.com/95gabor/cv/commit/9dbccd76451d160cee4c66eb7807b2a5af28526a))
+
+### Features
+
+- **accessibility:** add lighthouse SEO CI and improve a11y
+  ([#126](https://github.com/95gabor/cv/issues/126))
+  ([016fbb4](https://github.com/95gabor/cv/commit/016fbb447d086ef2c9d5e038eee317e0419e36b2))
+
 ## [2.11.1](https://github.com/95gabor/cv/compare/v2.11.0...v2.11.1) (2026-04-13)
 
 ### Bug Fixes
