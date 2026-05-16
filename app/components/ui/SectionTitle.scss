@@ -14,24 +14,37 @@
 }
 
 .section-title--accent {
-  // Darker accent keeps contrast above WCAG AA on light sections.
-  color: $primary-color-strong;
+  color: $primary-color;
 }
 
 .section-title a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid $section-title-border;
+  border-radius: 9999px;
+  background-color: $section-title-surface;
   color: inherit;
   text-decoration: none;
-  transition: color 0.2s;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background-color 0.2s;
 }
 
 .section-title a:hover {
-  color: $primary-color-strong-hover;
+  color: $primary-color;
+  border-color: $primary-color;
+  background-color: $section-title-surface-hover;
   text-decoration: underline;
 }
 
 .section-title a:focus-visible {
-  outline: 2px solid $primary-color-strong-hover;
+  outline: 2px solid $primary-color;
   outline-offset: 4px;
+  border-color: $primary-color;
+  background-color: $section-title-surface-hover;
 }
 
 @media print {
@@ -42,5 +55,7 @@
   .section-title a:visited,
   .section-title a:hover {
     color: $text-print;
+    border-color: transparent;
+    background-color: transparent;
   }
 }
