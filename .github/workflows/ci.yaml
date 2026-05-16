@@ -92,6 +92,10 @@ jobs:
   lighthouse:
     name: Lighthouse (SEO + accessibility)
     runs-on: *runner-image
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -103,6 +107,7 @@ jobs:
         run: npm run generate
 
       - name: Run Lighthouse CI
+        id: lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./.lighthouserc.json
@@ -114,9 +119,107 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: lighthouse-report
-          path: artifacts/lighthouse/
+          path: .lighthouseci/
           if-no-files-found: warn
           retention-days: 7
+
+      - name: Build Lighthouse PR comment body
+        id: lighthouse_comment
+        if: >-
+          always() &&
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          LIGHTHOUSE_MANIFEST: ${{ steps.lighthouse.outputs.manifest }}
+          LIGHTHOUSE_LINKS: ${{ steps.lighthouse.outputs.links }}
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+
+          const marker = '<!-- pr-lighthouse-results -->';
+          const manifestRaw = process.env.LIGHTHOUSE_MANIFEST?.trim() || '[]';
+          const linksRaw = process.env.LIGHTHOUSE_LINKS?.trim() || '{}';
+
+          let manifest = [];
+          let links = {};
+
+          try {
+            manifest = JSON.parse(manifestRaw);
+          } catch {
+            manifest = [];
+          }
+
+          try {
+            links = JSON.parse(linksRaw);
+          } catch {
+            links = {};
+          }
+
+          const toPercent = (score) =>
+            typeof score === 'number' ? `${Math.round(score * 100)}%` : 'n/a';
+
+          const lines = [
+            marker,
+            '### Lighthouse results',
+            '',
+            '| URL | Performance | Accessibility | Best Practices | SEO |',
+            '| --- | ---: | ---: | ---: | ---: |',
+          ];
+
+          if (manifest.length === 0) {
+            lines.push('| _No Lighthouse summary generated_ | n/a | n/a | n/a | n/a |');
+          } else {
+            for (const entry of manifest) {
+              const summary = entry.summary || {};
+              const url = entry.url || 'unknown';
+              const reportUrl = links[url];
+              const urlCell = reportUrl ? `[${url}](${reportUrl})` : `\`${url}\``;
+
+              lines.push(
+                `| ${urlCell} | ${toPercent(summary.performance)} | ${toPercent(summary.accessibility)} | ${toPercent(summary['best-practices'])} | ${toPercent(summary.seo)} |`,
+              );
+            }
+          }
+
+          lines.push('');
+          lines.push('_Updated automatically by CI._');
+          fs.writeFileSync('lighthouse-pr-comment.md', `${lines.join('\n')}\n`);
+          NODE
+
+      - name: Comment Lighthouse results on pull request
+        if: >-
+          always() &&
+          github.event_name == 'pull_request' &&
+          github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+
+          body="$(cat lighthouse-pr-comment.md)"
+          marker='<!-- pr-lighthouse-results -->'
+
+          existing_comment_id="$(
+            gh api "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments?per_page=100" \
+              --jq '[.[] | select(.user.login == "github-actions[bot]" and (.body | contains("'"$marker"'")))] | .[0].id // ""'
+          )"
+
+          if [ -n "${existing_comment_id}" ]; then
+            gh api \
+              --method PATCH \
+              "repos/${GITHUB_REPOSITORY}/issues/comments/${existing_comment_id}" \
+              -f body="${body}" \
+              >/dev/null
+            exit 0
+          fi
+
+          gh api \
+            --method POST \
+            "repos/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}/comments" \
+            -f body="${body}" \
+            >/dev/null
 
   e2e:
     name: Playwright E2E
