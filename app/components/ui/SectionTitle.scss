@@ -14,7 +14,8 @@
 }
 
 .section-title--accent {
-  color: $primary-color;
+  // Darker accent keeps contrast above WCAG AA on light sections.
+  color: #9a3412;
 }
 
 .section-title a {
@@ -24,8 +25,13 @@
 }
 
 .section-title a:hover {
-  color: $primary-color;
+  color: #7c2d12;
   text-decoration: underline;
+}
+
+.section-title a:focus-visible {
+  outline: 2px solid #7c2d12;
+  outline-offset: 4px;
 }
 
 @media print {

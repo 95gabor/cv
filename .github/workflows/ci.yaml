@@ -89,6 +89,35 @@ jobs:
       - name: Generate static site
         run: npm run generate
 
+  lighthouse:
+    name: Lighthouse (SEO + accessibility)
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Generate static site
+        run: npm run generate
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./.lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Upload Lighthouse filesystem reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: lighthouse-report
+          path: artifacts/lighthouse/
+          if-no-files-found: warn
+          retention-days: 7
+
   e2e:
     name: Playwright E2E
     runs-on: *runner-image

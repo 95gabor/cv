@@ -1,5 +1,11 @@
 <template>
-  <div v-if="!hasConsent" class="cookie-banner" data-testid="cookie-banner">
+  <div
+    v-if="!hasConsent"
+    class="cookie-banner"
+    role="region"
+    aria-label="Cookie consent"
+    data-testid="cookie-banner"
+  >
     <div class="cookie-content">
       <p data-testid="cookie-message">
         This website uses cookies to analyze site traffic and improve your

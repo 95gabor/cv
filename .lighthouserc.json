@@ -1,0 +1,35 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "startServerCommand": "npx --yes http-server .output/public -p 4173 -a 127.0.0.1",
+      "startServerReadyPattern": "Available on:",
+      "url": ["http://127.0.0.1:4173/"],
+      "settings": {
+        "chromeFlags": "--headless --no-sandbox --disable-dev-shm-usage"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 1
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "color-contrast": "error",
+        "target-size": "error"
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "./artifacts/lighthouse"
+    }
+  }
+}
