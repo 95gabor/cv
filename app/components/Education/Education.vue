@@ -3,7 +3,11 @@
     class="text-center py-10 bg-gray-700"
     data-testid="education-section"
   >
-    <SectionTitle id="education" accent :label="t('cv.education')" />
+    <SectionTitle
+      id="education"
+      accent
+      :label="t('cv.education')"
+    />
     <div class="space-y-6" role="list" data-testid="education-list">
       <article
         v-for="(edu, idx) in educations"
