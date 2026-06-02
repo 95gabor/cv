@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.1",
-    "@commitlint/config-conventional": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.2",
     "@commitlint/parse": "^21.0.1",
     "@digitalroute/cz-conventional-changelog-for-jira": "^8.0.1",
     "@nuxt/eslint": "^1.15.2",
