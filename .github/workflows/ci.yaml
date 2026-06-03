@@ -21,6 +21,7 @@ permissions:
 env:
   RUNNER_IMAGE: &runner-image ubuntu-24.04
   DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
+  NODE_OPTIONS: '--unhandled-rejections=strict'
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -232,7 +233,10 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Percy visual snapshot tests
-        run: npm run test:e2e:visual:ci
+        run: |
+          export PERCY_BROWSER_EXECUTABLE="$(npx playwright executable-path chromium)"
+          npm run test:e2e:visual:ci
+          test -f artifacts/screenshots/cv-full-page.png
 
       - name: Upload full-page screenshot artifact
         if: always()
