@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/95gabor/cv/compare/v2.12.0...v2.13.0) (2026-06-03)
+
+### Features
+
+- **cv:** update
+  ([cad5cda](https://github.com/95gabor/cv/commit/cad5cdada84657f84e25fbf828b883d6814c242f))
+
 # [2.12.0](https://github.com/95gabor/cv/compare/v2.11.1...v2.12.0) (2026-05-16)
 
 ### Bug Fixes
