@@ -37,6 +37,7 @@ workExperience:
     employmentType: contract
     location: Budapest, HU
     from: "2026"
+    end: "2026"
     description:
       en: >
         Full-stack Developer in the Advisory team at fizz.hu, 
