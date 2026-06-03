@@ -234,7 +234,7 @@ jobs:
 
       - name: Run Percy visual snapshot tests
         run: |
-          export PERCY_BROWSER_EXECUTABLE="$(npx playwright executable-path chromium)"
+          export PERCY_BROWSER_EXECUTABLE="$(node --input-type=module -e "import { chromium } from 'playwright'; console.log(chromium.executablePath())")"
           npm run test:e2e:visual:ci
           test -f artifacts/screenshots/cv-full-page.png
 
