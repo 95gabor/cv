@@ -5,20 +5,16 @@ const manifestRaw = process.env.LIGHTHOUSE_MANIFEST?.trim() || '[]';
 const linksRaw = process.env.LIGHTHOUSE_LINKS?.trim() || '{}';
 const commentBodyFile = process.env.COMMENT_BODY_FILE || 'lighthouse-pr-comment.md';
 
-let manifest = [];
-let links = {};
+const parseJsonOrDefault = (value, fallback) => {
+  try {
+    return JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+};
 
-try {
-  manifest = JSON.parse(manifestRaw);
-} catch {
-  manifest = [];
-}
-
-try {
-  links = JSON.parse(linksRaw);
-} catch {
-  links = {};
-}
+const manifest = parseJsonOrDefault(manifestRaw, []);
+const links = parseJsonOrDefault(linksRaw, {});
 
 const toPercent = (score) =>
   typeof score === 'number' ? `${Math.round(score * 100)}%` : 'n/a';
