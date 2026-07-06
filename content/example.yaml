@@ -34,7 +34,8 @@ workExperience:
     company: Ford Motor Company
     companyUrl: https://ford.com
     location: Dearborn, MI
-    from: '2021'
+    from:
+      year: 2021
     description:
       en: >
         Lead mechanical design engineer for next-generation electric vehicle
@@ -67,8 +68,10 @@ workExperience:
       hu: Mechanikai Tervező Mérnök
     company: General Motors
     location: Warren, MI
-    from: '2018'
-    end: '2021'
+    from:
+      year: 2018
+    end:
+      year: 2021
     description:
       en: >
         Designed and developed powertrain components for internal combustion
@@ -100,8 +103,10 @@ workExperience:
       hu: Gyártási Mérnök
     company: Chrysler (Stellantis)
     location: Auburn Hills, MI
-    from: '2015'
-    end: '2018'
+    from:
+      year: 2015
+    end:
+      year: 2018
     description:
       en: >
         Optimized manufacturing processes for automotive assembly lines.
@@ -134,8 +139,10 @@ workExperience:
       hu: Junior Gépészmérnök
     company: BorgWarner
     location: Auburn Hills, MI
-    from: '2012'
-    end: '2015'
+    from:
+      year: 2012
+    end:
+      year: 2015
     description:
       en: >
         Supported design and testing of turbocharger systems for passenger
@@ -171,8 +178,10 @@ educations:
       en: University of Michigan
       hu: Michigan Egyetem
     location: Ann Arbor, MI
-    from: '2010'
-    end: '2012'
+    from:
+      year: 2010
+    end:
+      year: 2012
     note:
       en: 'Thesis: "Optimization of Automotive Cooling Systems" - GPA: 3.8/4.0'
       hu:
@@ -186,8 +195,10 @@ educations:
       en: Michigan State University
       hu: Michigan Egyetem
     location: East Lansing, MI
-    from: '2006'
-    end: '2010'
+    from:
+      year: 2006
+    end:
+      year: 2010
     note:
       en: 'Magna Cum Laude - Tau Beta Pi Engineering Honor Society'
       hu: 'Magna Cum Laude - Tau Beta Pi Mérnöki Tiszteleti Társaság'

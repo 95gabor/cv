@@ -14,7 +14,10 @@
               "type": "string"
             }
           },
-          "required": ["en", "hu"],
+          "required": [
+            "en",
+            "hu"
+          ],
           "additionalProperties": false
         },
         "title": {
@@ -35,10 +38,27 @@
                 "type": "string"
               },
               "icon": {
-                "type": "string"
+                "type": "object",
+                "properties": {
+                  "dark": {
+                    "type": "string"
+                  },
+                  "light": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "dark",
+                  "light"
+                ],
+                "additionalProperties": false
               }
             },
-            "required": ["platform", "url", "icon"],
+            "required": [
+              "platform",
+              "url",
+              "icon"
+            ],
             "additionalProperties": false
           }
         },
@@ -49,18 +69,32 @@
             "properties": {
               "type": {
                 "type": "string",
-                "enum": ["location", "phone", "email", "link"]
+                "enum": [
+                  "location",
+                  "phone",
+                  "email",
+                  "link"
+                ]
               },
               "value": {
                 "type": "string"
               }
             },
-            "required": ["type", "value"],
+            "required": [
+              "type",
+              "value"
+            ],
             "additionalProperties": false
           }
         }
       },
-      "required": ["name", "title", "picture", "links", "contact"],
+      "required": [
+        "name",
+        "title",
+        "picture",
+        "links",
+        "contact"
+      ],
       "additionalProperties": false
     },
     "workExperience": {
@@ -81,7 +115,9 @@
                 "type": "string"
               }
             },
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "additionalProperties": false
           },
           "employmentType": {
@@ -91,10 +127,21 @@
             "type": "string"
           },
           "from": {
-            "type": "string"
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "integer"
+              },
+              "month": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              }
+            },
+            "additionalProperties": false
           },
           "end": {
-            "type": "string"
+            "$ref": "#/properties/workExperience/items/properties/from"
           },
           "description": {
             "$ref": "#/properties/personal/properties/name"
@@ -111,7 +158,10 @@
                   "type": "string"
                 }
               },
-              "required": ["name", "link"],
+              "required": [
+                "name",
+                "link"
+              ],
               "additionalProperties": false
             }
           }
@@ -145,23 +195,30 @@
                 "type": "string"
               }
             },
-            "required": ["name"],
+            "required": [
+              "name"
+            ],
             "additionalProperties": false
           },
           "location": {
             "type": "string"
           },
           "from": {
-            "type": "string"
+            "$ref": "#/properties/workExperience/items/properties/from"
           },
           "end": {
-            "type": "string"
+            "$ref": "#/properties/workExperience/items/properties/from"
           },
           "note": {
             "$ref": "#/properties/personal/properties/name"
           }
         },
-        "required": ["degree", "institution", "location", "from"],
+        "required": [
+          "degree",
+          "institution",
+          "location",
+          "from"
+        ],
         "additionalProperties": false
       }
     },
@@ -177,7 +234,9 @@
             "type": "string"
           }
         },
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "additionalProperties": false
       }
     },
@@ -193,12 +252,20 @@
             "type": "string"
           }
         },
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "additionalProperties": false
       }
     }
   },
-  "required": ["personal", "workExperience", "educations", "skills", "hobbies"],
+  "required": [
+    "personal",
+    "workExperience",
+    "educations",
+    "skills",
+    "hobbies"
+  ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/draft-07/schema#"
 }

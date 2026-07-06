@@ -43,13 +43,22 @@ export const Technologies = z.object({
   link: z.string(),
 });
 
+export const PeriodDateObjectSchema = z.object({
+  year: z.number().int().optional(),
+  month: z.number().int().min(1).max(12).optional(),
+});
+
+export const PeriodDateSchema = PeriodDateObjectSchema;
+
+export type PeriodDate = z.infer<typeof PeriodDateSchema>;
+
 export const WorkExperienceSchema = z.object({
   title: LocalizedStringSchema,
   company: CompanySchema,
   employmentType: z.string().optional(),
   location: z.string(),
-  from: z.string(),
-  end: z.string().optional(),
+  from: PeriodDateSchema,
+  end: PeriodDateSchema.optional(),
   description: LocalizedStringSchema,
   technologies: z.array(Technologies),
 });
@@ -63,8 +72,8 @@ export const EducationSchema = z.object({
   degree: LocalizedStringSchema,
   institution: InstitutionSchema,
   location: z.string(),
-  from: z.string(),
-  end: z.string().optional(),
+  from: PeriodDateSchema,
+  end: PeriodDateSchema.optional(),
   note: LocalizedStringSchema.optional(),
 });
 

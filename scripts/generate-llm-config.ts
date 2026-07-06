@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import type { LLMsSection, ModuleOptions } from 'nuxt-llms';
 import type { SiteConfig } from '../config.types';
 import { CVSchema, type CV, type CVSupportedLangs } from '../app/types/cv';
+import { formatPeriodDate } from '../app/utils/period';
 
 const readCV = async (filename: string): Promise<CV> => {
   const fileContent = await readFile(
@@ -38,7 +39,7 @@ const getSections = (cv: CV): LLMsSection[] => [
     links: cv.workExperience.map(exp => ({
       title: `${translate(exp.title)} at ${exp.company.name} (${exp.location})${exp.employmentType ? ` - ${exp.employmentType}` : ''}`,
       description: `${translate(exp.description)}
-From: ${exp.from}${exp.end ? ` To: ${exp.end}` : ''}
+From: ${formatPeriodDate(exp.from)}${exp.end ? ` To: ${formatPeriodDate(exp.end)}` : ''}
 Technologies: ${exp.technologies.map(tech => tech.name).join(', ')}`,
       href: exp.company.link || '#',
     })),
