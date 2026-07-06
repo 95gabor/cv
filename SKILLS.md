@@ -1,7 +1,7 @@
 # Skills
 
-This repository uses a concise set of skills and responsibilities for agents
-working on code and CI changes.
+Agent skills for this repository. Full context:
+[`docs/.ai/README.md`](./docs/.ai/README.md).
 
 ## Core skills
 
