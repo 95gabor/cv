@@ -241,7 +241,7 @@ jobs:
 
       - name: Run Percy visual snapshot tests
         run: |
-          export PERCY_BROWSER_EXECUTABLE="$(node --input-type=module -e "import { chromium } from 'playwright'; console.log(chromium.executablePath())")"
+          export PERCY_BROWSER_EXECUTABLE="$(node --input-type=module -e "import { chromium } from '@playwright/test'; console.log(chromium.executablePath())")"
           pnpm run test:e2e:visual:ci
           test -f artifacts/screenshots/cv-full-page.png
 
@@ -304,10 +304,11 @@ jobs:
           push: false
           tags: cv:ci
           build-args: |
-            SUPABASE_URL=${{ env.SUPABASE_URL }}
-            SUPABASE_PUBLISHABLE_KEY=${{ env.SUPABASE_PUBLISHABLE_KEY }}
             NEXT_PUBLIC_SITE_URL=${{ env.NEXT_PUBLIC_SITE_URL }}
-          extra_hosts: |
+          secrets: |
+            supabase_url=${{ env.SUPABASE_URL }}
+            supabase_publishable_key=${{ env.SUPABASE_PUBLISHABLE_KEY }}
+          add-hosts: |
             host.docker.internal:host-gateway
           cache-from: type=gha,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
           cache-to: type=gha,mode=max,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}

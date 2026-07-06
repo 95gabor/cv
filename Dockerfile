@@ -1,5 +1,6 @@
+# syntax=docker/dockerfile:1
 # Multi-stage production image: Next.js static export inside Docker, served by nginx.
-# Build args: SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, NEXT_PUBLIC_SITE_URL.
+# Supabase credentials via BuildKit secrets (not ARG/ENV — avoids layer leakage + scanner warnings).
 # CI validation uses local Supabase (host.docker.internal:54321); publish uses cloud URL.
 FROM node:24.18.0-alpine3.24 AS builder
 
@@ -12,15 +13,14 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-ARG SUPABASE_URL
-ARG SUPABASE_PUBLISHABLE_KEY
 ARG NEXT_PUBLIC_SITE_URL=https://95gabor.me
+ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 
-ENV SUPABASE_URL=$SUPABASE_URL \
-    SUPABASE_PUBLISHABLE_KEY=$SUPABASE_PUBLISHABLE_KEY \
-    NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
-
-RUN pnpm run generate
+RUN --mount=type=secret,id=supabase_url \
+    --mount=type=secret,id=supabase_publishable_key \
+    export SUPABASE_URL="$(cat /run/secrets/supabase_url)" && \
+    export SUPABASE_PUBLISHABLE_KEY="$(cat /run/secrets/supabase_publishable_key)" && \
+    pnpm run generate
 
 # --- Production Stage ---
 FROM nginx:1.31.2-alpine3.23-slim AS production
