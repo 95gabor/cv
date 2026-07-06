@@ -1,3 +1,34 @@
+# [3.0.0](https://github.com/95gabor/cv/compare/v2.14.0...v3.0.0) (2026-07-06)
+
+- feat!: rewrite CV site on Next.js, Supabase, and pnpm
+  ([#148](https://github.com/95gabor/cv/issues/148))
+  ([534de64](https://github.com/95gabor/cv/commit/534de6424e92e86adc99bb450886df6adc3b24bf))
+
+### BREAKING CHANGES
+
+- Nuxt app removed; use pnpm, `supabase start`, `pnpm run db:seed`, and
+  `pnpm run dev`. Publish on `v*` tag uses prod Supabase (SUPABASE_DB_URL,
+  SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY secrets). CI keeps local Supabase.
+  Output is `out/` (not `.output/public`). npm lockfile removed.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+- fix(docker): pass Supabase credentials via BuildKit secrets
+
+Avoid ARG/ENV for SUPABASE_* so credentials do not persist in image layers and
+Docker scanner warnings clear. Update CI/publish workflows and compose; fix
+add-hosts and Percy Playwright import.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
+- fix(ci): harden secrets in logs and unblock Docker build
+
+Silence supabase start output, pass BuildKit credentials via secret files with
+masking, and use 172.17.0.1 instead of host-gateway for buildx. Fix HU static
+export via direct ui-messages lookup for section labels.
+
+Co-authored-by: Cursor <cursoragent@cursor.com>
+
 # [2.14.0](https://github.com/95gabor/cv/compare/v2.13.0...v2.14.0) (2026-07-06)
 
 ### Features
