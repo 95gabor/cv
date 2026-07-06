@@ -1,5 +1,13 @@
 name: Docker build env
-description: Start local Supabase and export build args for CI Docker validation (not publish)
+description: Start local Supabase and write secret files for CI Docker validation (not publish)
+
+outputs:
+  supabase_url_file:
+    description: Path to supabase URL secret file for Docker build
+    value: ${{ steps.secrets.outputs.supabase_url_file }}
+  supabase_publishable_key_file:
+    description: Path to publishable key secret file for Docker build
+    value: ${{ steps.secrets.outputs.supabase_publishable_key_file }}
 
 runs:
   using: composite
@@ -8,10 +16,9 @@ runs:
       shell: bash
       run: bash scripts/prepare-supabase-for-build.sh
 
-    - name: Export Supabase credentials for Docker build
+    - name: Write Docker build secret files
+      id: secrets
       shell: bash
-      run: |
-        # shellcheck source=/dev/null
-        source scripts/export-supabase-env.sh
-        echo "SUPABASE_URL=http://host.docker.internal:54321" >> "$GITHUB_ENV"
-        echo "SUPABASE_PUBLISHABLE_KEY=${SUPABASE_PUBLISHABLE_KEY}" >> "$GITHUB_ENV"
+      env:
+        DOCKER_SUPABASE_URL: http://host.docker.internal:54321
+      run: bash scripts/write-docker-build-secrets.sh

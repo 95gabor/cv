@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-pnpm exec supabase start -x imgproxy,logflare,vector,edge-runtime
+bash scripts/supabase-start-quiet.sh
 
 # shellcheck source=/dev/null
 source scripts/export-supabase-env.sh

@@ -22,3 +22,8 @@ fi
 # Legacy aliases (seed/build fallbacks)
 export SUPABASE_ANON_KEY="${ANON_KEY:-$SUPABASE_PUBLISHABLE_KEY}"
 export SUPABASE_SERVICE_ROLE_KEY="${SERVICE_ROLE_KEY:-$SUPABASE_SECRET_KEY}"
+
+if [[ "${GITHUB_ACTIONS:-}" == "true" ]]; then
+  echo "::add-mask::${SUPABASE_PUBLISHABLE_KEY}"
+  echo "::add-mask::${SUPABASE_SECRET_KEY}"
+fi

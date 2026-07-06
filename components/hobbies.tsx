@@ -1,20 +1,19 @@
-import { getTranslations } from 'next-intl/server';
-
 import { Badge } from '@/components/ui/badge';
 import { SectionTitle } from '@/components/ui/section-title';
 import type { Hobby, Locale } from '@/lib/cv/types';
+import { uiMessages } from '@/lib/ui-messages';
 
 type HobbiesProps = {
   hobbies: Hobby[];
   locale: Locale;
 };
 
-export async function Hobbies({ hobbies, locale }: HobbiesProps) {
-  const t = await getTranslations('cv');
+export function Hobbies({ hobbies, locale }: HobbiesProps) {
+  const messages = uiMessages(locale);
 
   return (
     <section className="text-center" data-testid="hobbies-section">
-      <SectionTitle id="hobbies" accent label={t('hobbies')} />
+      <SectionTitle id="hobbies" accent label={messages.cv.hobbies} />
       <ul
         className="flex list-none flex-wrap justify-center gap-2.5 p-0 sm:gap-3"
         role="list"

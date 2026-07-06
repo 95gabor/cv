@@ -1,9 +1,8 @@
-import { getTranslations } from 'next-intl/server';
-
 import { Badge } from '@/components/ui/badge';
 import { InlineLink } from '@/components/ui/inline-link';
 import { SectionTitle } from '@/components/ui/section-title';
 import type { Locale, WorkExperience } from '@/lib/cv/types';
+import { uiMessages } from '@/lib/ui-messages';
 import { formatPeriod, toDateTime } from '@/lib/period';
 
 type ExperienceProps = {
@@ -15,18 +14,18 @@ function MetaSeparator() {
   return <span className="hidden text-border sm:inline" aria-hidden="true">·</span>;
 }
 
-export async function Experience({ experiences, locale }: ExperienceProps) {
-  const t = await getTranslations();
-  const employmentTypeT = await getTranslations('experience.employmentType');
-  const presentLabel = t('experience.present');
-  const technologiesLabel = t('experience.technologies');
+export function Experience({ experiences, locale }: ExperienceProps) {
+  const messages = uiMessages(locale);
+  const presentLabel = messages.experience.present;
+  const technologiesLabel = messages.experience.technologies;
+  const employmentTypeLabels = messages.experience.employmentType;
 
   return (
     <section data-testid="experience-section">
       <SectionTitle
         id="work-experience"
         accent
-        label={t('cv.workExperience')}
+        label={messages.cv.workExperience}
       />
       <div data-testid="experience-card">
         <div role="list" data-testid="experience-list">
@@ -69,9 +68,11 @@ export async function Experience({ experiences, locale }: ExperienceProps) {
                     <>
                       <MetaSeparator />
                       <span>
-                        {employmentTypeT(
-                          job.employmentType as 'contract' | 'full-time' | 'intern',
-                        )}
+                        {
+                          employmentTypeLabels[
+                            job.employmentType as keyof typeof employmentTypeLabels
+                          ]
+                        }
                       </span>
                     </>
                   ) : null}

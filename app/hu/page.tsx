@@ -14,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HungarianPage() {
+  setRequestLocale('hu');
   const cv = await getCvProfile(siteConfig.cv.slug, 'hu');
 
   return <CvPage cv={cv} locale="hu" />;

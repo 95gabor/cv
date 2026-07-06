@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 
 import { InlineLink } from '@/components/ui/inline-link';
 import type { Contact, Link, Locale, Personal } from '@/lib/cv/types';
+import { uiMessages } from '@/lib/ui-messages';
 
 type HeaderProps = {
   personal: Personal;
@@ -73,8 +73,8 @@ function ContactBlock({
   );
 }
 
-export async function Header({ personal, locale }: HeaderProps) {
-  const t = await getTranslations('contact');
+export function Header({ personal, locale }: HeaderProps) {
+  const contactLabels = uiMessages(locale).contact;
   const leftContacts = personal.contact.slice(0, 2);
   const rightContacts = personal.contact.slice(2);
 
@@ -127,7 +127,7 @@ export async function Header({ personal, locale }: HeaderProps) {
             <ContactBlock
               key={`${contact.type}-${contact.value}`}
               contact={contact}
-              label={t(contact.type)}
+              label={contactLabels[contact.type]}
               align="left"
               testId={`contact-left-${idx}`}
             />
@@ -155,7 +155,7 @@ export async function Header({ personal, locale }: HeaderProps) {
             <ContactBlock
               key={`${contact.type}-${contact.value}`}
               contact={contact}
-              label={t(contact.type)}
+              label={contactLabels[contact.type]}
               align="right"
               testId={`contact-right-${idx}`}
             />

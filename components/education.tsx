@@ -1,8 +1,7 @@
-import { getTranslations } from 'next-intl/server';
-
 import { InlineLink } from '@/components/ui/inline-link';
 import { SectionTitle } from '@/components/ui/section-title';
 import type { Education as EducationType, Locale } from '@/lib/cv/types';
+import { uiMessages } from '@/lib/ui-messages';
 import { formatPeriodDate, toDateTime } from '@/lib/period';
 
 type EducationProps = {
@@ -18,12 +17,12 @@ function formatEducationPeriod(
   return end ? `${fromLabel} – ${formatPeriodDate(end)}` : fromLabel;
 }
 
-export async function Education({ educations, locale }: EducationProps) {
-  const t = await getTranslations('cv');
+export function Education({ educations, locale }: EducationProps) {
+  const messages = uiMessages(locale);
 
   return (
     <section className="text-center" data-testid="education-section">
-      <SectionTitle id="education" accent label={t('education')} />
+      <SectionTitle id="education" accent label={messages.cv.education} />
       <div role="list" data-testid="education-list">
         {educations.map((edu, idx) => (
           <article

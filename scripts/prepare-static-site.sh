@@ -4,7 +4,7 @@
 set -euo pipefail
 
 if [[ "${CI:-}" == "true" ]]; then
-  pnpm exec supabase start -x imgproxy,logflare,vector,edge-runtime
+  bash scripts/supabase-start-quiet.sh
 
   # shellcheck source=/dev/null
   source scripts/export-supabase-env.sh

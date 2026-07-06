@@ -1,23 +1,21 @@
-import { getTranslations } from 'next-intl/server';
-
 import { Badge } from '@/components/ui/badge';
 import { SectionTitle } from '@/components/ui/section-title';
 import type { Locale, Skill } from '@/lib/cv/types';
+import { uiMessages } from '@/lib/ui-messages';
 
 type SkillsProps = {
   skills: Skill[];
   locale: Locale;
 };
 
-export async function Skills({ skills, locale }: SkillsProps) {
-  void locale;
-  const t = await getTranslations('cv');
+export function Skills({ skills, locale }: SkillsProps) {
+  const messages = uiMessages(locale);
   const midpoint = Math.ceil(skills.length / 2);
   const columns = [skills.slice(0, midpoint), skills.slice(midpoint)];
 
   return (
     <section data-testid="skills-section">
-      <SectionTitle id="skills" accent label={t('skills')} />
+      <SectionTitle id="skills" accent label={messages.cv.skills} />
       <div
         className="grid gap-2.5 sm:grid-cols-2 sm:gap-3"
         data-testid="skills-grid"
