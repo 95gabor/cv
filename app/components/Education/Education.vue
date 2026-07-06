@@ -23,7 +23,7 @@
         </h3>
         <div class="education-details">
           <span class="meta-text">
-            <time :datetime="edu.from" itemprop="dateCreated">{{
+            <time :datetime="toDateTime(edu.from)" itemprop="dateCreated">{{
               formatPeriod(edu.from, edu.end)
             }}</time>
             <span class="meta-separator">|</span>
@@ -43,8 +43,8 @@
           </span>
         </div>
         <p v-if="edu.note" itemprop="description">{{ edu.note[lang] }}</p>
-        <meta itemprop="dateCreated" :content="edu.from" >
-        <meta v-if="edu.end" itemprop="dateModified" :content="edu.end" >
+        <meta itemprop="dateCreated" :content="toDateTime(edu.from)" >
+        <meta v-if="edu.end" itemprop="dateModified" :content="toDateTime(edu.end)" >
       </article>
     </div>
   </section>
@@ -55,6 +55,7 @@ import './Education.scss';
 import type { CVSupportedLangs, Education as EducationType } from '~/types/cv';
 import InlineLink from '../ui/InlineLink.vue';
 import SectionTitle from '../ui/SectionTitle.vue';
+import { formatPeriodDate, toDateTime } from '~/utils/period';
 
 const { t } = useI18n();
 
@@ -63,7 +64,12 @@ defineProps<{
   lang: CVSupportedLangs;
 }>();
 
-const formatPeriod = (from: string, end?: string) => {
-  return end ? `${from} - ${end}` : from;
+const formatPeriod = (
+  from: EducationType['from'],
+  end?: EducationType['end'],
+) => {
+  const fromLabel = formatPeriodDate(from);
+
+  return end ? `${fromLabel} - ${formatPeriodDate(end)}` : fromLabel;
 };
 </script>

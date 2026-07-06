@@ -5,6 +5,7 @@
 
 <script setup lang="ts">
 import type { CV } from '~/types/cv';
+import { toIsoDate } from '~/utils/period';
 
 const props = defineProps<{
   cv: CV;
@@ -55,8 +56,8 @@ const structuredData = computed(() => {
       },
       description: job.description[props.lang],
       skills: job.technologies,
-      startDate: job.from,
-      endDate: job.end || undefined,
+      startDate: toIsoDate(job.from),
+      endDate: job.end ? toIsoDate(job.end) : undefined,
     })),
   };
 

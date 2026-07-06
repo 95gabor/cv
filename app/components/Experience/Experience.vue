@@ -28,7 +28,7 @@
                 </h3>
                 <div class="job-meta">
                   <span class="meta-text">
-                    <time :datetime="job.from" itemprop="datePosted">{{
+                    <time :datetime="toDateTime(job.from)" itemprop="datePosted">{{
                       formatPeriod(job.from, job.end)
                     }}</time>
                     <span class="meta-separator">|</span>
@@ -119,6 +119,10 @@ import './Experience.scss';
 import type { CVSupportedLangs, WorkExperience } from '~/types/cv';
 import InlineLink from '../ui/InlineLink.vue';
 import SectionTitle from '../ui/SectionTitle.vue';
+import {
+  formatPeriod as formatPeriodRange,
+  toDateTime,
+} from '~/utils/period';
 
 const { t } = useI18n();
 
@@ -127,7 +131,8 @@ defineProps<{
   lang: CVSupportedLangs;
 }>();
 
-const formatPeriod = (from: string, end?: string) => {
-  return `${from} - ${end || t('experience.present')}`;
-};
+const formatPeriod = (
+  from: WorkExperience['from'],
+  end?: WorkExperience['end'],
+) => formatPeriodRange(from, end, t('experience.present'));
 </script>
