@@ -1,6 +1,14 @@
 services:
-  nuxt-cv:
-    build: .
+  cv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      extra_hosts:
+        - host.docker.internal:host-gateway
+      args:
+        SUPABASE_URL: http://host.docker.internal:54321
+        SUPABASE_PUBLISHABLE_KEY: ${SUPABASE_PUBLISHABLE_KEY}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://95gabor.me}
     image: ghcr.io/95gabor/cv:latest
     ports:
       - '8000:80'

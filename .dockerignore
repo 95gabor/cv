@@ -1,18 +1,19 @@
-# Ignore everything
-** 
+**/*
 
-# Only include these files/folders in the build context:
 !package.json
-!package-lock.json
-!app
+!pnpm-lock.yaml
 !Dockerfile
-!docker-compose.yml
 !nginx.conf
-!public
-!content
-!i18n
+!app
 !components
-!tsconfig.json
-!README.md
+!lib
+!messages
+!i18n
+!global.d.ts
+!next-env.d.ts
+!public
 !scripts
-!*.ts
+!next.config.ts
+!tsconfig.json
+!postcss.config.mjs
+!components.json

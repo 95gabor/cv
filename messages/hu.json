@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Főoldal",
+    "about": "Rólam",
+    "contact": "Kapcsolat"
+  },
+  "cv": {
+    "workExperience": "Szakmai tapasztalat",
+    "education": "Tanulmányok",
+    "skills": "Készségek",
+    "hobbies": "Érdeklődési kör",
+    "download": "Önéletrajz letöltése",
+    "contact": "Kapcsolatfelvétel"
+  },
+  "experience": {
+    "present": "Jelenleg",
+    "responsibilities": "Feladatok",
+    "technologies": "Használt technológiák",
+    "employmentType": {
+      "intern": "Gyakornok",
+      "full-time": "Teljes munkaidő",
+      "contract": "Szerződéses"
+    }
+  },
+  "education": {
+    "degree": "Végzettség",
+    "field": "Szakirány",
+    "gpa": "Átlag"
+  },
+  "skills": {
+    "languages": "Programozási nyelvek",
+    "frameworks": "Fejlesztői keretrendszerek",
+    "databases": "Adatbázisok",
+    "tools": "Fejlesztői eszközök",
+    "cloud": "Felhőszolgáltatások",
+    "softSkills": "Személyes készségek"
+  },
+  "contact": {
+    "location": "Tartózkodási hely",
+    "phone": "Telefonszám",
+    "email": "E-mail cím",
+    "link": "Weboldal"
+  },
+  "theme": {
+    "switchToLight": "Váltás világos témára",
+    "switchToDark": "Váltás sötét témára"
+  },
+  "print": {
+    "ariaLabel": "Önéletrajz nyomtatása"
+  },
+  "notFound": {
+    "title": "Az oldal nem található",
+    "description": "A keresett oldal nem létezik, vagy áthelyezték.",
+    "backHome": "Vissza a főoldalra"
+  }
+}

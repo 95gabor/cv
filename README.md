@@ -1,62 +1,70 @@
-# CV – Nuxt
+# CV — Next.js
 
-This is a modern, maintainable CV site built with Nuxt, Vue, TypeScript, and
-SCSS.
+Personal CV site built with **Next.js 16**, **React**, **TypeScript**,
+**Tailwind CSS v4**, **shadcn/ui**, and **Supabase** (build-time data fetch).
+Static export to `out/` for GitHub Pages and Docker/nginx.
 
-## Setup
+## Prerequisites
 
-Install dependencies:
+- Node.js ≥ 24.18.0 (see `.nvmrc`)
+- [pnpm](https://pnpm.io/) 10.x
+- [Docker](https://www.docker.com/) (for local Supabase)
 
-```bash
-npm install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+## First-time setup
 
 ```bash
-npm run dev
+git clone https://github.com/95gabor/cv.git
+cd cv
+pnpm install
+cp .env.example .env.local
+pnpm exec supabase start
+pnpm run db:seed
+pnpm run dev
+# → http://localhost:3000
 ```
 
-## Production
+## Common commands
 
-Build the application for production:
+| Command                                                  | Purpose                              |
+| -------------------------------------------------------- | ------------------------------------ |
+| `pnpm run dev`                                           | Dev server (Turbopack)               |
+| `pnpm run build`                                         | Static export to `out/`              |
+| `pnpm run generate`                                      | Alias for `build` (CI compatibility) |
+| `pnpm run lint`                                          | ESLint                               |
+| `pnpm run typecheck`                                     | TypeScript                           |
+| `pnpm run test:e2e`                                      | Playwright functional tests          |
+| `pnpm run db:start` / `db:stop` / `db:reset` / `db:seed` | Local Supabase                       |
+
+## Quality gate (before PR)
 
 ```bash
-npm run build
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run typecheck
+pnpm run build
 ```
 
-Locally preview production build:
+Requires Supabase env vars (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` for
+build; `SUPABASE_SECRET_KEY` for seed) — see `.env.example`.
+
+## Docker (optional)
 
 ```bash
-npm run preview
+# Requires .env.local with SUPABASE_* and running Docker daemon
+bash scripts/prepare-supabase-for-build.sh
+docker compose up --build
+# → http://localhost:8000
 ```
 
-Check out the
-[deployment documentation](https://nuxt.com/docs/getting-started/deployment) for
-more information.
+Uses the root `Dockerfile` (Next.js build inside Docker + nginx with gzip).
 
-## End-to-end tests
+## Documentation
 
-Run Playwright E2E tests:
+- [docs/README.md](./docs/README.md) — human docs index
+- [docs/.ai/README.md](./docs/.ai/README.md) — agent entry point
+- [AGENTS.md](./AGENTS.md) — agent roles and rules
 
-```bash
-npm run test:e2e
-```
+## Stack
 
-Open Playwright's interactive runner:
-
-```bash
-npm run test:e2e:ui
-```
-
-## Project Structure & Conventions
-
-This project follows modern Nuxt 3 and Vue 3 best practices for scalability and
-maintainability.
-
----
-
-For more, see the [Nuxt 3 documentation](https://nuxt.com/docs) and
-[Vue 3 style guide](https://vuejs.org/style-guide/).
+Next.js App Router · shadcn/ui · Supabase · static export · Playwright ·
+Lighthouse · semantic-release

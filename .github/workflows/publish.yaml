@@ -17,10 +17,30 @@ env:
   IMAGE_NAME: ${{ github.repository }}
   RUNNER_IMAGE: &runner-image ubuntu-24.04
   DOCKER_BUILD_CACHE_SCOPE: cv-docker-build
+  NEXT_PUBLIC_SITE_URL: https://95gabor.me
+  # secrets or repository variables — see github-secrets.md
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+  SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || vars.SUPABASE_PUBLISHABLE_KEY }}
 
 jobs:
+  supabase-migrate:
+    name: Apply Supabase migrations (prod)
+    runs-on: *runner-image
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Bootstrap Node
+        uses: ./.github/actions/node-bootstrap
+
+      - name: Push migrations to production
+        run: bash scripts/supabase-push-prod.sh
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+
   docker-image:
     name: Publish Docker image
+    needs: supabase-migrate
     runs-on: *runner-image
     permissions:
       contents: read
@@ -54,9 +74,14 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
+          file: Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            SUPABASE_URL=${{ env.SUPABASE_URL }}
+            SUPABASE_PUBLISHABLE_KEY=${{ env.SUPABASE_PUBLISHABLE_KEY }}
+            NEXT_PUBLIC_SITE_URL=${{ env.NEXT_PUBLIC_SITE_URL }}
           cache-from: type=gha,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
           cache-to: type=gha,mode=max,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
           platforms: |
@@ -65,6 +90,7 @@ jobs:
 
   pages:
     name: Publish GitHub Pages
+    needs: supabase-migrate
     runs-on: *runner-image
     permissions:
       contents: read
@@ -80,8 +106,8 @@ jobs:
       - name: Bootstrap Node
         uses: ./.github/actions/node-bootstrap
 
-      - name: Generate static site
-        run: npm run generate
+      - name: Generate static site (prod Supabase)
+        run: bash scripts/prepare-static-site-prod.sh
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
@@ -89,7 +115,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
-          path: ./.output/public
+          path: ./out
 
       - name: Deploy to GitHub Pages
         id: deployment

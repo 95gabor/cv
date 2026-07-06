@@ -1,0 +1,262 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.97 0.008 264);
+  --foreground: oklch(0.2 0.03 264);
+  --card: oklch(0.99 0.004 264);
+  --card-foreground: oklch(0.2 0.03 264);
+  --popover: oklch(0.99 0.004 264);
+  --popover-foreground: oklch(0.2 0.03 264);
+  --primary: oklch(0.58 0.19 45);
+  --primary-foreground: oklch(0.99 0.01 45);
+  --secondary: oklch(0.94 0.015 264);
+  --secondary-foreground: oklch(0.28 0.03 264);
+  --muted: oklch(0.94 0.012 264);
+  --muted-foreground: oklch(0.48 0.03 264);
+  --accent: oklch(0.93 0.02 264);
+  --accent-foreground: oklch(0.2 0.03 264);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.86 0.02 264);
+  --input: oklch(0.86 0.02 264);
+  --ring: oklch(0.58 0.19 45);
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: oklch(0.17 0.028 264);
+  --foreground: oklch(0.97 0.005 264);
+  --card: oklch(0.22 0.03 264);
+  --card-foreground: oklch(0.97 0.005 264);
+  --popover: oklch(0.22 0.03 264);
+  --popover-foreground: oklch(0.97 0.005 264);
+  --primary: oklch(0.72 0.19 45);
+  --primary-foreground: oklch(0.15 0.02 45);
+  --secondary: oklch(0.28 0.03 264);
+  --secondary-foreground: oklch(0.92 0.01 264);
+  --muted: oklch(0.28 0.025 264);
+  --muted-foreground: oklch(0.78 0.02 264);
+  --accent: oklch(0.32 0.04 264);
+  --accent-foreground: oklch(0.97 0.005 264);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.38 0.03 264 / 70%);
+  --input: oklch(0.38 0.03 264 / 70%);
+  --ring: oklch(0.72 0.19 45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+.cv-shell {
+  @apply relative min-h-screen bg-gradient-to-b from-slate-100 via-white to-slate-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950;
+}
+
+.grid-background {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.8;
+  background-image: url('/grid-light.svg');
+  background-position: center;
+  background-repeat: repeat;
+  mask-image: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0.15) 60%, transparent 100%);
+}
+
+.dark .grid-background {
+  background-image: url('/grid.svg');
+}
+
+.cv-container {
+  @apply relative mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-14;
+}
+
+.cv-content {
+  @apply flex flex-col;
+}
+
+.cv-panel {
+  @apply relative z-0 rounded-2xl border border-border/80 bg-card/95 shadow-xl shadow-black/10 backdrop-blur-md dark:shadow-2xl dark:shadow-black/40;
+}
+
+.cv-panel-inner {
+  @apply relative px-6 pb-10 pt-6 sm:px-10 sm:pb-12 sm:pt-8;
+}
+
+.cv-panel-lead {
+  @apply pt-4 sm:pt-12;
+}
+
+.cv-section {
+  @apply scroll-mt-24;
+}
+
+.cv-section:not(:first-child) {
+  @apply mt-12 border-t border-border/40 pt-12;
+}
+
+.cv-entry {
+  @apply space-y-4;
+}
+
+.cv-entry + .cv-entry {
+  @apply mt-12 border-t border-border/30 pt-12;
+}
+
+.cv-meta {
+  @apply flex flex-wrap items-center justify-center gap-x-2.5 gap-y-2 text-sm leading-relaxed text-muted-foreground;
+}
+
+.cv-meta strong {
+  @apply font-medium text-foreground;
+}
+
+.cv-body {
+  @apply text-base leading-7 text-secondary-foreground;
+}
+
+.cv-label {
+  @apply mb-2 text-xs font-semibold tracking-wider text-muted-foreground uppercase;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .grid-background,
+  [data-testid='cookie-banner'],
+  [data-testid='page-controls'] {
+    display: none !important;
+  }
+
+  .header-social-icon-light {
+    display: none !important;
+  }
+
+  .header-social-icon-dark {
+    display: block !important;
+  }
+
+  .cv-shell {
+    min-height: auto;
+    background: #fff !important;
+  }
+
+  .cv-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .cv-panel {
+    border: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .cv-panel-inner {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .cv-panel-lead {
+    padding-top: 0;
+  }
+
+  .cv-section:not(:first-child),
+  .cv-entry + .cv-entry {
+    border-color: #ccc !important;
+  }
+
+  .section-title,
+  .section-title a,
+  .section-title a:visited,
+  .section-title a:hover,
+  .cv-header h1,
+  .cv-header p,
+  .cv-body,
+  .cv-meta,
+  .cv-label,
+  .cv-meta strong,
+  a,
+  [data-slot='badge'] {
+    color: #000 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+  }
+
+  [data-slot='badge'] {
+    background: transparent !important;
+    border-color: #666 !important;
+    box-shadow: none !important;
+  }
+
+  .cv-section:not(:last-child) {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .cv-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+@media screen {
+  html:not(.dark) .header-social-icon-light {
+    display: none;
+  }
+
+  html:not(.dark) .header-social-icon-dark {
+    display: block;
+  }
+
+  .dark .header-social-icon-light {
+    display: block;
+  }
+
+  .dark .header-social-icon-dark {
+    display: none;
+  }
+}

@@ -1,0 +1,17 @@
+name: Docker build env
+description: Start local Supabase and export build args for CI Docker validation (not publish)
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare Supabase
+      shell: bash
+      run: bash scripts/prepare-supabase-for-build.sh
+
+    - name: Export Supabase credentials for Docker build
+      shell: bash
+      run: |
+        # shellcheck source=/dev/null
+        source scripts/export-supabase-env.sh
+        echo "SUPABASE_URL=http://host.docker.internal:54321" >> "$GITHUB_ENV"
+        echo "SUPABASE_PUBLISHABLE_KEY=${SUPABASE_PUBLISHABLE_KEY}" >> "$GITHUB_ENV"

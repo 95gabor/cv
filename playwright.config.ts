@@ -19,9 +19,9 @@ export default defineConfig({
   ],
   webServer: {
     command:
-      'npm run generate && npx --yes http-server .output/public -p 4173 -a 127.0.0.1',
+      'bash scripts/prepare-static-site.sh && npx --yes http-server out -p 4173 -a 127.0.0.1',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
-    timeout: 180_000,
+    timeout: 300_000,
   },
 });

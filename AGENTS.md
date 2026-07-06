@@ -1,21 +1,23 @@
 # Agents
 
-This repository supports task-focused contributors (human or automated) that
-work in small, reviewable changes.
+> **AI-native docs:** Read [`docs/.ai/README.md`](./docs/.ai/README.md) first.
+
+Quick links:
+
+- [Architecture](./docs/.ai/architecture.md)
+- [Coding standards](./docs/.ai/coding-standards.md)
+- [Content model](./docs/.ai/content-model.md)
+- [Workflows](./docs/.ai/workflows/)
+- [Human docs index](./docs/README.md)
 
 ## Recommended agent roles
 
-- Dependency Agent
-  - Updates npm dependencies in controlled batches.
-  - Runs `npm outdated` and applies updates with validation.
-- Quality Agent
-  - Runs local quality gates before opening or updating a PR.
-  - Required checks: `npm ci`, `npm run lint`, `npm run typecheck`,
-    `npm run generate`.
-- CI Agent
-  - Maintains GitHub Actions workflows and keeps checks fast and reliable.
-- Release Agent
-  - Handles release workflow and release automation setup.
+- **Dependency Agent** — pnpm updates in controlled batches; `pnpm outdated` +
+  validation.
+- **Quality Agent** — `pnpm install --frozen-lockfile`, lint, typecheck, build
+  before PR.
+- **CI Agent** — GitHub Actions workflows; keep checks fast and reliable.
+- **Release Agent** — semantic-release and publish workflow.
 
 ## Working rules
 
@@ -23,3 +25,5 @@ work in small, reviewable changes.
 - Prefer small commits with clear intent.
 - Commit messages and PR titles must follow Conventional Commits.
 - Keep CI green before requesting review.
+
+See also [`SKILLS.md`](./SKILLS.md).
