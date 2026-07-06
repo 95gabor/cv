@@ -4,11 +4,7 @@ import vue from '@vitejs/plugin-vue';
 
 const config: StorybookConfig = {
   stories: ['../app/components/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-a11y'],
   framework: {
     name: '@storybook/vue3-vite',
     options: {},
