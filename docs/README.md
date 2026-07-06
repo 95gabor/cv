@@ -10,7 +10,7 @@ docs/.ai/
 ├── README.md              ← entry point
 ├── architecture.md
 ├── coding-standards.md
-├── content-model.md       ← YAML schema, i18n model
+├── content-model.md       ← CV schema, YAML seed, i18n model
 └── workflows/
     ├── local-setup.md
     ├── edit-cv-content.md
@@ -38,21 +38,21 @@ docs/.ai/
 art). Details:
 [`.ai/coding-standards.md`](./.ai/coding-standards.md#documentation).
 
-| Change type                     | Update in                                   |
-| ------------------------------- | ------------------------------------------- |
-| Architecture, build, deploy     | `.ai/architecture.md`                       |
-| Code style, SCSS/Tailwind rules | `.ai/coding-standards.md`                   |
-| CV YAML schema, i18n            | `.ai/content-model.md` + `content.md`       |
-| New recurring task              | new file in `.ai/workflows/`                |
-| New larger initiative           | `projects/<slug>.md` + `projects/README.md` |
-| Stack rewrite / migration       | `projects/next-shadcn-supabase-rewrite/`    |
-| Agent roles                     | `.ai/README.md` + root `AGENTS.md`          |
+| Change type                         | Update in                                   |
+| ----------------------------------- | ------------------------------------------- |
+| Architecture, build, deploy         | `.ai/architecture.md`                       |
+| Code style, Tailwind / shadcn rules | `.ai/coding-standards.md`                   |
+| CV YAML schema, i18n                | `.ai/content-model.md` + `content.md`       |
+| New recurring task                  | new file in `.ai/workflows/`                |
+| New larger initiative               | `projects/<slug>.md` + `projects/README.md` |
+| Stack rewrite / migration           | `projects/next-shadcn-supabase-rewrite/`    |
+| Agent roles                         | `.ai/README.md` + root `AGENTS.md`          |
 
 ## Quick commands
 
 ```bash
-npm ci
-npm run dev          # http://localhost:3000
-npm run lint && npm run typecheck && npm run generate
-npm run test:e2e
+pnpm install
+pnpm run dev          # http://localhost:3000
+pnpm run lint && pnpm run typecheck && pnpm run build
+pnpm run test:e2e
 ```

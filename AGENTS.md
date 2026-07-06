@@ -12,9 +12,10 @@ Quick links:
 
 ## Recommended agent roles
 
-- **Dependency Agent** — npm updates in controlled batches; `npm outdated` +
+- **Dependency Agent** — pnpm updates in controlled batches; `pnpm outdated` +
   validation.
-- **Quality Agent** — `npm ci`, lint, typecheck, generate before PR.
+- **Quality Agent** — `pnpm install --frozen-lockfile`, lint, typecheck, build
+  before PR.
 - **CI Agent** — GitHub Actions workflows; keep checks fast and reliable.
 - **Release Agent** — semantic-release and publish workflow.
 

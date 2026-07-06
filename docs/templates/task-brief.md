@@ -10,10 +10,11 @@ Copy to the start of a new chat or into `local/` for larger tasks.
 
 **Affected areas:**
 
-- [ ] `content/*.yaml` — CV content
-- [ ] `app/components/` — UI
-- [ ] `app/assets/styles/` — SCSS
-- [ ] `i18n/` — UI translations
+- [ ] `content/*.yaml` — CV content (seed via `pnpm run db:seed`)
+- [ ] `components/` — UI
+- [ ] `app/` — routes, layout, metadata
+- [ ] `messages/` + `i18n/` — UI translations (`next-intl`)
+- [ ] `lib/cv/` — types, fetch, mapping
 - [ ] `.github/workflows/` — CI
 - [ ] `docs/` — documentation
 
@@ -29,7 +30,8 @@ Copy to the start of a new chat or into `local/` for larger tasks.
 ## Constraints
 
 - Do not change: ...
-- Quality gate: lint + typecheck + generate
+- Quality gate: `pnpm run lint && pnpm run typecheck && pnpm run build`
+- Build-time Supabase fetch only on public CV pages
 
 ## Relevant files
 

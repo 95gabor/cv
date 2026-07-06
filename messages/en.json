@@ -1,0 +1,56 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "cv": {
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "hobbies": "Hobbies",
+    "download": "Download CV",
+    "contact": "Contact Me"
+  },
+  "experience": {
+    "present": "Present",
+    "responsibilities": "Responsibilities",
+    "technologies": "Technologies",
+    "employmentType": {
+      "intern": "Intern",
+      "full-time": "Full-Time",
+      "contract": "Contract"
+    }
+  },
+  "education": {
+    "degree": "Degree",
+    "field": "Field of Study",
+    "gpa": "GPA"
+  },
+  "skills": {
+    "languages": "Languages",
+    "frameworks": "Frameworks",
+    "databases": "Databases",
+    "tools": "Tools",
+    "cloud": "Cloud Platforms",
+    "softSkills": "Soft Skills"
+  },
+  "contact": {
+    "location": "Area",
+    "phone": "Phone",
+    "email": "Email",
+    "link": "Website"
+  },
+  "theme": {
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "print": {
+    "ariaLabel": "Print CV"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home"
+  }
+}

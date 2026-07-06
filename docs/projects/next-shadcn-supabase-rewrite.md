@@ -5,7 +5,7 @@
 | Field             | Value                                                                                                       |
 | ----------------- | ----------------------------------------------------------------------------------------------------------- |
 | Slug              | `next-shadcn-supabase-rewrite`                                                                              |
-| Status            | `planning`                                                                                                  |
+| Status            | `implementation complete` — cutover pending (Phase 6)                                                       |
 | Goal              | Greenfield rewrite: modern React stack, **UI CV editor** (no JSON/YAML for authors), build-time static site |
 | Baseline          | Current Nuxt 4 static site (`main` branch)                                                                  |
 | Work branch       | **`v2`** — rewrite until cutover merge to `main`                                                            |
@@ -16,14 +16,14 @@
 
 Replace the current **Nuxt 4 + YAML + @nuxt/content** architecture with:
 
-| Layer     | Target                                                                         |
-| --------- | ------------------------------------------------------------------------------ |
-| Framework | **Next.js** (App Router)                                                       |
-| UI        | **shadcn/ui** + **Tailwind CSS v4**                                            |
-| Content   | **Supabase** (Postgres + Storage)                                              |
-| Rendering | **SSG** — Supabase fetch at build time → static HTML (`out/`)                  |
-| Deploy    | **GitHub Pages** from `v2` branch; `next build` with `output: 'export'`        |
-| Rebuild   | **Supabase Database Webhook** → GitHub `repository_dispatch` → deploy workflow |
+| Layer     | Target                                                                  |
+| --------- | ----------------------------------------------------------------------- |
+| Framework | **Next.js** (App Router)                                                |
+| UI        | **shadcn/ui** + **Tailwind CSS v4**                                     |
+| Content   | **Supabase** (Postgres + Storage)                                       |
+| Rendering | **SSG** — Supabase fetch at build time → static HTML (`out/`)           |
+| Deploy    | **GitHub Pages** from `v2` branch; `next build` with `output: 'export'` |
+| Rebuild   | **Manual `v*` tag** → `publish.yaml` (webhook optional, deferred)       |
 
 Content must **not** be fetched client-side on the public CV page. Supabase is
 the source of truth for editable data; the production site remains static HTML
@@ -62,7 +62,7 @@ flowchart TB
 
     subgraph delivery [Delivery]
         Static --> Pages[GitHub Pages]
-        WH[Supabase DB Webhook] -->|repository_dispatch| CI[GitHub Actions deploy]
+        Tag[v* git tag] --> CI[GitHub Actions publish]
         CI --> Next
         CI --> Pages
     end
@@ -76,23 +76,23 @@ See [architecture detail](./next-shadcn-supabase-rewrite/architecture.md).
 
 ## Stack decisions
 
-| Choice             | Decision                            | Rationale                                                        |
-| ------------------ | ----------------------------------- | ---------------------------------------------------------------- |
-| Next.js App Router | Yes                                 | `generateStaticParams`, Metadata API, `sitemap.ts` / `robots.ts` |
-| shadcn/ui          | Yes                                 | Accessible primitives; copied into repo; Tailwind-native         |
-| Tailwind CSS v4    | Yes                                 | Required by shadcn; layout + custom sections                     |
-| SCSS               | No                                  | Avoid dual styling pipelines                                     |
-| Supabase           | Yes                                 | Postgres for structured CV; Storage for images                   |
-| Content fetch      | Build time only                     | Parity with current static site performance                      |
-| Static export      | `output: 'export'`                  | Required for GitHub Pages                                        |
-| Rebuild            | Supabase webhook → GitHub           | No ISR; full static rebuild on content change                    |
-| Deploy             | GitHub Pages                        | Keep current hosting; deploy `out/`                              |
-| Work branch        | `v2`                                | Nuxt stays on `main` until cutover                               |
-| E2E                | Playwright                          | Port existing tests; smoke + locale switch                       |
-| Supabase schema    | **Editor-first hybrid**             | Child tables + `_en`/`_hu` columns; no document JSONB            |
-| Package manager    | **pnpm**                            | On `v2`; `main` stays npm until cutover                          |
-| Local Supabase     | **CLI + Docker** (`supabase start`) | Dev/build against localhost; cloud for CI/prod                   |
-| i18n               | `next-intl` or App Router locales   | Match `prefix_except_default` (`/` en, `/hu` hu)                 |
+| Choice             | Decision                                                                     | Rationale                                                        |
+| ------------------ | ---------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Next.js App Router | Yes                                                                          | `generateStaticParams`, Metadata API, `sitemap.ts` / `robots.ts` |
+| shadcn/ui          | Yes                                                                          | Accessible primitives; copied into repo; Tailwind-native         |
+| Tailwind CSS v4    | Yes                                                                          | Required by shadcn; layout + custom sections                     |
+| SCSS               | No                                                                           | Avoid dual styling pipelines                                     |
+| Supabase           | Yes                                                                          | Postgres for structured CV; Storage for images                   |
+| Content fetch      | Build time only                                                              | Parity with current static site performance                      |
+| Static export      | `output: 'export'`                                                           | Required for GitHub Pages                                        |
+| Rebuild            | Manual `v*` tag → `publish.yaml`                                             | Webhook auto-deploy deferred                                     |
+| Deploy             | GitHub Pages                                                                 | Keep current hosting; deploy `out/`                              |
+| Work branch        | `v2`                                                                         | Nuxt stays on `main` until cutover                               |
+| E2E                | Playwright                                                                   | Port existing tests; smoke + locale switch                       |
+| Supabase schema    | **Editor-first hybrid**                                                      | Child tables + `_en`/`_hu` columns; no document JSONB            |
+| Package manager    | **pnpm**                                                                     | On `v2`; `main` stays npm until cutover                          |
+| Local Supabase     | **CLI + Docker** (`supabase start`)                                          | Dev/build against localhost; cloud for CI/prod                   |
+| i18n               | **`next-intl`** (routing without `[locale]` — `/` + `/hu` for static export) |
 
 ## Decisions (locked)
 
@@ -100,7 +100,7 @@ See [architecture detail](./next-shadcn-supabase-rewrite/architecture.md).
 | --- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | 1   | Deploy target   | **GitHub Pages**                                                                                                                    |
 | 2   | Repo strategy   | **`v2` branch** until cutover merge to `main`                                                                                       |
-| 3   | Rebuild trigger | **Supabase Database Webhook → GitHub `repository_dispatch`**                                                                        |
+| 3   | Rebuild trigger | **Manual `v*` git tag** → `publish.yaml` (webhook deferred)                                                                         |
 | 4   | E2E testing     | **Playwright** (keep current tooling)                                                                                               |
 | 5   | Supabase schema | **Editor-first hybrid** — tables + `_en`/`_hu` columns; see [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md) |
 | 6   | Package manager | **pnpm** (`pnpm-lock.yaml`, `packageManager` in `package.json`)                                                                     |
@@ -151,32 +151,31 @@ flowchart LR
     P1 --> P2[Phase 2 Supabase + seed]
     P2 --> P3[Phase 3 UI port]
     P3 --> P4[Phase 4 SEO + i18n]
-    P4 --> P5[Phase 5 CI + cutover]
+    P4 --> P5[Phase 5 CI + Docker]
+    P5 --> P6[Phase 6 Cutover]
 ```
 
 Phases: [phases.md](./next-shadcn-supabase-rewrite/phases.md).
 
 ## Acceptance criteria
 
-- [ ] Next.js app builds static output with CV data from Supabase (no client
+- [x] Next.js app builds static output with CV data from Supabase (no client
       fetch on `/` or `/hu`)
-- [ ] Visual parity with current sections: Header, Experience, Education,
+- [x] Visual parity with current sections: Header, Experience, Education,
       Skills, Hobbies
-- [ ] Bilingual routing: `/` (en), `/hu` (hu)
-- [ ] Lighthouse CI: SEO 100%, a11y ≥ 95%
-- [ ] sitemap.xml, robots.txt, canonical, OG tags, JSON-LD present
-- [ ] `llms.txt` available
-- [ ] GA loads in production only
-- [ ] Local dev: `supabase start` + `.env.local` → build against
-      `http://127.0.0.1:54321` (see
-      [local-supabase.md](./next-shadcn-supabase-rewrite/local-supabase.md))
-- [ ] YAML migrated to **structured** Supabase tables (not a single JSON
-      document)
-- [ ] `lib/cv/map-from-db.ts` maps DB rows → existing `CV` TypeScript shape
-- [ ] CI: lint, typecheck, build, **Playwright** E2E (smoke), Lighthouse
-- [ ] Deploy to GitHub Pages from `out/` on `v2` branch
-- [ ] Supabase webhook triggers deploy workflow on content change
-- [ ] `docs/.ai/architecture.md` updated after cutover
+- [x] Bilingual routing: `/` (en), `/hu` (hu)
+- [x] Lighthouse CI: SEO 100%, a11y ≥ 95%
+- [x] sitemap.xml, robots.txt, canonical, OG tags, JSON-LD present
+- [x] `llms.txt` available
+- [x] GA loads in production only
+- [x] Local dev: `supabase start` + `.env.local` → build against
+      `http://127.0.0.1:54321`
+- [x] YAML seed into **structured** Supabase tables
+- [x] `lib/cv/map-from-db.ts` maps DB rows → `CV` TypeScript shape
+- [x] CI: lint, typecheck, build, Playwright E2E, Lighthouse
+- [ ] Deploy to GitHub Pages from `out/` on **`main`** after cutover
+- [~] Supabase webhook triggers deploy — **deferred**; manual tag release
+- [ ] `docs/.ai/architecture.md` final pass after cutover
 
 ## Risks
 
@@ -191,16 +190,16 @@ Phases: [phases.md](./next-shadcn-supabase-rewrite/phases.md).
 
 ## Related docs
 
-| Document                                                                | Purpose                                     |
-| ----------------------------------------------------------------------- | ------------------------------------------- |
-| [architecture.md](./next-shadcn-supabase-rewrite/architecture.md)       | Folder layout, data flow, env vars          |
-| [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md) | Tables, RLS, seed from YAML                 |
-| [seo-parity.md](./next-shadcn-supabase-rewrite/seo-parity.md)           | Current → Next mapping                      |
-| [phases.md](./next-shadcn-supabase-rewrite/phases.md)                   | Implementation phases                       |
-| [deploy.md](./next-shadcn-supabase-rewrite/deploy.md)                   | GitHub Pages, `v2` branch, Supabase webhook |
-| [local-supabase.md](./next-shadcn-supabase-rewrite/local-supabase.md)   | Self-hosted local Supabase (CLI + Docker)   |
-| [../content.md](../content.md)                                          | Current YAML model (baseline)               |
-| [../.ai/content-model.md](../.ai/content-model.md)                      | Current Zod schema                          |
+| Document                                                                | Purpose                                            |
+| ----------------------------------------------------------------------- | -------------------------------------------------- |
+| [architecture.md](./next-shadcn-supabase-rewrite/architecture.md)       | Folder layout, data flow, env vars                 |
+| [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md) | Tables, RLS, seed from YAML                        |
+| [seo-parity.md](./next-shadcn-supabase-rewrite/seo-parity.md)           | Current → Next mapping                             |
+| [phases.md](./next-shadcn-supabase-rewrite/phases.md)                   | Implementation phases                              |
+| [deploy.md](./next-shadcn-supabase-rewrite/deploy.md)                   | GitHub Pages, `v*` tag release, prod Supabase seed |
+| [local-supabase.md](./next-shadcn-supabase-rewrite/local-supabase.md)   | Self-hosted local Supabase (CLI + Docker)          |
+| [../content.md](../content.md)                                          | Current YAML model (baseline)                      |
+| [../.ai/content-model.md](../.ai/content-model.md)                      | CV types + YAML seed model                         |
 
 ## Agent quick start
 

@@ -1,7 +1,6 @@
 # Supabase schema — CV content model
 
-Maps the current Zod schema (`app/types/cv.ts`) and `content/gabor-pichner.yaml`
-to Postgres.
+Maps `lib/cv/types.ts` and `content/gabor-pichner.yaml` to Postgres.
 
 ## Approach (locked)
 
@@ -90,14 +89,14 @@ Single row (`id = 'default'`).
 
 ### `cv_profiles`
 
-| Column                 | Type        | Editor UI                             |
-| ---------------------- | ----------- | ------------------------------------- |
-| `slug`                 | text UNIQUE | Read-only after create                |
-| `name_en`, `name_hu`   | text        | Bilingual name fields                 |
-| `title_en`, `title_hu` | text        | Bilingual job headline                |
-| `picture_path`         | text        | Avatar upload → Storage               |
-| `is_active`            | boolean     | Toggle (which profile the site loads) |
-| `updated_at`           | timestamptz | Auto — webhook trigger source         |
+| Column                 | Type        | Editor UI                                           |
+| ---------------------- | ----------- | --------------------------------------------------- |
+| `slug`                 | text UNIQUE | Read-only after create                              |
+| `name_en`, `name_hu`   | text        | Bilingual name fields                               |
+| `title_en`, `title_hu` | text        | Bilingual job headline                              |
+| `picture_path`         | text        | Avatar upload → Storage                             |
+| `is_active`            | boolean     | Toggle (which profile the site loads)               |
+| `updated_at`           | timestamptz | Auto-updated on child changes (future webhook hook) |
 
 ### `personal_links`
 
@@ -193,8 +192,8 @@ flowchart LR
 - Every user-visible field maps to **one column** (or one row in a child table).
 - Bilingual content = **two inputs** (`_en`, `_hu`), not a JSON editor.
 - Lists = **add / edit / delete / reorder** rows — never edit arrays as text.
-- Save triggers `cv_profiles.updated_at` (via trigger on child tables) → webhook
-  → redeploy.
+- Save updates `cv_profiles.updated_at` (via trigger on child tables).
+  Auto-deploy webhook is **deferred** — use manual `v*` tag for now.
 
 ## Developer readability
 
@@ -211,7 +210,7 @@ work_experiences:
 
 TypeScript layer maps flat columns → existing `CV` domain type
 (`LocalizedString`, etc.) in `lib/cv/map-from-db.ts`. Public site and tests keep
-the same shapes as `app/types/cv.ts`.
+the same shapes as `lib/cv/types.ts`.
 
 ## Webhook / `updated_at`
 
@@ -222,7 +221,8 @@ Trigger on child tables bumps parent profile timestamp:
 update cv_profiles set updated_at = now() where id = <cv_profile_id>;
 ```
 
-Single Supabase Database Webhook on `cv_profiles` UPDATE is enough for rebuild.
+Single Supabase Database Webhook on `cv_profiles` UPDATE would suffice for
+rebuild when implemented (deferred).
 
 ## Storage
 
@@ -242,9 +242,9 @@ Editor uploads file → Storage → saves path in `picture_path` / `icon_*_path`
 
 ## Seed migration
 
-1. Parse `content/gabor-pichner.yaml` + `config.ts`
+1. Parse `content/gabor-pichner.yaml` via `scripts/seed-from-yaml.mts`
 2. Insert into structured tables (not one JSON blob)
-3. `lib/cv/map-from-db.ts` round-trip test against current Zod shapes
+3. `lib/cv/map-from-db.ts` maps DB rows → `CV` TypeScript shape
 
 Run against **local self-hosted** stack (`supabase start`) during development;
 push migrations to cloud for CI — see [local-supabase.md](./local-supabase.md).

@@ -5,14 +5,16 @@
 
 ## Prerequisites
 
-| Tool    | Version / notes                  |
-| ------- | -------------------------------- |
-| Node.js | ≥ 24.18.0 (`.nvmrc`: `24.18.0`)  |
-| npm     | Project uses `package-lock.json` |
+| Tool    | Version / notes                           |
+| ------- | ----------------------------------------- |
+| Node.js | ≥ 24.18.0 (`.nvmrc`: `24.18.0`)           |
+| pnpm    | 10.x (`packageManager` in `package.json`) |
+| Docker  | For local Supabase (`supabase start`)     |
 
 ```bash
 nvm use    # if nvm is installed
 node -v    # verify
+pnpm -v
 ```
 
 ## First-time setup
@@ -20,62 +22,72 @@ node -v    # verify
 ```bash
 git clone https://github.com/95gabor/cv.git
 cd cv
-npm ci
-npm run dev
+pnpm install
+cp .env.example .env.local
+pnpm exec supabase start
+pnpm run db:seed
+pnpm run dev
 # → http://localhost:3000
 ```
 
 ## Common commands
 
-| Command                     | Purpose                                          |
-| --------------------------- | ------------------------------------------------ |
-| `npm run dev`               | Dev server with hot reload                       |
-| `npm run build`             | Production build                                 |
-| `npm run generate`          | Static site generation (`.output/public`)        |
-| `npm run preview`           | Preview production build                         |
-| `npm run lint` / `lint:fix` | ESLint                                           |
-| `npm run typecheck`         | Vue/TS type checking                             |
-| `npm run format`            | Prettier                                         |
-| `npm run test:e2e`          | Playwright functional tests                      |
-| `npm run test:e2e:ui`       | Playwright interactive UI                        |
-| `npm run test:e2e:visual`   | Percy visual regression (requires token locally) |
-| `npm run storybook`         | UI components in Storybook (`:6006`)             |
-| `npm run commit`            | Commitizen (Conventional Commits)                |
+| Command                                                  | Purpose                             |
+| -------------------------------------------------------- | ----------------------------------- |
+| `pnpm run dev`                                           | Dev server (Turbopack)              |
+| `pnpm run build`                                         | Static export → `out/`              |
+| `pnpm run generate`                                      | Alias for `build` (CI)              |
+| `pnpm run lint`                                          | ESLint                              |
+| `pnpm run typecheck`                                     | TypeScript                          |
+| `pnpm run test:e2e`                                      | Playwright (builds + serves `out/`) |
+| `pnpm run test:e2e:visual`                               | Percy visual regression             |
+| `pnpm run db:start` / `db:stop` / `db:reset` / `db:seed` | Local Supabase                      |
+| `pnpm run db:types`                                      | Regenerate `lib/supabase/types.ts`  |
 
 ## Quality gate (before PR)
 
 ```bash
-npm ci
-npm run lint
-npm run typecheck
-npm run generate
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run typecheck
+pnpm run build
 ```
+
+Requires Supabase running locally or valid env vars in `.env.local`.
 
 ## Editing CV content
 
-1. Edit `content/gabor-pichner.yaml` (or the CV file set in `config.ts`).
-2. The dev server hot-reloads content automatically.
-3. Details: [content.md](./content.md)
+1. Edit `content/gabor-pichner.yaml`.
+2. Reseed: `pnpm run db:seed`.
+3. Refresh dev server (or restart `pnpm run dev`).
+
+Details: [content.md](./content.md)
 
 ## Docker (optional)
 
 ```bash
+bash scripts/prepare-supabase-for-build.sh
 docker compose up --build
 # → http://localhost:8000
 ```
 
+Uses the root `Dockerfile` (Next.js build inside Docker + nginx). Requires
+`.env.local` with `SUPABASE_*` and Docker running.
+
 ## Common issues
 
-| Issue                                   | Fix                                                              |
-| --------------------------------------- | ---------------------------------------------------------------- |
-| Node version mismatch                   | `nvm use` or Node ≥ 24.18                                        |
-| `Another Nuxt build is already running` | Stop the parallel build, or `NUXT_IGNORE_LOCK=1`                 |
-| YAML validation error on build          | Check schema: `app/types/cv.ts`, example: `content/example.yaml` |
-| Percy visual test fails locally         | `PERCY_TOKEN` env var required                                   |
+| Issue                  | Fix                                                      |
+| ---------------------- | -------------------------------------------------------- |
+| Node version mismatch  | `nvm use` or Node ≥ 24.18                                |
+| `Missing SUPABASE_URL` | Copy `.env.example` → `.env.local`; run `supabase start` |
+| Empty CV / fetch error | `pnpm run db:seed` after `db:reset`                      |
+| Port 3000 in use       | Stop other `next dev` or use another port                |
+| Percy fails locally    | Set `PERCY_TOKEN`                                        |
 
 ## Setup checklist
 
 - [ ] `node -v` ≥ 24.18.0
-- [ ] `npm ci` succeeds
-- [ ] `npm run dev` → page loads
-- [ ] `npm run lint && npm run typecheck && npm run generate` passes
+- [ ] `pnpm install` succeeds
+- [ ] `supabase start` + `pnpm run db:seed`
+- [ ] `pnpm run dev` → CV loads at `/` and `/hu`
+- [ ] `pnpm run lint && pnpm run typecheck && pnpm run build` passes

@@ -18,7 +18,7 @@ export default {
       {
         message:
           'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}',
-        assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
+        assets: ['package.json', 'pnpm-lock.yaml', 'CHANGELOG.md'],
       },
     ],
     '@semantic-release/github',

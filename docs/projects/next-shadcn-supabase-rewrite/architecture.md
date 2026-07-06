@@ -34,48 +34,36 @@ flowchart TB
     PageEN --> JSONLD
 ```
 
-## Proposed folder layout
+## Proposed folder layout (current on `v2`)
 
 ```
-cv/                          # rewrite on `v2` branch
+cv/
 ├── app/
-│   ├── layout.tsx           # fonts, theme provider, global shell
-│   ├── page.tsx             # EN CV (default locale)
-│   ├── hu/
-│   │   └── page.tsx         # HU CV (or [locale] dynamic segment)
-│   ├── sitemap.ts
-│   ├── robots.ts
-│   ├── llms.txt/route.ts    # or public/llms.txt
-│   └── globals.css          # Tailwind + shadcn CSS variables
+│   ├── layout.tsx, page.tsx       # EN
+│   ├── hu/page.tsx, hu/layout.tsx # HU
+│   ├── not-found.tsx
+│   ├── sitemap.ts, robots.ts
+│   └── globals.css
 ├── components/
-│   ├── ui/                  # shadcn primitives (button, card, badge, …)
-│   ├── header.tsx
-│   ├── experience.tsx
-│   ├── education.tsx
-│   ├── skills.tsx
-│   ├── hobbies.tsx
-│   ├── language-selector.tsx
-│   ├── structured-data.tsx
-│   └── cookie-consent.tsx
-├── lib/
-│   ├── supabase/
-│   │   ├── server.ts        # service role / anon for build
-│   │   └── types.ts         # generated Database types
-│   ├── cv/
-│   │   ├── fetch.ts         # getCvProfile(slug, locale)
-│   │   └── types.ts         # CV domain types (from current Zod)
-│   └── site-config.ts
-├── messages/
-│   ├── en.json
-│   └── hu.json
-├── public/
-│   └── grid.svg             # static assets not in Supabase Storage
-├── supabase/
-│   ├── config.toml
-│   ├── migrations/
-│   └── seed.sql
-├── tests/                   # Playwright
-├── docs/
+│   ├── ui/                        # shadcn
+│   ├── locale-provider.tsx        # next-intl
+│   ├── providers.tsx              # next-themes
+│   └── …                          # section components
+├── i18n/
+│   ├── config.ts, request.ts
+├── lib/cv/, lib/seo/, lib/supabase/
+├── messages/en.json, messages/hu.json
+├── content/*.yaml                 # seed source
+├── scripts/
+│   ├── seed-from-yaml.mts
+│   ├── prepare-static-site.sh      # CI: local Supabase + generate
+│   ├── prepare-static-site-prod.sh # publish: prod Supabase + generate
+│   ├── supabase-push-prod.sh       # publish: link + db push
+│   └── prepare-supabase-for-build.sh
+├── supabase/migrations/
+├── tests/e2e/
+├── Dockerfile                     # Next build in Docker + nginx
+├── nginx.conf
 └── next.config.ts
 ```
 
@@ -109,12 +97,11 @@ export default async function Page() {
 
 ### Rebuild on content change
 
-| Trigger                | Action                                                                           |
-| ---------------------- | -------------------------------------------------------------------------------- |
-| Supabase DB row change | Webhook → GitHub `repository_dispatch` (`supabase-cv-updated`) → deploy workflow |
-| Push to `v2`           | Deploy workflow (during migration)                                               |
-| Manual                 | `workflow_dispatch` on deploy workflow                                           |
-| Tag `v*`               | Release deploy (post-cutover, optional)                                          |
+| Trigger          | Action                                                        |
+| ---------------- | ------------------------------------------------------------- |
+| Content update   | `pnpm run db:seed` (prod) → **`v*` git tag** → `publish.yaml` |
+| Manual           | `workflow_dispatch` on `publish.yaml` (if enabled)            |
+| Supabase webhook | **Deferred** — optional future auto-deploy                    |
 
 Full setup: [deploy.md](./deploy.md).
 
@@ -153,17 +140,16 @@ Never expose service role key to the browser.
 
 ## i18n
 
-**Target:** match current `prefix_except_default`.
+**Implemented:** `next-intl` without `[locale]` routing (required for
+`output: 'export'` with `/` + `/hu`).
 
 | URL   | Locale | Content                               |
 | ----- | ------ | ------------------------------------- |
 | `/`   | `en`   | `cv.*.en` fields + `messages/en.json` |
 | `/hu` | `hu`   | `cv.*.hu` fields + `messages/hu.json` |
 
-Options:
-
-1. **`next-intl`** with `[locale]` segment — recommended for UI strings
-2. Duplicate `app/page.tsx` + `app/hu/page.tsx` — minimal, works for two locales
+Per-route `LocaleProvider` + `setRequestLocale` in `app/page.tsx` and
+`app/hu/layout.tsx`.
 
 ## Styling
 
@@ -173,22 +159,26 @@ Tailwind v4 (globals.css)
         └── Section components (Tailwind utilities only)
 ```
 
-No SCSS. Port design tokens from `app/assets/styles/_variables.scss` to shadcn
-CSS variables.
+No SCSS. Design tokens live in `app/globals.css` (shadcn CSS variables + `.cv-*`
+helpers).
 
-## CI (target)
+## CI
 
 **Package manager:** pnpm — `pnpm install --frozen-lockfile` in CI; lockfile
 `pnpm-lock.yaml`.
 
-| Job        | Command                                                         |
-| ---------- | --------------------------------------------------------------- |
-| Install    | `pnpm install --frozen-lockfile`                                |
-| Lint       | `pnpm run lint`                                                 |
-| Typecheck  | `pnpm run typecheck`                                            |
-| Build      | `pnpm run build` (with Supabase secrets)                        |
-| E2E        | `pnpm exec playwright test` against `out/` via `pnpm dlx serve` |
-| Lighthouse | Same thresholds as `.lighthouserc.json`                         |
+| Job        | Command                                             |
+| ---------- | --------------------------------------------------- |
+| Install    | `pnpm install --frozen-lockfile`                    |
+| Lint       | `pnpm run lint`                                     |
+| Typecheck  | `pnpm run typecheck`                                |
+| Build      | `prepare-static-site.sh` — **local** Supabase in CI |
+| E2E        | Playwright on `out/`                                |
+| Lighthouse | `.lighthouserc.json` thresholds                     |
+| Docker     | `docker-build-env` — **local** Supabase smoke build |
+
+**Publish** (`v*` tag): `supabase-push-prod.sh` → `prepare-static-site-prod.sh`
+/ prod `Dockerfile` build-args (cloud Supabase).
 
 Local quality gate:
 `pnpm install && pnpm run lint && pnpm run typecheck && pnpm run build`.

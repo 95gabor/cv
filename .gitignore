@@ -1,30 +1,78 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
-storybook-static
+*
 
-# Node dependencies
-node_modules
+!*/
+!.gitignore
+!.dockerignore
+!.env.example
+!.nvmrc
+!.prettierrc.json
+!.lintstagedrc
+!.commitlintrc.js
+!.lighthouserc.json
+!.lighthouserc.docker.json
+!AGENTS.md
+!CHANGELOG.md
+!Dockerfile
+!README.md
+!SKILLS.md
+!components.json
+!docker-compose.yml
+!eslint.config.mjs
+!global.d.ts
+!next-env.d.ts
+!next.config.ts
+!nginx.conf
+!package.json
+!playwright.config.ts
+!playwright.visual.config.ts
+!pnpm-lock.yaml
+!postcss.config.mjs
+!release.config.mjs
+!tsconfig.json
 
-# Logs
-logs
-*.log
+!.cursor/
+!.cursor/**
+!.github/
+!.github/**
+!.husky/
+!.husky/**
+!.vscode/
+!.vscode/**
+!app/
+!app/**
+!components/
+!components/**
+!content/
+!content/**
+!docs/
+!docs/**
+!i18n/
+!i18n/**
+!lib/
+!lib/**
+!messages/
+!messages/**
+!public/
+!public/**
+!scripts/
+!scripts/**
+!supabase/
+!supabase/**
+!tests/
+!tests/**
 
-# Playwright outputs
-playwright-report
-test-results
-artifacts/screenshots
-
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
+node_modules/
+.next/
+out/
+public/llms.txt
 .env
 .env.*
 !.env.example
+supabase/.temp/
+supabase/.branches/
+tsconfig.tsbuildinfo
+playwright-report/
+test-results/
+artifacts/
+.lighthouseci/
+.DS_Store

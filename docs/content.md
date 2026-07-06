@@ -2,16 +2,18 @@
 
 > Agent workflow:
 > [`.ai/workflows/edit-cv-content.md`](./.ai/workflows/edit-cv-content.md)  
-> Schema details: [`.ai/content-model.md`](./.ai/content-model.md)
+> Schema: [`.ai/content-model.md`](./.ai/content-model.md)
 
 ## Which file to edit?
 
-| File                              | When                                                                |
-| --------------------------------- | ------------------------------------------------------------------- |
-| `content/gabor-pichner.yaml`      | Your CV data (default)                                              |
-| `content/example.yaml`            | Template / reference for another CV                                 |
-| `config.ts` → `cv.filename`       | Which YAML to load (`gabor-pichner` → `content/gabor-pichner.yaml`) |
-| `i18n/locales/en.json`, `hu.json` | UI strings (section titles, buttons) — **not** CV body content      |
+| File                                   | When                                    |
+| -------------------------------------- | --------------------------------------- |
+| `content/gabor-pichner.yaml`           | CV data (default profile)               |
+| `content/example.yaml`                 | Template / reference                    |
+| `lib/site-config.ts` → `cv.slug`       | Which profile to load (`gabor-pichner`) |
+| `messages/en.json`, `messages/hu.json` | UI strings — **not** CV body text       |
+
+After YAML edits, run `pnpm run db:seed` to update local Supabase.
 
 ## Bilingual model
 
@@ -27,24 +29,22 @@ personal:
     hu: Senior TypeScript Full-Stack Fejlesztő
 ```
 
-The language switcher uses i18n; content renders the field matching the selected
-locale.
+The language switcher navigates `/` ↔ `/hu`; content renders the matching locale
+field.
 
 ## Main sections
 
 ```mermaid
 flowchart TB
-    YAML[content/*.yaml]
-    YAML --> Personal[personal]
-    YAML --> Work[workExperience]
-    YAML --> Edu[educations]
-    YAML --> Skills[skills]
-    YAML --> Hobbies[hobbies]
-    Personal --> App[app.vue → Header]
-    Work --> App2[Experience component]
-    Edu --> App3[Education component]
-    Skills --> App4[Skills component]
-    Hobbies --> App5[Hobbies component]
+    YAML[content/gabor-pichner.yaml]
+    Seed[db:seed]
+    DB[(Supabase)]
+    YAML --> Seed --> DB
+    DB --> Header[Header]
+    DB --> Work[Experience]
+    DB --> Edu[Education]
+    DB --> Skills[Skills]
+    DB --> Hobbies[Hobbies]
 ```
 
 ## Common fields
@@ -59,50 +59,34 @@ flowchart TB
 
 ```yaml
 - title:
-    en: Senior Developer
-    hu: Senior Fejlesztő
+    en: Full Stack Developer
+    hu: Full Stack fejlesztő
   company:
     name: Example Ltd
-    link: https://example.com # optional
-  location: Budapest
-  from:
-    year: 2020
-    month: 3 # optional
-  end: # optional — omit for current role
-    year: 2024
-  employmentType: full-time # optional — i18n key
+    link: https://example.com
+  location: Budapest, HU
+  from: { year: 2024, month: 1 }
+  end: { year: 2025, month: 6 }
   description:
-    en: >
-      Multiline text...
-    hu: >
-      Többsoros szöveg...
+    en: ...
+    hu: ...
   technologies:
     - name: TypeScript
-      link: https://www.typescriptlang.org
+      link: https://www.typescriptlang.org/
 ```
 
-### Education (`educations`)
+### Skills / hobbies
 
-Same period model (`from` / `end`); `degree` and `institution` are localized.
-
-### Skills and hobbies
-
-- `skills` — `name` + optional `link`
-- `hobbies` — localized `name` + optional `link`
+Skills: `name`, optional `link`.  
+Hobbies: localized `name.en` / `name.hu`, optional `link`.
 
 ## Validation
 
-Schema source: `app/types/cv.ts` (Zod). On build/content parse errors, check:
+- Types: `lib/cv/types.ts`
+- Seed script validates while inserting: `scripts/seed-from-yaml.mts`
+- Full build check: `pnpm run build`
 
-1. Every localized field has both `en` and `hu` values
-2. `from.year` is required for experience/education entries
-3. Technology objects: `name` + `link` (link is required in the schema)
+## UI strings (not in YAML)
 
-Generated JSON Schema: `schema/cv.schema.json` (part of `npm run generate`).
-
-## New CV file (fork)
-
-1. Copy `content/example.yaml` → `content/<slug>.yaml`
-2. `config.ts`: `cv.filename: '<slug>'`
-3. Replace `public/` assets (avatar, favicon)
-4. `npm run dev` — verify
+Section titles, employment type labels, cookie banner — `messages/en.json` and
+`messages/hu.json`.

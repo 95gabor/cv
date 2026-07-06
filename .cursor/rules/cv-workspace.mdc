@@ -9,7 +9,7 @@ Before coding, read [`docs/.ai/README.md`](../../docs/.ai/README.md) and load on
 
 Quick routing:
 - CV YAML → `docs/.ai/content-model.md`, `docs/.ai/workflows/edit-cv-content.md`
-- UI/SCSS → `docs/.ai/architecture.md`, `docs/.ai/coding-standards.md`
+- UI / Tailwind → `docs/.ai/architecture.md`, `docs/.ai/coding-standards.md`
 - CI/release → `docs/.ai/workflows/run-and-verify.md`, `release.md`
 
-Hard rules: minimal diff, no commits unless asked, Mermaid for flow diagrams, no `@apply` in SCSS.
+Hard rules: minimal diff, no commits unless asked, Mermaid for flow diagrams, prefer Tailwind / `.cv-*` classes over new SCSS.

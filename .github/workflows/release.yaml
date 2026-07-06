@@ -32,6 +32,6 @@ jobs:
         uses: ./.github/actions/node-bootstrap
 
       - name: Generate new releases
-        run: npm run release
+        run: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_BOT_GITHUB_TOKEN }}

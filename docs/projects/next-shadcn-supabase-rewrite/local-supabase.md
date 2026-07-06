@@ -2,10 +2,11 @@
 
 ## Decision
 
-| Environment         | Supabase                                            | Purpose                                  |
-| ------------------- | --------------------------------------------------- | ---------------------------------------- |
-| **Local dev**       | **Self-hosted** via Supabase CLI (`supabase start`) | Schema, seed, editor dev, offline builds |
-| **CI / production** | **Supabase Cloud** project                          | Build fetch, webhooks → GitHub deploy    |
+| Environment          | Supabase                                                | Purpose                                  |
+| -------------------- | ------------------------------------------------------- | ---------------------------------------- |
+| **Local dev**        | **Self-hosted** via Supabase CLI (`supabase start`)     | Schema, seed, editor dev, offline builds |
+| **CI (PR)**          | **Local** Supabase in Docker (`prepare-static-site.sh`) | Fast CI builds                           |
+| **Production build** | **Supabase Cloud** project                              | `publish.yaml` on `v*` tag               |
 
 Local stack runs in **Docker** on the developer machine — same Postgres + Auth +
 Storage APIs as cloud, without hitting a remote project during day-to-day work.
@@ -28,17 +29,17 @@ flowchart TB
         NextDev -->|SUPABASE_URL local| API
     end
 
-    subgraph cloud [Supabase Cloud]
+    subgraph cloud [Supabase Cloud — prod]
         CloudPG[(Postgres)]
-        WH[Database Webhook]
     end
 
-    subgraph ci [GitHub Actions]
+    subgraph ci [GitHub Actions — publish on v* tag]
         Build[pnpm run build]
-        WH -->|repository_dispatch| Build
         Build -->|SUPABASE_URL cloud| CloudPG
     end
 ```
+
+Manual `v*` tag triggers rebuild. Supabase webhook auto-deploy is **deferred**.
 
 ## Prerequisites
 
@@ -55,12 +56,14 @@ flowchart TB
 supabase/
 ├── config.toml          # CLI config (ports, auth, storage)
 ├── migrations/          # SQL migrations (schema)
-├── seed.sql             # optional seed (or scripts/seed.ts)
-└── .gitignore           # ignore .branches, temp — commit migrations + seed
+└── .gitignore           # ignore .branches, temp
 ```
 
-`config.toml` and migrations are **version-controlled**. Local data is ephemeral
-(`db reset`).
+CV data seed: `pnpm run db:seed` → `scripts/seed-from-yaml.mts` (not
+`seed.sql`).
+
+`config.toml` and migrations are **version-controlled**. Local DB data is
+ephemeral (`supabase db reset`).
 
 ## Quick start
 
@@ -129,9 +132,11 @@ pnpm run db:types              # regenerate TS types
 ### Seed from YAML
 
 ```bash
-pnpm run db:seed               # custom script: content/gabor-pichner.yaml → SQL insert
-supabase db reset              # or rely on seed.sql
+pnpm run db:seed               # content/gabor-pichner.yaml → Supabase (local or prod env)
 ```
+
+Prod: `supabase link` + `supabase db push`, then `db:seed` with cloud
+`SUPABASE_*`. See [deploy.md](./deploy.md).
 
 ### Next.js dev / build against local Supabase
 
@@ -154,17 +159,14 @@ Useful for:
 - Manual content edits during development
 - Testing RLS policies
 
-## Webhooks — local vs cloud
+## Deploy / rebuild
 
-|                           | Local self-hosted                          | Cloud              |
-| ------------------------- | ------------------------------------------ | ------------------ |
-| Database Webhook → GitHub | ❌ Not practical (localhost not reachable) | ✅ Production path |
-| Rebuild after edit        | Manual: `pnpm run build` or push to cloud  | Auto via webhook   |
+|                          | Local self-hosted        | Cloud                         |
+| ------------------------ | ------------------------ | ----------------------------- |
+| Auto deploy on DB change | ❌                       | ❌ deferred (manual `v*` tag) |
+| Rebuild after edit       | `pnpm run build` locally | `db:seed` → `v*` tag → CI     |
 
-Local content changes do **not** trigger GitHub deploy. That is expected.
-
-Optional: after editing locally, `supabase db push` or seed export to sync cloud
-— document when staging project exists.
+Local content changes do **not** trigger GitHub deploy.
 
 ## Linking local to cloud (optional)
 
@@ -191,13 +193,11 @@ For dev, avatar paths can point to:
 
 ## CI
 
-GitHub Actions use **cloud** Supabase secrets only — not local stack.
+PR CI (`ci.yaml`) uses **local Supabase** in Docker via `prepare-static-site.sh`
+(fast, no cloud secrets required).
 
-Playwright / Lighthouse CI can use:
-
-- Mocked fetch (fast), or
-- Cloud staging read-only project, or
-- Pre-seeded build without live Supabase (fixture JSON) — decide in Phase 5
+`publish.yaml` (on `v*` tag) uses **cloud Supabase secrets** for Pages build and
+Docker image (`Dockerfile` with in-container build).
 
 ## Troubleshooting
 
@@ -211,5 +211,5 @@ Playwright / Lighthouse CI can use:
 ## Related
 
 - [supabase-schema.md](./supabase-schema.md) — table design
-- [deploy.md](./deploy.md) — cloud webhooks + GitHub Pages
+- [deploy.md](./deploy.md) — tag release + prod seed
 - [phases.md](./phases.md) — Phase 2 tasks

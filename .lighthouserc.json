@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "numberOfRuns": 1,
-      "startServerCommand": "npx --yes http-server .output/public -p 4173 -a 127.0.0.1",
+      "startServerCommand": "npx --yes http-server out -p 4173 -a 127.0.0.1",
       "startServerReadyPattern": "Available on:",
       "url": ["http://127.0.0.1:4173/"],
       "settings": {

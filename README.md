@@ -1,61 +1,70 @@
-# CV – Nuxt
+# CV — Next.js
 
-Modern, maintainable CV site built with Nuxt 4, Vue 3, TypeScript, and SCSS.
-Content lives in YAML; the site is statically generated.
+Personal CV site built with **Next.js 16**, **React**, **TypeScript**,
+**Tailwind CSS v4**, **shadcn/ui**, and **Supabase** (build-time data fetch).
+Static export to `out/` for GitHub Pages and Docker/nginx.
 
-**Documentation:** [`docs/README.md`](./docs/README.md) · **Agents:**
-[`docs/.ai/README.md`](./docs/.ai/README.md)
+## Prerequisites
 
-## Setup
+- Node.js ≥ 24.18.0 (see `.nvmrc`)
+- [pnpm](https://pnpm.io/) 10.x
+- [Docker](https://www.docker.com/) (for local Supabase)
 
-```bash
-npm ci
-npm run dev    # http://localhost:3000
-```
-
-See [`docs/setup.md`](./docs/setup.md) for prerequisites and troubleshooting.
-
-## Production
+## First-time setup
 
 ```bash
-npm run generate    # static output → .output/public
-npm run preview
+git clone https://github.com/95gabor/cv.git
+cd cv
+pnpm install
+cp .env.example .env.local
+pnpm exec supabase start
+pnpm run db:seed
+pnpm run dev
+# → http://localhost:3000
 ```
 
-Deploy: GitHub Pages on `v*` tags, or Docker (`docker compose up` → port 8000).
+## Common commands
 
-## Quality gate
+| Command                                                  | Purpose                              |
+| -------------------------------------------------------- | ------------------------------------ |
+| `pnpm run dev`                                           | Dev server (Turbopack)               |
+| `pnpm run build`                                         | Static export to `out/`              |
+| `pnpm run generate`                                      | Alias for `build` (CI compatibility) |
+| `pnpm run lint`                                          | ESLint                               |
+| `pnpm run typecheck`                                     | TypeScript                           |
+| `pnpm run test:e2e`                                      | Playwright functional tests          |
+| `pnpm run db:start` / `db:stop` / `db:reset` / `db:seed` | Local Supabase                       |
+
+## Quality gate (before PR)
 
 ```bash
-npm run lint
-npm run typecheck
-npm run generate
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run typecheck
+pnpm run build
 ```
 
-## Tests
+Requires Supabase env vars (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` for
+build; `SUPABASE_SECRET_KEY` for seed) — see `.env.example`.
+
+## Docker (optional)
 
 ```bash
-npm run test:e2e
-npm run test:e2e:ui
-npm run storybook
+# Requires .env.local with SUPABASE_* and running Docker daemon
+bash scripts/prepare-supabase-for-build.sh
+docker compose up --build
+# → http://localhost:8000
 ```
 
-## Edit CV content
+Uses the root `Dockerfile` (Next.js build inside Docker + nginx with gzip).
 
-Edit `content/gabor-pichner.yaml` — see [`docs/content.md`](./docs/content.md).
+## Documentation
 
-## Project structure
+- [docs/README.md](./docs/README.md) — human docs index
+- [docs/.ai/README.md](./docs/.ai/README.md) — agent entry point
+- [AGENTS.md](./AGENTS.md) — agent roles and rules
 
-```
-app/           Vue components, SCSS, types
-content/       CV YAML data
-i18n/          UI translations (en, hu)
-config.ts      Site URL, meta, active CV file
-docs/          Documentation (human + AI-native)
-tests/         Playwright E2E
-```
+## Stack
 
-## Links
-
-- [Nuxt documentation](https://nuxt.com/docs)
-- [Vue style guide](https://vuejs.org/style-guide/)
+Next.js App Router · shadcn/ui · Supabase · static export · Playwright ·
+Lighthouse · semantic-release

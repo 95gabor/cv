@@ -3,49 +3,35 @@
 ## Quality gate (default)
 
 ```bash
-npm ci
-npm run lint
-npm run typecheck
-npm run generate
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run typecheck
+pnpm run build
 ```
 
-| Check     | Pass criteria                                            |
-| --------- | -------------------------------------------------------- |
-| Lint      | Exit 0                                                   |
-| Typecheck | Exit 0                                                   |
-| Generate  | Static output in `.output/public`, no YAML schema errors |
+| Check     | Pass criteria                                        |
+| --------- | ---------------------------------------------------- |
+| Lint      | Exit 0                                               |
+| Typecheck | Exit 0                                               |
+| Build     | Static output in `out/`, sitemap + robots + llms.txt |
+
+Requires `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (local Supabase or CI).
 
 ## E2E (when UI/routing changed)
 
 ```bash
-npm run test:e2e
+pnpm run test:e2e
 ```
 
-Interactive debug: `npm run test:e2e:ui`
+Playwright runs `scripts/prepare-static-site.sh` then serves `out/` on
+port 4173.
 
 ## Visual regression (when layout/styles changed)
 
 ```bash
 # Requires PERCY_TOKEN
-npm run test:e2e:visual
+pnpm run test:e2e:visual
 ```
-
-CI runs Percy automatically on PRs.
-
-## Storybook (when ui/ components changed)
-
-```bash
-npm run storybook
-```
-
-## Build warning check
-
-```bash
-npm run build 2>&1 | grep -i warn
-```
-
-Known harmless warnings: VueUse `#__PURE__`, Nuxt sourcemap plugins, npm
-`always-auth` (global config).
 
 ## Report back to user
 

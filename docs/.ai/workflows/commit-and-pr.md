@@ -1,48 +1,41 @@
 # Workflow: commit and PR
 
-## Before commit
-
-Run [run-and-verify.md](./run-and-verify.md) quality gate.
-
-## Commit (only when user asked)
+## Before opening a PR
 
 ```bash
-git status
-git diff
-git log -3 --oneline   # match commit style
+pnpm install --frozen-lockfile
+pnpm run lint
+pnpm run typecheck
+pnpm run build
 ```
 
-- Conventional Commits format
-- Message via HEREDOC
-- Never `--no-verify`, never amend unless rules allow
-- Do not commit secrets
-
-## Pull request
+If UI changed:
 
 ```bash
-git status
-git diff main...HEAD
-git log main...HEAD --oneline
+pnpm run test:e2e
 ```
 
-Create PR with `gh pr create`:
+## Commit messages
 
-```markdown
-## Summary
+Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
-- ...
+- `feat:` new feature
+- `fix:` bug fix
+- `docs:` documentation only
+- `chore:` tooling, deps, CI
+- `refactor:` code change without feature/fix
+- `test:` tests only
 
-## Test plan
+## PR checklist
 
-- [ ] npm run lint
-- [ ] npm run typecheck
-- [ ] npm run generate
-- [ ] (if UI) npm run test:e2e
-```
+- [ ] `pnpm run lint`
+- [ ] `pnpm run typecheck`
+- [ ] `pnpm run build`
+- [ ] (if UI) `pnpm run test:e2e`
+- [ ] Docs updated if architecture, setup, or content model changed
+- [ ] Conventional Commits PR title
 
-## CI expectations on PR
+## Do not
 
-`ci.yaml` runs: lint, typecheck, generate, Lighthouse, E2E, Percy, Docker build
-validation, commitlint.
-
-Wait for green before requesting review.
+- Commit unless user explicitly asked
+- Force-push to `main`

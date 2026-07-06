@@ -2,14 +2,19 @@
 
 CV data schema, localization, and validation rules.
 
-## Schema source
+## Data flow
 
-| File                    | Role                                             |
-| ----------------------- | ------------------------------------------------ |
-| `app/types/cv.ts`       | **Source of truth** — Zod definitions            |
-| `content.config.ts`     | Wires `CVSchema` into `@nuxt/content` collection |
-| `schema/cv.schema.json` | Generated JSON Schema (do not edit manually)     |
-| `content/example.yaml`  | Reference document with all field types          |
+```mermaid
+flowchart LR
+    YAML[content/gabor-pichner.yaml]
+    Seed[pnpm run db:seed]
+    DB[(Supabase)]
+    Build[getCvProfile at build]
+    YAML --> Seed --> DB --> Build
+```
+
+**Source of truth for editing:** `content/gabor-pichner.yaml` (seed into DB).  
+**Source of truth for types:** `lib/cv/types.ts`.
 
 ## Top-level shape
 
@@ -25,14 +30,14 @@ CV data schema, localization, and validation rules.
 
 ## Localization
 
-Type: `Record<'en' | 'hu', string>` for user-facing text fields.
+Type: `Record<'en' | 'hu', string>` for user-facing CV text fields.
 
-| Layer      | Location              | Example                                        |
-| ---------- | --------------------- | ---------------------------------------------- |
-| CV content | `content/*.yaml`      | `title.en`, `title.hu`                         |
-| UI chrome  | `i18n/locales/*.json` | `cv.workExperience`, `experience.technologies` |
+| Layer      | Location                                               | Example                                        |
+| ---------- | ------------------------------------------------------ | ---------------------------------------------- |
+| CV content | DB / YAML                                              | `title.en`, `title.hu`                         |
+| UI chrome  | `messages/en.json`, `messages/hu.json` via `next-intl` | `cv.workExperience`, `experience.technologies` |
 
-Language routing: `prefix_except_default` — English at `/`, Hungarian at `/hu`.
+Routing: English at `/`, Hungarian at `/hu`.
 
 ## Field reference
 
@@ -47,75 +52,35 @@ Language routing: `prefix_except_default` — English at `/`, Hungarian at `/hu`
 
 ### `workExperience[]`
 
-| Field            | Type                | Notes                                        |
-| ---------------- | ------------------- | -------------------------------------------- |
-| `title`          | LocalizedString     | Job title                                    |
-| `company`        | `{ name, link? }`   | Company name + optional URL                  |
-| `employmentType` | string?             | i18n key under `experience.employmentType.*` |
-| `location`       | string              | City / region                                |
-| `from`           | `{ year, month? }`  | Start date                                   |
-| `end`            | `{ year, month? }`? | Omit = current position                      |
-| `description`    | LocalizedString     | Supports `>` folded blocks                   |
-| `technologies[]` | `{ name, link }`    | Both required in schema                      |
+| Field            | Type                | Notes                        |
+| ---------------- | ------------------- | ---------------------------- |
+| `title`          | LocalizedString     | Job title                    |
+| `company`        | name, optional link |                              |
+| `employmentType` | string              | e.g. `full-time`, `contract` |
+| `location`       | string              |                              |
+| `from`, `end`    | `{ year?, month? }` | `end` omitted = present      |
+| `description`    | LocalizedString     |                              |
+| `technologies[]` | name, link          |                              |
 
-### `educations[]`
+### `educations[]`, `skills[]`, `hobbies[]`
 
-| Field         | Type              | Notes                   |
-| ------------- | ----------------- | ----------------------- |
-| `degree`      | LocalizedString   |                         |
-| `institution` | `{ name, link? }` |                         |
-| `location`    | string            |                         |
-| `from`, `end` | PeriodDate        | Same as work experience |
-| `note`        | LocalizedString?  | Optional footnote       |
+See `lib/cv/types.ts` and `content/example.yaml`.
 
-### `skills[]` / `hobbies[]`
+## Site config
 
-| Field  | Type                                         |
-| ------ | -------------------------------------------- |
-| `name` | string (skills) or LocalizedString (hobbies) |
-| `link` | string?                                      |
+`lib/site-config.ts` — URL, SEO defaults, `cv.slug` (default: `gabor-pichner`).
 
-> **Note:** `skills[].name` is a plain string in the schema; `hobbies[].name` is
-> localized.
+Optional DB override: `site_config` table via `lib/get-site-config.ts`.
 
-## Period dates
+## Editing workflow
 
-```yaml
-from:
-  year: 2021
-  month: 3 # optional, 1–12
-end:
-  year: 2024 # omit entire `end` for ongoing
-```
+1. Edit `content/gabor-pichner.yaml`.
+2. `pnpm run db:seed` (local or prod Supabase env).
+3. `pnpm run dev` or `pnpm run build` to verify.
+4. Prod: push `v*` tag after seeding cloud DB.
 
-Rendered via `~/utils/period` (`formatPeriod`, `toDateTime`).
+## Do not
 
-## Content loading
-
-```typescript
-// app/app.vue
-queryCollection('cv').where('stem', '=', 'gabor-pichner').first();
-```
-
-The `stem` matches the YAML filename without extension. `config.ts` →
-`cv.filename` documents the intended file but the query is currently hardcoded
-to `gabor-pichner` — align both when switching CV files.
-
-## Validation errors
-
-Common Zod failures:
-
-- Missing `en` or `hu` on localized fields
-- `technologies[].link` missing (required in schema)
-- Invalid `contact.type` enum value
-- `month` outside 1–12
-
-Fix YAML, then `npm run generate` to verify.
-
-## Adding schema fields
-
-1. Update `app/types/cv.ts` (Zod)
-2. Update `content/example.yaml` + active CV YAML
-3. Update relevant Vue component if new UI needed
-4. Run typecheck + generate
-5. Update `docs/content.md` if user-facing
+- Put UI labels in YAML — use `messages/*.json`.
+- Commit secrets or `.env.local`.
+- Edit `lib/supabase/types.ts` by hand — use `pnpm run db:types`.
