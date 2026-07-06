@@ -105,7 +105,7 @@ or DB passwords.
 2. Prod Supabase: `db push` + `db:seed`
 3. GitHub Secrets for cloud Supabase
 4. Merge `v2` → `main`
-5. Tag `v*` release on `main`
+5. **Actions → Release** on `main` (semantic-release → `v*` tag → publish)
 6. Remove Nuxt artifacts if any remain
 
 ## Supabase webhook (deferred)

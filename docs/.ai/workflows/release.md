@@ -16,25 +16,26 @@ release.
 
 ## Tag publish (`v*`)
 
-Push a version tag to trigger `publish.yaml`:
+`publish.yaml` runs on every `v*` tag. **Do not push tags manually** — use the
+Release workflow (see above); semantic-release creates the tag and GitHub
+release, which triggers publish.
 
-1. **Supabase migrations** — `supabase-push-prod.sh` (`link` + `db push` on
-   cloud)
+1. **Supabase migrations** — `supabase-push-prod.sh` (`db push --db-url`)
 2. **GitHub Pages** — `prepare-static-site-prod.sh` → upload `out/` (prod data)
 3. **GHCR Docker** — `Dockerfile` build with prod `SUPABASE_*` secrets
 
-Required for publish: **secret** `SUPABASE_DB_URL`; **variables**
-`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`. Seed uses `SUPABASE_SECRET_KEY`
-locally only.
+Required for publish: **secrets** `SUPABASE_DB_URL`, `SUPABASE_URL`,
+`SUPABASE_PUBLISHABLE_KEY` (URL and publishable key may be repository variables
+instead). Seed uses `SUPABASE_SECRET_KEY` locally only.
 
-Seed prod content **before** tagging if CV data changed (migrations do not
-seed):
+Seed prod content **before** running Release if CV data changed (migrations do
+not seed):
 
 ```bash
 export SUPABASE_URL=https://<ref>.supabase.co
-export SUPABASE_SERVICE_ROLE_KEY=<service role>
+export SUPABASE_SECRET_KEY=<secret key>
 pnpm run db:seed
-git tag v3.x.x && git push origin v3.x.x
+# Then: GitHub → Actions → Release → Run workflow
 ```
 
 ## Pre-release verify

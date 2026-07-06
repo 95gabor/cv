@@ -142,13 +142,13 @@ bash scripts/supabase-push-prod.sh
 
 ## Release flow
 
-```bash
-# When YAML changed — seed prod first (local .env.local)
-pnpm run db:seed
+1. Seed prod when YAML changed (`pnpm run db:seed` with `.env.prod`)
+2. Merge to `main`, CI green
+3. **GitHub → Actions → Release → Run workflow** (semantic-release)
+4. Release creates `v*` tag + GitHub release → `publish.yaml` deploys Pages +
+   Docker
 
-# Tag triggers: db push (secret) + build (variables) + deploy
-git tag v3.x.x && git push origin v3.x.x
-```
+Do **not** `git tag` manually unless recovering from a broken release.
 
 ---
 
