@@ -202,7 +202,7 @@ workExperience:
       month: 7
     end:
       year: 2025
-      month: 3
+      month: 10
     description:
       en: >
         Managed and maintained a production Kubernetes cluster, upgraded and
@@ -250,6 +250,7 @@ workExperience:
       month: 6
     end:
       year: 2025
+      month: 3
     description:
       en: >
         Provided strategic architecture and software development consulting,
@@ -278,8 +279,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2024
+      month: 1
     end:
       year: 2025
+      month: 12
     description:
       en: >
         Contributed to the architecture and feature development of a
@@ -334,8 +337,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2024
+      month: 2
     end:
       year: 2025
+      month: 7
     description:
       en: >
         Developed a PWA for a restaurant system to replace the previous slower
@@ -371,8 +376,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2024
+      month: 1
     end:
       year: 2024
+      month: 3
     description:
       en: >
         Developed a billing integration for a restaurant system with
@@ -399,8 +406,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2024
+      month: 4
     end:
       year: 2024
+      month: 8
     description:
       en: >
         Developed a complete memorial website portal with login, profile and
@@ -438,8 +447,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2023
+      month: 5
     end:
       year: 2024
+      month: 6
     description:
       en: >
         Developed a QR code-based payment integration for a restaurant system.
@@ -481,8 +492,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2023
+      month: 10
     end:
       year: 2024
+      month: 2
     description:
       en: >
         Created a website for a mechanical engineering company. Later, extended
@@ -516,8 +529,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2023
+      month: 9
     end:
       year: 2023
+      month: 12
     description:
       en: >
         Developed a serial port and Bluetooth-based cash register integration
@@ -551,8 +566,10 @@ workExperience:
     location: Budapest, HU
     from:
       year: 2022
+      month: 4
     end:
       year: 2023
+      month: 3
     description:
       en: >
         Worked on the fiscal printing integration of a restaurant system. The
@@ -851,8 +868,10 @@ workExperience:
     location: Veszprém, HU
     from:
       year: 2017
+      month: 2
     end:
-      year: 2018
+      year: 2017
+      month: 12
     description:
       en: >
         Design, implementation and operation of a production support solution
@@ -898,8 +917,10 @@ workExperience:
     location: Veszprém, HU
     from:
       year: 2016
+      month: 7
     end:
       year: 2016
+      month: 8
     description:
       en: >
         They deal with IT networking and operation. Developed a full stack
@@ -939,8 +960,10 @@ educations:
     location: Veszprém, HU
     from:
       year: 2014
+      month: 9
     end:
       year: 2018
+      month: 1
     note:
       en: Excellent
       hu: Kiváló
@@ -955,8 +978,10 @@ educations:
     location: Veszprém, HU
     from:
       year: 2010
+      month: 9
     end:
       year: 2014
+      month: 6
 
 skills:
   - name: TypeScript / JavaScript
