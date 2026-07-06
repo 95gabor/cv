@@ -1,0 +1,10 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@percy/core': true
+  '@swc/core': true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+overrides:
+  caniuse-lite: 1.0.30001800
+  postcss: 8.5.16
