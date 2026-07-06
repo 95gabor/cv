@@ -1,3 +1,11 @@
+# [2.14.0](https://github.com/95gabor/cv/compare/v2.13.0...v2.14.0) (2026-07-06)
+
+### Features
+
+- **cv:** add month-aware period dates for experience entries
+  ([#146](https://github.com/95gabor/cv/issues/146))
+  ([b2e112b](https://github.com/95gabor/cv/commit/b2e112bd3579ec702cca7056ee673ada3dc3c2db))
+
 # [2.13.0](https://github.com/95gabor/cv/compare/v2.12.0...v2.13.0) (2026-06-03)
 
 ### Features
