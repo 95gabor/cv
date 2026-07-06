@@ -1,62 +1,61 @@
 # CV – Nuxt
 
-This is a modern, maintainable CV site built with Nuxt, Vue, TypeScript, and
-SCSS.
+Modern, maintainable CV site built with Nuxt 4, Vue 3, TypeScript, and SCSS.
+Content lives in YAML; the site is statically generated.
+
+**Documentation:** [`docs/README.md`](./docs/README.md) · **Agents:**
+[`docs/.ai/README.md`](./docs/.ai/README.md)
 
 ## Setup
 
-Install dependencies:
-
 ```bash
-npm install
+npm ci
+npm run dev    # http://localhost:3000
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-npm run dev
-```
+See [`docs/setup.md`](./docs/setup.md) for prerequisites and troubleshooting.
 
 ## Production
 
-Build the application for production:
-
 ```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
+npm run generate    # static output → .output/public
 npm run preview
 ```
 
-Check out the
-[deployment documentation](https://nuxt.com/docs/getting-started/deployment) for
-more information.
+Deploy: GitHub Pages on `v*` tags, or Docker (`docker compose up` → port 8000).
 
-## End-to-end tests
+## Quality gate
 
-Run Playwright E2E tests:
+```bash
+npm run lint
+npm run typecheck
+npm run generate
+```
+
+## Tests
 
 ```bash
 npm run test:e2e
-```
-
-Open Playwright's interactive runner:
-
-```bash
 npm run test:e2e:ui
+npm run storybook
 ```
 
-## Project Structure & Conventions
+## Edit CV content
 
-This project follows modern Nuxt 3 and Vue 3 best practices for scalability and
-maintainability.
+Edit `content/gabor-pichner.yaml` — see [`docs/content.md`](./docs/content.md).
 
----
+## Project structure
 
-For more, see the [Nuxt 3 documentation](https://nuxt.com/docs) and
-[Vue 3 style guide](https://vuejs.org/style-guide/).
+```
+app/           Vue components, SCSS, types
+content/       CV YAML data
+i18n/          UI translations (en, hu)
+config.ts      Site URL, meta, active CV file
+docs/          Documentation (human + AI-native)
+tests/         Playwright E2E
+```
+
+## Links
+
+- [Nuxt documentation](https://nuxt.com/docs)
+- [Vue style guide](https://vuejs.org/style-guide/)
