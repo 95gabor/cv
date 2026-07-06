@@ -26,6 +26,7 @@
 !playwright.config.ts
 !playwright.visual.config.ts
 !pnpm-lock.yaml
+!pnpm-workspace.yaml
 !postcss.config.mjs
 !release.config.mjs
 !tsconfig.json
