@@ -4,7 +4,7 @@
 # CI validation uses local Supabase (host.docker.internal:54321); publish uses cloud URL.
 FROM node:24.18.0-alpine3.24 AS builder
 
-RUN corepack enable && corepack prepare pnpm@10.12.1 --activate
+RUN corepack enable && corepack prepare pnpm@11.10.0 --activate
 
 WORKDIR /app
 
