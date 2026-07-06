@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/95gabor/cv/compare/v3.0.0...v3.0.1) (2026-07-06)
+
+### Bug Fixes
+
+- **publish:** pass Supabase env to GitHub Pages build job
+  ([187c6b4](https://github.com/95gabor/cv/commit/187c6b495b752ec1d30ea1dfb67ce276dc728ff9))
+
 # [3.0.0](https://github.com/95gabor/cv/compare/v2.14.0...v3.0.0) (2026-07-06)
 
 - feat!: rewrite CV site on Next.js, Supabase, and pnpm
