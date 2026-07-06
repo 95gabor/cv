@@ -98,6 +98,9 @@ jobs:
     name: Publish GitHub Pages
     needs: supabase-migrate
     runs-on: *runner-image
+    env:
+      SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY || vars.SUPABASE_PUBLISHABLE_KEY }}
     permissions:
       contents: read
       pages: write
