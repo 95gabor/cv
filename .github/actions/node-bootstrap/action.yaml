@@ -18,6 +18,7 @@ runs:
       uses: pnpm/action-setup@v6
       with:
         version: ${{ inputs.pnpm-version }}
+        standalone: true
 
     - name: Setup Node.js
       uses: actions/setup-node@v6
