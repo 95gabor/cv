@@ -4,7 +4,7 @@
 # CI validation uses local Supabase (host.docker.internal:54321); publish uses cloud URL.
 FROM node:24.18.0-alpine3.24 AS builder
 
-RUN corepack enable && corepack prepare pnpm@11.12.0 --activate
+RUN corepack enable && corepack prepare pnpm@11.15.1 --activate
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ RUN --mount=type=secret,id=supabase_url \
     pnpm run generate
 
 # --- Production Stage ---
-FROM nginx:1.31.2-alpine3.23-slim AS production
+FROM nginx:1.31.3-alpine3.24-slim AS production
 
 RUN rm -f /usr/share/nginx/html/index.html
 
