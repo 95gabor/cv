@@ -3,12 +3,17 @@
 
 overrides:
   caniuse-lite: 1.0.30001800
-  postcss: 8.5.16
+  postcss: 8.5.23
+  sharp: 0.35.3
+  fast-uri: 3.1.4
+  fast-xml-parser: 5.10.1
+  minimatch: 10.2.5
 
 allowBuilds:
   '@parcel/watcher': true
   '@percy/core': true
   '@swc/core': true
   esbuild: true
+  protobufjs: true
   sharp: true
   unrs-resolver: true
