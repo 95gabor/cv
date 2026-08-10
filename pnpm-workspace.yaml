@@ -2,13 +2,14 @@
 # Root-only repo — packages field omitted; root is always included.
 
 overrides:
-  caniuse-lite: 1.0.30001800
-  postcss: 8.5.23
+  caniuse-lite: 1.0.30001809
+  postcss: 8.5.26
   sharp: 0.35.3
   fast-uri: 3.1.5
   fast-xml-parser: 5.10.1
   ip-address: 10.4.0
-  minimatch: 10.2.5
+  minimatch: 10.2.6
+  nanoid@<3.3.18: 3.3.18
   undici@<6.28.0: 6.28.0
   undici@>=7.0.0 <7.29.0: 7.29.0
 
