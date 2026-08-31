@@ -2,16 +2,10 @@
 # Root-only repo — packages field omitted; root is always included.
 
 overrides:
-  caniuse-lite: 1.0.30001809
-  postcss: 8.5.26
-  sharp: 0.35.3
-  fast-uri: 3.1.5
-  fast-xml-parser: 5.11.0
-  ip-address: 10.5.0
-  minimatch: 10.2.6
-  nanoid@<3.3.18: 3.3.18
-  undici@<6.28.0: 6.28.0
-  undici@>=7.0.0 <7.29.0: 7.29.0
+  # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
+  fast-xml-parser: 5.11.1
+  # snyk-nodejs-lockfile-parser (via @percy/cli) pins uuid@^8; GHSA-w5hq-g745-h8pq.
+  uuid: 11.1.1
 
 allowBuilds:
   '@parcel/watcher': true
