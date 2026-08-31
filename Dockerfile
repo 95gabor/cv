@@ -2,9 +2,9 @@
 # Multi-stage production image: Next.js static export inside Docker, served by nginx.
 # Supabase credentials via BuildKit secrets (not ARG/ENV — avoids layer leakage + scanner warnings).
 # CI validation uses local Supabase (host.docker.internal:54321); publish uses cloud URL.
-FROM node:24.19.0-alpine3.24 AS builder
+FROM node:24.20.0-alpine3.24 AS builder
 
-RUN corepack enable && corepack prepare pnpm@11.22.0 --activate
+RUN corepack enable && corepack prepare pnpm@11.24.0 --activate
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ RUN --mount=type=secret,id=supabase_url \
     pnpm run generate
 
 # --- Production Stage ---
-FROM nginx:1.31.3-alpine3.24-slim AS production
+FROM nginx:1.31.4-alpine3.24-slim AS production
 
 RUN rm -f /usr/share/nginx/html/index.html
 
