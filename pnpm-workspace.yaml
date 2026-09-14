@@ -2,12 +2,17 @@
 # Root-only repo — packages field omitted; root is always included.
 
 overrides:
+  # Percy still resolves adm-zip@0.5.x; audit needs >=0.6.1 (GHSA-vwc7-r8mq-g2x9).
+  adm-zip: 0.6.1
   # Next/babel still resolve browserslist@<=4.28.6 without this (GHSA-c83g-rgw3-j3cx, GHSA-73wf-gq98-2v4g).
   browserslist: 4.28.9
   # ajv (commitlint/percy) still resolves fast-uri@3.1.5; need >=3.1.6 for URI advisories.
+  # Prefer 3.1.7 over 4.x to stay within ajv's ^3 range.
   fast-uri: 3.1.7
   # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
   fast-xml-parser: 5.11.1
+  # eslint/eslintrc + cosmiconfig still resolve js-yaml@4.1.x; audit needs >=4.3.2 (GHSA-2883-xcg3-v3hh).
+  js-yaml: 4.3.2
   # snyk-nodejs-lockfile-parser (via @percy/cli) pins uuid@^8; audit needs >=11.1.1 (GHSA-w5hq-g745-h8pq).
   uuid: 11.1.1
 
