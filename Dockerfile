@@ -23,7 +23,7 @@ RUN --mount=type=secret,id=supabase_url \
     pnpm run generate
 
 # --- Production Stage ---
-FROM nginx:1.31.5-alpine3.24-slim AS production
+FROM nginx:1.31.6-alpine3.24-slim AS production
 
 RUN rm -f /usr/share/nginx/html/index.html
 
