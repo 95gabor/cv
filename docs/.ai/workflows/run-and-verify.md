@@ -15,8 +15,6 @@ pnpm run build
 | Typecheck | Exit 0                                               |
 | Build     | Static output in `out/`, sitemap + robots + llms.txt |
 
-Requires `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` (local Supabase or CI).
-
 ## E2E (when UI/routing changed)
 
 ```bash

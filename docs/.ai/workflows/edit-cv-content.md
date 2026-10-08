@@ -14,11 +14,10 @@ Schema: [../content-model.md](../content-model.md)
 ```mermaid
 flowchart LR
     Edit[Edit content/*.yaml]
-    Seed[pnpm run db:seed]
     Dev[pnpm run dev]
     Check[Visual check en + hu]
     Build[pnpm run build]
-    Edit --> Seed --> Dev --> Check --> Build
+    Edit --> Dev --> Check --> Build
 ```
 
 ## Checklist
@@ -31,14 +30,12 @@ flowchart LR
 ## New CV profile
 
 1. Copy `content/example.yaml` → `content/<slug>.yaml`
-2. Add seed logic or extend `scripts/seed-from-yaml.mts` for the new slug
-3. Update `lib/site-config.ts` → `cv.slug`
-4. Replace `public/` assets as needed
+2. Update `lib/site-config.ts` → `cv.slug`
+3. Replace `public/` assets as needed
 
 ## Verify
 
 ```bash
-pnpm run db:seed
 pnpm run dev
 pnpm run build
 ```

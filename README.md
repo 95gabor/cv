@@ -1,14 +1,14 @@
 # CV — Next.js
 
 Personal CV site built with **Next.js 16**, **React**, **TypeScript**,
-**Tailwind CSS v4**, **shadcn/ui**, and **Supabase** (build-time data fetch).
-Static export to `out/` for GitHub Pages and Docker/nginx.
+**Tailwind CSS v4**, **shadcn/ui**, and committed **YAML** CV data. Static
+export to `out/` for GitHub Pages and Docker/nginx.
 
 ## Prerequisites
 
-- Node.js ≥ 24.18.0 (see `.nvmrc`)
-- [pnpm](https://pnpm.io/) 10.x
-- [Docker](https://www.docker.com/) (for local Supabase)
+- Node.js ≥ 24.21.0 (see `.nvmrc`)
+- [pnpm](https://pnpm.io/) 12.x
+- [Docker](https://www.docker.com/) (optional, for the production image)
 
 ## First-time setup
 
@@ -17,23 +17,20 @@ git clone https://github.com/95gabor/cv.git
 cd cv
 pnpm install
 cp .env.example .env.local
-pnpm exec supabase start
-pnpm run db:seed
 pnpm run dev
 # → http://localhost:3000
 ```
 
 ## Common commands
 
-| Command                                                  | Purpose                              |
-| -------------------------------------------------------- | ------------------------------------ |
-| `pnpm run dev`                                           | Dev server (Turbopack)               |
-| `pnpm run build`                                         | Static export to `out/`              |
-| `pnpm run generate`                                      | Alias for `build` (CI compatibility) |
-| `pnpm run lint`                                          | ESLint                               |
-| `pnpm run typecheck`                                     | TypeScript                           |
-| `pnpm run test:e2e`                                      | Playwright functional tests          |
-| `pnpm run db:start` / `db:stop` / `db:reset` / `db:seed` | Local Supabase                       |
+| Command              | Purpose                              |
+| -------------------- | ------------------------------------ |
+| `pnpm run dev`       | Dev server (Turbopack)               |
+| `pnpm run build`     | Static export to `out/`              |
+| `pnpm run generate`  | Alias for `build` (CI compatibility) |
+| `pnpm run lint`      | ESLint                               |
+| `pnpm run typecheck` | TypeScript                           |
+| `pnpm run test:e2e`  | Playwright functional tests          |
 
 ## Quality gate (before PR)
 
@@ -44,14 +41,12 @@ pnpm run typecheck
 pnpm run build
 ```
 
-Requires Supabase env vars (`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` for
-build; `SUPABASE_SECRET_KEY` for seed) — see `.env.example`.
+CV data lives in `content/gabor-pichner.yaml` — edit it and rebuild.
 
 ## Docker (optional)
 
 ```bash
-# Requires .env.local with SUPABASE_* and running Docker daemon
-bash scripts/prepare-supabase-for-build.sh
+# Requires a running Docker daemon
 docker compose up --build
 # → http://localhost:8000
 ```
@@ -66,5 +61,5 @@ Uses the root `Dockerfile` (Next.js build inside Docker + nginx with gzip).
 
 ## Stack
 
-Next.js App Router · shadcn/ui · Supabase · static export · Playwright ·
+Next.js App Router · shadcn/ui · YAML content · static export · Playwright ·
 Lighthouse · semantic-release

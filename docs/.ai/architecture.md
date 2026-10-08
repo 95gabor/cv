@@ -6,11 +6,8 @@
 flowchart TB
     subgraph build [Build time]
         YAML[content/gabor-pichner.yaml]
-        Seed[scripts/seed-from-yaml.mts]
-        SB[(Supabase)]
         Next[next build]
-        YAML --> Seed --> SB
-        SB --> Next
+        YAML --> Next
         Next --> Static[out/]
     end
 
@@ -27,15 +24,14 @@ flowchart TB
 
 ## Component responsibilities
 
-| Layer                      | Owns                                   | Does NOT own                                        |
-| -------------------------- | -------------------------------------- | --------------------------------------------------- |
-| **`content/*.yaml`**       | Source CV data for seeding             | Runtime reads (Supabase is runtime source at build) |
-| **`supabase/migrations/`** | DB schema                              | UI                                                  |
-| **`lib/cv/*`**             | Types, DB mapping, `getCvProfile()`    | React markup                                        |
-| UI strings / i18n          | `messages/`, `i18n/`, `next-intl`      | CV body text                                        |
-| **`components/*`**         | Section rendering, client widgets      | Global routing                                      |
-| **`app/`**                 | Routes (`/`, `/hu`), metadata, sitemap | Section details                                     |
-| **`lib/seo/*`**            | Metadata, JSON-LD, llms.txt content    | Visual design                                       |
+| Layer                | Owns                                   | Does NOT own    |
+| -------------------- | -------------------------------------- | --------------- |
+| **`content/*.yaml`** | Source of truth for CV data            | UI strings      |
+| **`lib/cv/*`**       | Types, YAML loader, `getCvProfile()`   | React markup    |
+| UI strings / i18n    | `messages/`, `i18n/`, `next-intl`      | CV body text    |
+| **`components/*`**   | Section rendering, client widgets      | Global routing  |
+| **`app/`**           | Routes (`/`, `/hu`), metadata, sitemap | Section details |
+| **`lib/seo/*`**      | Metadata, JSON-LD, llms.txt content    | Visual design   |
 
 ## Request / data flow
 
@@ -43,14 +39,11 @@ flowchart TB
 sequenceDiagram
     participant Browser
     participant Next as Next.js Server Component
-    participant SB as Supabase
-    participant DB as PostgreSQL
+    participant FS as content/*.yaml
 
-    Note over Next,DB: At build time (SSG)
-    Next->>SB: getCvProfile(slug, locale)
-    SB->>DB: SELECT cv_profiles + relations
-    DB-->>SB: rows
-    SB-->>Next: CV model
+    Note over Next,FS: At build time (SSG)
+    Next->>FS: getCvProfile(slug, locale)
+    FS-->>Next: CV model
     Next->>Browser: Pre-rendered HTML (static export)
 ```
 
@@ -58,22 +51,20 @@ Routes: `/` (English), `/hu` (Hungarian). No client-side CV fetch in production.
 
 ## Key paths
 
-| Task                   | Path                                                  |
-| ---------------------- | ----------------------------------------------------- |
-| Change CV data (local) | Edit YAML → `pnpm run db:seed`                        |
-| Change CV data (prod)  | Edit YAML → `pnpm run db:seed` (cloud env) → `v*` tag |
-| CV types               | `lib/cv/types.ts`                                     |
-| DB mapping             | `lib/cv/map-from-db.ts`                               |
-| Fetch at build         | `lib/cv/fetch.ts`                                     |
-| Site meta / URL        | `lib/site-config.ts`                                  |
-| UI strings (i18n)      | `messages/`, `i18n/`, `next-intl`                     |
-| Docker prod image      | Root `Dockerfile` (build inside Docker + nginx)       |
-| Global styles          | `app/globals.css`                                     |
-| Components             | `components/*.tsx`, `components/ui/`                  |
-| SEO                    | `lib/seo/`, `app/sitemap.ts`, `app/robots.ts`         |
-| E2E tests              | `tests/e2e/`                                          |
-| CI                     | `.github/workflows/ci.yaml`                           |
-| Deploy                 | `.github/workflows/publish.yaml` (on `v*` tag)        |
+| Task              | Path                                                |
+| ----------------- | --------------------------------------------------- |
+| Change CV data    | Edit `content/*.yaml` → commit → release (`v*` tag) |
+| CV types          | `lib/cv/types.ts`                                   |
+| YAML loader       | `lib/cv/fetch.ts`                                   |
+| Site meta / URL   | `lib/site-config.ts`                                |
+| UI strings (i18n) | `messages/`, `i18n/`, `next-intl`                   |
+| Docker prod image | Root `Dockerfile` (build inside Docker + nginx)     |
+| Global styles     | `app/globals.css`                                   |
+| Components        | `components/*.tsx`, `components/ui/`                |
+| SEO               | `lib/seo/`, `app/sitemap.ts`, `app/robots.ts`       |
+| E2E tests         | `tests/e2e/`                                        |
+| CI                | `.github/workflows/ci.yaml`                         |
+| Deploy            | `.github/workflows/publish.yaml` (on `v*` tag)      |
 
 ## Styling
 
@@ -90,13 +81,12 @@ Routes: `/` (English), `/hu` (Hungarian). No client-side CV fetch in production.
 ```mermaid
 flowchart LR
     Tag[v* git tag] --> Publish[publish.yaml]
-    Publish --> Migrate[supabase db push prod]
-    Migrate --> Build[pnpm run generate prod]
+    Publish --> Build[pnpm run generate]
     Build --> Pages[GitHub Pages out/]
     Publish --> Docker[Dockerfile build + GHCR]
     PR[PR] --> CI[ci.yaml]
     CI --> Lint[lint + typecheck]
-    CI --> Gen[build + local Supabase]
+    CI --> Gen[build]
     CI --> E2E[Playwright on out/]
     CI --> LH[Lighthouse on out/]
 ```
@@ -110,12 +100,9 @@ flowchart LR
 
 ## Environment variables
 
-| Variable                   | Purpose                                                                |
-| -------------------------- | ---------------------------------------------------------------------- |
-| `SUPABASE_URL`             | Build-time Supabase API URL                                            |
-| `SUPABASE_PUBLISHABLE_KEY` | Build-time read (RLS); legacy fallback: `SUPABASE_ANON_KEY`            |
-| `SUPABASE_SECRET_KEY`      | Seed writes only (local); legacy fallback: `SUPABASE_SERVICE_ROLE_KEY` |
-| `NEXT_PUBLIC_SITE_URL`     | Canonical URL, sitemap, OG                                             |
-| `NEXT_PUBLIC_GA_ID`        | Google Analytics (production)                                          |
+| Variable               | Purpose                       |
+| ---------------------- | ----------------------------- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical URL, sitemap, OG    |
+| `NEXT_PUBLIC_GA_ID`    | Google Analytics (production) |
 
 See `.env.example`.

@@ -6,11 +6,9 @@ Human guide: [`../../setup.md`](../../setup.md)
 
 ```bash
 cd /path/to/cv
-nvm use                    # Node 24.18.0
+nvm use                    # Node 24.21.0
 pnpm install
 cp .env.example .env.local
-pnpm exec supabase start
-pnpm run db:seed
 pnpm run dev               # http://localhost:3000
 ```
 
@@ -34,5 +32,5 @@ pnpm run build
 ## Report back
 
 - Node / pnpm versions
-- Whether Supabase + dev server started
-- Any errors from install, seed, or build
+- Whether the dev server started
+- Any errors from install or build

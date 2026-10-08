@@ -15,11 +15,10 @@ components/
 i18n/
 ├── config.ts, request.ts      # next-intl plugin config
 lib/
-├── cv/                        # types, fetch, map-from-db
+├── cv/                        # types, YAML loader
 ├── seo/                       # metadata, JSON-LD, llms
 messages/                      # UI strings (en, hu)
-content/                       # YAML seed source
-supabase/migrations/
+content/                       # YAML CV data (source of truth)
 ```
 
 ### Conventions

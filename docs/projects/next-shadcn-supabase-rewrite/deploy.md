@@ -69,8 +69,7 @@ Supabase + seed.
 3. Docker: `Dockerfile` build-args from prod secrets (no local Supabase)
 
 **Publish credentials:** 1 secret (`SUPABASE_DB_URL`) + 2 variables
-(`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`) — see
-[github-secrets.md](./github-secrets.md).
+(`SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`) — see github-secrets.md (removed).
 
 ## Production Supabase seed
 
@@ -128,6 +127,5 @@ this doc or Supabase Dashboard docs if enabling later.
 
 - [architecture.md](./architecture.md) — app structure
 - [phases.md](./phases.md) — Phase 5–6 tasks
-- [local-supabase.md](./local-supabase.md) — local vs cloud Supabase
 - [../next-shadcn-supabase-rewrite.md](../next-shadcn-supabase-rewrite.md) —
   project brief

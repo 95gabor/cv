@@ -2,9 +2,9 @@
 
 Documentation for larger, multi-step initiatives.
 
-| Project                                                           | Status          | Description                                                  |
-| ----------------------------------------------------------------- | --------------- | ------------------------------------------------------------ |
-| [next-shadcn-supabase-rewrite](./next-shadcn-supabase-rewrite.md) | cutover pending | Next + shadcn + Supabase SSG → GitHub Pages (`v2`, **pnpm**) |
+| Project                                                           | Status                        | Description                                       |
+| ----------------------------------------------------------------- | ----------------------------- | ------------------------------------------------- |
+| [next-shadcn-supabase-rewrite](./next-shadcn-supabase-rewrite.md) | superseded (Supabase dropped) | Next + shadcn SSG → GitHub Pages (`v2`, **pnpm**) |
 
 ## Status values
 

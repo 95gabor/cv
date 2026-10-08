@@ -133,10 +133,10 @@ Never expose service role key to the browser.
 
 ### Local vs cloud URLs
 
-| Environment     | `SUPABASE_URL`              | Docs                                     |
-| --------------- | --------------------------- | ---------------------------------------- |
-| Local dev       | `http://127.0.0.1:54321`    | [local-supabase.md](./local-supabase.md) |
-| CI / production | `https://<ref>.supabase.co` | GitHub Secrets                           |
+| Environment     | `SUPABASE_URL`              | Docs                        |
+| --------------- | --------------------------- | --------------------------- |
+| Local dev       | `http://127.0.0.1:54321`    | local-supabase.md (removed) |
+| CI / production | `https://<ref>.supabase.co` | GitHub Secrets              |
 
 ## i18n
 
