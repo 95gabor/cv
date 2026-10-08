@@ -57,8 +57,6 @@
 !public/**
 !scripts/
 !scripts/**
-!supabase/
-!supabase/**
 !tests/
 !tests/**
 
@@ -69,8 +67,6 @@ public/llms.txt
 .env
 .env.*
 !.env.example
-supabase/.temp/
-supabase/.branches/
 tsconfig.tsbuildinfo
 playwright-report/
 test-results/

@@ -1,5 +1,9 @@
 # Next.js + shadcn + Supabase rewrite
 
+> **Superseded.** The Supabase data layer was dropped; CV data is committed YAML
+> (`content/*.yaml`) read at build time by `lib/cv/fetch.ts`. The Next.js
+> migration stays. This document is kept as historical record only.
+
 ## Metadata
 
 | Field             | Value                                                                                                       |
@@ -96,18 +100,18 @@ See [architecture detail](./next-shadcn-supabase-rewrite/architecture.md).
 
 ## Decisions (locked)
 
-| #   | Topic           | Decision                                                                                                                            |
-| --- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| 1   | Deploy target   | **GitHub Pages**                                                                                                                    |
-| 2   | Repo strategy   | **`v2` branch** until cutover merge to `main`                                                                                       |
-| 3   | Rebuild trigger | **Manual `v*` git tag** → `publish.yaml` (webhook deferred)                                                                         |
-| 4   | E2E testing     | **Playwright** (keep current tooling)                                                                                               |
-| 5   | Supabase schema | **Editor-first hybrid** — tables + `_en`/`_hu` columns; see [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md) |
-| 6   | Package manager | **pnpm** (`pnpm-lock.yaml`, `packageManager` in `package.json`)                                                                     |
-| 7   | Local Supabase  | **Self-hosted** via Supabase CLI + Docker; cloud for CI/prod                                                                        |
+| #   | Topic           | Decision                                                                                 |
+| --- | --------------- | ---------------------------------------------------------------------------------------- |
+| 1   | Deploy target   | **GitHub Pages**                                                                         |
+| 2   | Repo strategy   | **`v2` branch** until cutover merge to `main`                                            |
+| 3   | Rebuild trigger | **Manual `v*` git tag** → `publish.yaml` (webhook deferred)                              |
+| 4   | E2E testing     | **Playwright** (keep current tooling)                                                    |
+| 5   | Supabase schema | **Editor-first hybrid** — tables + `_en`/`_hu` columns; see supabase-schema.md (removed) |
+| 6   | Package manager | **pnpm** (`pnpm-lock.yaml`, `packageManager` in `package.json`)                          |
+| 7   | Local Supabase  | **Self-hosted** via Supabase CLI + Docker; cloud for CI/prod                             |
 
 Detail: [deploy.md](./next-shadcn-supabase-rewrite/deploy.md) ·
-[local-supabase.md](./next-shadcn-supabase-rewrite/local-supabase.md).
+local-supabase.md (removed).
 
 ## Content authoring goal
 
@@ -138,10 +142,9 @@ Full checklist: [seo-parity.md](./next-shadcn-supabase-rewrite/seo-parity.md).
 
 Supabase replaces `content/*.yaml`. Proposed schema maps current Zod types:
 
-- `site_config`, `cv_profiles`, child tables — see
-  [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md)
+- `site_config`, `cv_profiles`, child tables — see supabase-schema.md (removed)
 
-Detail: [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md).
+Detail: supabase-schema.md (removed).
 
 ## Migration path
 
@@ -190,16 +193,14 @@ Phases: [phases.md](./next-shadcn-supabase-rewrite/phases.md).
 
 ## Related docs
 
-| Document                                                                | Purpose                                            |
-| ----------------------------------------------------------------------- | -------------------------------------------------- |
-| [architecture.md](./next-shadcn-supabase-rewrite/architecture.md)       | Folder layout, data flow, env vars                 |
-| [supabase-schema.md](./next-shadcn-supabase-rewrite/supabase-schema.md) | Tables, RLS, seed from YAML                        |
-| [seo-parity.md](./next-shadcn-supabase-rewrite/seo-parity.md)           | Current → Next mapping                             |
-| [phases.md](./next-shadcn-supabase-rewrite/phases.md)                   | Implementation phases                              |
-| [deploy.md](./next-shadcn-supabase-rewrite/deploy.md)                   | GitHub Pages, `v*` tag release, prod Supabase seed |
-| [local-supabase.md](./next-shadcn-supabase-rewrite/local-supabase.md)   | Self-hosted local Supabase (CLI + Docker)          |
-| [../content.md](../content.md)                                          | Current YAML model (baseline)                      |
-| [../.ai/content-model.md](../.ai/content-model.md)                      | CV types + YAML seed model                         |
+| Document                                                          | Purpose                                            |
+| ----------------------------------------------------------------- | -------------------------------------------------- |
+| [architecture.md](./next-shadcn-supabase-rewrite/architecture.md) | Folder layout, data flow, env vars                 |
+| [seo-parity.md](./next-shadcn-supabase-rewrite/seo-parity.md)     | Current → Next mapping                             |
+| [phases.md](./next-shadcn-supabase-rewrite/phases.md)             | Implementation phases                              |
+| [deploy.md](./next-shadcn-supabase-rewrite/deploy.md)             | GitHub Pages, `v*` tag release, prod Supabase seed |
+| [../content.md](../content.md)                                    | Current YAML model (baseline)                      |
+| [../.ai/content-model.md](../.ai/content-model.md)                | CV types + YAML seed model                         |
 
 ## Agent quick start
 

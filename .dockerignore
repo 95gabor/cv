@@ -8,6 +8,7 @@
 !app
 !components
 !lib
+!content
 !messages
 !i18n
 !global.d.ts

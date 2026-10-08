@@ -290,10 +290,6 @@ jobs:
       - name: Bootstrap Node
         uses: ./.github/actions/node-bootstrap
 
-      - name: Prepare Supabase for Docker build
-        id: docker_build_env
-        uses: ./.github/actions/docker-build-env
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
@@ -306,10 +302,5 @@ jobs:
           tags: cv:ci
           build-args: |
             NEXT_PUBLIC_SITE_URL=${{ env.NEXT_PUBLIC_SITE_URL }}
-          secret-files: |
-            supabase_url=${{ steps.docker_build_env.outputs.supabase_url_file }}
-            supabase_publishable_key=${{ steps.docker_build_env.outputs.supabase_publishable_key_file }}
-          add-hosts: |
-            host.docker.internal:172.17.0.1
           cache-from: type=gha,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}
           cache-to: type=gha,mode=max,scope=${{ env.DOCKER_BUILD_CACHE_SCOPE }}

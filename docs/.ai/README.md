@@ -16,22 +16,22 @@ needs.
 ## Stack (v2 branch)
 
 **Next.js 16** · App Router · static export · **shadcn/ui** · **Tailwind v4** ·
-**Supabase** (build-time fetch) · **pnpm**
+**YAML content** (build-time read) · **pnpm**
 
 ## Active projects
 
-| Project                                                                     | Status                                           |
-| --------------------------------------------------------------------------- | ------------------------------------------------ |
-| [next-shadcn-supabase-rewrite](../projects/next-shadcn-supabase-rewrite.md) | Phases 1–5 done on `v2`; Phase 6 cutover pending |
+| Project                                                                     | Status                                              |
+| --------------------------------------------------------------------------- | --------------------------------------------------- |
+| [next-shadcn-supabase-rewrite](../projects/next-shadcn-supabase-rewrite.md) | Superseded: Supabase dropped, content is YAML again |
 
 ## Agent roles
 
-| Role                 | Focus                                         |
-| -------------------- | --------------------------------------------- |
-| **Dependency Agent** | pnpm updates in controlled batches            |
-| **Quality Agent**    | lint, typecheck, build before PR              |
-| **CI Agent**         | GitHub Actions — pnpm, Supabase in CI, `out/` |
-| **Release Agent**    | semantic-release, tag workflow, publish       |
+| Role                 | Focus                                   |
+| -------------------- | --------------------------------------- |
+| **Dependency Agent** | pnpm updates in controlled batches      |
+| **Quality Agent**    | lint, typecheck, build before PR        |
+| **CI Agent**         | GitHub Actions — pnpm, `out/`           |
+| **Release Agent**    | semantic-release, tag workflow, publish |
 
 See also root [`SKILLS.md`](../../SKILLS.md).
 

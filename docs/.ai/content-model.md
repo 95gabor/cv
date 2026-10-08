@@ -7,13 +7,11 @@ CV data schema, localization, and validation rules.
 ```mermaid
 flowchart LR
     YAML[content/gabor-pichner.yaml]
-    Seed[pnpm run db:seed]
-    DB[(Supabase)]
     Build[getCvProfile at build]
-    YAML --> Seed --> DB --> Build
+    YAML --> Build
 ```
 
-**Source of truth for editing:** `content/gabor-pichner.yaml` (seed into DB).  
+**Source of truth for editing:** `content/gabor-pichner.yaml`.  
 **Source of truth for types:** `lib/cv/types.ts`.
 
 ## Top-level shape
@@ -34,7 +32,7 @@ Type: `Record<'en' | 'hu', string>` for user-facing CV text fields.
 
 | Layer      | Location                                               | Example                                        |
 | ---------- | ------------------------------------------------------ | ---------------------------------------------- |
-| CV content | DB / YAML                                              | `title.en`, `title.hu`                         |
+| CV content | YAML                                                   | `title.en`, `title.hu`                         |
 | UI chrome  | `messages/en.json`, `messages/hu.json` via `next-intl` | `cv.workExperience`, `experience.technologies` |
 
 Routing: English at `/`, Hungarian at `/hu`.
@@ -70,17 +68,13 @@ See `lib/cv/types.ts` and `content/example.yaml`.
 
 `lib/site-config.ts` — URL, SEO defaults, `cv.slug` (default: `gabor-pichner`).
 
-Optional DB override: `site_config` table via `lib/get-site-config.ts`.
-
 ## Editing workflow
 
 1. Edit `content/gabor-pichner.yaml`.
-2. `pnpm run db:seed` (local or prod Supabase env).
-3. `pnpm run dev` or `pnpm run build` to verify.
-4. Prod: push `v*` tag after seeding cloud DB.
+2. `pnpm run dev` or `pnpm run build` to verify.
+3. Prod: commit, then release (`v*` tag).
 
 ## Do not
 
 - Put UI labels in YAML — use `messages/*.json`.
 - Commit secrets or `.env.local`.
-- Edit `lib/supabase/types.ts` by hand — use `pnpm run db:types`.

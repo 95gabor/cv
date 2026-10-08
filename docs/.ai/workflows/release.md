@@ -20,23 +20,10 @@ release.
 Release workflow (see above); semantic-release creates the tag and GitHub
 release, which triggers publish.
 
-1. **Supabase migrations** — `supabase-push-prod.sh` (`db push --db-url`)
-2. **GitHub Pages** — `prepare-static-site-prod.sh` → upload `out/` (prod data)
-3. **GHCR Docker** — `Dockerfile` build with prod `SUPABASE_*` secrets
+1. **GitHub Pages** — `pnpm run generate` → upload `out/`
+2. **GHCR Docker** — `Dockerfile` build (CV data comes from committed YAML)
 
-Required for publish: **secrets** `SUPABASE_DB_URL`, `SUPABASE_URL`,
-`SUPABASE_PUBLISHABLE_KEY` (URL and publishable key may be repository variables
-instead). Seed uses `SUPABASE_SECRET_KEY` locally only.
-
-Seed prod content **before** running Release if CV data changed (migrations do
-not seed):
-
-```bash
-export SUPABASE_URL=https://<ref>.supabase.co
-export SUPABASE_SECRET_KEY=<secret key>
-pnpm run db:seed
-# Then: GitHub → Actions → Release → Run workflow
-```
+No CV data secrets are required. Commit YAML changes before running Release.
 
 ## Pre-release verify
 
@@ -51,10 +38,9 @@ Preview static output:
 npx http-server out -p 4173
 ```
 
-Preview Docker image (local Supabase):
+Preview Docker image:
 
 ```bash
-bash scripts/prepare-supabase-for-build.sh
 docker compose up --build
 # → http://localhost:8000
 ```

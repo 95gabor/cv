@@ -74,8 +74,7 @@
 
 - [ ] Production Supabase project (`supabase link` + secrets in GitHub)
 - [ ] Prod seed: `pnpm run db:seed` with cloud `SUPABASE_*` env (before tag)
-- [ ] Publish credentials — [github-secrets.md](./github-secrets.md) (1 secret +
-      2 vars)
+- [ ] Publish credentials — github-secrets.md (removed) (1 secret + 2 vars)
 - [ ] Merge `v2` → `main`
 - [ ] Remove remaining Nuxt artifacts from `main`
 - [ ] Tag release (`v*`) → live https://95gabor.me on Next build

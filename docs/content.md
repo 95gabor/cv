@@ -13,7 +13,7 @@
 | `lib/site-config.ts` → `cv.slug`       | Which profile to load (`gabor-pichner`) |
 | `messages/en.json`, `messages/hu.json` | UI strings — **not** CV body text       |
 
-After YAML edits, run `pnpm run db:seed` to update local Supabase.
+The YAML is read at build time by `lib/cv/fetch.ts`; no extra step is needed.
 
 ## Bilingual model
 
@@ -37,14 +37,11 @@ field.
 ```mermaid
 flowchart TB
     YAML[content/gabor-pichner.yaml]
-    Seed[db:seed]
-    DB[(Supabase)]
-    YAML --> Seed --> DB
-    DB --> Header[Header]
-    DB --> Work[Experience]
-    DB --> Edu[Education]
-    DB --> Skills[Skills]
-    DB --> Hobbies[Hobbies]
+    YAML --> Header[Header]
+    YAML --> Work[Experience]
+    YAML --> Edu[Education]
+    YAML --> Skills[Skills]
+    YAML --> Hobbies[Hobbies]
 ```
 
 ## Common fields
@@ -83,7 +80,7 @@ Hobbies: localized `name.en` / `name.hu`, optional `link`.
 ## Validation
 
 - Types: `lib/cv/types.ts`
-- Seed script validates while inserting: `scripts/seed-from-yaml.mts`
+- Loader checks required top-level sections: `lib/cv/fetch.ts`
 - Full build check: `pnpm run build`
 
 ## UI strings (not in YAML)

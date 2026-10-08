@@ -10,7 +10,7 @@ docs/.ai/
 ├── README.md              ← entry point
 ├── architecture.md
 ├── coding-standards.md
-├── content-model.md       ← CV schema, YAML seed, i18n model
+├── content-model.md       ← CV schema, YAML source, i18n model
 └── workflows/
     ├── local-setup.md
     ├── edit-cv-content.md

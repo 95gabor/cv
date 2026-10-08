@@ -6,7 +6,7 @@ Concise skills and responsibilities for agents working on this repository.
 
 - **Next.js / React maintenance**: App Router, static export, shadcn/ui
   components.
-- **Supabase data layer**: Migrations, seed script, build-time fetch.
+- **YAML content layer**: `content/*.yaml` loaded at build time.
 - **TypeScript quality**: Keep type checks passing and fix surfaced issues.
 - **Lint/format hygiene**: ESLint and Prettier rules respected.
 - **CI design**: pnpm-based workflows — fast, deterministic, actionable.
@@ -20,5 +20,5 @@ Concise skills and responsibilities for agents working on this repository.
   - `pnpm install --frozen-lockfile`
   - `pnpm run lint`
   - `pnpm run typecheck`
-  - `pnpm run build` (with Supabase env vars set)
+  - `pnpm run build`
 - Keep workflow steps minimal and avoid redundant build stages.
