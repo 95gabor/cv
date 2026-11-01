@@ -18,7 +18,7 @@ ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 RUN pnpm run generate
 
 # --- Production Stage ---
-FROM nginx:1.31.6-alpine3.24-slim AS production
+FROM nginx:1.31.8-alpine3.24-slim AS production
 
 RUN rm -f /usr/share/nginx/html/index.html
 
