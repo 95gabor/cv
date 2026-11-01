@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # Multi-stage production image: Next.js static export inside Docker, served by nginx.
 # CV data is read from content/*.yaml at build time.
-FROM node:24.21.0-alpine3.24 AS builder
+FROM node:26.13.0-alpine3.24 AS builder
 
 RUN corepack enable && corepack prepare pnpm@12.4.1 --activate
 
