@@ -6,7 +6,7 @@ Human guide: [`../../setup.md`](../../setup.md)
 
 ```bash
 cd /path/to/cv
-nvm use                    # Node 24.21.0
+nvm use                    # Node 24.22.2
 pnpm install
 cp .env.example .env.local
 pnpm run dev               # http://localhost:3000

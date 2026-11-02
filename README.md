@@ -6,7 +6,7 @@ export to `out/` for GitHub Pages and Docker/nginx.
 
 ## Prerequisites
 
-- Node.js ≥ 24.21.0 (see `.nvmrc`)
+- Node.js ≥ 24.22.2 (see `.nvmrc`)
 - [pnpm](https://pnpm.io/) 12.x
 - [Docker](https://www.docker.com/) (optional, for the production image)
 
