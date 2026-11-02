@@ -6,10 +6,12 @@ overrides:
   pdfjs-dist: 6.4.299
   # pac-proxy-agent > get-uri (via Percy) still resolves basic-ftp@<=6.2.0; audit needs >=6.2.1.
   basic-ftp: 6.2.2
-  # ajv (commitlint/percy) still resolves fast-uri@3.1.7; need >=3.1.8. Stay within ajv's ^3 range.
-  fast-uri: 3.1.8
+  # ajv (commitlint/percy) still resolves fast-uri<3.1.9; need >=3.1.9. Stay within ajv's ^3 range.
+  fast-uri: 3.1.9
   # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
   fast-xml-parser: 5.11.2
+  # typescript-eslint > typescript-estree still resolves vulnerable minimatch; audit needs >=11.0.1. Dev-only (lint).
+  minimatch: 11.0.4
 
 allowBuilds:
   '@parcel/watcher': true
@@ -19,3 +21,6 @@ allowBuilds:
   protobufjs: true
   sharp: true
   unrs-resolver: true
+
+minimumReleaseAgeExclude:
+  - minimatch@11.0.4

@@ -7,7 +7,7 @@
 
 | Tool    | Version / notes                           |
 | ------- | ----------------------------------------- |
-| Node.js | ≥ 24.21.0 (`.nvmrc`: `24.21.0`)           |
+| Node.js | ≥ 24.22.2 (`.nvmrc`: `24.22.2`)           |
 | pnpm    | 12.x (`packageManager` in `package.json`) |
 | Docker  | Optional, for the production image        |
 
@@ -71,14 +71,14 @@ Docker running.
 
 | Issue                 | Fix                                          |
 | --------------------- | -------------------------------------------- |
-| Node version mismatch | `nvm use` or Node ≥ 24.21                    |
+| Node version mismatch | `nvm use` or Node ≥ 24.22                    |
 | `Invalid CV profile`  | Check `content/<slug>.yaml` has all sections |
 | Port 3000 in use      | Stop other `next dev` or use another port    |
 | Percy fails locally   | Set `PERCY_TOKEN`                            |
 
 ## Setup checklist
 
-- [ ] `node -v` ≥ 24.21.0
+- [ ] `node -v` ≥ 24.22.2
 - [ ] `pnpm install` succeeds
 - [ ] `pnpm run dev` → CV loads at `/` and `/hu`
 - [ ] `pnpm run lint && pnpm run typecheck && pnpm run build` passes
