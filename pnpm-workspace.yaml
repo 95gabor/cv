@@ -3,15 +3,13 @@
 
 overrides:
   # Percy (cli-pdf ^2.16) still resolves vulnerable pdfjs-dist; audit needs >=4.2.67. Dev-only (visual tests).
-  pdfjs-dist: 6.4.299
+  pdfjs-dist: 6.5.438
   # pac-proxy-agent > get-uri (via Percy) still resolves basic-ftp@<=6.2.0; audit needs >=6.2.1.
-  basic-ftp: 6.2.2
-  # ajv (commitlint/percy) still resolves fast-uri<3.1.9; need >=3.1.9. Stay within ajv's ^3 range.
-  fast-uri: 3.1.9
+  basic-ftp: 6.2.6
   # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
-  fast-xml-parser: 5.11.2
+  fast-xml-parser: 5.12.0
   # typescript-eslint > typescript-estree still resolves vulnerable minimatch; audit needs >=11.0.1. Dev-only (lint).
-  minimatch: 11.0.4
+  minimatch: 11.0.5
 
 allowBuilds:
   '@parcel/watcher': true
@@ -23,4 +21,4 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - minimatch@11.0.4
+  - minimatch@11.0.5
