@@ -7,7 +7,7 @@
 
 | Tool    | Version / notes                           |
 | ------- | ----------------------------------------- |
-| Node.js | ≥ 24.22.2 (`.nvmrc`: `24.22.2`)           |
+| Node.js | ≥ 24.22.3 (`.nvmrc`: `24.22.3`)           |
 | pnpm    | 12.x (`packageManager` in `package.json`) |
 | Docker  | Optional, for the production image        |
 
@@ -78,7 +78,7 @@ Docker running.
 
 ## Setup checklist
 
-- [ ] `node -v` ≥ 24.22.2
+- [ ] `node -v` ≥ 24.22.3
 - [ ] `pnpm install` succeeds
 - [ ] `pnpm run dev` → CV loads at `/` and `/hu`
 - [ ] `pnpm run lint && pnpm run typecheck && pnpm run build` passes

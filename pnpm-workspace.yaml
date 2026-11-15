@@ -7,9 +7,9 @@ overrides:
   # pac-proxy-agent > get-uri (via Percy) still resolves basic-ftp@<=6.2.0; audit needs >=6.2.1.
   basic-ftp: 6.2.6
   # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
-  fast-xml-parser: 5.12.0
+  fast-xml-parser: 5.12.1
   # typescript-eslint > typescript-estree still resolves vulnerable minimatch; audit needs >=11.0.1. Dev-only (lint).
-  minimatch: 11.0.5
+  minimatch: 11.0.8
 
 allowBuilds:
   '@parcel/watcher': true
@@ -21,4 +21,4 @@ allowBuilds:
   unrs-resolver: true
 
 minimumReleaseAgeExclude:
-  - minimatch@11.0.5
+  - minimatch@11.0.8
