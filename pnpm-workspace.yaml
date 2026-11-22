@@ -2,8 +2,6 @@
 # Root-only repo — packages field omitted; root is always included.
 
 overrides:
-  # Percy (cli-pdf ^2.16) still resolves vulnerable pdfjs-dist; audit needs >=4.2.67. Dev-only (visual tests).
-  pdfjs-dist: 6.5.438
   # pac-proxy-agent > get-uri (via Percy) still resolves basic-ftp@<=6.2.0; audit needs >=6.2.1.
   basic-ftp: 6.2.6
   # Percy still resolves fast-xml-parser@4.x without this; audit needs >=5.7.0.
